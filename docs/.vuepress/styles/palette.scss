@@ -1,4 +1,16 @@
 $sidebar-width: 20rem;
 $sidebar-mobile-width: 16rem;
-$vp-font: 'Georgia, -apple-system, "Nimbus Roman No9 L", "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif';
-$vp-font-heading: 'Georgia, -apple-system, "Nimbus Roman No9 L", "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif';
+// 默认清爽黑体栈；历史衬线栈保留为字体切换器中的"主题衬线"预设
+// （见 components/fontOptions.ts，切换器通过内联 CSS 变量覆盖这里的默认值）
+$vp-font:
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  "PingFang SC",
+  "Hiragino Sans GB",
+  "Microsoft YaHei",
+  "Noto Sans SC",
+  "WenQuanYi Micro Hei",
+  sans-serif;
+$vp-font-heading: $vp-font;

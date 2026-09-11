@@ -256,6 +256,12 @@ export default hopeTheme({
   print: false,
   breadcrumb: false,
   navbar,
+  // 在默认布局的 end 区插入字体切换器（组件在 client.ts 全局注册）
+  navbarLayout: {
+    start: ["Brand"],
+    center: ["Links"],
+    end: ["Language", "Repo", "Outlook", "FontSwitch", "Search"],
+  },
   sidebar,
   footer:
     '<a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2020015769号-1</a>',

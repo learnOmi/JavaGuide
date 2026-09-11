@@ -3,6 +3,7 @@ import { defineAsyncComponent, h } from "vue";
 import DeferredLayoutToggle from "./components/DeferredLayoutToggle.vue";
 import ClickImagePreview from "./components/ClickImagePreview.vue";
 import LazyMermaid from "./components/LazyMermaid.vue";
+import FontSwitch from "./components/FontSwitch.vue";
 
 const UnlockContent = defineAsyncComponent(
   () => import("./components/unlock/UnlockContent.vue"),
@@ -18,6 +19,8 @@ export default defineClientConfig({
   enhance({ app, router }) {
     app.component("Mermaid", LazyMermaid);
     app.component("UnlockContent", UnlockContent);
+    // 导航栏字体切换器（由 theme.ts 的 navbarLayout.end 引用）
+    app.component("FontSwitch", FontSwitch);
 
     router.onError((error, to) => {
       if (typeof window === "undefined") return;
@@ -39,8 +42,5 @@ export default defineClientConfig({
       window.sessionStorage.removeItem(`javaguide:chunk-reload:${to.fullPath}`);
     });
   },
-  rootComponents: [
-    () => h(DeferredLayoutToggle),
-    () => h(ClickImagePreview),
-  ],
+  rootComponents: [() => h(DeferredLayoutToggle), () => h(ClickImagePreview)],
 });
