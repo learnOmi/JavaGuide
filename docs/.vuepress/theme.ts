@@ -524,6 +524,22 @@ export default hopeTheme({
           // 支持中文关键词全文检索，点击结果可定位到对应小节。
           slimsearch: {
             indexContent: true,
+            // 覆盖 hope 主题默认注入的分类/标签自定义字段：
+            // 主题内部经 getFullLocaleConfig + deepAssign 生成的 formatter
+            // 会把 "分类: $content" 字符串错误展开成 {0:'分',1:'类',...} 字符映射对象，
+            // 导致搜索结果含分类/标签命中时客户端渲染抛出
+            // `n[locale].split is not a function`，结果区空白。
+            // 这里改用纯字符串 formatter 修复（$content 会被 getter 返回值替换）。
+            customFields: [
+              {
+                getter: (page) => page.frontmatter.category,
+                formatter: "分类: $content",
+              },
+              {
+                getter: (page) => page.frontmatter.tag,
+                formatter: "标签: $content",
+              },
+            ],
             locales: {
               "/": {
                 placeholder: "搜索 JavaGuide",
