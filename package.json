@@ -68,6 +68,12 @@
   },
   "packageManager": "pnpm@10.0.0",
   "devDependencies": {
-    "mermaid": "^11.16.1"
+    "@codemirror/commands": "^6.11.0",
+    "@codemirror/lang-markdown": "^6.5.2",
+    "@codemirror/state": "^6.7.4",
+    "@codemirror/view": "^6.43.11",
+    "codemirror": "^6.0.2",
+    "mermaid": "^11.16.1",
+    "vite": "8.0.16"
   }
 }

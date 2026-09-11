@@ -4,6 +4,7 @@ import DeferredLayoutToggle from "./components/DeferredLayoutToggle.vue";
 import ClickImagePreview from "./components/ClickImagePreview.vue";
 import LazyMermaid from "./components/LazyMermaid.vue";
 import FontSwitch from "./components/FontSwitch.vue";
+import EditEntry from "./components/EditEntry.vue";
 
 const UnlockContent = defineAsyncComponent(
   () => import("./components/unlock/UnlockContent.vue"),
@@ -42,5 +43,10 @@ export default defineClientConfig({
       window.sessionStorage.removeItem(`javaguide:chunk-reload:${to.fullPath}`);
     });
   },
-  rootComponents: [() => h(DeferredLayoutToggle), () => h(ClickImagePreview)],
+  rootComponents: [
+    () => h(DeferredLayoutToggle),
+    () => h(ClickImagePreview),
+    // 本地知识编辑入口（dev 环境探活通过才渲染；内部懒加载编辑抽屉）
+    () => h(EditEntry),
+  ],
 });

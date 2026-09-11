@@ -1,6 +1,7 @@
 import { createRequire } from "node:module";
 import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
+import { docsEditPlugin } from "./edit-plugin/index.js";
 import theme from "./theme.js";
 
 const require = createRequire(import.meta.url);
@@ -54,6 +55,8 @@ export default defineUserConfig({
 
   bundler: viteBundler({
     viteOptions: {
+      // 本地知识编辑插件：仅 dev serve 模式挂载 /__edit/api 中间件，构建产物不含编辑能力
+      plugins: [docsEditPlugin()],
       resolve: {
         alias: {
           "@vuepress/plugin-markdown-chart/client/components/Mermaid.js":
