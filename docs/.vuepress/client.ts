@@ -3,7 +3,6 @@ import { defineAsyncComponent, h } from "vue";
 import DeferredLayoutToggle from "./components/DeferredLayoutToggle.vue";
 import ClickImagePreview from "./components/ClickImagePreview.vue";
 import LazyMermaid from "./components/LazyMermaid.vue";
-import GlobalUnlock from "./components/unlock/GlobalUnlock.vue";
 
 const UnlockContent = defineAsyncComponent(
   () => import("./components/unlock/UnlockContent.vue"),
@@ -42,7 +41,6 @@ export default defineClientConfig({
   },
   rootComponents: [
     () => h(DeferredLayoutToggle),
-    () => h(GlobalUnlock),
     () => h(ClickImagePreview),
   ],
 });

@@ -516,8 +516,21 @@ export default hopeTheme({
 
     photoSwipe: false,
 
-    // 申请到 DocSearch key 后配置上面的环境变量；在此之前关闭本地搜索索引。
-    ...(docsearchOptions ? { docsearch: docsearchOptions } : {}),
+    // 申请到 DocSearch key 后配置上面的环境变量；在此之前使用本地全文搜索 slimsearch。
+    ...(docsearchOptions
+      ? { docsearch: docsearchOptions }
+      : {
+          // 本地全文搜索：indexContent 开启后索引正文内容（而非仅标题/摘要），
+          // 支持中文关键词全文检索，点击结果可定位到对应小节。
+          slimsearch: {
+            indexContent: true,
+            locales: {
+              "/": {
+                placeholder: "搜索 JavaGuide",
+              },
+            },
+          },
+        }),
     search: false,
   },
 });
