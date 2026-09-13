@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+  <defs>
+    <style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}</style>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#005D7B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="500" fill="#F8FAFC"/>
+  <rect width="1000" height="500" fill="url(#grid)"/>
+  <text x="500" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#2D3748">Workflow、Graph、Loop 三者关系</text>
+
+  <!-- Outermost: Workflow -->
+  <rect x="30" y="58" width="940" height="410" rx="14" fill="#FFF9F3" fill-opacity="0.5" stroke="#E99151" stroke-width="2"/>
+  <text x="52" y="84" font-size="15" font-weight="bold" fill="#E99151">Workflow</text>
+  <text x="150" y="84" font-size="12" fill="#94A3B8">目标与过程</text>
+  <text x="500" y="452" text-anchor="middle" font-size="12" fill="#94A3B8" font-style="italic">「先生成初稿，再审核，不达标就修改，直到达标后输出」</text>
+
+  <!-- Middle: Graph -->
+  <rect x="65" y="108" width="870" height="300" rx="12" fill="#F0F8FC" fill-opacity="0.6" stroke="#005D7B" stroke-width="2"/>
+  <text x="88" y="132" font-size="15" font-weight="bold" fill="#005D7B">Graph</text>
+  <text x="150" y="132" font-size="12" fill="#94A3B8">结构与载体</text>
+  <text x="500" y="394" text-anchor="middle" font-size="12" fill="#94A3B8">节点与连线组成执行路径，共享同一份状态</text>
+
+  <!-- Innermost: Loop -->
+  <rect x="100" y="158" width="480" height="200" rx="10" fill="#F0FDF9" fill-opacity="0.6" stroke="#4CA497" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="122" y="180" font-size="15" font-weight="bold" fill="#4CA497">Loop</text>
+  <text x="175" y="180" font-size="12" fill="#94A3B8">图上的控制模式</text>
+
+  <!-- Mini graph nodes -->
+  <!-- DraftNode -->
+  <g transform="translate(125,205)">
+    <rect width="115" height="48" rx="8" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="48" rx="2.5" fill="#005D7B"/>
+    <text x="18" y="21" font-size="13" font-weight="bold" fill="#2D3748">生成节点</text>
+    <text x="18" y="37" font-size="10" fill="#64748B">DraftNode</text>
+  </g>
+  <!-- ReviewNode -->
+  <g transform="translate(315,205)">
+    <rect width="115" height="48" rx="8" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="48" rx="2.5" fill="#E99151"/>
+    <text x="18" y="21" font-size="13" font-weight="bold" fill="#2D3748">审核节点</text>
+    <text x="18" y="37" font-size="10" fill="#64748B">ReviewNode</text>
+  </g>
+  <!-- ReviseNode -->
+  <g transform="translate(220,295)">
+    <rect width="115" height="48" rx="8" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="48" rx="2.5" fill="#4CA497"/>
+    <text x="18" y="21" font-size="13" font-weight="bold" fill="#2D3748">修改节点</text>
+    <text x="18" y="37" font-size="10" fill="#64748B">ReviseNode</text>
+  </g>
+  <!-- ExitNode -->
+  <g transform="translate(630,205)">
+    <rect width="115" height="48" rx="8" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="48" rx="2.5" fill="#94A3B8"/>
+    <text x="18" y="21" font-size="13" font-weight="bold" fill="#2D3748">输出节点</text>
+    <text x="18" y="37" font-size="10" fill="#64748B">ExitNode</text>
+  </g>
+
+  <!-- State box -->
+  <g transform="translate(630,290)">
+    <rect width="270" height="65" rx="8" fill="white" filter="url(#sh)" stroke="#005D7B" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="12" y="20" font-size="12" font-weight="bold" fill="#005D7B">State 共享状态</text>
+    <text x="12" y="38" font-size="10" fill="#64748B">current_draft · review_score · iteration_count</text>
+    <text x="12" y="54" font-size="10" fill="#64748B">review_feedback · messages · input</text>
+  </g>
+
+  <!-- Arrows -->
+  <!-- Draft → Review -->
+  <line x1="240" y1="229" x2="313" y2="229" stroke="#005D7B" stroke-width="2"/>
+  <polygon points="313,229 305,224 305,234" fill="#005D7B"/>
+
+  <!-- Review → Revise (未达标) -->
+  <line x1="370" y1="253" x2="312" y2="293" stroke="#E99151" stroke-width="2"/>
+  <polygon points="312,293 318,286 306,287" fill="#E99151"/>
+  <text x="355" y="278" font-size="10" fill="#E99151" font-weight="bold">未达标</text>
+
+  <!-- Revise → Draft (Loop back) -->
+  <path d="M220 319 L180 319 L180 257" stroke="#4CA497" stroke-width="2" fill="none" stroke-dasharray="6,3"/>
+  <polygon points="180,257 175,265 185,265" fill="#4CA497"/>
+  <text x="155" y="295" font-size="10" fill="#4CA497" font-weight="bold" text-anchor="end">回溯</text>
+
+  <!-- Review → Exit (达标) -->
+  <line x1="430" y1="229" x2="628" y2="229" stroke="#005D7B" stroke-width="2"/>
+  <polygon points="628,229 620,224 620,234" fill="#005D7B"/>
+  <text x="525" y="221" font-size="10" fill="#005D7B" font-weight="bold">达标</text>
+
+  <!-- State dashed connections -->
+  <line x1="630" y1="305" x2="430" y2="253" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="660" y1="290" x2="335" y2="253" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="720" y1="290" x2="280" y2="295" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+
+  <!-- Watermark -->
+  <g transform="translate(800,475) rotate(-5)">
+    <text font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+    <text y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+  </g>
+</svg>

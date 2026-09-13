@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" width="1100" height="520">
+  <defs>
+    <style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}</style>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="2" dy="5" stdDeviation="8" flood-color="#005D7B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="520" fill="#F8FAFC"/>
+  <rect width="1100" height="520" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#2D3748">工作流抽象能力对比</text>
+
+  <!-- ====== Left: Low Abstraction ====== -->
+  <rect x="22" y="60" width="515" height="420" rx="12" fill="none" stroke="#E99151" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="280" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#E99151">低抽象：具体动作</text>
+  <text x="280" y="106" text-anchor="middle" font-size="12" fill="#94A3B8">每一步都写成具体操作，流程碎片化</text>
+
+  <!-- Row 1 -->
+  <g transform="translate(50,130)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">调用模型</text><text x="14" y="38" font-size="10" fill="#64748B">生成文案</text></g>
+  <g transform="translate(200,130)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">检查标题</text><text x="14" y="38" font-size="10" fill="#64748B">长度是否合规</text></g>
+  <g transform="translate(350,130)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">检查语气</text><text x="14" y="38" font-size="10" fill="#64748B">是否合适</text></g>
+
+  <!-- Row 2 -->
+  <g transform="translate(50,220)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">检查字数</text><text x="14" y="38" font-size="10" fill="#64748B">是否满足要求</text></g>
+  <g transform="translate(200,220)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">判断补资料</text><text x="14" y="38" font-size="10" fill="#64748B">是否需要补充</text></g>
+  <g transform="translate(350,220)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">再调模型</text><text x="14" y="38" font-size="10" fill="#64748B">根据问题修改</text></g>
+
+  <!-- Row 3 -->
+  <g transform="translate(125,310)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">格式校验</text><text x="14" y="38" font-size="10" fill="#64748B">Markdown 合规</text></g>
+  <g transform="translate(275,310)"><rect width="130" height="50" rx="8" fill="white" filter="url(#sh)"/><rect width="4" height="50" rx="2" fill="#E99151"/><text x="14" y="22" font-size="12" font-weight="bold" fill="#2D3748">输出结果</text><text x="14" y="38" font-size="10" fill="#64748B">拼接各部分</text></g>
+
+  <!-- Left arrows: Row 1 -->
+  <line x1="180" y1="155" x2="198" y2="155" stroke="#E99151" stroke-width="1.5"/>
+  <polygon points="198,155 190,150 190,160" fill="#E99151"/>
+  <line x1="330" y1="155" x2="348" y2="155" stroke="#E99151" stroke-width="1.5"/>
+  <polygon points="348,155 340,150 340,160" fill="#E99151"/>
+  <!-- Row 1 → Row 2 -->
+  <path d="M480 180 L480 195 L115 195 L115 218" stroke="#E99151" stroke-width="1.5" fill="none"/>
+  <polygon points="115,218 110,210 120,210" fill="#E99151"/>
+  <!-- Row 2 -->
+  <line x1="180" y1="245" x2="198" y2="245" stroke="#E99151" stroke-width="1.5"/>
+  <polygon points="198,245 190,240 190,250" fill="#E99151"/>
+  <line x1="330" y1="245" x2="348" y2="245" stroke="#E99151" stroke-width="1.5"/>
+  <polygon points="348,245 340,240 340,250" fill="#E99151"/>
+  <!-- Row 2 → Row 3 -->
+  <path d="M480 270 L480 285 L190 285 L190 308" stroke="#E99151" stroke-width="1.5" fill="none"/>
+  <polygon points="190,308 185,300 195,300" fill="#E99151"/>
+  <!-- Row 3 -->
+  <line x1="255" y1="335" x2="273" y2="335" stroke="#E99151" stroke-width="1.5"/>
+  <polygon points="273,335 265,330 265,340" fill="#E99151"/>
+
+  <!-- Left annotation -->
+  <rect x="60" y="385" width="200" height="40" rx="6" fill="#FFF5F0" stroke="#E99151" stroke-width="1"/>
+  <text x="160" y="405" text-anchor="middle" font-size="11" fill="#E99151" font-weight="bold">问题：难以维护与复用</text>
+  <text x="160" y="419" text-anchor="middle" font-size="9" fill="#E99151">增删节点需要阅读大量源码</text>
+
+  <!-- Divider + VS -->
+  <line x1="550" y1="75" x2="550" y2="465" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="525" y="230" width="50" height="30" rx="15" fill="#2D3748"/>
+  <text x="550" y="250" text-anchor="middle" font-size="13" font-weight="bold" fill="white">VS</text>
+
+  <!-- ====== Right: High Abstraction ====== -->
+  <rect x="563" y="60" width="515" height="420" rx="12" fill="none" stroke="#005D7B" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="820" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#005D7B">高抽象：职责边界</text>
+  <text x="820" y="106" text-anchor="middle" font-size="12" fill="#94A3B8">每个节点有清晰的职责与产出定义</text>
+
+  <!-- START -->
+  <circle cx="610" cy="195" r="16" fill="#005D7B"/>
+  <text x="610" y="199" text-anchor="middle" font-size="9" font-weight="bold" fill="white">START</text>
+
+  <!-- DraftNode -->
+  <g transform="translate(650,148)">
+    <rect width="155" height="94" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="94" rx="2.5" fill="#005D7B"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">DraftNode</text>
+    <text x="18" y="44" font-size="11" fill="#005D7B" font-weight="bold">职责：产出当前版本</text>
+    <text x="18" y="62" font-size="10" fill="#64748B">调用 LLM 生成文章</text>
+    <text x="18" y="78" font-size="10" fill="#94A3B8">根据反馈修改或首次生成</text>
+  </g>
+  <!-- ReviewNode -->
+  <g transform="translate(870,148)">
+    <rect width="155" height="94" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="94" rx="2.5" fill="#E99151"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">ReviewNode</text>
+    <text x="18" y="44" font-size="11" fill="#E99151" font-weight="bold">职责：评估是否达标</text>
+    <text x="18" y="62" font-size="10" fill="#64748B">评分 0-100 + 改进建议</text>
+    <text x="18" y="78" font-size="10" fill="#94A3B8">包含标题/语气/字数检查</text>
+  </g>
+  <!-- ReviseNode -->
+  <g transform="translate(750,310)">
+    <rect width="145" height="65" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="65" rx="2.5" fill="#4CA497"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">ReviseNode</text>
+    <text x="18" y="44" font-size="11" fill="#4CA497" font-weight="bold">职责：根据反馈修正</text>
+    <text x="18" y="58" font-size="10" fill="#94A3B8">引导回 DraftNode 重新生成</text>
+  </g>
+  <!-- ExitNode -->
+  <g transform="translate(870,405)">
+    <rect width="130" height="55" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="55" rx="2.5" fill="#94A3B8"/>
+    <text x="18" y="22" font-size="14" font-weight="bold" fill="#2D3748">ExitNode</text>
+    <text x="18" y="40" font-size="11" fill="#94A3B8">职责：输出最终结果</text>
+  </g>
+
+  <!-- Right arrows -->
+  <!-- START → DraftNode -->
+  <line x1="626" y1="195" x2="648" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="648,195 640,190 640,200" fill="#64748B"/>
+  <!-- DraftNode → ReviewNode -->
+  <line x1="805" y1="195" x2="868" y2="195" stroke="#005D7B" stroke-width="2"/>
+  <polygon points="868,195 860,190 860,200" fill="#005D7B"/>
+  <!-- ReviewNode → ExitNode (达标) -->
+  <path d="M947 242 L947 403" stroke="#4CA497" stroke-width="2" fill="none"/>
+  <polygon points="947,403 942,395 952,395" fill="#4CA497"/>
+  <text x="960" y="330" font-size="10" fill="#4CA497" font-weight="bold">达标</text>
+  <!-- ReviewNode → ReviseNode (未达标) -->
+  <path d="M870 230 L822 230 L822 308" stroke="#E99151" stroke-width="2" fill="none"/>
+  <polygon points="822,308 817,300 827,300" fill="#E99151"/>
+  <text x="837" y="270" font-size="10" fill="#E99151" font-weight="bold">未达标</text>
+  <!-- ReviseNode → DraftNode (Loop) -->
+  <path d="M750 342 L710 342 L710 195 L648 195" stroke="#4CA497" stroke-width="2" fill="none" stroke-dasharray="6,3"/>
+  <polygon points="648,195 656,190 656,200" fill="#4CA497"/>
+  <text x="695" y="275" font-size="10" fill="#4CA497" font-weight="bold" text-anchor="end">回溯</text>
+
+  <!-- Right annotation -->
+  <rect x="600" y="420" width="210" height="40" rx="6" fill="#F0F8FC" stroke="#005D7B" stroke-width="1"/>
+  <text x="705" y="440" text-anchor="middle" font-size="11" fill="#005D7B" font-weight="bold">优势：结构清晰，易于维护</text>
+  <text x="705" y="454" text-anchor="middle" font-size="9" fill="#005D7B">增删检查项无需改动流程</text>
+
+  <!-- Watermark -->
+  <g transform="translate(800,495) rotate(-5)">
+    <text font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+    <text y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+  </g>
+</svg>

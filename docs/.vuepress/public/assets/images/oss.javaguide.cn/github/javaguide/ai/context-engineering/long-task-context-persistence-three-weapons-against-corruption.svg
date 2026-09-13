@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" style="background-color: #F8FAFC; font-family: system-ui, sans-serif;">
+    <defs>
+        <pattern id="dot-bg-3" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.2" fill="#E2E8F0" />
+        </pattern>
+        <filter id="shadow-3">
+            <feDropShadow dx="2" dy="8" stdDeviation="10" flood-color="#005D7B" flood-opacity="0.05" />
+        </filter>
+    </defs>
+
+    <rect width="100%" height="100%" fill="url(#dot-bg-3)" />
+    
+    <text x="450" y="50" text-anchor="middle" font-size="24" font-weight="bold" fill="#005D7B">长任务上下文持久化：抵抗腐化的三大武器</text>
+
+    <g transform="translate(60, 120)">
+        <rect width="240" height="260" rx="16" fill="#FFFFFF" filter="url(#shadow-3)" />
+        <rect width="240" height="6" rx="3" fill="#4CA497" />
+        <text x="120" y="45" text-anchor="middle" font-size="18" font-weight="bold" fill="#005D7B">1. Compaction</text>
+        <text x="120" y="70" text-anchor="middle" font-size="14" fill="#4CA497">上下文状态压缩</text>
+        <line x1="20" y1="90" x2="220" y2="90" stroke="#E2E8F0" stroke-width="1" />
+        
+        <rect x="50" y="110" width="140" height="50" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4,2"/>
+        <text x="120" y="140" text-anchor="middle" font-size="12" fill="#64748B">冗长历史 &amp; 工具日志</text>
+        
+        <path d="M 120 165 L 120 195" fill="none" stroke="#4CA497" stroke-width="2" marker-end="url(#arrow)" />
+        <polygon points="115,190 125,190 120,200" fill="#4CA497" />
+        
+        <rect x="70" y="200" width="100" height="35" rx="6" fill="#E8F4F1" stroke="#4CA497" stroke-width="1" />
+        <text x="120" y="222" text-anchor="middle" font-size="12" font-weight="bold" fill="#4CA497">高密度新状态</text>
+    </g>
+
+    <g transform="translate(330, 120)">
+        <rect width="240" height="260" rx="16" fill="#FFFFFF" filter="url(#shadow-3)" />
+        <rect width="240" height="6" rx="3" fill="#E99151" />
+        <text x="120" y="45" text-anchor="middle" font-size="18" font-weight="bold" fill="#005D7B">2. Note-taking</text>
+        <text x="120" y="70" text-anchor="middle" font-size="14" fill="#E99151">结构化外部笔记</text>
+        <line x1="20" y1="90" x2="220" y2="90" stroke="#E2E8F0" stroke-width="1" />
+        
+        <circle cx="120" cy="140" r="25" fill="#F8FAFC" stroke="#005D7B" stroke-width="2" />
+        <text x="120" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#005D7B">Agent</text>
+        
+        <path d="M 100 170 Q 70 200 80 220" fill="none" stroke="#E99151" stroke-width="2" />
+        <path d="M 140 170 Q 170 200 160 220" fill="none" stroke="#E99151" stroke-width="2" stroke-dasharray="4,2"/>
+        
+        <rect x="60" y="210" width="120" height="30" rx="4" fill="#FFF5ED" stroke="#E99151" stroke-width="1" />
+        <text x="120" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#E99151">NOTES.md (读/写)</text>
+    </g>
+
+    <g transform="translate(600, 120)">
+        <rect width="240" height="260" rx="16" fill="#FFFFFF" filter="url(#shadow-3)" />
+        <rect width="240" height="6" rx="3" fill="#005D7B" />
+        <text x="120" y="45" text-anchor="middle" font-size="18" font-weight="bold" fill="#005D7B">3. Sub-agents</text>
+        <text x="120" y="70" text-anchor="middle" font-size="14" fill="#005D7B">多节点架构解耦</text>
+        <line x1="20" y1="90" x2="220" y2="90" stroke="#E2E8F0" stroke-width="1" />
+        
+        <rect x="70" y="110" width="100" height="35" rx="6" fill="#005D7B" />
+        <text x="120" y="132" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">主编排 Agent</text>
+        
+        <path d="M 120 145 L 120 170 L 60 170 L 60 190" fill="none" stroke="#64748B" stroke-width="2" />
+        <path d="M 120 145 L 120 190" fill="none" stroke="#64748B" stroke-width="2" />
+        <path d="M 120 145 L 120 170 L 180 170 L 180 190" fill="none" stroke="#64748B" stroke-width="2" />
+        
+        <circle cx="60" cy="210" r="20" fill="#F8FAFC" stroke="#4CA497" stroke-width="2" />
+        <text x="60" y="215" text-anchor="middle" font-size="10" fill="#005D7B">搜索</text>
+        
+        <circle cx="120" cy="210" r="20" fill="#F8FAFC" stroke="#4CA497" stroke-width="2" />
+        <text x="120" y="215" text-anchor="middle" font-size="10" fill="#005D7B">编码</text>
+        
+        <circle cx="180" cy="210" r="20" fill="#F8FAFC" stroke="#4CA497" stroke-width="2" />
+        <text x="180" y="215" text-anchor="middle" font-size="10" fill="#005D7B">测试</text>
+    </g>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" style="background-color:#F8FAFC;font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+<defs>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+<path d="M30 0 L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+</pattern>
+<filter id="cs"><feDropShadow dx="2" dy="6" stdDeviation="10" flood-color="#005D7B" flood-opacity="0.08"/></filter>
+<clipPath id="cj"><rect x="35" y="75" width="200" height="268" rx="10"/></clipPath>
+<clipPath id="cx"><rect x="255" y="75" width="200" height="268" rx="10"/></clipPath>
+<clipPath id="cy"><rect x="475" y="75" width="200" height="268" rx="10"/></clipPath>
+<clipPath id="cm"><rect x="695" y="75" width="170" height="268" rx="10"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<text x="450" y="48" text-anchor="middle" font-size="24" font-weight="bold" fill="#005D7B">结构化输出格式对比</text>
+
+<!-- JSON -->
+<rect x="35" y="75" width="200" height="268" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="35" y="75" width="200" height="36" fill="#4CA497" clip-path="url(#cj)"/>
+<text x="135" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">JSON</text>
+<text x="50" y="130" font-size="12" fill="#64748B">优点：</text>
+<text x="50" y="148" font-size="11" fill="#4CA497">可直接序列化传输</text>
+<text x="50" y="172" font-size="12" fill="#64748B">缺点：</text>
+<text x="50" y="190" font-size="11" fill="#DC2626">语法严格，解析失败需重试</text>
+<line x1="50" y1="206" x2="220" y2="206" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="50" y="216" width="170" height="56" rx="4" fill="#F0F4F8"/>
+<text x="60" y="233" font-size="10" fill="#64748B" font-family="monospace">{"name":"张三",</text>
+<text x="60" y="248" font-size="10" fill="#64748B" font-family="monospace"> "age":25}</text>
+<rect x="65" y="296" width="70" height="22" rx="11" fill="#E6F7ED"/>
+<text x="100" y="311" text-anchor="middle" font-size="10" font-weight="bold" fill="#4CA497">推荐</text>
+
+<!-- XML -->
+<rect x="255" y="75" width="200" height="268" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="255" y="75" width="200" height="36" fill="#005D7B" clip-path="url(#cx)"/>
+<text x="355" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">XML</text>
+<text x="270" y="130" font-size="12" fill="#64748B">优点：</text>
+<text x="270" y="148" font-size="11" fill="#4CA497">层级清晰，可读性好</text>
+<text x="270" y="172" font-size="12" fill="#64748B">缺点：</text>
+<text x="270" y="190" font-size="11" fill="#DC2626">体积较大</text>
+<line x1="270" y1="206" x2="440" y2="206" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="270" y="216" width="170" height="56" rx="4" fill="#F0F4F8"/>
+<text x="280" y="233" font-size="10" fill="#64748B" font-family="monospace">&lt;person&gt;</text>
+<text x="280" y="248" font-size="10" fill="#64748B" font-family="monospace"> &lt;name&gt;张三&lt;/name&gt;</text>
+<text x="280" y="263" font-size="10" fill="#64748B" font-family="monospace">&lt;/person&gt;</text>
+<rect x="285" y="296" width="70" height="22" rx="11" fill="#E0F2F8"/>
+<text x="320" y="311" text-anchor="middle" font-size="10" font-weight="bold" fill="#005D7B">标签式</text>
+
+<!-- YAML -->
+<rect x="475" y="75" width="200" height="268" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="475" y="75" width="200" height="36" fill="#E99151" clip-path="url(#cy)"/>
+<text x="575" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">YAML</text>
+<text x="490" y="130" font-size="12" fill="#64748B">优点：</text>
+<text x="490" y="148" font-size="11" fill="#4CA497">流式友好，体积小</text>
+<text x="490" y="172" font-size="12" fill="#64748B">缺点：</text>
+<text x="490" y="190" font-size="11" fill="#DC2626">对缩进敏感</text>
+<line x1="490" y1="206" x2="660" y2="206" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="490" y="216" width="170" height="56" rx="4" fill="#F0F4F8"/>
+<text x="500" y="233" font-size="10" fill="#64748B" font-family="monospace">name: 张三</text>
+<text x="500" y="248" font-size="10" fill="#64748B" font-family="monospace">age: 25</text>
+<rect x="505" y="296" width="70" height="22" rx="11" fill="#FFF3E0"/>
+<text x="540" y="311" text-anchor="middle" font-size="10" font-weight="bold" fill="#E99151">配置</text>
+
+<!-- Markdown -->
+<rect x="695" y="75" width="170" height="268" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="695" y="75" width="170" height="36" fill="#7C3AED" clip-path="url(#cm)"/>
+<text x="780" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">Markdown</text>
+<text x="710" y="130" font-size="12" fill="#64748B">优点：</text>
+<text x="710" y="148" font-size="11" fill="#4CA497">可读性好，展示友好</text>
+<text x="710" y="172" font-size="12" fill="#64748B">缺点：</text>
+<text x="710" y="190" font-size="11" fill="#DC2626">解析复杂</text>
+<line x1="710" y1="206" x2="850" y2="206" stroke="#E2E8F0" stroke-width="1"/>
+<rect x="710" y="216" width="140" height="56" rx="4" fill="#F0F4F8"/>
+<text x="720" y="233" font-size="10" fill="#64748B" font-family="monospace">## 结果</text>
+<text x="720" y="248" font-size="10" fill="#64748B" font-family="monospace">- 张三, 25岁</text>
+<rect x="710" y="296" width="70" height="22" rx="11" fill="#EDE9FE"/>
+<text x="745" y="311" text-anchor="middle" font-size="10" font-weight="bold" fill="#7C3AED">展示</text>
+
+<!-- Bottom note -->
+<text x="450" y="375" text-anchor="middle" font-size="13" fill="#94A3B8">优先使用原生结构化输出 API（OpenAI / Claude / Gemini 均已支持）</text>
+
+<!-- Watermark -->
+<g transform="translate(735,390) rotate(-5)">
+<text x="0" y="0" font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+<text x="0" y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+</g>
+</svg>

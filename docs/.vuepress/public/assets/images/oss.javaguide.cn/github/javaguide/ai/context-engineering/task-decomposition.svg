@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" style="background-color:#F8FAFC;font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+<defs>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+<path d="M30 0 L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+</pattern>
+<filter id="cs"><feDropShadow dx="2" dy="6" stdDeviation="10" flood-color="#005D7B" flood-opacity="0.08"/></filter>
+<clipPath id="cl"><rect x="35" y="75" width="400" height="345" rx="10"/></clipPath>
+<clipPath id="cr"><rect x="465" y="75" width="400" height="345" rx="10"/></clipPath>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<text x="450" y="48" text-anchor="middle" font-size="24" font-weight="bold" fill="#005D7B">任务分解：静态 vs 动态</text>
+
+<!-- Left: 静态分解 -->
+<rect x="35" y="75" width="400" height="345" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="35" y="75" width="400" height="36" fill="#005D7B" clip-path="url(#cl)"/>
+<text x="235" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">静态分解</text>
+
+<!-- Step boxes -->
+<rect x="55" y="125" width="360" height="42" rx="6" fill="#E0F2F8"/>
+<text x="75" y="148" font-size="12" fill="#005D7B" font-weight="bold">第 1 步</text>
+<text x="145" y="148" font-size="12" fill="#64748B">提取文档核心论点（3-5 个要点）</text>
+
+<line x1="235" y1="169" x2="235" y2="179" stroke="#94A3B8" stroke-width="1.5"/>
+<polygon points="230,179 235,190 240,179" fill="#94A3B8"/>
+
+<rect x="55" y="193" width="360" height="42" rx="6" fill="#E0F2F8"/>
+<text x="75" y="216" font-size="12" fill="#005D7B" font-weight="bold">第 2 步</text>
+<text x="145" y="216" font-size="12" fill="#64748B">识别关键数据或事实</text>
+
+<line x1="235" y1="237" x2="235" y2="247" stroke="#94A3B8" stroke-width="1.5"/>
+<polygon points="230,247 235,258 240,247" fill="#94A3B8"/>
+
+<rect x="55" y="261" width="360" height="42" rx="6" fill="#E0F2F8"/>
+<text x="75" y="284" font-size="12" fill="#005D7B" font-weight="bold">第 3 步</text>
+<text x="145" y="284" font-size="12" fill="#64748B">评估论点的逻辑可靠性</text>
+
+<line x1="235" y1="305" x2="235" y2="315" stroke="#94A3B8" stroke-width="1.5"/>
+<polygon points="230,315 235,326 240,315" fill="#94A3B8"/>
+
+<rect x="55" y="329" width="360" height="42" rx="6" fill="#E6F7ED"/>
+<text x="75" y="352" font-size="12" fill="#4CA497" font-weight="bold">第 4 步</text>
+<text x="145" y="352" font-size="12" fill="#64748B">生成 200 字执行摘要</text>
+
+<text x="235" y="405" text-anchor="middle" font-size="11" fill="#94A3B8">流程固定，开始前规划完毕</text>
+
+<!-- Right: 动态分解 -->
+<rect x="465" y="75" width="400" height="345" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="465" y="75" width="400" height="36" fill="#E99151" clip-path="url(#cr)"/>
+<text x="665" y="99" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">动态分解 (BabyAGI)</text>
+
+<!-- Agent boxes -->
+<rect x="485" y="125" width="360" height="55" rx="6" fill="#FFF3E0" filter="url(#cs)"/>
+<rect x="485" y="125" width="6" height="55" fill="#E99151" rx="3"/>
+<text x="505" y="149" font-size="13" font-weight="bold" fill="#E99151">task_creation_agent</text>
+<text x="505" y="168" font-size="11" fill="#64748B">根据目标生成新任务</text>
+
+<line x1="665" y1="182" x2="665" y2="196" stroke="#94A3B8" stroke-width="1.5"/>
+<polygon points="660,196 665,207 670,196" fill="#94A3B8"/>
+
+<rect x="485" y="210" width="360" height="55" rx="6" fill="#E0F2F8" filter="url(#cs)"/>
+<rect x="485" y="210" width="6" height="55" fill="#005D7B" rx="3"/>
+<text x="505" y="234" font-size="13" font-weight="bold" fill="#005D7B">execution_agent</text>
+<text x="505" y="253" font-size="11" fill="#64748B">执行当前最高优先级任务</text>
+
+<line x1="665" y1="267" x2="665" y2="281" stroke="#94A3B8" stroke-width="1.5"/>
+<polygon points="660,281 665,292 670,281" fill="#94A3B8"/>
+
+<rect x="485" y="295" width="360" height="55" rx="6" fill="#E6F7ED" filter="url(#cs)"/>
+<rect x="485" y="295" width="6" height="55" fill="#4CA497" rx="3"/>
+<text x="505" y="319" font-size="13" font-weight="bold" fill="#4CA497">prioritization_agent</text>
+<text x="505" y="338" font-size="11" fill="#64748B">对任务列表重新排序</text>
+
+<!-- Loop arrow back -->
+<path d="M855,322 L870,322 L870,152 L845,152" fill="none" stroke="#E99151" stroke-width="1.5" stroke-dasharray="5,3"/>
+<polygon points="845,152 855,147 855,157" fill="#E99151"/>
+<text x="878" y="240" font-size="10" fill="#E99151" transform="rotate(-90,878,240)">循环迭代</text>
+
+<text x="665" y="405" text-anchor="middle" font-size="11" fill="#94A3B8">探索性任务，根据输出决定下一步</text>
+
+<!-- Watermark -->
+<g transform="translate(735,430) rotate(-5)">
+<text x="0" y="0" font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+<text x="0" y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+</g>
+</svg>

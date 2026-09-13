@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" style="background-color:#F8FAFC;font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+<defs>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+<path d="M30 0 L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+</pattern>
+<filter id="cs">
+<feDropShadow dx="2" dy="6" stdDeviation="10" flood-color="#005D7B" flood-opacity="0.08"/>
+</filter>
+<clipPath id="cl1"><rect x="85" y="78" width="770" height="115" rx="10"/></clipPath>
+<clipPath id="cl2"><rect x="85" y="222" width="770" height="145" rx="10"/></clipPath>
+<clipPath id="cl3"><rect x="85" y="396" width="770" height="108" rx="10"/></clipPath>
+</defs>
+
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<!-- Title -->
+<text x="450" y="48" text-anchor="middle" font-size="24" font-weight="bold" fill="#005D7B">Prompt 注入三层纵深防御体系</text>
+
+<!-- Attack arrow -->
+<line x1="38" y1="92" x2="38" y2="486" stroke="#D9534F" stroke-width="2" stroke-dasharray="6,4"/>
+<polygon points="33,486 38,500 43,486" fill="#D9534F"/>
+<text transform="translate(22,300) rotate(-90)" text-anchor="middle" font-size="14" font-weight="bold" fill="#D9534F" letter-spacing="3">恶意输入</text>
+
+<!-- Layer 1: 执行层 -->
+<rect x="85" y="78" width="770" height="115" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="85" y="78" width="6" height="115" fill="#4CA497" clip-path="url(#cl1)"/>
+<text x="110" y="106" font-size="16" font-weight="bold" fill="#4CA497">执行层</text>
+<text x="180" y="106" font-size="13" fill="#94A3B8">权限最小化与沙箱隔离</text>
+<rect x="745" y="88" width="90" height="24" rx="12" fill="#E6F7ED"/>
+<text x="790" y="105" text-anchor="middle" font-size="11" font-weight="bold" fill="#4CA497">第一道防线</text>
+<text x="110" y="136" font-size="12" fill="#64748B">• 代码执行环境与宿主机物理隔离（Docker / WebAssembly 沙箱）</text>
+<text x="110" y="158" font-size="12" fill="#64748B">• API Key、数据库权限严格受限 · 危险操作需额外授权</text>
+<text x="110" y="182" font-size="11" fill="#94A3B8">即使模型被误导执行恶意指令，攻击面也被物理隔离</text>
+
+<!-- Arrow 1→2 -->
+<line x1="470" y1="195" x2="470" y2="210" stroke="#94A3B8" stroke-width="2"/>
+<polygon points="465,210 470,222 475,210" fill="#94A3B8"/>
+
+<!-- Layer 2: 认知层 -->
+<rect x="85" y="222" width="770" height="145" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="85" y="222" width="6" height="145" fill="#005D7B" clip-path="url(#cl2)"/>
+<text x="110" y="250" font-size="16" font-weight="bold" fill="#005D7B">认知层</text>
+<text x="180" y="250" font-size="13" fill="#94A3B8">Prompt 隔离与边界划分</text>
+<rect x="745" y="232" width="90" height="24" rx="12" fill="#E0F2F8"/>
+<text x="790" y="249" text-anchor="middle" font-size="11" font-weight="bold" fill="#005D7B">第二道防线</text>
+<text x="110" y="280" font-size="12" fill="#64748B">• 区分 System Prompt 与 User Input，利用 API 原生 Role 划分</text>
+<text x="110" y="302" font-size="12" fill="#64748B">• 使用分隔符包裹不可信数据，阻止指令跨区覆盖</text>
+<rect x="110" y="314" width="720" height="30" rx="6" fill="#F0F4F8" stroke="#CBD5E1" stroke-width="0.5"/>
+<text x="125" y="334" font-size="11" fill="#64748B" font-family="monospace">---USER_CONTENT_START---{{content}}---USER_CONTENT_END---</text>
+<text x="110" y="358" font-size="11" fill="#94A3B8">攻击者即使在用户输入中注入指令，分隔符也能阻止跨区覆盖</text>
+
+<!-- Arrow 2→3 -->
+<line x1="470" y1="370" x2="470" y2="385" stroke="#94A3B8" stroke-width="2"/>
+<polygon points="465,385 470,396 475,385" fill="#94A3B8"/>
+
+<!-- Layer 3: 决策层 -->
+<rect x="85" y="396" width="770" height="108" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="85" y="396" width="6" height="108" fill="#E99151" clip-path="url(#cl3)"/>
+<text x="110" y="424" font-size="16" font-weight="bold" fill="#E99151">决策层</text>
+<text x="180" y="424" font-size="13" fill="#94A3B8">人机协同</text>
+<rect x="745" y="406" width="90" height="24" rx="12" fill="#FFF3E0"/>
+<text x="790" y="423" text-anchor="middle" font-size="11" font-weight="bold" fill="#E99151">最后防线</text>
+<text x="110" y="454" font-size="12" fill="#64748B">• 高危操作（修改数据库、发送邮件、转账）执行前触发中断</text>
+<text x="110" y="476" font-size="12" fill="#64748B">• 推送审批请求给管理员，人工确认后才执行</text>
+<text x="110" y="496" font-size="11" fill="#94A3B8">即使前两层被突破，关键操作仍需人工审批，兜底保障</text>
+
+<!-- Watermark -->
+<g transform="translate(735,510) rotate(-5)">
+<text x="0" y="0" font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+<text x="0" y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+</g>
+
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" width="1100" height="560">
+  <defs>
+    <style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}</style>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+    <filter id="sh" x="-5%" y="-5%" width="115%" height="120%">
+      <feDropShadow dx="2" dy="5" stdDeviation="8" flood-color="#005D7B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="560" fill="#F8FAFC"/>
+  <rect width="1100" height="560" fill="url(#grid)"/>
+  <text x="550" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#2D3748">Loop：图上的回溯控制</text>
+
+  <!-- Loop highlight zone -->
+  <rect x="55" y="65" width="550" height="270" rx="14" fill="#F0FDF9" fill-opacity="0.5" stroke="#4CA497" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="78" y="89" font-size="13" font-weight="bold" fill="#4CA497">循环区域</text>
+
+  <!-- START -->
+  <circle cx="95" cy="195" r="16" fill="#005D7B"/>
+  <text x="95" y="199" text-anchor="middle" font-size="9" font-weight="bold" fill="white">START</text>
+
+  <!-- DraftNode -->
+  <g transform="translate(130,165)">
+    <rect width="140" height="60" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="60" rx="2.5" fill="#005D7B"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">生成初稿</text>
+    <text x="18" y="42" font-size="11" fill="#64748B">DraftNode</text>
+    <text x="18" y="55" font-size="9" fill="#94A3B8">LLM 生成文章</text>
+  </g>
+  <!-- ReviewNode -->
+  <g transform="translate(330,165)">
+    <rect width="140" height="60" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="60" rx="2.5" fill="#E99151"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">质量审核</text>
+    <text x="18" y="42" font-size="11" fill="#64748B">ReviewNode</text>
+    <text x="18" y="55" font-size="9" fill="#94A3B8">评分 · 反馈</text>
+  </g>
+  <!-- ReviseNode -->
+  <g transform="translate(230,280)">
+    <rect width="140" height="46" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="46" rx="2.5" fill="#4CA497"/>
+    <text x="18" y="22" font-size="14" font-weight="bold" fill="#2D3748">按反馈修改</text>
+    <text x="18" y="38" font-size="11" fill="#64748B">ReviseNode</text>
+  </g>
+  <!-- ExitNode -->
+  <g transform="translate(640,165)">
+    <rect width="130" height="60" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="5" height="60" rx="2.5" fill="#94A3B8"/>
+    <text x="18" y="25" font-size="14" font-weight="bold" fill="#2D3748">输出结果</text>
+    <text x="18" y="42" font-size="11" fill="#64748B">ExitNode</text>
+    <text x="18" y="55" font-size="9" fill="#94A3B8">最终文章</text>
+  </g>
+  <!-- END -->
+  <circle cx="830" cy="195" r="16" fill="#4CA497"/>
+  <text x="830" y="199" text-anchor="middle" font-size="9" font-weight="bold" fill="white">END</text>
+
+  <!-- Arrows -->
+  <!-- START → DraftNode -->
+  <line x1="111" y1="195" x2="128" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="128,195 120,190 120,200" fill="#64748B"/>
+  <!-- DraftNode → ReviewNode -->
+  <line x1="270" y1="195" x2="328" y2="195" stroke="#005D7B" stroke-width="2"/>
+  <polygon points="328,195 320,190 320,200" fill="#005D7B"/>
+  <!-- ReviewNode → ExitNode (达标) -->
+  <line x1="470" y1="185" x2="638" y2="185" stroke="#4CA497" stroke-width="2"/>
+  <polygon points="638,185 630,180 630,190" fill="#4CA497"/>
+  <rect x="520" y="172" width="68" height="18" rx="4" fill="#F0FDF9" stroke="#4CA497" stroke-width="1"/>
+  <text x="554" y="185" text-anchor="middle" font-size="10" font-weight="bold" fill="#4CA497">score≥80</text>
+  <!-- ReviewNode → ReviseNode (未达标) -->
+  <line x1="400" y1="225" x2="355" y2="278" stroke="#E99151" stroke-width="2"/>
+  <polygon points="355,278 350,270 360,270" fill="#E99151"/>
+  <text x="395" y="258" font-size="10" font-weight="bold" fill="#E99151">未达标</text>
+  <!-- ReviseNode → DraftNode (Loop back) -->
+  <path d="M230 303 L195 303 L195 225" stroke="#4CA497" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
+  <polygon points="195,225 190,233 200,233" fill="#4CA497"/>
+  <text x="168" y="272" font-size="10" font-weight="bold" fill="#4CA497" text-anchor="end">回溯</text>
+  <!-- ExitNode → END -->
+  <line x1="770" y1="195" x2="812" y2="195" stroke="#64748B" stroke-width="2"/>
+  <polygon points="812,195 804,190 804,200" fill="#64748B"/>
+
+  <!-- ====== Right: Loop Type Cards ====== -->
+  <!-- Fixed Loop -->
+  <g transform="translate(660,280)">
+    <rect width="390" height="65" rx="10" fill="white" filter="url(#sh)" stroke="#64748B" stroke-width="1"/>
+    <rect width="390" height="5" rx="2.5" fill="#64748B"/>
+    <text x="15" y="28" font-size="13" font-weight="bold" fill="#64748B">固定次数循环</text>
+    <text x="145" y="28" font-size="11" fill="#94A3B8" font-family="monospace">for (i=0; i&lt;N; i++)</text>
+    <text x="15" y="48" font-size="11" fill="#64748B">最多重试 3 次，兜底降级</text>
+  </g>
+  <!-- Conditional Loop -->
+  <g transform="translate(660,360)">
+    <rect width="390" height="65" rx="10" fill="white" filter="url(#sh)" stroke="#E99151" stroke-width="1"/>
+    <rect width="390" height="5" rx="2.5" fill="#E99151"/>
+    <text x="15" y="28" font-size="13" font-weight="bold" fill="#E99151">条件驱动循环</text>
+    <text x="145" y="28" font-size="11" fill="#94A3B8" font-family="monospace">while (score &lt; 80)</text>
+    <text x="15" y="48" font-size="11" fill="#64748B">评分不达标就继续修改</text>
+  </g>
+  <text x="660" y="275" font-size="11" fill="#94A3B8">实际开发中两者必须同时使用，防止无限循环</text>
+
+  <!-- ====== Bottom: Safety Elements ====== -->
+  <g transform="translate(55,430)">
+    <rect width="310" height="95" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="310" height="5" rx="2.5" fill="#E99151"/>
+    <text x="18" y="30" font-size="15" font-weight="bold" fill="#E99151">继续条件</text>
+    <text x="18" y="50" font-size="12" fill="#2D3748">为什么还要再来一轮？</text>
+    <text x="18" y="70" font-size="11" fill="#64748B">review_score &lt; 80 且未达上限</text>
+    <text x="18" y="85" font-size="10" fill="#94A3B8">由当前状态决定是否继续</text>
+  </g>
+  <g transform="translate(395,430)">
+    <rect width="310" height="95" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="310" height="5" rx="2.5" fill="#4CA497"/>
+    <text x="18" y="30" font-size="15" font-weight="bold" fill="#4CA497">退出条件</text>
+    <text x="18" y="50" font-size="12" fill="#2D3748">什么时候已经足够好？</text>
+    <text x="18" y="70" font-size="11" fill="#64748B">review_score ≥ 80 或内容质量达标</text>
+    <text x="18" y="85" font-size="10" fill="#94A3B8">明确的满意阈值</text>
+  </g>
+  <g transform="translate(735,430)">
+    <rect width="310" height="95" rx="10" fill="white" filter="url(#sh)"/>
+    <rect width="310" height="5" rx="2.5" fill="#005D7B"/>
+    <text x="18" y="30" font-size="15" font-weight="bold" fill="#005D7B">安全边界</text>
+    <text x="18" y="50" font-size="12" fill="#2D3748">兜底保护，防止无限循环</text>
+    <text x="18" y="70" font-size="11" fill="#64748B">iteration_count ≥ 3 强制退出</text>
+    <text x="18" y="85" font-size="10" fill="#94A3B8">最大轮次 · 超时 · 预算 · 熔断</text>
+  </g>
+
+  <!-- Watermark -->
+  <g transform="translate(800,535) rotate(-5)">
+    <text font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+    <text y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+  </g>
+</svg>
