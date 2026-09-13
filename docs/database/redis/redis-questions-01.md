@@ -18,13 +18,13 @@ head:
 
 为了满足不同的业务场景，Redis 内置了多种数据类型实现（比如 String、Hash、Sorted Set、Bitmap、HyperLogLog、GEO）。并且，Redis 还支持事务、持久化、Lua 脚本、发布订阅模型、多种开箱即用的集群方案（Redis Sentinel、Redis Cluster）。
 
-![Redis 数据类型概览](https://oss.javaguide.cn/github/javaguide/database/redis/redis-overview-of-data-types-2023-09-28.jpg)
+![Redis 数据类型概览](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-overview-of-data-types-2023-09-28.jpg)
 
 Redis 没有外部依赖，Linux 和 OS X 是 Redis 开发和测试最多的两个操作系统，官方推荐生产环境使用 Linux 部署 Redis。
 
 个人学习的话，你可以自己本机安装 Redis 或者通过 Redis 官网提供的[在线 Redis 环境](https://try.redis.io/)（少部分命令无法使用）来实际体验 Redis。
 
-![try-redis](https://oss.javaguide.cn/github/javaguide/database/redis/try.redis.io.png)
+![try-redis](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/try.redis.io.png)
 
 全世界有非常多的网站使用到了 Redis，[techstacks.io](https://techstacks.io/) 专门维护了一个[使用 Redis 的热门站点列表](https://techstacks.io/tech/redis)，感兴趣的话可以看看。
 
@@ -39,7 +39,7 @@ Redis 内部做了非常多的性能优化，比较重要的有下面 4 点：
 
 > 下面这张图片总结的挺不错的，分享一下，出自 [Why is Redis so fast?](https://twitter.com/alexxubyte/status/1498703822528544770)。
 
-![why-redis-so-fast](https://oss.javaguide.cn/github/javaguide/database/redis/why-redis-so-fast.png)
+![why-redis-so-fast](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/why-redis-so-fast.png)
 
 那既然都这么快了，为什么不直接用 Redis 当主数据库呢？主要是因为内存成本太高，并且 Redis 提供的数据持久化仍然有数据丢失的风险。
 
@@ -318,7 +318,7 @@ struct sdshdr {
 - 用户 id 为 key
 - 商品 id 为 field，商品数量为 value
 
-![Hash维护简单的购物车信息](https://oss.javaguide.cn/github/javaguide/database/redis/hash-shopping-cart.png)
+![Hash维护简单的购物车信息](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/hash-shopping-cart.png)
 
 那用户购物车信息的维护具体应该怎么操作呢？
 
@@ -336,11 +336,11 @@ Redis 中有一个叫做 `Sorted Set`（有序集合）的数据类型经常被�
 
 相关的一些 Redis 命令：`ZRANGE`（从小到大排序）、`ZREVRANGE`（从大到小排序）、`ZREVRANK`（指定元素排名）。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/2021060714195385.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/2021060714195385.png)
 
 [《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的「技术面试题篇」就有一篇文章详细介绍如何使用 Sorted Set 来设计制作一个排行榜，感兴趣的小伙伴可以看看。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/image-20220719071115140.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/image-20220719071115140.png)
 
 ### Redis 的有序集合底层为什么要用跳表，而不用平衡树、红黑树或者 B+ 树？
 
@@ -376,7 +376,7 @@ Bitmap 存储的是连续的二进制数字（0 和 1），通过 Bitmap，只�
 
 你可以将 Bitmap 看作是一个存储二进制数字（0 和 1）的数组，数组中每个元素的下标叫做 offset（偏移量）。
 
-![img](https://oss.javaguide.cn/github/javaguide/database/redis/image-20220720194154133.png)
+![img](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/image-20220720194154133.png)
 
 如果想要使用 Bitmap 统计活跃用户的话，可以使用日期（精确到天）作为 key，然后用户 ID 为 offset，如果当日活跃过就设置为 1。
 
@@ -455,7 +455,7 @@ PFCOUNT PAGE_1:UV
 
 Bloom Filter 的简单原理图如下：
 
-![Bloom Filter 的简单原理示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
+![Bloom Filter 的简单原理示意图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
 
 当字符串存储要加入到布隆过滤器中时，该字符串首先由多个哈希函数生成不同的哈希值，然后将对应的位数组的下标设置为 1（当位数组初始化时，所有位置均为 0）。当第二次存储相同字符串时，因为先前的对应位置已设置为 1，所以很容易知道此值已经存在（去重非常方便）。
 
@@ -497,7 +497,7 @@ Redis 通过 **IO 多路复用程序** 来监听来自客户端的大量连接�
 - 文件事件分派器（将 socket 关联到相应的事件处理器）
 - 事件处理器（连接应答处理器、命令请求处理器、命令回复处理器）
 
-![文件事件处理器（file event handler）](https://oss.javaguide.cn/github/javaguide/database/redis/redis-event-handler.png)
+![文件事件处理器（file event handler）](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-event-handler.png)
 
 ### Redis6.0 之前为什么不使用多线程？
 
@@ -511,7 +511,7 @@ Redis 通过 **IO 多路复用程序** 来监听来自客户端的大量连接�
 - `FLUSHALL ASYNC`：用于清空所有数据库的所有键，不限于当前 `SELECT` 的数据库。
 - `FLUSHDB ASYNC`：用于清空当前 `SELECT` 数据库中的所有键。
 
-![redis4.0 more thread](https://oss.javaguide.cn/github/javaguide/database/redis/redis4.0-more-thread.png)
+![redis4.0 more thread](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis4.0-more-thread.png)
 
 总的来说，直到 Redis 6.0 之前，Redis 的主要操作仍然是单线程处理的。
 
@@ -617,7 +617,7 @@ OK
 
 Redis 通过一个叫做过期字典（可以看作是 hash 表）来保存数据过期的时间。过期字典的键指向 Redis 数据库中的某个 key（键），过期字典的值是一个 long long 类型的整数，这个整数保存了 key 所指向的数据库键的过期时间（毫秒精度的 UNIX 时间戳）。
 
-![Redis 过期字典](https://oss.javaguide.cn/github/javaguide/database/redis/redis-expired-dictionary.png)
+![Redis 过期字典](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-expired-dictionary.png)
 
 过期字典是存储在 redisDb 这个结构里的：
 
@@ -682,7 +682,7 @@ hz 的取值范围为 1~500。增大 hz 参数的值会提升定期删除的频�
 
 下面是 hz 参数的官方注释，我翻译了其中的重要信息（Redis 7.2 版本）。
 
-![redis.conf 对于 hz 的注释](https://oss.javaguide.cn/github/javaguide/database/redis/redis.conf-hz.png)
+![redis.conf 对于 hz 的注释](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis.conf-hz.png)
 
 类似的参数还有一个 **dynamic-hz**，这个参数开启之后 Redis 就会在 hz 的基础上动态计算一个值。Redis 提供并默认启用了使用自适应 hz 值的能力，
 

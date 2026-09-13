@@ -12,7 +12,7 @@ head:
 
 MCP 约定外部系统以 Server 形式暴露能力，支持该协议的 Host 通过 Client 发现并调用这些能力。它处理的是工具和数据源的接入；模型如何决定调用、任务如何编排，仍属于 Function Calling 和 Agent 的职责。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 > 本文以当前稳定的 [2025-11-25 revision](https://modelcontextprotocol.io/specification/2025-11-25) 为主。2025-03-26 版本把早期 HTTP+SSE 传输调整为 Streamable HTTP，2025-06-18 加入 Elicitation，2025-11-25 又增加了实验性的 Tasks、URL 模式 Elicitation 等内容。客户端和 SDK 可能只实现其中一部分，接入前要同时确认协议 revision、SDK 版本和 Host 能力。
 
@@ -62,7 +62,7 @@ OpenAI 把这类机制称为 Function Calling，Anthropic 称为 Tool Use。模�
 MCP 负责把这个意图接到外部系统：工具从哪个 Server 发现、请求如何传输、结果如何返回。
 
 Agent 关心任务的下一步。它会读取工具结果，继续调用、结束任务，或等待人工确认；规划、记忆和循环也属于这一层。
-![FC/MCP/Agent 三层关系图](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-fc-agent-layer.png)
+![FC/MCP/Agent 三层关系图](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-fc-agent-layer.png)
 
 把三者放在一条请求链路里看更直观：Function Calling 产生命令，MCP 传递命令并连接工具，Agent 决定这条链路何时继续、何时结束。
 
@@ -80,7 +80,7 @@ Agent 关心任务的下一步。它会读取工具结果，继续调用、结�
 
 MCP 的通信链路由 Host、Client 和 Server 组成。
 
-![MCP 四层架构](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-four-layer-architecture.png)
+![MCP 四层架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-four-layer-architecture.png)
 
 Host 是用户使用的 AI 应用，例如 Claude Desktop、Cursor、VS Code 中的 AI 插件或自建 Agent 平台。
 
@@ -94,7 +94,7 @@ Server 后面才是实际的数据源：本地文件、数据库、内部平台�
 
 还是拿“分析这个仓库的最新提交”举例。
 
-![MCP 调用时序图](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-call-seq.png)
+![MCP 调用时序图](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-call-seq.png)
 
 模型发现自己缺少 Git 日志后，先生成工具调用。Host 把调用交给 MCP Client，Client 通过 JSON-RPC 请求 Server；Server 查询 Git，再把结果沿原路径返回，模型据此组织回答。
 
@@ -225,7 +225,7 @@ Authorization: Bearer xxx
 - 团队服务、远程 API、多用户访问，优先 Streamable HTTP。
 - 涉及写操作和敏感数据时，不管哪种传输方式，都要额外做鉴权、限流和审计。
 
-![MCP 传输方式选择](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-transport-decision.png)
+![MCP 传输方式选择](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-transport-decision.png)
 
 ## MCP 的意义只是让模型会调接口吗？
 

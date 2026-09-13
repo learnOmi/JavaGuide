@@ -73,9 +73,9 @@ Abstraction Level Agent 关注代码放置位置。业务规则进入 Controller
 
 有一次我写了一个用户认证模块，自测通过就准备提交了。习惯性地先跑了一遍审查命令，它直接帮我找到了 6 个潜在问题，经过确认，确实都是实际存在的问题。
 
-![直接运行 /simplify 命令](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-command-run.png)
+![直接运行 /simplify 命令](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-command-run.png)
 
-![扫描到的问题](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-issues-found.png)
+![扫描到的问题](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-issues-found.png)
 
 其中一个问题落在 **Spring 事务失效** 上，多个审查视角都指向了同一处代码。
 
@@ -123,9 +123,9 @@ public class WatchlistService {
 }
 ```
 
-![开启优化](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-optimization-start.png)
+![开启优化](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-optimization-start.png)
 
-![所有修改完成](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-all-fixes-done.png)
+![所有修改完成](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-all-fixes-done.png)
 
 这次扫描还发现了另外 5 个问题，涵盖代码复用、安全性和效率：
 
@@ -143,7 +143,7 @@ public class WatchlistService {
 
 `/simplify` 还可以指定具体的类或模块做审查：
 
-![直接审查具体的类](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-class-review.png)
+![直接审查具体的类](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-class-review.png)
 
 ```bash
 /simplify MarketDataService
@@ -238,7 +238,7 @@ SonarQube 这类工具按规则稳定扫描，`/code-review` 则会结合上下�
 
 Boris Cherny 曾多次分享 `/loop` 的用法。
 
-![Claude Code 推荐使用 loop 命令](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-father-loop.png)
+![Claude Code 推荐使用 loop 命令](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-father-loop.png)
 
 每隔半小时检查一次 PR，关注的是触发时间，用 `/loop`。现在开始修复失败测试，并持续做到全部通过，关注的是验收条件，用 `/goal`。
 
@@ -386,13 +386,13 @@ Claude 通常会从 README、`package.json`、`Makefile` 等文件推断启动�
 
 Claude 会先把需求拆成多个 Unit（工作单元），通常为 5～30 个，等你确认计划后再启动后台 Worker。每个 Worker 使用独立的 Git Worktree，分别修改对应模块，避免多个 Agent 直接写同一个工作区。
 
-![Claude Code 运行 /batch 命令](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-batch-run.png)
+![Claude Code 运行 /batch 命令](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-batch-run.png)
 
 Worker 完成后，主进程会逐个检查改动，每个单元通常对应一个独立 PR。
 
 > **风险提示**：`/batch` 适合边界清晰、模块相对独立的大任务；不适合强耦合核心链路一次性大改。共享文件（如 package.json、路由表、公共类型、数据库迁移脚本）容易冲突。使用前建议先 commit 干净工作区。
 
-![Claude Code 合并改动](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-batch-create-pr.png)
+![Claude Code 合并改动](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-batch-create-pr.png)
 
 ## 执行前后的辅助命令
 
@@ -491,9 +491,9 @@ Claude Code on the web 中的任务需要访问本地仓库或命令行时，可
 - MiniMax 开放平台：[https://platform.minimaxi.com/user-center/basic-information/interface-key](https://platform.minimaxi.com/user-center/basic-information/interface-key)
 - GLM 开放平台：[https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys](https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys)
 
-![MiniMax Key 获取](https://oss.javaguide.cn/github/javaguide/ai/coding/minimax-key.png)
+![MiniMax Key 获取](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/minimax-key.png)
 
-![GLM Key 获取](https://oss.javaguide.cn/github/javaguide/ai/coding/glm-key.png)
+![GLM Key 获取](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/glm-key.png)
 
 ### 2. 使用供应商配置工具
 
@@ -501,19 +501,19 @@ Claude Code on the web 中的任务需要访问本地仓库或命令行时，可
 
 项目地址：[https://github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)
 
-![CC Switch 主界面](https://oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-main-interface.png)
+![CC Switch 主界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-main-interface.png)
 
 启动 CC Switch，点击右上角的 `+`，选择预设的 MiniMax/GLM 供应商，填写 API Key 和模型后添加。
 
-![CC Switch 配置 MiniMax/GLM API Key](https://oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-add-provider.png)
+![CC Switch 配置 MiniMax/GLM API Key](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-add-provider.png)
 
-![CC Switch 配置模型](https://oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-model-config.png)
+![CC Switch 配置模型](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-model-config.png)
 
 ### 3. 验证是否生效
 
 在任意目录下输入 `claude` 命令即可启动 Claude Code，选择**信任此文件夹（Trust This Folder）**。
 
-![验证是否生效](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-trust-folder.png)
+![验证是否生效](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-trust-folder.png)
 
 ### 4. 接入验证清单
 

@@ -20,9 +20,9 @@ head:
 
 熟悉我的读者朋友应该知道，[JavaGuide](https://mp.weixin.qq.com/s/MP8_Td9h72jAhTntVV4DxQ) 上的很多配图都是用 draw.io 手动绘制的。每一篇文章都有大量的图解，帮助理解。
 
-![Java 基础常见面试题](https://oss.javaguide.cn/github/javaguide/intro/java-basic-questions-01-overview.png)
+![Java 基础常见面试题](/assets/images/oss.javaguide.cn/github/javaguide/intro/java-basic-questions-01-overview.png)
 
-![MySQL 常见面试题总结](https://oss.javaguide.cn/github/javaguide/intro/mysql-questions-01.png)
+![MySQL 常见面试题总结](/assets/images/oss.javaguide.cn/github/javaguide/intro/mysql-questions-01.png)
 
 但是到了 AI 时代就彻底变了，尤其是对于 draw.io 配图来说。
 
@@ -42,13 +42,13 @@ head:
 
 比如我本地会把这些 `.drawio` 源文件单独留在素材目录里，后面要改某张图，直接打开对应文件就行。
 
-![本地留存的 draw.io 配图源文件](https://oss.javaguide.cn/github/javaguide/ai/coding/local-drawio-source-files.png)
+![本地留存的 draw.io 配图源文件](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/local-drawio-source-files.png)
 
 `draw.io` 的好处就在这里：`.drawio` 可以继续在 diagrams.net 或 draw.io 桌面版里改，导出 PNG、SVG、PDF 也方便。流程图、架构图、状态图这些技术图，源文件通常不大，放进仓库或素材目录也没什么压力。
 
 导出时也不用额外折腾，菜单里可以直接选 PNG、JPEG、WebP、SVG、PDF 等常见格式。
 
-![draw.io 导出格式选择](https://oss.javaguide.cn/github/javaguide/ai/coding/drawio-export-format-options.png)
+![draw.io 导出格式选择](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/drawio-export-format-options.png)
 
 Skill 刚诞生那会，我就把这套流程整理成了一个 Skill：[`drawio-chart`](https://github.com/Snailclimb/AIGuide/tree/main/skills/drawio-chart)。
 
@@ -102,11 +102,11 @@ draw.io 没有那么“生成即大片”，但节点、连线、容器、文字
 
 下面这张就是一次实际生成 `.drawio` 的过程。Agent 读完需求后直接写出源文件，最后返回文件路径和结构说明。
 
-![Codex 使用 drawio-chart 生成 draw.io 源文件](https://oss.javaguide.cn/github/javaguide/ai/coding/codex-generate-drawio-source.png)
+![Codex 使用 drawio-chart 生成 draw.io 源文件](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/codex-generate-drawio-source.png)
 
 打开以后，它仍然是标准 draw.io 文件。节点、连线、文字都能继续手动调，不会被锁死在一张图片里。
 
-![draw.io 中打开生成的 SKILL.md 结构图](https://oss.javaguide.cn/github/javaguide/ai/coding/drawio-open-generated-source.png)
+![draw.io 中打开生成的 SKILL.md 结构图](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/drawio-open-generated-source.png)
 
 这就是绘图之后没有改动的原图，可以看到线条还是有一些小细节需要手动调整优化。这也是比较正常的。
 
@@ -114,19 +114,19 @@ draw.io 没有那么“生成即大片”，但节点、连线、容器、文字
 
 这张 `CLAUDE.md` 维护决策流程图，就是典型的流程判断类配图：
 
-![CLAUDE.md 维护决策流程](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-maintenance-flow.png)
+![CLAUDE.md 维护决策流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-maintenance-flow.png)
 
 Multi-Agent 协作这种内容，如果只用文字写，读者很容易看成一堆角色名。画成流水线后，每个 Agent 负责什么、信息怎么流转，会直观很多。
 
-![Multi-Agent 三代理协作流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
+![Multi-Agent 三代理协作流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
 
 Spec Coding 这类文章也类似。它讲的是一套工作流，不是一个孤立概念。图里把需求、Spec、实现、验证串起来，读者就能先抓住整体，再回到正文看细节。
 
-![Spec Coding 规范驱动编程流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
+![Spec Coding 规范驱动编程流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
 
 还有 Spec 管理策略这种图，文字解释会比较绕。分层过滤、精准召回、上下文控制这些词放到一张图里，反而更容易理解。
 
-![Spec 管理策略：分层过滤 + 精准召回](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-spec-management-strategy.png)
+![Spec 管理策略：分层过滤 + 精准召回](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-spec-management-strategy.png)
 
 这些图不一定每张都要靠 AI 一次性做完。省时间的地方主要在前半段：Agent 先帮你搭出结构，后续人再按文章语境修。
 
@@ -214,7 +214,7 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 
 安装时会看到它识别仓库来源、找到 `drawio-chart`，再让你选择安装到哪个 agent 和作用范围。
 
-![使用 Skills CLI 安装 drawio-chart](https://oss.javaguide.cn/github/javaguide/ai/coding/skills-cli-install-drawio-chart.png)
+![使用 Skills CLI 安装 drawio-chart](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/skills-cli-install-drawio-chart.png)
 
 Codex 有时不会立刻重新扫描新装的 Skill，我一般会重启一下再用。
 

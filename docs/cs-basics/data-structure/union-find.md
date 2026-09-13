@@ -22,7 +22,7 @@ head:
 4. 路径压缩和按大小合并为什么能提速？
 5. 并查集适合哪些连通性问题？
 
-![并查集用父节点指针表示连通分量的森林结构](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/union-find.png)
+![并查集用父节点指针表示连通分量的森林结构](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/union-find.png)
 
 ## 什么是并查集？
 

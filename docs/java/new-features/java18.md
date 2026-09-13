@@ -24,7 +24,7 @@ JDK 18 共有 8 个新特性，这篇文章会挑选其中较为重要的一些�
 
 下图是从 JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间：
 
-![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 相关阅读：
 
@@ -83,7 +83,7 @@ Java 18 改进了 `java.lang.reflect.Method`、`Constructor` 的实现逻辑，�
 
 OpenJDK 官方给出了新老实现的反射性能基准测试结果。
 
-![新老实现的反射性能基准测试结果](https://oss.javaguide.cn/github/javaguide/java/new-features/JEP416Benchmark.png)
+![新老实现的反射性能基准测试结果](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/JEP416Benchmark.png)
 
 ## JEP 417: Vector API（向量 API，第三次孵化）
 

@@ -24,11 +24,11 @@ head:
 
 我们可以把消息队列看作是一个存放消息的容器，当我们需要使用消息的时候，直接从容器中取出消息供自己使用即可。由于队列 Queue 是一种先进先出的数据结构，所以消费消息时也是按照顺序来消费的。
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-small.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-small.png)
 
 参与消息传递的双方称为 **生产者** 和 **消费者** ，生产者负责发送消息，消费者负责处理消息。
 
-![发布/订阅（Pub/Sub）模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
+![发布/订阅（Pub/Sub）模型](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
 
 操作系统中的进程通信的一种很重要的方式就是消息队列。我们这里提到的消息队列稍微有点区别，更多指的是各个服务以及系统内部各个组件/模块之前的通信，属于一种 **中间件** 。
 
@@ -58,7 +58,7 @@ head:
 
 ### 异步处理
 
-![通过异步处理提高系统性能](https://oss.javaguide.cn/github/javaguide/Asynchronous-message-queue.png)
+![通过异步处理提高系统性能](/assets/images/oss.javaguide.cn/github/javaguide/Asynchronous-message-queue.png)
 
 将用户请求中包含的耗时操作，通过消息队列实现异步处理，将对应的消息发送到消息队列之后就立即返回结果，减少响应时间，提高用户体验。随后，系统再对消息进行消费。
 
@@ -70,7 +70,7 @@ head:
 
 举例：在电子商务一些秒杀、促销活动中，合理使用消息队列可以有效抵御促销活动刚开始大量订单涌入对系统的冲击。如下图所示：
 
-![削峰](https://oss.javaguide.cn/github/javaguide/%E5%89%8A%E5%B3%B0-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.png)
+![削峰](/assets/images/oss.javaguide.cn/github/javaguide/削峰-消息队列.png)
 
 ### 降低系统耦合性
 
@@ -78,13 +78,13 @@ head:
 
 生产者（客户端）发送消息到消息队列中去，消费者（服务端）处理消息，需要消费的系统直接去消息队列取消息进行消费即可而不需要和其他系统有耦合，这显然也提高了系统的扩展性。
 
-![发布/订阅（Pub/Sub）模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
+![发布/订阅（Pub/Sub）模型](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
 
 **消息队列使用发布-订阅模式工作，消息发送者（生产者）发布消息，一个或多个消息接受者（消费者）订阅消息。** 从上图可以看到**消息发送者（生产者）和消息接受者（消费者）之间没有直接耦合**，消息发送者将消息发送至分布式消息队列即结束对消息的处理，消息接受者从分布式消息队列获取该消息后进行后续处理，并不需要知道该消息从何而来。**对新增业务，只要对该类消息感兴趣，即可订阅该消息，对原有系统和业务没有任何影响，从而实现网站业务的可扩展性设计**。
 
 例如，我们商城系统分为用户、订单、财务、仓储、消息通知、物流、风控等多个服务。用户在完成下单后，需要调用财务（扣款）、仓储（库存管理）、物流（发货）、消息通知（通知用户发货）、风控（风险评估）等服务。使用消息队列后，下单操作和后续的扣款、发货、通知等操作就解耦了，下单完成发送一个消息到消息队列，需要用到的地方去订阅这个消息进行消费即可。
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-decouple-mall-example.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-decouple-mall-example.png)
 
 另外，为了避免消息队列服务器宕机造成消息丢失，会将成功发送到消息队列的消息存储在消息生产者服务器上，等消息真正被消费者服务器处理后才删除消息。在消息队列服务器宕机后，生产者服务器会选择分布式消息队列服务器集群中的其他服务器发布消息。
 
@@ -98,7 +98,7 @@ RocketMQ、 Kafka、Pulsar、QMQ 都提供了事务相关的功能。事务允�
 
 详细介绍可以查看 [分布式事务详解(付费)](https://javaguide.cn/distributed-system/distributed-transaction.html) 这篇文章。
 
-![分布式事务详解 - MQ事务](https://oss.javaguide.cn/github/javaguide/csdn/07b338324a7d8894b8aef4b659b76d92.png)
+![分布式事务详解 - MQ事务](/assets/images/oss.javaguide.cn/github/javaguide/csdn/07b338324a7d8894b8aef4b659b76d92.png)
 
 ### 顺序保证
 
@@ -108,7 +108,7 @@ RocketMQ、 Kafka、Pulsar、QMQ 都提供了事务相关的功能。事务允�
 
 消息发送后不会立即被消费，而是指定一个时间，到时间后再消费。大部分消息队列，例如 RocketMQ、RabbitMQ、Pulsar，都支持定时/延时消息。
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/rocketmq-schedule-message.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/rocketmq-schedule-message.png)
 
 ### 即时通讯
 
@@ -191,13 +191,13 @@ JMS 定义了五种不同的消息正文格式以及调用的消息类型，允�
 
 #### 点到点（P2P）模型
 
-![队列模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-queue-model.png)
+![队列模型](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-queue-model.png)
 
 使用**队列（Queue）**作为消息通信载体；满足**生产者与消费者模式**，一条消息只能被一个消费者使用，未被消费的消息在队列中保留直到被消费或超时。比如：我们生产者发送 100 条消息的话，两个消费者来消费一般情况下两个消费者会按照消息发送的顺序各自消费一半（也就是你一个我一个的消费。）
 
 #### 发布/订阅（Pub/Sub）模型
 
-![发布/订阅（Pub/Sub）模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
+![发布/订阅（Pub/Sub）模型](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-pub-sub-model.png)
 
 发布订阅模型（Pub/Sub） 使用**主题（Topic）**作为消息通信载体，类似于**广播模式**；发布者发布一条消息，该消息通过主题传递给所有的订阅者。
 
@@ -240,7 +240,7 @@ RPC 和消息队列本质上是网络通讯的两种不同的实现机制，两�
 
 #### Kafka
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/kafka-logo.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/kafka-logo.png)
 
 Kafka 是 LinkedIn 开源的一个分布式流式处理平台，已经成为 Apache 顶级项目，早期被用来用于处理海量的日志，后面才慢慢发展成了一款功能全面的高性能消息队列。
 
@@ -256,7 +256,7 @@ Kafka 是一个分布式系统，由通过高性能 TCP 网络协议进行通信
 
 不过，要提示一下：老集群从 ZooKeeper 模式迁移到 KRaft 模式需要按官方迁移流程执行，不能简单改配置重启。新集群建议优先按官方当前推荐模式部署。
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/kafka3.3.1-kraft-production-ready.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/kafka3.3.1-kraft-production-ready.png)
 
 Kafka 官网：<http://kafka.apache.org/>
 
@@ -264,7 +264,7 @@ Kafka 更新记录（可以直观看到项目是否还在维护）：<https://ka
 
 #### RocketMQ
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/rocketmq-logo.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/rocketmq-logo.png)
 
 RocketMQ 是阿里开源的一款云原生“消息、事件、流”实时数据处理平台，借鉴了 Kafka，已经成为 Apache 顶级项目。
 
@@ -287,7 +287,7 @@ RocketMQ 更新记录（可以直观看到项目是否还在维护）：<https:/
 
 #### RabbitMQ
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/rabbitmq-logo.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/rabbitmq-logo.png)
 
 RabbitMQ 是采用 Erlang 语言实现 AMQP(Advanced Message Queuing Protocol，高级消息队列协议）的消息中间件，它最初起源于金融系统，用于在分布式系统中存储转发消息。
 
@@ -308,7 +308,7 @@ RabbitMQ 更新记录（可以直观看到项目是否还在维护）：<https:/
 
 #### Pulsar
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/pulsar-logo.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/pulsar-logo.png)
 
 Pulsar 是下一代云原生分布式消息流平台，最初由 Yahoo 开发 ，已经成为 Apache 顶级项目。
 

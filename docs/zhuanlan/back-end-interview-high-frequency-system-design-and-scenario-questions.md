@@ -96,7 +96,7 @@ head:
 
 ## 内容预览
 
-![《后端面试高频系统设计&场景题》](https://oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
+![《后端面试高频系统设计&场景题》](/assets/images/oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
 
 ## 适合人群
 

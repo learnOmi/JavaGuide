@@ -33,7 +33,7 @@ head:
 
 专题内容按大模型基础、Agent、RAG 和系统设计组织，文章之间通过阅读顺序和相关链接串联：
 
-![AIGuide 内容概览，大量配图](https://oss.javaguide.cn/github/aiguide/aiguide-overview.png)
+![AIGuide 内容概览，大量配图](/assets/images/oss.javaguide.cn/github/aiguide/aiguide-overview.png)
 
 本专栏内容同时收录在开源 AIGuide 项目中：
 

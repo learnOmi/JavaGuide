@@ -57,7 +57,7 @@ head:
 
 提高系统可用性的方法可以从 **预防**、**容错**、**恢复** 三个阶段来考虑：
 
-![高可用系统韧性三阶段](https://oss.javaguide.cn/github/javaguide/high-availability/ha-system-design-resilience-stages.png)
+![高可用系统韧性三阶段](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/ha-system-design-resilience-stages.png)
 
 ### 注重代码质量，测试严格把关
 

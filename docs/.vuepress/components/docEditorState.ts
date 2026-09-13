@@ -1,4 +1,11 @@
 import { reactive } from "vue";
+import { pinyin } from "pinyin-pro";
+import { TEMPLATE_OPTIONS } from "../edit-plugin/templates.js";
+
+export { TEMPLATE_OPTIONS };
+
+/** 页面模板键（与 edit-plugin/templates.ts 的 PageTemplateKey 对齐） */
+export type TemplateKey = "blank" | "article" | "note";
 
 /**
  * 编辑 API 基础路径：仅由 edit-plugin 在 dev serve 模式通过 define 注入。
@@ -235,4 +242,99 @@ export function clearDraft(fp: string): void {
   } catch {
     // 同上
   }
+}
+
+/* ---------------------------------------------------------------- */
+/* P2：新建/删除页面与目录树                                          */
+/* ---------------------------------------------------------------- */
+
+/** GET /dirs 响应中的目录树节点（与服务端 dirs.ts 的 DirNode 对齐） */
+export interface DirNode {
+  /** 目录名（docs 根节点为 "docs"） */
+  name: string;
+  /** 相对 docs 根的目录路径（`/` 分隔；根节点为空字符串） */
+  path: string;
+  /** 子目录 */
+  children: DirNode[];
+}
+
+/** POST /page 的请求参数 */
+export interface CreatePageParams {
+  /** 目标目录（`/` 分隔相对路径，空字符串表示 docs 根） */
+  dir: string;
+  /** 文件名 slug（不含 .md 扩展名） */
+  slug: string;
+  /** 页面标题（渲染进模板 frontmatter） */
+  title: string;
+  /** 模板键 */
+  template: TemplateKey;
+}
+
+/** 读取 docs 根下的可用目录树（新建页目录选择器数据源） */
+export async function fetchDirs(): Promise<DirNode> {
+  const { dirs } = await requestApi<{ dirs: DirNode }>(`${API_BASE}/dirs`);
+  return dirs;
+}
+
+/** 按模板新建页面，返回新文件的相对路径（pageData.filePathRelative 形态） */
+export function createPage(params: CreatePageParams): Promise<{ fp: string }> {
+  return requestApi<{ fp: string }>(`${API_BASE}/page`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify(params),
+  });
+}
+
+/** 删除页面（服务端移入回收站 .edit-trash，可手工还原） */
+export function deletePage(fp: string): Promise<{ trashPath: string }> {
+  return requestApi<{ trashPath: string }>(
+    `${API_BASE}/file?fp=${encodeURIComponent(fp)}`,
+    { method: "DELETE" },
+  );
+}
+
+/** 新建页 slug 上限（与服务端 MAX_SLUG_LENGTH 对齐） */
+export const MAX_SLUG_LENGTH = 80;
+
+/**
+ * 标题 → slug：中文转拼音（无声调）、英文保留、非法字符剔除、
+ * 多余连字符合并。空结果回退为 "page"。
+ */
+export function titleToSlug(title: string): string {
+  const withPinyin = pinyin(title.trim().toLowerCase(), {
+    toneType: "none",
+    type: "string",
+    separator: "-",
+    nonZh: "consecutive",
+  });
+  const slug = withPinyin
+    .replace(/[^a-z0-9-]+/g, "-")
+    .replace(/-{2,}/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, MAX_SLUG_LENGTH)
+    .replace(/-+$/g, "");
+  return slug === "" ? "page" : slug;
+}
+
+/* ---------------------------------------------------------------- */
+/* 全局轻量 toast（新建/删除等动作的结果反馈）                        */
+/* ---------------------------------------------------------------- */
+
+/** toast 显示时长（ms） */
+const TOAST_DURATION_MS = 3000;
+
+/** toast 隐藏定时器句柄 */
+let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+/** 全局 toast 文本（编辑相关组件共享，单条即够用） */
+export const toastMessage = reactive<{ text: string | null }>({ text: null });
+
+/** 显示全局 toast，TOAST_DURATION_MS 后自动消失 */
+export function showToast(text: string): void {
+  toastMessage.text = text;
+  if (toastTimer !== null) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastMessage.text = null;
+    toastTimer = null;
+  }, TOAST_DURATION_MS);
 }

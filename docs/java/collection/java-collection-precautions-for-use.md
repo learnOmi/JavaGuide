@@ -175,6 +175,14 @@ System.out.println(list); /* [1, 3, 5, 7, 9] */
 - 根据场景使用支持快照迭代或弱一致性迭代的集合类。例如，`CopyOnWriteArrayList` 的迭代器基于快照，`ConcurrentHashMap` 的迭代器是弱一致的。
 - ……
 
+| 方式                 | 代码示例                                                                     | 适用场景                         | 注意事项                                                                                   |
+| -------------------- | ---------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
+| **普通 for 循环**    | `for (int i = 0; i < list.size(); i++) { list.get(i); }`                     | 需要**索引**，或需要**倒序遍历** | `ArrayList` 随机访问快；`LinkedList` 用 `get(i)` 极慢（O(n)）。                            |
+| **迭代器 Iterator**  | `Iterator<String> it = list.iterator(); while (it.hasNext()) { it.next(); }` | 需要在遍历中**安全删除**元素     | 必须用 `it.remove()`，不能直接 `list.remove()`，否则抛 `ConcurrentModificationException`。 |
+| **增强 for 循环**    | `for (String s : list) { ... }`                                              | 只读遍历，代码最简洁             | 底层就是迭代器；遍历中不能修改集合（删除/添加）。                                          |
+| **forEach (Java 8)** | `list.forEach(s -> System.out.println(s));`                                  | 函数式风格，简洁                 | 底层也是增强 for；同样不能修改集合。                                                       |
+| **Stream (Java 8)**  | `list.stream().filter(...).forEach(...);`                                    | 需要过滤、映射、聚合等复杂操作   | 惰性求值，适合数据处理流水线。                                                             |
+
 ## 集合去重
 
 《阿里巴巴 Java 开发手册》的描述如下：

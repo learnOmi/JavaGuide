@@ -21,7 +21,7 @@ HTTP 状态码是服务端返回给客户端的处理结果摘要。看到一个
 3. 常见客户端错误如 400、401、403、404 应该怎么理解？
 4. 常见服务端错误如 500、502、503、504 通常意味着什么？
 
-![常见 HTTP 状态码](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-status-code.png)
+![常见 HTTP 状态码](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-status-code.png)
 
 ### 1xx Informational（信息性状态码）
 
@@ -36,7 +36,7 @@ HTTP 状态码是服务端返回给客户端的处理结果摘要。看到一个
 
 🐛 修正（参见：[issue#2458](https://github.com/Snailclimb/JavaGuide/issues/2458)）：201 Created 状态码更准确点来说是创建一个或多个新的资源，可以参考：<https://httpwg.org/specs/rfc9110.html#status.201>。
 
-![RFC 9110 中 201 Created 状态码的定义](https://oss.javaguide.cn/github/javaguide/cs-basics/network/rfc9110-201-created.png)
+![RFC 9110 中 201 Created 状态码的定义](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/rfc9110-201-created.png)
 
 这里格外提一下 204 状态码，平时学习/工作中见到的次数并不多。
 

@@ -46,7 +46,7 @@ Raft 有一个前提假设：**非拜占庭容错（CFT）**。说白了就是�
 
 这通常是通过**复制状态机**来实现的：给每个节点发一本一模一样的账本（日志）。只要大家按照同样的顺序去执行账本上的命令，最后得到的结果自然完全一样。所以，共识算法本质上干的就是一件事——**保证所有节点的账本绝对一致**。共识是可容错系统中的一个基本问题：即使面对故障，服务器也可以在共享状态上达成一致。
 
-![共识算法架构](https://oss.javaguide.cn/github/javaguide/paxos-rsm-architecture.png)
+![共识算法架构](/assets/images/oss.javaguide.cn/github/javaguide/paxos-rsm-architecture.png)
 
 ## 2 基础概念
 
@@ -62,11 +62,11 @@ Raft 有一个前提假设：**非拜占庭容错（CFT）**。说白了就是�
 
 在正常的情况下，只有一个服务器是 Leader，剩下的服务器是 Follower。Follower 是被动的，它们不会发送任何请求，只是响应来自 Leader 和 Candidate 的请求。
 
-![Raft 服务器状态转换示意图](https://oss.javaguide.cn/github/javaguide/paxos-server-state.png)
+![Raft 服务器状态转换示意图](/assets/images/oss.javaguide.cn/github/javaguide/paxos-server-state.png)
 
 ### 2.2 任期
 
-![任期（term）示意图](https://oss.javaguide.cn/github/javaguide/paxos-term.png)
+![任期（term）示意图](/assets/images/oss.javaguide.cn/github/javaguide/paxos-term.png)
 
 Raft 算法将时间划分为任意长度的任期（term），任期用连续的数字表示，看作当前 term 号。每一个任期的开始都是一次选举，在选举开始时，一个或多个 Candidate 会尝试成为 Leader。如果一个 Candidate 赢得了选举，它就会在该任期内担任 Leader。如果没有选出 Leader（例如出现分票 split vote），该任期可能没有 Leader；随后在新的选举超时后会进入下一个任期并重新发起选举。只要多数节点可用且网络最终可达，系统通常能够在若干轮选举后选出 Leader。
 
@@ -74,7 +74,7 @@ Raft 算法将时间划分为任意长度的任期（term），任期用连续�
 
 下面这张图是我手绘的，更容易理解一些，就很贴心：
 
-![Raft 任期逻辑演进 (Term Progression)](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/raft-term-progression.png)
+![Raft 任期逻辑演进 (Term Progression)](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/protocol/raft-term-progression.png)
 
 ### 2.3 日志
 
@@ -87,7 +87,7 @@ Raft 算法将时间划分为任意长度的任期（term），任期用连续�
 
 ## 3 领导人选举
 
-![Raft Leader 选举流程](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/raft-election.png)
+![Raft Leader 选举流程](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/protocol/raft-election.png)
 
 Raft 使用心跳机制来触发 Leader 的选举。
 

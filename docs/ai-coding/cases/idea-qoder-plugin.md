@@ -33,25 +33,25 @@ head:
 
 **第一步**：点击 **Settings | Plugins** 搜索 **"qoder"**，选择 Qoder - Agentic AI Coding Platform 并安装。
 
-![插件安装界面](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/plugin-install-interface.png)
+![插件安装界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/plugin-install-interface.png)
 
 **第二步**：安装完成后，点击 Sign In 登录注册。
 
-![登录界面](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/login-interface.png)
+![登录界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/login-interface.png)
 
 **第三步（可选）**：默认界面为英文，习惯中文可点击右上角 Plugin Settings，将 Display Language 设为简体中文。
 
-![语言设置界面](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/language-settings-interface.png)
+![语言设置界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/language-settings-interface.png)
 
 **第四步（可选）**：配置数据库连接。Qoder 支持 `@database` 上下文，可直接引用数据库表结构。建议提前配置项目相关数据库。
 
 以 MySQL 为例，打开右侧 Database 工具窗口，点击 **+** 号，选择 **Data Source | MySQL**：
 
-![添加数据源](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-data-source.png)
+![添加数据源](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-data-source.png)
 
 填写连接信息，测试通过后点击 OK。
 
-![数据库配置完成](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/database-config-complete.png)
+![数据库配置完成](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/database-config-complete.png)
 
 至此，前期准备工作完成。
 
@@ -135,7 +135,7 @@ public OrderListResponse getOrderList(OrderListRequest request) {
 1. 点击 **+Add Context** 按钮
 2. 选择 **@database**，选择对应的数据库 Schema
 
-![添加数据库上下文](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-database-context-1.png)
+![添加数据库上下文](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-database-context-1.png)
 
 #### 问题分析与方案输出
 
@@ -143,25 +143,25 @@ public OrderListResponse getOrderList(OrderListRequest request) {
 
 Qoder 很快定位到了代码入口，并列出深分页、排序索引等候选原因。这里的结论仍需结合慢查询日志和 `EXPLAIN ANALYZE` 验证：
 
-![代码分析结果](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/code-analysis-result.png)
+![代码分析结果](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/code-analysis-result.png)
 
 **独到之处：代码与数据库联合诊断**
 
 结合数据库 Schema，Qoder 给出了综合分析报告。`@database` 是 Qoder 当前提供的数据库上下文能力，适合用来补充表结构和索引信息，但它不能替代线上执行计划和真实数据分布：
 
-![综合分析报告](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/comprehensive-analysis-report.png)
+![综合分析报告](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/comprehensive-analysis-report.png)
 
 **代码层面优化**
 
 Qoder 给出了三套方案，包括延迟关联查询（子查询只返回 ID，利用覆盖索引快速定位）：
 
-![代码优化方案](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/code-optimization-solution.png)
+![代码优化方案](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/code-optimization-solution.png)
 
 **值得注意的方案**
 
 分页查询总记录计算，Qoder 还给出了一个估算方案：通过主键索引页数和页内平均行数估算总量。它只适合允许近似结果的场景，误差会受空洞、页填充率和数据分布影响；账务、结算等要求精确计数的业务不能直接采用：
 
-![数据库优化建议](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/database-optimization-suggestion.png)
+![数据库优化建议](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/database-optimization-suggestion.png)
 
 #### 方案实施与验收
 
@@ -181,27 +181,27 @@ Qoder 完成实施后，`getOrderList` 方法的改造：
 
 从截图看，重构后的命名和方法拆分更规整。是否完整符合团队规范，还需要通过项目自己的静态检查和 Code Review 确认：
 
-![重构后代码](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/refactored-code.png)
+![重构后代码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/refactored-code.png)
 
 索引脚本可直接在 IDE 中执行，整个工作流无需切换窗口：
 
-![索引执行](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/index-execution.png)
+![索引执行](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/index-execution.png)
 
 **回归测试**：Qoder 完成代码分支梳理，并针对不同场景生成单元测试：
 
-![单元测试](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/unit-test-1.png)
+![单元测试](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/unit-test-1.png)
 
 **压测环节**：Qoder 生成了压测代码并加入 JIT 预热。预热只能减少冷启动和即时编译对结果的干扰，并不意味着测试已经贴近生产。要判断优化是否有效，还需要记录硬件、JDK 与 GC、数据分布、缓存状态、并发模型、样本量以及 p95/p99 延迟：
 
-![压力测试](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/stress-test.png)
+![压力测试](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/stress-test.png)
 
 最后，Qoder 输出了完整的工作总结，包括技术方案和沟通汇报建议：
 
-![工作总结](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/work-summary.png)
+![工作总结](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/work-summary.png)
 
 在代码提交窗口点击 Qoder，可以根据当前 Diff 生成提交说明。本次演示中，从输入上下文到生成候选改动大约用了 10 分钟；执行计划复核、压测、Code Review 和上线验证不包含在这个时间里。
 
-![提交说明](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/commit-message.png)
+![提交说明](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/commit-message.png)
 
 ### 任务二：梳理并重构一段遗留退款代码
 
@@ -225,19 +225,19 @@ Qoder 完成实施后，`getOrderList` 方法的改造：
 
 为了减少 Agent 对表结构的猜测，把存量 Schema 作为上下文提交给 Qoder。Schema 只能补充数据库结构，不能保证它对业务规则的理解一定正确：
 
-![添加数据库上下文](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-database-context-2.png)
+![添加数据库上下文](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/add-database-context-2.png)
 
 Qoder 收到任务后，从整体概述开始，通过逐个分支梳理注释的方式执行任务：
 
-![逻辑梳理过程](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/logic-analysis-process.png)
+![逻辑梳理过程](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/logic-analysis-process.png)
 
 对应注释代码更容易阅读，但注释和数据流仍需逐项对照原实现、测试与产品规则：
 
-![注释代码示例](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/commented-code-example.png)
+![注释代码示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/commented-code-example.png)
 
 任务结束后，Qoder 清晰地归纳了接口逻辑和特殊规则点：
 
-![摘要总结](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/summary-conclusion.png)
+![摘要总结](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/summary-conclusion.png)
 
 #### 代码重构：先建立回归基线
 
@@ -313,7 +313,7 @@ private RefundResponse processPartialRefund(RefundApplyRequest request, Order or
 
 这里的单元测试报告显示分支覆盖率约为 80%。它能说明部分路径被执行过，但不能证明重构前后行为完全一致。金额、状态迁移、并发请求和外部依赖失败等关键路径，还需要特征测试、集成测试或新旧结果对照：
 
-![单元测试验收](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/unit-test-verification.png)
+![单元测试验收](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/unit-test-verification.png)
 
 #### 功能迭代：一行指令，规则上线
 
@@ -325,7 +325,7 @@ private RefundResponse processPartialRefund(RefundApplyRequest request, Order or
 
 对应实现代码如下。可以看到，完成既有逻辑的梳理后，职责单一的校验框架和配套的单元测试已经就位，后续的增量迭代也变得容易处理和回归：
 
-![功能迭代实现](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/feature-iteration-implementation.png)
+![功能迭代实现](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/feature-iteration-implementation.png)
 
 #### 记忆沉淀：越用越懂你的编程习惯
 
@@ -337,7 +337,7 @@ private RefundResponse processPartialRefund(RefundApplyRequest request, Order or
 
 在这次演示里，退款规则和编码约定被写入了记忆列表。后续使用时仍要审查召回内容，及时清理已经失效的规则：
 
-![记忆沉淀](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/memory-accumulation.png)
+![记忆沉淀](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder/idea-plugin/memory-accumulation.png)
 
 ## 能力拆解：Qoder 在这个示例中做了什么
 

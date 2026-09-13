@@ -21,7 +21,7 @@ JDK 19 共有 7 个新特性，这篇文章会挑选其中较为重要的一些�
 
 下图是从 JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间：
 
-![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 ## JEP 424: 外部函数和内存 API（预览）
 

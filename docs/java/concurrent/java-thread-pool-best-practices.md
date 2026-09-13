@@ -167,11 +167,11 @@ $$
 
 现有文章曾引用过一个父子任务共用线程池的事故案例（来源：[线程池运用不当的一次线上事故](https://heapdump.cn/article/646639)）：
 
-![案例代码概览](https://oss.javaguide.cn/github/javaguide/java/concurrent/production-accident-threadpool-sharing-example.png)
+![案例代码概览](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/production-accident-threadpool-sharing-example.png)
 
 假设线程池有 $n$ 个工作线程，同时运行了 $n$ 个父任务。每个父任务提交子任务后，又同步等待子任务结束。子任务进入队列，却没有空闲线程可以执行；父任务不结束，工作线程也不会释放，最终形成线程饥饿死锁。
 
-![线程池使用不当导致死锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/production-accident-threadpool-sharing-deadlock.png)
+![线程池使用不当导致死锁](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/production-accident-threadpool-sharing-deadlock.png)
 
 父任务和它同步等待的子任务不应使用这个有界线程池形成环形等待。可以让父任务直接执行子逻辑、改为不阻塞的任务编排，或者为确实需要隔离的子任务分配独立执行资源。
 

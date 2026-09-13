@@ -23,7 +23,7 @@ HTTP/1.0 和 HTTP/1.1 名字只差一个小版本，但它们在连接复用、�
 
 开始之前，先简单回顾一下 HTTP 协议：
 
-![HTTP：超文本传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
+![HTTP：超文本传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
 
 ## 响应状态码
 

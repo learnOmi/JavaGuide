@@ -91,7 +91,7 @@ Codex 能直接改代码，但不代表每次都应该直接改。
 
 它有点像 Claude Code 里的 `CLAUDE.md`，都是给 Agent 看的项目级指令文件。更直白一点说，`AGENTS.md` 是一份 **Agent 工作说明**：告诉 Codex 这个项目怎么启动、怎么测试、哪些目录别碰、改完后要给出什么证据。
 
-![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
 
 不过两者的定位不完全一样。
 
@@ -251,7 +251,7 @@ Knowing everything you know now, scrap this approach and propose the simpler imp
 
 MCP（Model Context Protocol，模型上下文协议）像一套接线规范：**外部系统把能力封装成 MCP Server，支持 MCP 的 AI 应用连接上来之后，就能发现这些能力并调用。**
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 真实开发里的上下文，不只在仓库里。
 
@@ -297,7 +297,7 @@ Skill 更适合放遇到某类任务时应该怎么做。比如做代码审查�
 
 Skill 不像 `AGENTS.md` 那样把全文每次都塞进上下文。默认情况下，Codex 会先看到 Skill 的名称和描述，用来判断是否该调用；只有真正用到这个 Skill 时，`SKILL.md` 正文和相关资源才会进入上下文。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
 
 这些重复性很强的流程，都适合沉淀成 Skill。比如写功能前固定走 TDD，先写失败测试再实现；代码审查时固定检查安全、事务、性能和边界条件；写技术文章时固定核对事实来源、引用、标题层级和 AI 味。
 

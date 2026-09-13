@@ -56,7 +56,7 @@ JavaGuide 是一份面向 Java 和后端开发者的开源知识库，已在 Git
 
 JavaGuide 自 2018 年开源以来持续维护，累计提交 **6200+** commit ，共有 **640+** 多位贡献者共同参与维护和完善。
 
-![JavaGuide 目前的 Star、Fork、Issue 和 PR 情况](https://oss.javaguide.cn/github/javaguide/intro/javaguide-star-issue-pr.png)
+![JavaGuide 目前的 Star、Fork、Issue 和 PR 情况](/assets/images/oss.javaguide.cn/github/javaguide/intro/javaguide-star-issue-pr.png)
 
 网站内容覆盖：
 
@@ -76,4 +76,4 @@ JavaGuide 自 2018 年开源以来持续维护，累计提交 **6200+** commit �
 - 如果你更喜欢 **PDF**（比如通勤/离线阅读/打印学习），扫描下方二维码，后台回复“**PDF**”即可获取最新版（持续更新，详细介绍见：**[2026 最新后端面试 PDF 资料](./interview-preparation/pdf-interview-javaguide.md)**）。
 - 如果你想加我的微信，可以扫描下方二维码，后台回复“**微信**”。我会在朋友圈分享一些优质技术内容、学习资料和项目更新。
 
-<img src="https://oss.javaguide.cn/github/javaguide/gongzhonghao-javaguide.png" alt="JavaGuide 公众号" style="zoom: 43%; display: block; margin: 0 auto;" />
+<img src="/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghao-javaguide.png" alt="JavaGuide 公众号" style="zoom: 43%; display: block; margin: 0 auto;" />

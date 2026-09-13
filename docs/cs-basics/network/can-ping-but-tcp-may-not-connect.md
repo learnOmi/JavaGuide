@@ -20,11 +20,11 @@ head:
 
 ICMP 工作在网络层，TCP 工作在传输层，它们在协议栈里根本不在同一层：
 
-![ICMP 和 TCP 位于 TCP/IP 协议栈的不同层次](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![ICMP 和 TCP 位于 TCP/IP 协议栈的不同层次](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
 
 ## Ping 通，只能说明 ICMP 有回应
 
-![ICMP与TCP路径差异](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-icmp-and-tcp-path-differences.png)
+![ICMP与TCP路径差异](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-icmp-and-tcp-path-differences.png)
 
 Ping 基于 ICMP（Internet Control Message Protocol，互联网控制报文协议），通过发送和接收 ICMP 报文来实现探测。
 
@@ -131,7 +131,7 @@ HTTPS 的正文内容会加密，但 TLS 握手一开始的 `ClientHello` 里，
 
 问题是，传统 SNI 通常是明文的。
 
-![TLS 1.2 ECDHE 握手流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-ecdhe-rsa-handshake-process.png)
+![TLS 1.2 ECDHE 握手流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-ecdhe-rsa-handshake-process.png)
 
 从上图可以看到，TLS 握手分为多个阶段：ClientHello（携带 SNI、支持的密码套件）→ ServerHello（选定密码套件）→ 证书 → 密钥交换 → 双方计算共享秘密 → 握手完成。中间设备不需要解密 HTTPS 内容，只需要看一眼 `ClientHello`，就可能知道你要访问哪个域名，并按域名策略处理这条连接。
 
@@ -151,4 +151,4 @@ TLS 生态后来引入了 ECH（Encrypted ClientHello）来加密更多 `ClientH
 
 小 G 一般会按这个顺序查：如果是域名，先看 DNS；再用 `ping` 看 ICMP；然后用 `nc` 测端口；最后用 `curl` 或 `openssl s_client` 看 HTTPS/TLS。别让一个 `ping` 过早把问题定性了。
 
-![HTTPS连接排查层次](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-https-connection-troubleshooting-layers.png)
+![HTTPS连接排查层次](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-https-connection-troubleshooting-layers.png)

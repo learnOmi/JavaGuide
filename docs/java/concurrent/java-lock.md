@@ -35,7 +35,7 @@ PS：本文主要以 HotSpot / OpenJDK 为背景。`synchronized` 的 monitor �
 
 锁要解决的是临界区问题。临界区指那段会访问共享可变状态，并且不能让多个执行单元随意交错执行的代码。
 
-![临界区保护访问协议示意图：多个线程通过统一加锁入口访问共享状态，绕开锁或更换锁对象都会破坏互斥关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-critical-section.png)
+![临界区保护访问协议示意图：多个线程通过统一加锁入口访问共享状态，绕开锁或更换锁对象都会破坏互斥关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-critical-section.png)
 
 比如下面这个自增：
 

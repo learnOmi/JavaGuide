@@ -85,7 +85,7 @@ timer.schedule(task, delay);
 
 `ScheduledExecutorService` 是一个接口，有多个实现类，比较常用的是 `ScheduledThreadPoolExecutor` 。
 
-![](https://oss.javaguide.cn/javaguide/20210607154324712.png)
+![](/assets/images/oss.javaguide.cn/javaguide/20210607154324712.png)
 
 `ScheduledThreadPoolExecutor` 本身就是一个线程池，支持任务并发执行。并且，其内部使用 `DelayedWorkQueue` 作为任务队列。
 
@@ -129,7 +129,7 @@ executor.shutdown();
 
 `DelayQueue` 是 JUC 包(`java.util.concurrent)`为我们提供的延迟队列，用于实现延时任务比如订单下单 15 分钟未支付直接取消。它是 `BlockingQueue` 的一种，底层是一个基于 `PriorityQueue` 实现的一个无界队列，是线程安全的。关于`PriorityQueue`可以参考笔者编写的这篇文章：[PriorityQueue 源码分析](https://javaguide.cn/java/collection/priorityqueue-source-code.html) 。
 
-![BlockingQueue 的实现类](https://oss.javaguide.cn/github/javaguide/java/collection/blocking-queue-hierarchy.png)
+![BlockingQueue 的实现类](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/blocking-queue-hierarchy.png)
 
 `DelayQueue` 和 `Timer/TimerTask` 都可以作为延时调度的基础。`DelayQueue` 使用优先级队列管理实现了 `Delayed` 接口的元素，只有延迟到期的元素才能被取出，但它本身不负责创建线程执行任务；通常还需要编写消费循环并选择合适的执行器。`Timer` 则自带一个执行线程。两者都可以在创建后继续添加任务，也都支持取消或移除任务，“`Timer` 只能在创建时指定任务”并不成立。
 
@@ -173,7 +173,7 @@ Kafka、Dubbo、ZooKeeper、Netty、Caffeine、Akka 中都有对时间轮的实�
 
 下图是一个有 12 个时间格的时间轮，转完一圈需要 12 s。当我们需要新建一个 3s 后执行的定时任务，只需要将定时任务放在下标为 3 的时间格中即可。当我们需要新建一个 9s 后执行的定时任务，只需要将定时任务放在下标为 9 的时间格中即可。
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/one-layers-of-time-wheel.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/one-layers-of-time-wheel.png)
 
 那当我们需要创建一个 13s 后执行的定时任务怎么办呢？这个时候可以引入 **圈数/轮数** 的概念。任务仍位于下标为 1 的时间格，同时记录它需要等待的剩余轮数，完整走过一轮再经过 1s 后才执行。不同实现对“当前格是否计入轮数”的约定可能不同，不应脱离具体实现固定写成 2 圈。
 
@@ -181,7 +181,7 @@ Kafka、Dubbo、ZooKeeper、Netty、Caffeine、Akka 中都有对时间轮的实�
 
 针对下图的时间轮，我来举一个例子便于大家理解。
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/three-layers-of-time-wheel.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/three-layers-of-time-wheel.png)
 
 上图的时间轮(ms -> s)，第 1 层的时间精度为 1 ，第 2 层的时间精度为 20 ，第 3 层的时间精度为 400。假如我们需要添加一个 350s 后执行的任务 A 的话（当前时间是 0s），这个任务会被放在第 2 层（因为第二层的时间跨度为 20\*20=400>350）的第 350/20=17 个时间格子。
 
@@ -204,7 +204,7 @@ Redis 是可以用来做延时任务的，基于 Redis 实现延时任务的功�
 
 这部分内容的详细介绍我放在了[《后端面试高频系统设计&场景题》](https://javaguide.cn/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中，有需要的同学可以进入星球后阅读学习。篇幅太多，这里就不重复分享了。
 
-![《后端面试高频系统设计&场景题》](https://oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
+![《后端面试高频系统设计&场景题》](/assets/images/oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
 
 ### MQ
 
@@ -248,11 +248,11 @@ ElasticJob 最初由当当网开源，历史上曾分为 ElasticJob-Lite 和 Ela
 
 `ElasticJob` 支持任务在分布式场景下的分片和高可用、任务可视化管理等功能。
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/elasticjob-feature-list.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/elasticjob-feature-list.png)
 
 下面是早期 ElasticJob-Lite 以 ZooKeeper 为注册中心的架构图，用于理解其去中心化调度思路；当前版本还支持 etcd，不能把图中的组件当成唯一部署方式。
 
-![ElasticJob-Lite 的架构设计](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/elasticjob-lite-architecture-design.png)
+![ElasticJob-Lite 的架构设计](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/elasticjob-lite-architecture-design.png)
 
 在这种部署中，ElasticJob 不设置中心化调度服务，而是使用 ZooKeeper 协调各节点的任务分片。当前版本也可以选择 etcd 作为注册中心。
 
@@ -302,7 +302,7 @@ elasticjob:
 
 `XXL-JOB` 于 2015 年开源，是一款优秀的轻量级分布式任务调度框架，支持任务可视化管理、弹性扩容缩容、任务失败重试和告警、任务分片等功能，
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-feature-list.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-feature-list.png)
 
 根据 `XXL-JOB` 官网介绍，其解决了很多 Quartz 的不足。
 
@@ -317,7 +317,7 @@ elasticjob:
 
 `XXL-JOB` 的架构设计如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-architecture-design-v2.1.0.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-architecture-design-v2.1.0.png)
 
 从上图可以看出，`XXL-JOB` 由 **调度中心** 和 **执行器** 两大部分组成。调度中心主要负责任务管理、执行器管理以及日志管理。执行器主要是接收调度信号并处理。另外，调度中心进行任务调度时，是通过自研 RPC 来实现的。
 
@@ -340,7 +340,7 @@ public class MyApiJobHandler {
 }
 ```
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-admin-task-management.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/schedule-task/xxljob-admin-task-management.png)
 
 **相关地址：**
 

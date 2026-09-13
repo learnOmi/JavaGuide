@@ -33,7 +33,7 @@ head:
 
 消息队列把生产者和消费者之间的同步调用改成异步消息传递。主链路可以更快返回，突发流量也能暂存在 Broker 中，但系统同时增加了消息中间件、异步状态和故障恢复流程。
 
-![通过异步处理提高系统性能](https://oss.javaguide.cn/github/javaguide/Asynchronous-message-queue.png)
+![通过异步处理提高系统性能](/assets/images/oss.javaguide.cn/github/javaguide/Asynchronous-message-queue.png)
 
 相关内容：
 
@@ -55,7 +55,7 @@ head:
 
 消息可靠性可以沿着生产者、Broker、消费者和业务处理四段来回答。生产者要确认消息是否被接收，Broker 要考虑持久化与副本，消费者要在业务完成后确认，业务侧还要处理重复和结果不确定。
 
-![队列模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-queue-model.png)
+![队列模型](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-queue-model.png)
 
 相关内容：
 
@@ -80,7 +80,7 @@ head:
 
 Kafka 的高频题主要围绕分区、副本、消费组、可靠性和高吞吐设计展开。回答时要把 Producer、Broker、Partition、Replica、Consumer Group 和 Offset 放到同一条读写链路中。
 
-![Kafka Topic 分区布局](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/KafkaTopicPartionsLayout.png)
+![Kafka Topic 分区布局](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/message-queue/KafkaTopicPartionsLayout.png)
 
 相关内容：[Kafka 常见问题总结](./kafka-questions-01.md)
 
@@ -120,7 +120,7 @@ RocketMQ 面试通常更贴近业务消息场景，事务消息、延时消息�
 
 RabbitMQ 重点考察 AMQP 路由模型、确认机制、死信与延迟队列，以及不同队列类型的可靠性。Exchange、Routing Key、Binding 和 Queue 的关系必须先讲清楚。
 
-![RabbitMQ 核心架构与消息生命周期](https://oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
+![RabbitMQ 核心架构与消息生命周期](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
 
 相关内容：[RabbitMQ 常见问题总结](./rabbitmq-questions.md)
 

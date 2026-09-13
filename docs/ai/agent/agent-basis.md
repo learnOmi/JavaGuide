@@ -87,7 +87,7 @@ AI Agent 是能感知环境、决策并执行动作的软件系统。LLM 处理�
 
 常用的拆分方式是：**Agent = LLM + Planning + Memory + Tools**。
 
-![AI Agent 核心架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
+![AI Agent 核心架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
 
 **推理与规划（Reasoning / Planning）**决定下一步的目标与动作。LLM 根据当前任务状态拆解目标；Chain-of-Thought（CoT）提示技术把推理过程拆成步骤，减少直接给出未经展开的结论。
 
@@ -99,7 +99,7 @@ AI Agent 是能感知环境、决策并执行动作的软件系统。LLM 处理�
 
 Agent Loop 把这条反馈链路连续跑起来。每轮先由 LLM 根据上下文选择动作，再执行工具并写回结果；任务完成或命中停止条件时退出。
 
-![Agent Loop 工作流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
+![Agent Loop 工作流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
 
 Loop 初始化时载入 System Prompt、工具列表和用户请求。之后模型在“直接回复”和“调用工具”之间选择；工具结果写回上下文，直到模型不再请求工具。
 
@@ -198,7 +198,7 @@ Anthropic 在 2024 年 11 月推出 MCP。它要解决的痛点很直接：以�
 
 MCP 提供了一套基于 JSON-RPC 2.0 的统一通信协议，经常被叫作 AI 领域的 “USB-C 接口”。外部系统通过 MCP Server 暴露能力，宿主程序连接 Server 后，就能自动发现并注册工具。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 这样 AI 应用和底层外部代码就解耦了。
 
@@ -226,7 +226,7 @@ Context Engineering 做的事情，就是在有限 Token 窗口里，把最有�
 
 Prompt Engineering 更偏提示词怎么写，Context Engineering 管得更宽，包括规则、记忆、工具描述、会话状态、外部观察结果、Token 预算。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 这块展开讲内容很多，可以单独看这篇：[《提示词工程（Prompt Engineering）》](https://javaguide.cn/ai/agent/prompt-engineering.html) 和 [《上下文工程（Context Engineering）》](https://javaguide.cn/ai/agent/context-engineering.html)。
 
@@ -242,7 +242,7 @@ LangChain、LlamaIndex、AgentScope 这类框架里的 Agent 模块，很多都�
 
 LLM 自己容易缺少实时信息，也容易幻觉。ReAct 就让它“走一步看一步”，每一步都根据工具返回结果继续判断。
 
-![ReAct-LLM](https://oss.javaguide.cn/github/javaguide/ai/agent/ReAct-LLM.png)
+![ReAct-LLM](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/ReAct-LLM.png)
 
 比如任务是：帮我排查一下今天早上 user-service 接口变慢的原因，并把结果发给负责人。
 
@@ -268,7 +268,7 @@ ReAct 落地时一般需要这几个组件配合：
 4. 工具集与技能库，包括原子工具和 Skills
 5. 反馈观察机制，采集工具响应并追加回上下文
 
-![ReAct 模式流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-react-flow.png)
+![ReAct 模式流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-react-flow.png)
 
 ReAct 的每一步都由外部观察结果推动，因而比一次性生成更容易追溯决策依据，也能减少脱离环境的判断。相应地，多轮调用会增加响应延迟，效果还取决于工具和 Skills 是否可靠。
 
@@ -298,7 +298,7 @@ Reflection 通常叠加在 ReAct 或 Plan-and-Execute 上：执行过程中加�
 
 需要辩论、评审或相互验证时，可采用 **Peer-to-Peer 模式**，由地位对等的 Agent 直接对话和审查。
 
-![Multi-Agent 系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-multi-agent-arch.png)
+![Multi-Agent 系统架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-multi-agent-arch.png)
 
 当任务确实能按专业角色拆分时，Multi-Agent 可以并行执行，且单个子任务失败未必阻断整体。代价是 Agent 间的通信、协调和调试成本都会上升，Token 消耗也随之增加。
 
@@ -320,13 +320,13 @@ A2A 协议就是给 Agent 之间定义接口契约。
 
 比如“产品经理 Agent”写完需求后，不会输出一句“我写好了，你开发一下”。它应该输出一个标准 JSON Payload，里面包含 TaskID、Dependencies、AcceptanceCriteria。开发 Agent 拿到后直接反序列化，进入执行流程。
 
-![A2A 协议架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-a2a.png)
+![A2A 协议架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-a2a.png)
 
 ### Agentic Workflows
 
 Agentic Workflows 是吴恩达（Andrew Ng）重点倡导的概念，强调用工程编排把推理、工具、记忆、反思和多实体协作接成可执行流程，而不只等待底层模型能力变化。
 
-![智能体工作流核心模式](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-agentic-workflows.png)
+![智能体工作流核心模式](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-agentic-workflows.png)
 
 其中常见的设计模式包括：
 

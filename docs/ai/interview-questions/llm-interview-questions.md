@@ -33,7 +33,7 @@ Token、上下文窗口和采样参数共同影响一次调用能放入多少信
 - Token 预算怎么估算？输入、输出、历史消息、RAG 证据如何取舍？
 - 长上下文窗口会不会取代 RAG？二者分别适合什么场景？
 
-![Token 化过程示例](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
+![Token 化过程示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
 
 ## API 调用工程
 

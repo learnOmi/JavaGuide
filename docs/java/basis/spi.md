@@ -26,7 +26,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 很多框架都使用了 Java 的 SPI 机制，比如：Spring 框架、数据库加载驱动、日志接口、以及 Dubbo 的扩展实现等等。
 
-<img src="https://oss.javaguide.cn/github/javaguide/java/basis/spi/22e1830e0b0e4115a882751f6c417857tplv-k3u1fbpfcp-zoom-1.jpeg" style="zoom:50%;" />
+<img src="/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi/22e1830e0b0e4115a882751f6c417857tplv-k3u1fbpfcp-zoom-1.jpeg" style="zoom:50%;" />
 
 ### SPI 和 API 有什么区别？
 
@@ -34,7 +34,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 说到 SPI 就不得不说一下 API（Application Programming Interface） 了，从广义上来说它们都属于接口，而且很容易混淆。下面先用一张图说明一下：
 
-![SPI VS API](https://oss.javaguide.cn/github/javaguide/java/basis/spi-vs-api.png)
+![SPI VS API](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi-vs-api.png)
 
 一般模块之间都是通过接口进行通讯，因此我们在服务调用方和服务实现方（也称服务提供者）之间引入一个“接口”。
 
@@ -47,7 +47,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 SLF4J（Simple Logging Facade for Java）是 Java 的一个日志门面（接口），其具体实现有几种，比如：Logback、Log4j、Log4j2 等等，而且还可以切换，在切换日志具体实现的时候我们是不需要更改项目代码的，只需要在 Maven 依赖里面修改一些 pom 依赖就好了。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/image-20220723213306039-165858318917813.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi/image-20220723213306039-165858318917813.png)
 
 这就是依赖 SPI 机制实现的，那我们接下来就实现一个简易版本的日志框架。
 
@@ -219,11 +219,11 @@ public class Logback implements Logger {
 
 新建 lib 目录，然后将 jar 包拷贝过来，再添加到项目中。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/523d5e25198444d3b112baf68ce49daetplv-k3u1fbpfcp-watermark.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi/523d5e25198444d3b112baf68ce49daetplv-k3u1fbpfcp-watermark.png)
 
 再点击 OK。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/f4ba0aa71e9b4d509b9159892a220850tplv-k3u1fbpfcp-watermark.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi/f4ba0aa71e9b4d509b9159892a220850tplv-k3u1fbpfcp-watermark.png)
 
 接下来就可以在项目中导入 jar 包里面的一些类和方法了，就像 JDK 工具类导包一样的。
 
@@ -243,7 +243,7 @@ public class Logback implements Logger {
 
 然后先导入 `Logger` 的接口 jar 包，再导入具体的实现类的 jar 包。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/spi/image-20220723215812708-165858469599214.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/spi/image-20220723215812708-165858469599214.png)
 
 新建 Main 方法测试：
 

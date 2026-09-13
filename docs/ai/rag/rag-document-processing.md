@@ -18,7 +18,7 @@ RAG 检索前要先把 PDF、Word、Excel 或扫描件转换成可检索内容�
 
 在说具体策略之前，先把链路画清楚。文档从上传到进入向量库，中间要经过至少六个环节：
 
-![RAG 文档处理总链路：上传前半段决定了后半段效果上限](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-overall-link.png)
+![RAG 文档处理总链路：上传前半段决定了后半段效果上限](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-overall-link.png)
 
 这张图里有个容易忽略的点：质量校验不应该只发生在入库之后。在 Chunking 阶段做完采样校验，能提前发现问题，避免把低质量数据大批量写入向量库。
 
@@ -40,7 +40,7 @@ Embedding 模型和向量库只能处理输入给它们的内容。多栏 PDF �
 
 ## 如何选择合适的 Chunking 策略？
 
-![如何选择合适的切分策略？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-chunking-strategy.png)
+![如何选择合适的切分策略？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-chunking-strategy.png)
 
 ### 固定长度切分：够用但不完美
 
@@ -131,7 +131,7 @@ flowchart TB
 
 ## 什么是语义丢失，为什么会发生？
 
-![语义丢失：上下文依赖关系被切碎](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-semantic-loss.png)
+![语义丢失：上下文依赖关系被切碎](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-semantic-loss.png)
 
 语义丢失指原始文档中的关键信息在解析、清洗、切分或入库过程中被削弱或丢失。
 
@@ -163,7 +163,7 @@ Embedding 请求只接收当前 Chunk。原文中跨段、跨页的条件、指�
 
 ## 如何处理结构丢失问题？
 
-![结构丢失问题：不同格式，坑完全不一样](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-structure-loss.png)
+![结构丢失问题：不同格式，坑完全不一样](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-structure-loss.png)
 
 结构丢失是语义丢失的一个子集，但它的场景更具体，影响也更直接。
 
@@ -239,7 +239,7 @@ OCR 引擎要按语言、版面类型、部署方式和实测准确率选择，T
 
 ## 如何设计分层校验策略？
 
-![分层校验策略：没有质检的管线，不是生产级管线](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-hierarchical-verification-strategy.png)
+![分层校验策略：没有质检的管线，不是生产级管线](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-hierarchical-verification-strategy.png)
 
 不是所有文档都能成功解析，也不是所有解析结果都能用。RAG 管线必须有降级处理机制，否则低质量数据会污染整个知识库。
 
@@ -484,7 +484,7 @@ flowchart LR
 
 ## 如何从零搭建文档处理管线？
 
-![如何从零搭一套企业级文档处理管线？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-build-enterprise-document-processing-pipeline-from-scratch.png)
+![如何从零搭一套企业级文档处理管线？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-build-enterprise-document-processing-pipeline-from-scratch.png)
 
 格式覆盖范围可以按风险递增。先验证 Markdown、HTML、TXT 的解析、切分、索引和入库，再扩展到 PDF、多栏页面、表格和图像。每新增一种格式，都应检查标题层级、Chunk 大小分布和 Metadata 是否符合预期。
 

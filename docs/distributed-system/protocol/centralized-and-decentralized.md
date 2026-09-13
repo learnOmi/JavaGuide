@@ -24,7 +24,7 @@ head:
 
 生产里的定时任务通常更接近“至少执行一次 + 业务幂等”：用任务 ID、业务唯一键、状态机、去重表或事务约束保证同一批数据重复执行时不会产生额外副作用。
 
-![定时任务执行语义](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/cronjob-execution-semantics.webp)
+![定时任务执行语义](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/cronjob-execution-semantics.webp)
 
 这篇文章只讨论设计取舍，不展开 ZooKeeper、etcd、Redis Cluster、Eureka 等具体系统的完整实现。想看共识算法，可以继续读 [Raft 算法详解](./raft-algorithm.md) 和 [ZAB 协议详解](./zab.md)；想看状态传播，可以继续读 [Gossip 协议详解](./gossip-protocol.md)；想看业务互斥，可以继续读 [分布式锁实现方案详解](../distributed-lock-implementations.md)。
 
@@ -39,7 +39,7 @@ head:
 - **决策问题**：谁能成为 Leader？某条日志是否提交？某个资源当前归谁？某个任务能不能执行？
 - **传播问题**：成员状态、故障报告、配置版本、缓存元数据怎么扩散到其他节点？
 
-![分布式协调决策与传播](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-coordination-decision-vs-propagation.webp)
+![分布式协调决策与传播](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-coordination-decision-vs-propagation.webp)
 
 Leader、Quorum、Lease、Lock、Fencing Token 主要围绕决策和执行资格展开；Gossip 主要解决状态传播。真实系统经常把这些机制组合起来使用，很少只有简单的“中心化”或“去中心化”二选一。
 
@@ -160,7 +160,7 @@ token 数字本身解决不了问题，资源端校验才是关键。资源端�
 | Fencing Token | 拒绝旧持有者的迟到写           | 业务操作本身可重试         |
 | 幂等键        | 防止同一业务请求重复产生副作用 | 当前执行者一定是最新 owner |
 
-![Lease 与 Fencing Token](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/lease-fencing-token-late-write.webp)
+![Lease 与 Fencing Token](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/lease-fencing-token-late-write.webp)
 
 ## Gossip 状态传播：让节点交换本地视图
 
@@ -201,7 +201,7 @@ Gossip 本身更适合传播“我观察到了什么”，不适合单独决定�
 | Gossip            | 扩散成员和状态信息       | 通常最终收敛           | 服务发现、健康状态、缓存元数据  |
 | 队列 / 分片领取   | 把工作分配给多个 Worker  | 通常至少一次           | 批处理、消费任务、分片扫描      |
 
-![分布式协调机制选型](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-coordination-mechanism-selection.webp)
+![分布式协调机制选型](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-coordination-mechanism-selection.webp)
 
 真实系统经常会混合使用这些机制。
 

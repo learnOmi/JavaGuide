@@ -26,13 +26,13 @@ Can.ac 的一次编码评测中，同一个模型仅替换文件编辑接口，�
 
 LangChain 的 Vivek Trivedi 在《The Anatomy of an Agent Harness》中用的切分方式很实用：先列出模型能做的事，再逐项补上它做不到的部分。沿着这条线排查，问题会落到具体缺口上，例如工具结果是否可读、任务状态是否持久化、失败后是否给出可执行的修复信息。
 
-![Agent = Model + Harness](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
+![Agent = Model + Harness](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
 
 ### Harness 和 Prompt / Context Engineering 的关系
 
 Prompt Engineering、Context Engineering、Harness Engineering 不太适合放在同一层比较。它们更像一层套一层，处理的问题范围越来越大。
 
-![Harness 和 Prompt/Context Engineering 的关系](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
+![Harness 和 Prompt/Context Engineering 的关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
 
 | 层级                | 解决的问题                         | 关注点                                     | 典型工作                                  |
 | ------------------- | ---------------------------------- | ------------------------------------------ | ----------------------------------------- |
@@ -69,7 +69,7 @@ Prompt 能澄清局部指令，却不能提供文件访问、测试执行、状�
 
 为了便于检查系统是否缺项，本文把前述组件归纳为六层。这是分析框架，不是某个协议或业界统一标准：
 
-![Harness Engineering 六层架构](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-six-layer-architecture.svg)
+![Harness Engineering 六层架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-six-layer-architecture.svg)
 
 | 层级 | 名称               | 解决什么问题                   | 关键设计                                                   |
 | ---- | ------------------ | ------------------------------ | ---------------------------------------------------------- |
@@ -100,7 +100,7 @@ the best harness for your task is not necessarily the one a model was post-train
 
 Dex Horthy 在一次公开演示中观察到：168K Token 的上下文窗口使用到大约 40% 后，Agent 输出质量开始下降。这个比例来自特定模型和任务，不能直接外推为所有 Agent 的统一阈值。
 
-![上下文利用率的 40% 阈值现象](https://oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
+![上下文利用率的 40% 阈值现象](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
 
 | 区间       | 占比      | 表现                                 |
 | ---------- | --------- | ------------------------------------ |
@@ -232,7 +232,7 @@ OpenAI 也指出，缺少相近投入时不能直接假设能够复现其结果�
 
 Anthropic 在这个方向上有两个值得细看的实践。一个是 Carlini 用多 Agent 写 C 编译器，另一个是 Anthropic Labs 借鉴 GAN 思路做三智能体协作。
 
-![Anthropic 三智能体协同架构（受 GAN 启发）](https://oss.javaguide.cn/github/javaguide/ai/harness/anthropic-three-agent-collaborative-architecture-inspired-by-gan.svg)
+![Anthropic 三智能体协同架构（受 GAN 启发）](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/anthropic-three-agent-collaborative-architecture-inspired-by-gan.svg)
 
 #### 用 16 个 Agent 写 C 编译器
 
@@ -300,7 +300,7 @@ Sonnet 4.5 更换为 Opus 4.6 后，Sprint 和逐轮 Evaluator 检查可以移�
 
 Stripe 的 Minions 系统是另一个极端：高度自动化、无人值守。开发者发一条 Slack 消息，Agent 就从写代码、跑 CI 到提 PR 全部完成，人只在最后审查。每周有超过 1300 个完全由 Minions 生产、没有人类手写代码的 PR 被合并。
 
-![Stripe 混合状态机编排架构](https://oss.javaguide.cn/github/javaguide/ai/harness/stripe-hybrid-state-machine-orchestration-architecture.svg)
+![Stripe 混合状态机编排架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/stripe-hybrid-state-machine-orchestration-architecture.svg)
 
 这个数字第一次看到确实有点吓人。拆开看，它靠的是一套很成熟的工程环境，不是某个“超强 Agent”。
 
@@ -334,7 +334,7 @@ Mitchell Hashimoto 是 Vagrant、Terraform、Ghostty 终端模拟器的作者。
 
 Ghostty 项目里的 `AGENTS.md` 很有代表性。每一行都对应一个过去的 Agent 失败案例。它是一个持续积累的防错系统。Agent 犯了一个新类型错误，就加一条规则，后面同类问题就能少一些。
 
-![持续进化的 Harness 防错反馈闭环](https://oss.javaguide.cn/github/javaguide/ai/harness/continuously-evolving-harness-error-prevention-feedback-loop.svg)
+![持续进化的 Harness 防错反馈闭环](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/continuously-evolving-harness-error-prevention-feedback-loop.svg)
 
 ### Birgitta Böckeler 对 Harness 的梳理
 

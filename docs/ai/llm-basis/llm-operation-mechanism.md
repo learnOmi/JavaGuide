@@ -32,7 +32,7 @@ Tokenizer 接到文本后，会把它拆成大小不等的片段。比如 `你�
 - 切分：`[你好]` `[，]` `[我是]` `[小 G]` `[。]`
 - 统计：原文 9 字符 → Token 数 5 个 → 压缩比约 1.8 倍
 
-![Token 化过程示例](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
+![Token 化过程示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
 
 这组切分只用于说明过程。实际结果取决于目标模型的 Tokenizer，同一段文本换一个供应商或模型版本，Token 序列就可能改变。OpenAI 也提供了可直接查看切分结果的 [Tokenizer 工具](https://platform.openai.com/tokenizer)。
 
@@ -75,7 +75,7 @@ Tokenizer 版本也会改变换算结果。早期模型（如 GPT-3.5）的中�
 
 模型标注的 128K、200K 或 1M，指一次调用能够容纳的 Token 上限。窗口越大，单次可传入的文档和对话历史越多，但这部分容量还要分给系统提示词、工具定义和模型输出。大多数模型将输入与输出合并计算，部分供应商（如 Google Gemini）则分别设置输入和输出上限。
 
-![上下文窗口（Context Window）= LLM 的「工作记忆」](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
+![上下文窗口（Context Window）= LLM 的「工作记忆」](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
 
 - **固定内容**：System Prompt、工具调用 Schema 和格式标记。
 - **本次输入**：User Prompt、历史消息与 RAG 检索片段。
@@ -200,7 +200,7 @@ pie title "16K 上下文窗口典型分配（结构化输出场景）"
 
 ### Temperature 的“冒险程度”
 
-![Temperature 参数：控制模型输出的随机性](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-temperature-params.png)
+![Temperature 参数：控制模型输出的随机性](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-temperature-params.png)
 
 Temperature 的工作原理很简单：在 softmax 之前，先把所有分数**除以**温度值 T。
 

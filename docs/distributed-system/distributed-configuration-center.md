@@ -25,7 +25,7 @@ head:
 - **版本管理**：记录每次配置变更的修改人、修改时间、修改内容，支持一键回滚。
 - **灰度发布**：先将配置推送给部分实例验证，降低变更风险（Apollo、Nacos 1.1.0+ 支持）。
 
-![Apollo 配置中心](https://oss.javaguide.cn/github/javaguide/config-center/view-release-history.png)
+![Apollo 配置中心](/assets/images/oss.javaguide.cn/github/javaguide/config-center/view-release-history.png)
 
 当然，不是所有系统都需要上配置中心。单体应用、单环境、配置项很少且变更频率低的场景，`application-{profile}.yml`、环境变量或 Kubernetes ConfigMap + 滚动重启通常就够了。配置中心会带来额外的运维成本、故障域和排查链路，小团队或低频配置场景不必过度工程化。
 
@@ -142,7 +142,7 @@ Apollo 核心特性：
 
 官方给出的 Apollo 基础模型（图片来源：Apollo 官方文档 - Apollo Design）：
 
-![](https://img-blog.csdnimg.cn/a75ccb863e4a401d947c87bb14af7dc3.png)
+![](/assets/images/img-blog.csdnimg.cn/a75ccb863e4a401d947c87bb14af7dc3.png)
 
 1. 用户在 Apollo 配置中心修改/发布配置
 2. Apollo 配置中心通知应用配置已更改
@@ -150,7 +150,7 @@ Apollo 核心特性：
 
 官方架构图（图片来源：Apollo 官方文档 - Apollo Design）：
 
-![](https://img-blog.csdnimg.cn/79c7445f9dbc45adb45699d40ef50f44.png)
+![](/assets/images/img-blog.csdnimg.cn/79c7445f9dbc45adb45699d40ef50f44.png)
 
 ### 组件说明
 

@@ -50,7 +50,7 @@ ld
 
 这不是 TCP 出错，而是 TCP 的工作方式本来就是这样。TCP 处理的是连续字节流，它只关心这些字节是否可靠、有序地到达，不关心应用层定义的“第几条消息”从哪里开始、到哪里结束。RFC 9293 也明确提到，TCP segment 和应用层 `send()` / socket write 的边界通常不是一一对应的，TCP 不保证应用读写缓冲区边界和网络分段边界相关。
 
-![TCP 与 UDP 的消息边界](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
+![TCP 与 UDP 的消息边界](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
 
 所以，“TCP 粘包/拆包”这个说法更像是应用层视角下的现象。严格来说，TCP 没有“包”的概念，它传的是连续字节流。真正需要解决的是：**应用层协议如何定义消息边界**。
 
@@ -76,13 +76,13 @@ Nagle 算法、Delayed ACK、Linux 自动合并小写入等机制，都可能影
 
 这也是为什么在 Netty、Dubbo、自定义 RPC、IM 网关、游戏服务里，协议编解码都很重要。只要底层用的是 TCP，就必须在应用层定义清楚消息边界。
 
-![TCP 粘包 / 拆包为什么会出现？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
+![TCP 粘包 / 拆包为什么会出现？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
 
 #### 怎么解决 TCP 粘包/拆包？
 
 核心思路只有一个：**让接收方知道一条消息到哪里结束。**
 
-![应用层如何定义消息边界？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-message-boundary-solutions.png)
+![应用层如何定义消息边界？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-message-boundary-solutions.png)
 
 常见做法有三种。
 
@@ -135,7 +135,7 @@ Delayed ACK 是接收端的优化。接收端收到数据后，不一定立刻�
 客户端等待服务端响应
 ```
 
-![Nagle + Delayed ACK 为什么可能让小包变慢？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-nagle-delayed-ack-latency.png)
+![Nagle + Delayed ACK 为什么可能让小包变慢？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-nagle-delayed-ack-latency.png)
 
 小数据 A 发出去了，小数据 B 可能因为 Nagle 算法暂存在发送缓冲区里，等待 A 的 ACK。服务端收到 A 后，如果暂时没有业务响应要返回，Delayed ACK 又可能延迟发送 ACK。于是发送端等 ACK，接收端等更多数据或等延迟确认定时器，延迟就被放大了。
 

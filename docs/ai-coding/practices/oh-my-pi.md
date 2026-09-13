@@ -54,7 +54,7 @@ oh-my-pi 的 `edit` 工具里有个东西，叫 **Hashline**。
 
 `@oh-my-pi/hashline` 把它描述成一种 compact、line-anchored patch language。大概意思是，读文件的时候，每一行会带一个内容 hash；模型改文件时围绕 hash 做修改，少复述整段原文。
 
-![oh-my-pi Hashline 官方说明截图](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-hashline-doc.png)
+![oh-my-pi Hashline 官方说明截图](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-hashline-doc.png)
 
 如果文件中途变了，hash 对不上，补丁会先被拒掉。
 
@@ -113,7 +113,7 @@ omp 走的是另一条路。一共 32 个内置工具，看起来有点重，但
 
 我顺手拿 JavaGuide 的一个 issue 试了下。它先读 issue，再去仓库里找对应 Markdown，接着顺着图片链接继续读。
 
-![oh-my-pi 读取 GitHub issue 并追踪仓库文件](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-github-issue-read.png)
+![oh-my-pi 读取 GitHub issue 并追踪仓库文件](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-github-issue-read.png)
 
 还有个 `advisor`，可以挂一个 reviewer 模型。它每轮都看主 Agent 的输出，然后把提醒 inline 注入回来。它跑自己的上下文和自己的模型，专门挑主 Agent 漏掉的东西。这个设计有点像旁边坐了个只负责挑刺的人。
 
@@ -141,7 +141,7 @@ omp 走的是另一条路。一共 32 个内置工具，看起来有点重，但
 
 真遇到架构判断、难 bug、长上下文推理，再让 `slow` 上更强也更贵的模型。`plan` 用来先想清楚改哪几个文件、步骤怎么拆，`commit` 则留给 changelog、提交说明这种固定格式的文字活儿。
 
-![oh-my-pi 在模型面板里把同一个模型设置为不同角色](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-role-actions.png)
+![oh-my-pi 在模型面板里把同一个模型设置为不同角色](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-role-actions.png)
 
 这样日常对话、子 Agent、深度推理、规划和提交说明就不用挤在一个模型上。它更像成本和质量分流，不会让模型本身凭空变强。主会话里按 `Ctrl+P` 就能轮着切，也可以用 `/model` 手动换。
 
@@ -188,29 +188,29 @@ omp
 
 先选要登录的 provider。这里可以连多个，比如 ChatGPT Plus/Pro、Anthropic、Z.AI、Kimi Code、OpenRouter、Copilot、Cursor 这些都会列出来。你已经配过环境变量的 provider，也会直接显示 logged in。
 
-![oh-my-pi 第一次启动选择模型 provider](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-setup-provider-login-kimi.png)
+![oh-my-pi 第一次启动选择模型 provider](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-setup-provider-login-kimi.png)
 
-![Kimi Code 会员权益页面](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-kimi-code-home.png)
+![Kimi Code 会员权益页面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-kimi-code-home.png)
 
 然后切到 Web search，选择 `web_search` 工具优先使用哪个搜索后端。当前项目已扩展到约 25 个后端，静态列出名称很快会过期；选 `Auto` 时会从已经配置好的后端中选择，手动模式以当前 Setup 页面为准。
 
-![oh-my-pi 第一次启动选择 Web search provider](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-setup-web-search.png)
+![oh-my-pi 第一次启动选择 Web search provider](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-setup-web-search.png)
 
 这一步不用纠结太久。先把一个主模型和一个搜索 provider 跑通，比一上来把所有账号都接进去更稳。
 
 配置完回到主界面后，我这里模型已经直接选好了，左侧显示的是 `DeepSeek V4 Flash`。
 
-![oh-my-pi 启动后自动选中默认模型](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-welcome-default-model.png)
+![oh-my-pi 启动后自动选中默认模型](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-welcome-default-model.png)
 
 我一开始还愣了一下：我刚才好像没手动选 DeepSeek，为什么它自己配好了？
 
 于是顺手问了它。它的解释大概是：oh-my-pi 内置了一份模型目录，启动时会按顺序找可用凭据，比如命令行参数、`models.yml`、之前 `/login` 保存的 key / OAuth、环境变量和几个 `.env` 文件。只要它发现 `DEEPSEEK_API_KEY` 这类变量能匹配上，就会把对应 provider 下的模型标成可用，再自动挑一个初始模型。
 
-![oh-my-pi 解释模型为什么会自动配置](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-auto-config-reason.png)
+![oh-my-pi 解释模型为什么会自动配置](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-auto-config-reason.png)
 
 后面想换模型也不用重启，直接用 `/model`。它只会展示已经有可用凭据的模型，上面还能按 provider 切 tab。我这里能看到 DeepSeek、Z.AI、Ollama、LM Studio、llama.cpp 这些入口。
 
-![oh-my-pi 使用 model 命令切换模型](https://oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-switch.png)
+![oh-my-pi 使用 model 命令切换模型](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/oh-my-pi/oh-my-pi-model-switch.png)
 
 如果要看当前版本有哪些命令和参数，直接跑：
 

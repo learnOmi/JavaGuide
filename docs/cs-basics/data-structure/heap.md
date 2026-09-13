@@ -25,7 +25,7 @@ head:
 
 大家可以尝试判断下面给出的图是否是堆？
 
-![判断是否满足堆性质的示例](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-1.png)
+![判断是否满足堆性质的示例](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-1.png)
 
 第 1 个和第 2 个是堆。第 1 个是最大堆，每个节点都比子树中所有节点大。第 2 个是最小堆，每个节点都比子树中所有节点小。
 
@@ -50,7 +50,7 @@ head:
 
 如下图所示，图 1 是最大堆，图 2 是最小堆
 
-![最大堆和最小堆示例](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-2.png)
+![最大堆和最小堆示例](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-2.png)
 
 ## 堆的存储
 
@@ -58,7 +58,7 @@ head:
 
 为了方便存储和索引，（二叉）堆可以用完全二叉树的形式进行存储。存储的方式如下图所示：
 
-![堆的数组顺序存储示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-storage.png)
+![堆的数组顺序存储示意图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-storage.png)
 
 ## 堆的操作
 
@@ -72,15 +72,15 @@ head:
 
 **1. 将要插入的元素放到最后**
 
-![堆插入元素：新元素放到数组末尾](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-1.png)
+![堆插入元素：新元素放到数组末尾](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-1.png)
 
 > 有能力的人会逐渐升职加薪，是金子总会发光的！！！
 
 **2. 从底向上，如果父结点比该元素小，则该节点和父结点交换，直到无法交换**
 
-![堆插入元素：新元素与父节点比较并上浮](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-2.png)
+![堆插入元素：新元素与父节点比较并上浮](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-2.png)
 
-![堆插入元素：上浮后恢复堆性质](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-3.png)
+![堆插入元素：上浮后恢复堆性质](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-insert-3.png)
 
 ### 删除堆顶元素
 
@@ -97,19 +97,19 @@ head:
 
 下面先看一种容易想到但不完整的做法：直接删除堆顶元素，使数组中下标为 1 的位置空出。
 
-![删除堆顶元素：移除根节点](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-1.png)
+![删除堆顶元素：移除根节点](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-1.png)
 
 > 那么他的位置由谁来接替呢，当然是他的直接下属了，谁能力强就让谁上呗
 
 比较根结点的左子节点和右子节点，也就是下标为 2,3 的数组元素，将较大的元素填充到根结点（下标为 1）的位置。
 
-![删除堆顶元素：较大的子节点上移到根节点](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-2.png)
+![删除堆顶元素：较大的子节点上移到根节点](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-2.png)
 
 > 这个时候又空出一个位置了，老规矩，谁有能力谁上
 
 一直循环比较空出位置的左右子节点，并将较大者移至空位，直到堆的最底部。
 
-![删除堆顶元素：自底向上堆化后留下空位](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-3.png)
+![删除堆顶元素：自底向上堆化后留下空位](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-3.png)
 
 此时虽然较大的子节点沿路径上移了，但数组内部留下了空位，已经不再满足完全二叉树的结构，因此不能算作一次完整、有效的堆顶删除。标准做法是先用末尾元素填补堆顶，再让它向下调整。
 
@@ -117,13 +117,13 @@ head:
 
 自顶向下的堆化用一个词形容就是“石沉大海”，那么第一件事情，就是把石头抬起来，从海面扔下去。这个石头就是堆的最后一个元素，我们将最后一个元素移动到堆顶。
 
-![删除堆顶元素：将末尾元素移动到堆顶](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-4.png)
+![删除堆顶元素：将末尾元素移动到堆顶](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-4.png)
 
 然后开始将这个石头沉入海底，不停与左右子节点的值进行比较，和较大的子节点交换位置，直到无法交换位置。
 
-![删除堆顶元素：堆顶元素向下调整](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-5.png)
+![删除堆顶元素：堆顶元素向下调整](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-5.png)
 
-![删除堆顶元素：自顶向下堆化完成](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-6.png)
+![删除堆顶元素：自顶向下堆化完成](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-delete-top-6.png)
 
 ### 堆的操作总结
 
@@ -145,21 +145,21 @@ head:
 
 具体过程如下图：
 
-![建堆过程：初始无序数组对应的完全二叉树](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-1.png)
+![建堆过程：初始无序数组对应的完全二叉树](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-1.png)
 
 将初始的无序数组抽象为一棵树，图中的节点个数为 6，所以 4,5,6 节点为叶节点，1,2,3 节点为非叶节点，所以要对 1-3 号节点进行自顶向下（沉底）堆化，注意，顺序是从后往前堆化，从 3 号节点开始，一直到 1 号节点。
 
 3 号节点堆化结果：
 
-![建堆过程：3 号节点完成下沉](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-2.png)
+![建堆过程：3 号节点完成下沉](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-2.png)
 
 2 号节点堆化结果：
 
-![建堆过程：2 号节点完成下沉](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-3.png)
+![建堆过程：2 号节点完成下沉](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-3.png)
 
 1 号节点堆化结果：
 
-![建堆过程：1 号节点完成下沉并形成最大堆](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-4.png)
+![建堆过程：1 号节点完成下沉并形成最大堆](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-build-4.png)
 
 至此，数组所对应的树已经成为了一个最大堆，建堆完成！
 
@@ -180,27 +180,27 @@ head:
 
 取出第一个元素并堆化：
 
-![堆排序过程：第 1 轮取出堆顶元素并堆化](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-1.png)
+![堆排序过程：第 1 轮取出堆顶元素并堆化](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-1.png)
 
 取出第二个元素并堆化：
 
-![堆排序过程：第 2 轮取出堆顶元素并堆化](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-2.png)
+![堆排序过程：第 2 轮取出堆顶元素并堆化](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-2.png)
 
 取出第三个元素并堆化：
 
-![堆排序过程：第 3 轮取出堆顶元素并堆化](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-3.png)
+![堆排序过程：第 3 轮取出堆顶元素并堆化](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-3.png)
 
 取出第四个元素并堆化：
 
-![堆排序过程：第 4 轮取出堆顶元素并堆化](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-4.png)
+![堆排序过程：第 4 轮取出堆顶元素并堆化](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-4.png)
 
 取出第五个元素并堆化：
 
-![堆排序过程：第 5 轮取出堆顶元素并堆化](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-5.png)
+![堆排序过程：第 5 轮取出堆顶元素并堆化](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-5.png)
 
 取出第六个元素并堆化：
 
-![堆排序过程：所有元素完成排序](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-6.png)
+![堆排序过程：所有元素完成排序](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/heap-sort-6.png)
 
 堆排序完成！
 

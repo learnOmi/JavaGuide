@@ -28,7 +28,7 @@ JMM 主要定义了对于一个共享变量，当一个线程执行写操作后�
 
 > **🐛 修正（参见：[issue#1848](https://github.com/Snailclimb/JavaGuide/issues/1848)）**：对 CPU 缓存模型绘图不严谨的地方进行完善。
 
-![CPU 缓存模型示意图](https://oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache.png)
+![CPU 缓存模型示意图](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache.png)
 
 现代的 CPU Cache 通常分为三层，分别叫 L1,L2,L3 Cache。有些 CPU 可能还有 L4 Cache，这里不做讨论，并不常见
 
@@ -36,7 +36,7 @@ JMM 主要定义了对于一个共享变量，当一个线程执行写操作后�
 
 **CPU 为了解决内存缓存不一致性问题可以通过制定缓存一致协议（比如 [MESI 协议](https://zh.wikipedia.org/wiki/MESI%E5%8D%8F%E8%AE%AE)）或者其他手段来解决。** 这个缓存一致性协议指的是在 CPU 高速缓存与主内存交互的时候需要遵守的原则和规范。不同的 CPU 中，使用的缓存一致性协议通常也会有所不同。
 
-![缓存一致性协议](https://oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache-protocol.png)
+![缓存一致性协议](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache-protocol.png)
 
 CPU 缓存一致性由处理器及其内存子系统协同实现。不同处理器架构还会规定各类内存访问在其他处理器看来可以按什么顺序出现，这通常称为硬件内存模型。JMM 位于更高的语言层，JVM 需要把它的要求映射到具体处理器提供的指令和屏障上。
 
@@ -96,7 +96,7 @@ Java 从早期规范开始就有内存模型；Java 5 通过 JSR-133 对它进�
 
 Java 内存模型的抽象示意图如下：
 
-![JMM(Java 内存模型)](https://oss.javaguide.cn/github/javaguide/java/concurrent/jmm.png)
+![JMM(Java 内存模型)](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jmm.png)
 
 从上图来看，线程 1 与线程 2 之间如果要进行通信的话，必须要经历下面 2 个步骤：
 
@@ -152,7 +152,7 @@ JSR 133 引入了 happens-before 这个概念来描述两个操作之间的内�
 
 下面这张是我根据《Java 并发编程的艺术》这本书中的一张 JMM 设计思想示意图重新绘制的。
 
-![ JMM 设计思想](https://oss.javaguide.cn/github/javaguide/java/concurrent/jmm-design-idea.png)
+![ JMM 设计思想](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jmm-design-idea.png)
 
 了解了 happens-before 原则的设计思想，我们再来看看 JSR-133 对 happens-before 原则的定义：
 
@@ -193,7 +193,7 @@ happens-before 有多条规则，下面列出其中最常用的 5 条：
 
 happens-before 与 JMM 的关系如下图所示：
 
-![jmm-vs-happens-before](https://oss.javaguide.cn/github/javaguide/java/concurrent/jmm-vs-happens-before.png)
+![jmm-vs-happens-before](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jmm-vs-happens-before.png)
 
 - JMM 向程序员提供了 **“ happens-before 规则 ”**（如程序顺序规则、`volatile` 变量规则等）。这是一种 **“ 强内存模型 ”** 的假象：程序员不需要关心底层复杂的重排序细节，只需要按照这些规则编写代码，就能保证多线程下的内存可见性。
 - JVM 在执行时，会将 happens-before 规则映射到具体的实现上。为了在保证正确性的前提下不丧失性能，JMM 只会 **“ 禁止影响执行结果的重排序 ”**。对于不影响单线程执行结果的重排序，JMM 是允许的。

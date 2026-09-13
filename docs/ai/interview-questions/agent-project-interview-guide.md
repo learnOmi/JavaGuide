@@ -121,7 +121,7 @@ ReAct 指的是动作与观察交错推进，不是调用一次工具就算完�
 
 “我们采用分层架构”很抽象。面试时可以先带面试官走完一次请求，再回头解释每层的职责。
 
-![AI Agent 核心架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
+![AI Agent 核心架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
 
 以“这个订单的耳机坏了，帮我申请售后”为例，一次请求可以这样流转：
 
@@ -220,7 +220,7 @@ Function Calling 让模型用结构化参数表达“想调用哪个函数”；
 
 如果工具只服务于当前应用，直接注册本地函数通常更简单。如果同一套能力要被多个 Agent、IDE 或模型客户端复用，再评估 MCP。采用 MCP 后，权限、参数校验和副作用治理仍然要在业务侧完成。
 
-![Function Calling 完整调用链路：模型生成调用意图，业务侧执行工具](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
+![Function Calling 完整调用链路：模型生成调用意图，业务侧执行工具](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
 
 这部分容易被追问，建议配合 [大模型结构化输出详解](../llm-basis/structured-output-function-calling.md) 和 [MCP 协议详解](../agent/mcp.md) 一起复习。
 
@@ -267,7 +267,7 @@ Function Calling 让模型用结构化参数表达“想调用哪个函数”；
 7. **结果核验。**检查外部系统的最终状态是否符合预期。
 8. **审计记录。**记录谁在什么时间以什么参数执行了什么动作。
 
-![工具调用安全风险分层：按风险等级匹配不同的控制策略](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
+![工具调用安全风险分层：按风险等级匹配不同的控制策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
 
 一个实用的工具风险分级如下：
 
@@ -303,7 +303,7 @@ Function Calling 让模型用结构化参数表达“想调用哪个函数”；
 5. 状态仍不明确时进入对账或人工处理，而不是无限重试；
 6. 将最终业务对象 ID 回写到任务状态和审计日志。
 
-![模型调用重试与幂等处理流程](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-retry-idempotency.webp)
+![模型调用重试与幂等处理流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-retry-idempotency.webp)
 
 重试还需要指数退避、随机抖动、最大次数、总截止时间和重试预算。模型 SDK、网关、HTTP Client、工具适配器和工作流节点不能各自独立重试三次，否则调用次数会被乘法放大。比较稳妥的做法是共享总 Deadline 和 Retry Budget，并在 Trace 中记录每一层的 `attempt`。
 
@@ -354,7 +354,7 @@ Agent 拿不到关键信息时，可能反复查询同一个订单，或者连�
 
 一条固定输入和成功条件组成一个 Task，每次执行是一次 Trial。Agent 输出有随机性，关键任务需要运行多次。Grader 可以使用代码规则、LLM-as-Judge 或人工，Eval Harness 负责执行这些 Trial、保存 Trace 并汇总结果。
 
-![Eval Harness 从读取评测集到执行评分并进入发布门禁的运行流程](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-eval-harness-flow.webp)
+![Eval Harness 从读取评测集到执行评分并进入发布门禁的运行流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-eval-harness-flow.webp)
 
 完整方法可以看 [AI 应用评测体系](../llm-basis/llm-evaluation.md)。
 

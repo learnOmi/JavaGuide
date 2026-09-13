@@ -33,7 +33,7 @@ SQL（Structured Query Language)，标准 SQL 由 ANSI 标准委员会管理，�
 
 #### SQL 语法结构
 
-![](https://oss.javaguide.cn/p3-juejin/cb684d4c75fc430e92aaee226069c7da~tplv-k3u1fbpfcp-zoom-1.png)
+![](/assets/images/oss.javaguide.cn/p3-juejin/cb684d4c75fc430e92aaee226069c7da~tplv-k3u1fbpfcp-zoom-1.png)
 
 SQL 语法结构包括：
 
@@ -327,7 +327,7 @@ WHERE cust_id IN (SELECT cust_id
 
 内部查询首先在其父查询之前执行，以便可以将内部查询的结果传递给外部查询。执行过程可以参考下图：
 
-![](https://oss.javaguide.cn/p3-juejin/c439da1f5d4e4b00bdfa4316b933d764~tplv-k3u1fbpfcp-zoom-1.png)
+![](/assets/images/oss.javaguide.cn/p3-juejin/c439da1f5d4e4b00bdfa4316b933d764~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### WHERE
 
@@ -505,7 +505,7 @@ SQL 允许在 `JOIN` 左边加上一些修饰性的关键词，从而形成不�
 
 下图展示了 LEFT JOIN、RIGHT JOIN、INNER JOIN、OUTER JOIN 相关的 7 种用法。
 
-![](https://oss.javaguide.cn/p3-juejin/701670942f0f45d3a3a2187cd04a12ad~tplv-k3u1fbpfcp-zoom-1.png)
+![](/assets/images/oss.javaguide.cn/p3-juejin/701670942f0f45d3a3a2187cd04a12ad~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果不加任何修饰词，只写 `JOIN`，那么默认为 `INNER JOIN`
 
@@ -733,7 +733,7 @@ DROP PRIMARY KEY;
 - 通过只给用户访问视图的权限，保证数据的安全性；
 - 更改数据格式和表示。
 
-![mysql视图](https://oss.javaguide.cn/p3-juejin/ec4c975296ea4a7097879dac7c353878~tplv-k3u1fbpfcp-zoom-1.jpeg)
+![mysql视图](/assets/images/oss.javaguide.cn/p3-juejin/ec4c975296ea4a7097879dac7c353878~tplv-k3u1fbpfcp-zoom-1.jpeg)
 
 #### 创建视图
 
@@ -1006,7 +1006,7 @@ SET PASSWORD FOR myuser = 'mypass';
 
 存储过程可以看成是对一系列 SQL 操作的批处理。存储过程可以由触发器，其他存储过程以及 Java， Python，PHP 等应用程序调用。
 
-![mysql存储过程](https://oss.javaguide.cn/p3-juejin/60afdc9c9a594f079727ec64a2e698a3~tplv-k3u1fbpfcp-zoom-1.jpeg)
+![mysql存储过程](/assets/images/oss.javaguide.cn/p3-juejin/60afdc9c9a594f079727ec64a2e698a3~tplv-k3u1fbpfcp-zoom-1.jpeg)
 
 使用存储过程的好处：
 
@@ -1023,7 +1023,7 @@ SET PASSWORD FOR myuser = 'mypass';
 
 需要注意的是：**阿里巴巴《Java 开发手册》强制禁止使用存储过程。因为存储过程难以调试和扩展，更没有移植性。**
 
-![](https://oss.javaguide.cn/p3-juejin/93a5e011ade4450ebfa5d82057532a49~tplv-k3u1fbpfcp-zoom-1.png)
+![](/assets/images/oss.javaguide.cn/p3-juejin/93a5e011ade4450ebfa5d82057532a49~tplv-k3u1fbpfcp-zoom-1.png)
 
 至于到底要不要在项目中使用，还是要看项目实际需求，权衡好利弊即可！
 

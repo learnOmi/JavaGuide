@@ -16,7 +16,7 @@ head:
 
 这 7 个阶段的顺序如下图所示：
 
-![一个类的完整生命周期](https://oss.javaguide.cn/github/javaguide/java/jvm/lifecycle-of-a-class.png)
+![一个类的完整生命周期](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/lifecycle-of-a-class.png)
 
 ## 类加载过程
 
@@ -24,7 +24,7 @@ head:
 
 系统加载 Class 类型的文件主要三步：**加载->连接->初始化**。连接过程又可分为三步：**验证->准备->解析**。
 
-![类加载过程](https://oss.javaguide.cn/github/javaguide/java/jvm/class-loading-procedure.png)
+![类加载过程](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/class-loading-procedure.png)
 
 详见 [Java Virtual Machine Specification - 5.3. Creation and Loading](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-5.html#jvms-5.3 "Java Virtual Machine Specification - 5.3. Creation and Loading")。
 
@@ -63,7 +63,7 @@ HotSpot 曾提供 `-Xverify:none` 和 `-noverify` 来关闭大部分类验证，
 3. 字节码验证（程序语义检查）
 4. 符号引用验证（类的正确性检查）
 
-![验证阶段示意图](https://oss.javaguide.cn/github/javaguide/java/jvm/class-loading-process-verification.png)
+![验证阶段示意图](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/class-loading-process-verification.png)
 
 文件格式验证这一阶段是基于该类的二进制字节流进行的，主要目的是保证输入的字节流能正确地解析并存储于方法区之内，格式上符合描述一个 Java 类型信息的要求。除了这一阶段之外，其余三个验证阶段都是基于方法区的存储结构上进行的，不会再直接读取、操作字节流了。
 
@@ -90,7 +90,7 @@ HotSpot 曾提供 `-Xverify:none` 和 `-noverify` 来关闭大部分类验证，
 
 **基本数据类型的零值**：（图片来自《深入理解 Java 虚拟机》第 3 版 7.3.3）
 
-![基本数据类型的零值](https://oss.javaguide.cn/github/javaguide/java/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9B%B6%E5%80%BC.png)
+![基本数据类型的零值](/assets/images/oss.javaguide.cn/github/javaguide/java/基本数据类型的零值.png)
 
 ### 解析
 
@@ -98,7 +98,7 @@ HotSpot 曾提供 `-Xverify:none` 和 `-noverify` 来关闭大部分类验证，
 
 《深入理解 Java 虚拟机》7.3.4 节第三版对符号引用和直接引用的解释如下：
 
-![符号引用和直接引用](https://oss.javaguide.cn/github/javaguide/java/jvm/symbol-reference-and-direct-reference.png)
+![符号引用和直接引用](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/symbol-reference-and-direct-reference.png)
 
 举个例子：程序调用方法时，虚拟机需要根据方法符号引用确定实际要调用的方法。HotSpot 等虚拟机可以使用方法表、入口地址或其他内部结构加速调用，但这些表示方式属于实现细节，并非《Java 虚拟机规范》统一规定的方法表偏移量。
 

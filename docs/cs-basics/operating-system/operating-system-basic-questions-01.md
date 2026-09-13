@@ -22,7 +22,7 @@ head:
 
 ## 操作系统基础
 
-![操作系统基础知识导图](https://oss.javaguide.cn/2020-8/image-20200807161118901.png)
+![操作系统基础知识导图](/assets/images/oss.javaguide.cn/2020-8/image-20200807161118901.png)
 
 ### 什么是操作系统？
 
@@ -40,7 +40,7 @@ head:
 
 下图清晰说明了应用程序、内核、CPU 这三者的关系。
 
-![应用程序、内核和 CPU 的关系](https://oss.javaguide.cn/2020-8/Kernel_Layout.png)
+![应用程序、内核和 CPU 的关系](/assets/images/oss.javaguide.cn/2020-8/Kernel_Layout.png)
 
 ### 操作系统主要有哪些功能？
 
@@ -79,7 +79,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 >
 > **很多人更倾向使用 "GNU/Linux" 一词来表达人们通常所说的 "Linux"。**
 
-![Linux 操作系统桌面与命令行界面](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/linux/linux.png)
+![Linux 操作系统桌面与命令行界面](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/linux/linux.png)
 
 #### Mac OS
 
@@ -93,7 +93,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 用户态和内核态描述的是 CPU 执行代码时的特权级别。应用代码通常在用户态运行；需要访问受保护资源时，CPU 会按规定入口进入内核态，由内核代表当前线程完成操作。
 
-![用户态和内核态](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/usermode-and-kernelmode.png)
+![用户态和内核态](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/usermode-and-kernelmode.png)
 
 - **用户态（User Mode）**：权限较低，不能直接执行特权指令，也不能随意访问内核地址空间或操作硬件。应用读文件、收发网络数据时，需要通过系统调用请求内核服务。
 - **内核态（Kernel Mode）**：权限较高，可以执行管理页表、中断、设备等特权操作。系统调用、中断或同步异常进入内核后，运行的是内核代码，不是把整个用户进程变成了“内核进程”。
@@ -111,7 +111,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 #### 用户态和内核态是如何切换的？
 
-![用户态切换到内核态的 3 种方式](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/the-way-switch-between-user-mode-and-kernel-mode.drawio.png)
+![用户态切换到内核态的 3 种方式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/the-way-switch-between-user-mode-and-kernel-mode.drawio.png)
 
 让 CPU 从用户态进入内核态的事件主要有三类：
 
@@ -129,7 +129,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 系统调用是内核向用户程序提供的受控服务接口。应用不能直接操作磁盘、页表和网卡等受保护资源，需要通过系统调用让内核代为完成。
 
-![用户程序通过系统调用请求内核服务](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/system-call.png)
+![用户程序通过系统调用请求内核服务](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/system-call.png)
 
 这些系统调用按功能大致可分为如下几类：
 
@@ -151,7 +151,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 4. 数据已经就绪时，内核完成读取并返回结果；数据未就绪时，当前线程可能进入等待状态，调度器转而运行其他可运行任务。
 5. 调用完成后，返回值通过寄存器交给用户态。出错时，glibc 通常把内核错误码转换成 `-1` 和 `errno`。
 
-![系统调用的过程](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/system-call-procedure.png)
+![系统调用的过程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/system-call-procedure.png)
 
 #### 系统调用一定会发生上下文切换吗？
 
@@ -173,7 +173,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 进程和线程是操作系统中并发执行的两个核心概念，它们的关系可以理解为 **工厂和工人** 的关系。
 
-![程序、进程和线程的关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
+![程序、进程和线程的关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
 
 **进程（Process）就像一个工厂**。操作系统在分配资源时，是以进程为基本单位的。比如，当我启动一个微信，操作系统就为它建立了一个独立的工厂，分配给它专属的内存空间、文件句柄等资源。这个工厂与其他工厂（比如我打开的浏览器进程）是严格隔离的。
 
@@ -181,15 +181,15 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 这是我用 AI 绘制的一张图片，可以说是非常形象了：
 
-![用微信工厂类比进程和线程的区别](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/wechat-factory-process-thread.png)
+![用微信工厂类比进程和线程的区别](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/wechat-factory-process-thread.png)
 
 下图是 Java 内存区域，我们从 JVM 的角度来说一下线程和进程之间的关系吧！
 
-![Java 运行时数据区域（JDK1.8 之后）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
+![Java 运行时数据区域（JDK1.8 之后）](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
 
 从上图可以看出：一个进程中可以有多个线程，多个线程共享进程的**堆**和**方法区（JDK1.8 之后的元空间）**资源，但是每个线程有自己的**程序计数器**、**虚拟机栈**和**本地方法栈**。
 
-![线程共享和私有的内容](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/thread-shared-and-private-content.png)
+![线程共享和私有的内容](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/thread-shared-and-private-content.png)
 
 可以从资源、调度、通信、开销和可靠性这 5 个角度总结：
 
@@ -267,7 +267,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 - **阻塞状态（waiting）**：又称为等待状态，进程正在等待某一事件而暂停运行如等待某资源为可用或等待 IO 操作完成。即使处理器空闲，该进程也不能运行。
 - **结束状态（terminated）**：进程正在从系统中消失。可能是进程正常结束或其他原因中断退出运行。
 
-![进程状态图转换图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/state-transition-of-process.png)
+![进程状态图转换图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/state-transition-of-process.png)
 
 状态转换要重点看触发原因：就绪态拿到 CPU 后进入运行态；运行态时间片用完，可能回到就绪态；运行中发起阻塞 I/O、等待锁或等待事件，会进入阻塞态；阻塞等待的事件完成后，通常先回到就绪态，等待下一次被调度。
 
@@ -292,7 +292,7 @@ Unix 是早期最具影响力的多用户、多任务操作系统之一，后来
 
 在 Unix/Linux 编程里，进程创建和程序替换常绕不开 `fork()`、`exec()`、`wait()` 这三个动作。这里先记面试短答，更多文件描述符继承、写时复制和多线程 `fork` 的细节可以看：[进程与线程详解](./process-and-thread.md)，路径：`./process-and-thread.md`。
 
-![fork、exec、wait 的调用链路](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/fork-exec-wait-call-chain.png)
+![fork、exec、wait 的调用链路](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/fork-exec-wait-call-chain.png)
 
 - **`fork()`**：创建子进程。父子进程从同一个位置继续执行，但返回值不同。
 - **`exec()`**：在当前进程中装入另一个程序。它不会新建进程，而是替换当前进程的用户态代码和数据。
@@ -304,7 +304,7 @@ Shell 启动外部命令时，常见链路就是：Shell 先 `fork()` 出子进�
 
 上下文切换指 CPU 从一个执行实体切到另一个执行实体。操作系统需要保存当前执行实体的寄存器、程序计数器、栈指针等现场，再恢复下一个执行实体的现场。
 
-![线程上下文切换和进程上下文切换的成本对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/context-switch-cost-comparison.png)
+![线程上下文切换和进程上下文切换的成本对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/context-switch-cost-comparison.png)
 
 线程切换和进程切换都会有开销，但进程切换通常更重。原因是进程有独立地址空间，切换时可能涉及页表切换、TLB 失效、缓存局部性下降等成本；同一进程内的线程共享地址空间，切换时通常不需要换整套内存映射。
 
@@ -314,7 +314,7 @@ Shell 启动外部命令时，常见链路就是：Shell 先 `fork()` 出子进�
 
 ### 进程的调度算法有哪些？
 
-![常见进程调度算法](https://oss.javaguide.cn/github/javaguide/cs-basics/network/scheduling-algorithms-of-process.png)
+![常见进程调度算法](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/scheduling-algorithms-of-process.png)
 
 教材里的进程调度算法用于说明：当可运行任务多于 CPU 核数时，应该让谁先运行。调度器通常需要在**吞吐量、周转时间、响应时间、公平性**和切换开销之间做权衡。
 
@@ -379,7 +379,7 @@ load 高既可能是可运行任务在争抢 CPU，也可能是大量任务在�
 
 这时，线程 1 等着线程 2 释放锁 B，线程 2 等着线程 1 释放锁 A，双方都持有对方需要的资源，并等待对方释放，就形成了一个等待环。
 
-![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
+![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
 
 ### 产生死锁的四个必要条件是什么？
 
@@ -390,7 +390,7 @@ load 高既可能是可运行任务在争抢 CPU，也可能是大量任务在�
 3. **非抢占**：资源不能被抢占。只能在持有资源的进程完成任务后，该资源才会被释放。
 4. **循环等待**：有一组等待进程 `{P0, P1, ..., Pn}`，`P0` 等待的资源被 `P1` 占有，`P1` 等待的资源被 `P2` 占有，...，`Pn-1` 等待的资源被 `Pn` 占有，`Pn` 等待的资源又被 `P0` 占有。
 
-![死锁四个必要条件示意图：互斥、请求与保持、非抢占、循环等待同时成立才会形成死锁](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-four-conditions.png)
+![死锁四个必要条件示意图：互斥、请求与保持、非抢占、循环等待同时成立才会形成死锁](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-four-conditions.png)
 
 **注意**：这四个条件是产生死锁的必要条件，必须同时成立。只满足其中一两个条件不一定会死锁；反过来，只要能稳定破坏其中任意一个条件，就可以从结构上预防死锁。
 
@@ -457,7 +457,7 @@ Thread[线程 2,5,main]waiting get resource1
 - **检测**：允许等待发生，再检查等待图或资源分配图里是否出现环。Java 里可以用 `jcmd <pid> Thread.print -l`、`jstack -l <pid>` 或 `ThreadMXBean.findDeadlockedThreads()` 辅助排查；数据库也会检测事务等待环。
 - **解除/恢复**：发现死锁后打破等待环，例如终止进程、回滚事务、抢占资源或让应用层重试。数据库事务天然支持回滚，因此更适合采用检测和恢复。
 
-![死锁处理策略图：预防、避免、检测、恢复四类方法的作用位置和工程常见程度](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-strategies.png)
+![死锁处理策略图：预防、避免、检测、恢复四类方法的作用位置和工程常见程度](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-strategies.png)
 
 这部分面试不必展开太细，抓住层次即可。想继续看资源分配图、等待图、Java 线程栈排查和数据库死锁重试，可以看：[死锁详解：四个必要条件、Java 死锁排查与数据库死锁处理](./dead-lock.md)。
 

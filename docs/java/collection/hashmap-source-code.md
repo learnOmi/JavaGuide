@@ -65,7 +65,7 @@ static int hash(int h) {
 
 所谓 **“拉链法”** 就是：将链表和数组相结合。也就是说创建一个链表数组，数组中每一格就是一个链表。若遇到哈希冲突，则将冲突的值加到链表中即可。
 
-![jdk1.8 之前的内部结构-HashMap](https://oss.javaguide.cn/github/javaguide/java/collection/jdk1.7_hashmap.png)
+![jdk1.8 之前的内部结构-HashMap](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/jdk1.7_hashmap.png)
 
 ### JDK1.8 之后
 
@@ -73,7 +73,7 @@ static int hash(int h) {
 
 当链表长度大于阈值（默认为 8）时，会首先调用 `treeifyBin()` 方法。这个方法会根据 HashMap 数组来决定是否转换为红黑树。只有当数组长度大于或者等于 64 的情况下，才会执行转换红黑树操作，以减少搜索时间。否则，就是只是执行 `resize()` 方法对数组扩容。相关源码这里就不贴了，重点关注 `treeifyBin()` 方法即可！
 
-![jdk1.8之后的内部结构-HashMap](https://oss.javaguide.cn/github/javaguide/java/collection/jdk1.8_hashmap.png)
+![jdk1.8之后的内部结构-HashMap](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/jdk1.8_hashmap.png)
 
 **类的属性：**
 
@@ -271,7 +271,7 @@ HashMap 只提供了 put 用于添加元素，putVal 方法只是给 put 方法�
 1. 如果定位到的数组位置没有元素 就直接插入。
 2. 如果定位到的数组位置有元素就和要插入的 key 比较，如果 key 相同就直接覆盖，如果 key 不相同，就判断 p 是否是一个树节点，如果是就调用 `e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value)` 将元素添加进入。如果不是就遍历链表插入（插入的是链表尾部）。
 
-![ ](https://oss.javaguide.cn/github/javaguide/database/sql/put.png)
+![ ](/assets/images/oss.javaguide.cn/github/javaguide/database/sql/put.png)
 
 ```java
 public V put(K key, V value) {

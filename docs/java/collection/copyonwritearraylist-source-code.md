@@ -65,7 +65,7 @@ implements List<E>, RandomAccess, Cloneable, Serializable
 - `Cloneable`：表明它支持通过 `clone()` 方法进行拷贝，`CopyOnWriteArrayList#clone()` 返回的是浅拷贝。
 - `Serializable` : 表明它可以进行序列化操作，也就是可以将对象转换为字节流进行持久化存储或网络传输，非常方便。
 
-![CopyOnWriteArrayList 类图](https://oss.javaguide.cn/github/javaguide/java/collection/copyonwritearraylist-class-diagram.png)
+![CopyOnWriteArrayList 类图](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/copyonwritearraylist-class-diagram.png)
 
 ### 初始化
 

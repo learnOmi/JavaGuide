@@ -22,7 +22,7 @@ tag:
 
 黑网吧大概就是下面这样式儿的，一个没有窗户的房间里放了很多台老式电脑，非常拥挤。
 
-![黑网吧](https://oss.javaguide.cn/about-the-author/internet-addiction-teenager/heiwangba.png)
+![黑网吧](/assets/images/oss.javaguide.cn/about-the-author/internet-addiction-teenager/heiwangba.png)
 
 在黑网吧上网的经历也是一波三折，经常会遇到警察来检查或者碰到大孩子骚扰。在黑网吧上网的一年多中，我一共两次碰到警察来检查，主要是看有没有未成年人（当时黑网吧里几乎全是未成年人），实际感觉像是要问黑网吧老板要点好处。碰到大孩子骚扰的次数就比较多，大孩子经常抢我电脑，还威胁我把身上所有的钱给他们。我当时一个人也比较怂，被打了几次之后，就尽量避开大孩子来玩的时间去黑网吧，身上也只带很少的钱。小时候的性格就比较独立，在外遇到事情我一般也不会给家里人说（因为说了也没什么用，家人给我的安全感很少）。
 
@@ -30,7 +30,7 @@ tag:
 
 起初的时候，自己就是玩玩流行蝴蝶剑、单机摩托之类的单机游戏。但是，也没有到沉迷的地步，只是觉得这东西确实挺好玩的，一玩就可以玩一下午，恋恋不舍。
 
-![](https://oss.javaguide.cn/github/javaguide/books2a6021b9-e7a0-41c4-b69e-a652f7bc3e12-20200802173601289.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books2a6021b9-e7a0-41c4-b69e-a652f7bc3e12-20200802173601289.png)
 
 ## 小学毕业后开始有网瘾
 
@@ -46,7 +46,7 @@ QQ 飞车这款戏当时还挺火的，很多 90 后的小伙伴应该比较熟�
 
 到了初二的时候，就没玩 QQ 飞车了。我的等级也永久定格在了 **120** 级，这个等级在当时那个升级难的一匹的年代，算的上非常高的等级了。
 
-![](https://oss.javaguide.cn/javaguide/b488618c-3c25-4bc9-afd4-7324e27553bd-20200802175534614.png)
+![](/assets/images/oss.javaguide.cn/javaguide/b488618c-3c25-4bc9-afd4-7324e27553bd-20200802175534614.png)
 
 ## 初二网瘾爆发
 
@@ -56,13 +56,13 @@ QQ 飞车这款戏当时还挺火的，很多 90 后的小伙伴应该比较熟�
 
 有网瘾真的很可怕，为了上网什么都敢做。当时我家住在顶楼的隔热层，我每次晚上偷偷出去上网，为了不被家里人发现，要从我的房间的窗户爬出去，穿过几栋楼，经过几间无人居住的顶楼隔热层之后再下楼。现在想想，还是比较危险的。而且，我天生比较怕黑。当时为了上网，每次穿过这么多没人居住的顶层隔热层都没怕过。你让我现在再去，我都不敢，实在是佩服当年的自己的啊！
 
-![我家楼顶拍的雪景](https://oss.javaguide.cn/about-the-author/image-20230429114622340.png)
+![我家楼顶拍的雪景](/assets/images/oss.javaguide.cn/about-the-author/image-20230429114622340.png)
 
 周五晚上通宵完之后，我会睡到中午，然后下午继续去网吧玩。到了周日，基本都是直接从早上 8 点玩到晚上 9 点 10 点。那时候精力是真旺盛，真的完全不会感觉比较累，反而乐在其中。
 
 我的最终军衔停留在了两个钻石，玩过的小伙伴应该清楚这在当时要玩多少把（现在升级比较简单）。
 
-![](https://oss.javaguide.cn/about-the-author/cf.png)
+![](/assets/images/oss.javaguide.cn/about-the-author/cf.png)
 
 ps: 回坑 CF 快一年了，目前的军衔是到了两颗星中校 3 了。
 
@@ -90,7 +90,7 @@ ps: 回坑 CF 快一年了，目前的军衔是到了两颗星中校 3 了。
 
 ## 高中从小班掉到平行班
 
-![出高考成绩后回高中母校拍摄](https://oss.javaguide.cn/about-the-author/internet-addiction-teenager/wodegaozhong.png)
+![出高考成绩后回高中母校拍摄](/assets/images/oss.javaguide.cn/about-the-author/internet-addiction-teenager/wodegaozhong.png)
 
 由于参加了高中提前招生考试，我提前 4 个月就来到了高中，进入了小班，开始学习高中的课程。
 
@@ -126,7 +126,7 @@ ps: 回坑 CF 快一年了，目前的军衔是到了两颗星中校 3 了。
 
 其实我在之前是从来没有过失眠的经历的。高考前夕，因为害怕自己睡不着，所以，我提前让妈妈去买了几瓶老师推荐的安神补脑液。我到现在还记得这个安神补脑液是敖东牌的。
 
-![](https://oss.javaguide.cn/about-the-author/internet-addiction-teenager/image-20220625194714247.png)
+![](/assets/images/oss.javaguide.cn/about-the-author/internet-addiction-teenager/image-20220625194714247.png)
 
 高考那几天的失眠，我觉得可能和我喝了老师推荐的安神补脑液有关系，又或者是我自己太过于紧张了。因为那几天睡觉总会感觉有很多蚂蚁在身上爬一样，身上还起了一些小痘痘（有点像是过敏）。
 

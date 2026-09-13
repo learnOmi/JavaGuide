@@ -1,14 +1,27 @@
-import { promises as fs } from "node:fs";
+import { existsSync, promises as fs } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import path from "node:path";
 import {
   API_PREFIX,
+  DOCS_ROOT,
+  EDIT_TRASH_DIR,
   EDIT_PLUGIN_VERSION,
+  DIRS_ROUTE,
   FILE_ROUTE,
   HEALTH_ROUTE,
   MAX_BODY_BYTES,
   MAX_MD_BYTES,
+  MAX_SLUG_LENGTH,
+  PAGE_ROUTE,
+  SLUG_PATTERN,
 } from "./constants.js";
-import { resolveSafeMdPath } from "./guard.js";
+import {
+  PathValidationError,
+  resolveSafeMdDir,
+  resolveSafeMdPath,
+} from "./guard.js";
+import { listDocsDirs } from "./dirs.js";
+import { isTemplateKey, renderPageTemplate } from "./templates.js";
 
 /** 允许访问编辑 API 的回环地址集合（仅本机使用，server 可能绑定在 0.0.0.0） */
 const LOOPBACK_ADDRESSES = new Set(["127.0.0.1", "::1", "::ffff:127.0.0.1"]);
@@ -26,6 +39,14 @@ interface PutFileBody {
   content?: unknown;
   baseMtime?: unknown;
   force?: unknown;
+}
+
+/** POST /page 请求体结构 */
+interface PostPageBody {
+  dir?: unknown;
+  slug?: unknown;
+  title?: unknown;
+  template?: unknown;
 }
 
 /** 输出 JSON 响应的统一出口（禁用缓存，避免代理/浏览器缓存探测结果） */
@@ -150,11 +171,137 @@ async function handlePutFile({ res, req }: RouteContext): Promise<void> {
   sendJson(res, 200, { ok: true, mtime: newStat.mtimeMs });
 }
 
+/**
+ * POST /page：按模板新建 .md 页面。
+ * 请求体 `{ dir, slug, title, template }`；目标文件已存在返回 409（不覆盖）。
+ * 父目录不存在时递归创建，便于直接在全新目录中建页。
+ */
+async function handlePostPage({ res, req }: RouteContext): Promise<void> {
+  const body = (await readJsonBody(req)) as PostPageBody | null;
+  if (body === null) {
+    sendJson(res, 413, { ok: false, message: "请求体超过大小限制" });
+    return;
+  }
+
+  // slug 校验：白名单字符 + 长度限制（客户端用 pinyin-pro 生成，服务端兜底强校验）
+  const slug = body.slug;
+  if (typeof slug !== "string" || slug.length === 0) {
+    sendJson(res, 400, { ok: false, message: "slug 不能为空" });
+    return;
+  }
+  if (
+    slug.length > MAX_SLUG_LENGTH ||
+    !SLUG_PATTERN.test(slug) ||
+    slug.includes(".")
+  ) {
+    sendJson(res, 400, {
+      ok: false,
+      message: `slug 仅允许小写字母/数字/连字符，且以字母或数字开头（长度 ≤ ${MAX_SLUG_LENGTH}）`,
+    });
+    return;
+  }
+
+  // title 校验：非空即可（具体内容转义交给模板渲染器）
+  const title = body.title;
+  if (typeof title !== "string" || title.trim().length === 0) {
+    sendJson(res, 400, { ok: false, message: "标题不能为空" });
+    return;
+  }
+
+  // template 校验：服务端白名单，杜绝拼接任意内容
+  if (!isTemplateKey(body.template)) {
+    sendJson(res, 400, { ok: false, message: "未知的页面模板" });
+    return;
+  }
+
+  const dirAbsolute = resolveSafeMdDir(body.dir);
+  const absolute = path.join(dirAbsolute, `${slug}.md`);
+  if (existsSync(absolute)) {
+    sendJson(res, 409, { ok: false, message: "同名页面已存在，请更换 slug" });
+    return;
+  }
+
+  await fs.mkdir(dirAbsolute, { recursive: true });
+  const content = renderPageTemplate(body.template, title);
+  await fs.writeFile(absolute, content, "utf8");
+
+  // 返回与 pageData.filePathRelative 一致的 / 分隔相对路径
+  const relativeFp = path
+    .relative(DOCS_ROOT, absolute)
+    .split(path.sep)
+    .join("/");
+  sendJson(res, 200, { ok: true, fp: relativeFp });
+}
+
+/**
+ * DELETE /file?fp=：将文件移入回收站（软删除，可手工还原）。
+ * 回收站目录：docs/.vuepress/.edit-trash/<timestamp>/<basename>，
+ * 以 `.` 开头目录位于 .vuepress 下，不会成为站点页面。
+ */
+async function handleDeleteFile({ res, query }: RouteContext): Promise<void> {
+  const absolute = resolveSafeMdPath(query.get("fp"));
+  const stat = await fs.stat(absolute).catch(() => null);
+  if (!stat?.isFile()) {
+    sendJson(res, 404, { ok: false, message: "文件不存在，可能已被删除" });
+    return;
+  }
+
+  // 时间戳目录：同一毫秒内多次删除由存在性检查 + 序号后缀兜底
+  const timestampDir = buildTimestampDirName(new Date());
+  let trashSubDir = path.join(EDIT_TRASH_DIR, timestampDir);
+  let suffix = 0;
+  while (existsSync(trashSubDir)) {
+    suffix += 1;
+    trashSubDir = path.join(EDIT_TRASH_DIR, `${timestampDir}-${suffix}`);
+  }
+  await fs.mkdir(trashSubDir, { recursive: true });
+
+  const target = path.join(trashSubDir, path.basename(absolute));
+  try {
+    await fs.rename(absolute, target);
+  } catch (err) {
+    // 跨盘符（EXDEV）时 rename 失败：降级为复制 + 删除源文件
+    const code = (err as NodeJS.ErrnoException | null)?.code;
+    if (code !== "EXDEV") {
+      throw err;
+    }
+    await fs.copyFile(absolute, target);
+    await fs.unlink(absolute);
+  }
+
+  sendJson(res, 200, {
+    ok: true,
+    trashPath: path.relative(DOCS_ROOT, target).split(path.sep).join("/"),
+  });
+}
+
+/** 生成回收站子目录名（本地时间，形如 20260912-105030-123） */
+function buildTimestampDirName(date: Date): string {
+  const pad = (value: number, width = 2): string =>
+    String(value).padStart(width, "0");
+  const datePart = `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(
+    date.getDate(),
+  )}`;
+  const timePart = `${pad(date.getHours())}${pad(date.getMinutes())}${pad(
+    date.getSeconds(),
+  )}-${pad(date.getMilliseconds(), 3)}`;
+  return `${datePart}-${timePart}`;
+}
+
+/** GET /dirs：返回 docs 根下的可用目录树（新建页选择器数据源） */
+async function handleGetDirs({ res }: RouteContext): Promise<void> {
+  const tree = await listDocsDirs();
+  sendJson(res, 200, { ok: true, dirs: tree });
+}
+
 /** 路由表：`${method} ${pathname}` → 处理器 */
 const ROUTES: Record<string, (ctx: RouteContext) => Promise<void>> = {
   [`GET ${HEALTH_ROUTE}`]: handleHealth,
   [`GET ${FILE_ROUTE}`]: handleGetFile,
   [`PUT ${FILE_ROUTE}`]: handlePutFile,
+  [`DELETE ${FILE_ROUTE}`]: handleDeleteFile,
+  [`POST ${PAGE_ROUTE}`]: handlePostPage,
+  [`GET ${DIRS_ROUTE}`]: handleGetDirs,
 };
 
 /**
@@ -197,10 +344,9 @@ export function createEditApiMiddleware(): (
     try {
       await handler({ req, res, query });
     } catch (err) {
-      // 路径校验类错误返回 400，其余按 500 兜底；异常必须响应，不能悬挂连接
+      // 参数/路径校验类错误返回 400，其余按 500 兜底；异常必须响应，不能悬挂连接
       const message = toErrorMessage(err);
-      const status =
-        message.includes("文件路径") || message.includes("仅允许") ? 400 : 500;
+      const status = err instanceof PathValidationError ? 400 : 500;
       sendJson(res, status, { ok: false, message });
     }
   };

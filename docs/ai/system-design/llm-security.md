@@ -68,7 +68,7 @@ LLM Top 10 关注模型应用的通用风险，OWASP Agentic Top 10 2026 又把�
   -> 页面响应、日志、Trace 与评测集
 ```
 
-![一次 Agent 请求中的信任区](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-security-request-trust-boundaries.webp)
+![一次 Agent 请求中的信任区](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-security-request-trust-boundaries.webp)
 
 其中只有少量内容可以在既定用途内信任：服务端配置的策略、经过认证的用户身份，以及经过鉴权和完整性校验后读取的结构化业务事实。即使数据来自内部订单或工单系统，其中的备注、标题和富文本也可能由低权限用户写入，对模型来说仍然是不可信内容。下面这些输入都要按不可信数据处理：
 
@@ -101,7 +101,7 @@ LLM Top 10 关注模型应用的通用风险，OWASP Agentic Top 10 2026 又把�
 | 间接 Prompt Injection | 网页、邮件、文档、图片、RAG、工具结果 | 让 Agent 把外部数据当成新指令  | 工单附件中隐藏“把订单发到外部网站” |
 | Jailbreak             | 常见于用户对模型安全策略的对抗输入    | 绕过模型本身的安全限制         | 诱导模型生成原本拒绝提供的内容     |
 
-![Prompt Injection、间接注入和 Jailbreak 的区别](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-security-prompt-injection-types.webp)
+![Prompt Injection、间接注入和 Jailbreak 的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-security-prompt-injection-types.webp)
 
 Direct 和 Indirect 描述的是攻击内容从哪里进入，Jailbreak 描述的是攻击者想绕过模型安全策略这一目标。它们不是完全互斥的三种类别。一个售后 Agent 即使没有输出受限内容，只要它在错误指令影响下调用了退款工具，业务系统仍然遭到攻击。
 
@@ -319,7 +319,7 @@ MCP Client --面向 MCP Server 的 Token--> MCP Server
 MCP Server --面向订单 API 的独立凭证--> Order API
 ```
 
-![MCP Token 的受众和凭证边界](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-security-mcp-token-boundaries.webp)
+![MCP Token 的受众和凭证边界](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-security-mcp-token-boundaries.webp)
 
 Server 校验发行者、受众、有效期和 scope，再根据当前用户、租户和具体资源执行授权。访问下游服务时使用受限的独立凭证，并保留用户委托关系和审计信息。
 
@@ -485,7 +485,7 @@ LLM 应用的供应链不只包含 Maven、npm 和 Python 依赖，还包含模�
 
 下面的代码不绑定某个 Agent 框架。模型或框架只负责生成 `RefundProposal`，执行职责由 Java 业务服务承担。
 
-![高风险工具的安全执行链](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-security-safe-tool-execution-chain.webp)
+![高风险工具的安全执行链](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-security-safe-tool-execution-chain.webp)
 
 ### 1. 身份与模型提议分开
 

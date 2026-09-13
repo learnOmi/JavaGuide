@@ -28,7 +28,7 @@ CPU 核心有限，可运行任务可能很多。
 
 一个进程可包含多个线程。它们共享进程地址空间和文件描述符，但各自有栈、寄存器、程序计数器等执行现场。
 
-![程序、进程和线程的关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
+![程序、进程和线程的关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
 
 在 Linux 内核里，进程和线程都用 task 表示，调度器实际调度的是 task 或调度实体；用户态看到的一条线程，大多对应一个内核可调度任务。
 
@@ -36,7 +36,7 @@ CPU 核心有限，可运行任务可能很多。
 
 调度器要兼顾交互响应、公平性、吞吐量、优先级、实时任务、功耗和缓存局部性。这些目标经常互相牵制：时间片长一些，切换会减少，但交互任务可能等更久；时间片短一些，响应会改善，切换开销又会上升。
 
-![CPU 调度取舍关系图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/scheduler-tradeoff-triangle.webp)
+![CPU 调度取舍关系图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/scheduler-tradeoff-triangle.webp)
 
 ## 任务离开 CPU 的几种情况
 
@@ -96,7 +96,7 @@ EEVDF 仍然围绕公平分配 CPU 展开，在选择任务时引入了 lag 和�
 
 后端面试通常需要说明 CFS 的 `vruntime`、权重和公平份额，以及 EEVDF 的 lag、虚拟截止时间和延迟敏感任务。更细的内容会涉及内核实现。
 
-![CFS 与 EEVDF 对比图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/cfs-eevdf-comparison.webp)
+![CFS 与 EEVDF 对比图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/cfs-eevdf-comparison.webp)
 
 ## load average 和 CPU 使用率不是一回事
 
@@ -120,7 +120,7 @@ CPU 使用率看的是 CPU 时间花到了哪里。`top` 里的 `%Cpu(s)` 常见
 - `hi` / `si`：硬中断 / 软中断时间。网络包量大、网卡中断集中、协议栈处理压力大时要关注。
 - `st`：虚拟化环境里被宿主机拿走的 CPU 时间。云主机上这值高时，先不要急着改业务代码。
 
-![load average 与 CPU 使用率对比图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/load-average-vs-cpu-usage.webp)
+![load average 与 CPU 使用率对比图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/load-average-vs-cpu-usage.webp)
 
 `wa` 尤其容易被误读。iowait 不是可靠的归因：CPU 不会真的等待 I/O 完成；在多核系统里，等待 I/O 的任务也不运行在某个 CPU 上。因此，`wa` 高只能说明系统存在 I/O 等待线索，不能直接说明 CPU 忙于 I/O。
 
@@ -130,7 +130,7 @@ CPU 使用率看的是 CPU 时间花到了哪里。`top` 里的 `%Cpu(s)` 常见
 
 排查时不要一上来就钻进 Java 栈。先把压力类型分出来，再下钻到进程、线程、CPU 核和热点函数。
 
-![CPU 报警排查分支图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/load-cpu-alert-triage.webp)
+![CPU 报警排查分支图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/load-cpu-alert-triage.webp)
 
 `uptime` 先看负载趋势。1 分钟高、5 分钟和 15 分钟不高，可能是短时尖刺；三个值都高，说明压力已持续了一段时间。再打开 `top`，看 `%Cpu(s)` 里是 `us`、`ni`、`sy`、`wa`、`si` 还是 `st` 抬头，同时看进程排序和任务状态。
 

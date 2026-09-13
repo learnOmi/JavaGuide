@@ -36,15 +36,15 @@ head:
 
 比如，**CPU Cache** 缓存的是内存数据，用于解决 **CPU** 处理速度与内存访问速度不匹配的问题；内存缓存的是硬盘数据，用于解决硬盘 **I/O** 速度过慢的问题。
 
-![CPU 缓存模型示意图](https://oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache.png)
+![CPU 缓存模型示意图](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/cpu-cache.png)
 
 再比如，为了提高虚拟地址到物理地址的转换速度，操作系统在页表方案基础之上引入了 **转址旁路缓存**（Translation Lookaside Buffer，**TLB**，也被称为快表）。
 
-![加入 TLB 之后的地址翻译](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation-mmu.png)
+![加入 TLB 之后的地址翻译](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation-mmu.png)
 
 拿日常使用的浏览器来说，它会对访问过的图片或静态文件进行缓存（浏览器缓存），这样下次访问相同页面时加载速度会显著提升。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/chrome-clear-cache.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/chrome-clear-cache.png)
 
 我们日常开发中用到的缓存，其中的数据通常存储于 **RAM**（内存）中，访问速度极快。为了避免内存数据在重启或宕机后丢失，许多缓存中间件（如 **Redis**）提供了磁盘持久化机制。相比于关系型数据库（如 **MySQL**），缓存的访问速度和并发支持量都要高出几个数量级。在数据库之上增加一层缓存，是保护底层存储、提升系统吞吐量的核心手段。
 
@@ -62,7 +62,7 @@ head:
 
 常见的单体架构图如下，我们使用 **Nginx** 来做**负载均衡**，部署两个相同的应用到服务器，两个服务使用同一个数据库，并且使用的是本地缓存。
 
-![本地缓存示意图](https://oss.javaguide.cn/github/javaguide/database/redis/local-cache.png)
+![本地缓存示意图](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/local-cache.png)
 
 **注意：** 在集群模式下使用本地缓存，必须考虑**负载均衡策略**。如果 Nginx 使用默认的**轮询（Round-Robin）**，同一个用户的请求会随机落在不同机器，导致本地缓存命中率极低。解决方案如下：
 
@@ -120,7 +120,7 @@ Cache<String, String> cache = Caffeine.newBuilder()
 
 如下图所示，就是一个简单的使用分布式缓存的架构图。我们使用 Nginx 来做负载均衡，部署两个相同的应用到服务器，两个服务使用同一个数据库和缓存。
 
-![分布式缓存](https://oss.javaguide.cn/github/javaguide/database/redis/distributed-cache.png)
+![分布式缓存](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/distributed-cache.png)
 
 使用分布式缓存之后，缓存服务可以部署在一台单独的服务器上，即使同一个相同的服务部署在多台机器上，也是使用的同一份缓存。 并且，单独的分布式缓存服务的性能、容量和提供的功能都要更加强大。
 
@@ -167,7 +167,7 @@ Memcached 是分布式缓存最开始兴起的那会，比较常用的。后来�
 
 多级缓存方案中，第一级缓存（L1）使用本地内存（比如 Caffeine)），第二级缓存（L2）使用分布式缓存（比如 Redis）。
 
-![多级缓存](https://oss.javaguide.cn/javaguide/database/redis/multilevel-cache.png)
+![多级缓存](/assets/images/oss.javaguide.cn/javaguide/database/redis/multilevel-cache.png)
 
 读取缓存数据的时候，我们先从 L1 中读取，命中后直接返回；L1 未命中时再去 L2 读取。如果 L2 命中，应先将数据回填到当前实例的 L1，再返回结果，避免后续每次 L1 未命中都重复访问 L2。如果 L2 也没有此数据，再去数据库查询，查询成功后将数据写入到 L1 和 L2 中。这样可以减少 L2 的读次数，降低 L2 的压力。
 

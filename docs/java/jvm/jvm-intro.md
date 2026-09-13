@@ -22,7 +22,7 @@ JVM 是 Java Virtual Machine 的缩写，它是一个虚构出来的计算机，
 
 好，其实抛开这么专业的句子不说，就知道 JVM 其实就类似于一台小电脑运行在 windows 或者 linux 这些操作系统环境下即可。它直接和操作系统进行交互，与硬件不直接交互，而操作系统可以帮我们完成和硬件进行交互的工作。
 
-![](https://static001.geekbang.org/infoq/da/da0380a04d9c04facd2add5f6dba06fa.png)
+![](/assets/images/static001.geekbang.org/infoq/da/da0380a04d9c04facd2add5f6dba06fa.png)
 
 ### 1.1 Java 文件是如何被运行的
 
@@ -34,7 +34,7 @@ JVM 是 Java Virtual Machine 的缩写，它是一个虚构出来的计算机，
 
 如果 **JVM** 想要执行这个 **.class** 文件，我们需要将其装进一个 **类加载器** 中，它就像一个搬运工一样，会把所有的 **.class** 文件全部搬进 JVM 里面来。
 
-![](https://static001.geekbang.org/infoq/2f/2f012fde94376f43a25dbe1dd07e0dd8.png)
+![](/assets/images/static001.geekbang.org/infoq/2f/2f012fde94376f43a25dbe1dd07e0dd8.png)
 
 #### ② 方法区
 
@@ -56,7 +56,7 @@ JVM 是 Java Virtual Machine 的缩写，它是一个虚构出来的计算机，
 
 程序计数器记录当前线程正在执行的 JVM 指令地址；执行分支、循环、异常处理或线程切换后，虚拟机依靠它继续执行。它和栈一样属于 **线程私有** 区域。执行 native 方法时，规范不规定其取值。
 
-![](https://static001.geekbang.org/infoq/c6/c602f57ea9297f50bbc265f1821d6263.png)
+![](/assets/images/static001.geekbang.org/infoq/c6/c602f57ea9297f50bbc265f1821d6263.png)
 
 #### 小总结
 
@@ -68,11 +68,11 @@ JVM 是 Java Virtual Machine 的缩写，它是一个虚构出来的计算机，
 
 一个简单的学生类
 
-![](https://static001.geekbang.org/infoq/12/12f0b239db65b8a95f0ce90e9a580e4d.png)
+![](/assets/images/static001.geekbang.org/infoq/12/12f0b239db65b8a95f0ce90e9a580e4d.png)
 
 一个 main 方法
 
-![](https://static001.geekbang.org/infoq/0c/0c6d94ab88a9f2b923f5fea3f95bc2eb.png)
+![](/assets/images/static001.geekbang.org/infoq/0c/0c6d94ab88a9f2b923f5fea3f95bc2eb.png)
 
 执行 main 方法的步骤如下:
 
@@ -226,13 +226,13 @@ MaxMetaspaceSize：限制元空间大小上限
 
 而且当老年区执行了 full gc 之后仍然无法进行对象保存的操作，就会产生 OOM，这时候就是虚拟机中的堆内存不足，原因可能会是堆内存设置的大小过小，这个可以通过参数-Xms、-Xmx 来调整。也可能是代码中创建的对象大且多，而且它们一直在被引用从而长时间垃圾收集无法收集它们。
 
-![](https://static001.geekbang.org/infoq/39/398255141fde8ba208f6c99f4edaa9fe.png)
+![](/assets/images/static001.geekbang.org/infoq/39/398255141fde8ba208f6c99f4edaa9fe.png)
 
 补充说明：关于-XX:TargetSurvivorRatio 参数的问题。其实也不一定是要满足-XX:MaxTenuringThreshold 才移动到老年代。可以举个例子：如对象年龄 5 的占 30%，年龄 6 的占 36%，年龄 7 的占 34%，加入某个年龄段（如例子中的年龄 6）后，总占用超过 Survivor 空间\*TargetSurvivorRatio 的时候，从该年龄段开始及大于的年龄对象就要进入老年代（即例子中的年龄 6 对象，就是年龄 6 和年龄 7 晋升到老年代），这时候无需等到 MaxTenuringThreshold 中要求的 15
 
 #### 3.3.8 如何判断一个对象需要被干掉
 
-![](https://static001.geekbang.org/infoq/1b/1ba7f3cff6e07c6e9c6765cc4ef74997.png)
+![](/assets/images/static001.geekbang.org/infoq/1b/1ba7f3cff6e07c6e9c6765cc4ef74997.png)
 
 图中程序计数器、虚拟机栈、本地方法栈，3 个区域随着线程的生存而生存的。内存分配和回收都是确定的。随着线程的结束内存自然就被回收了，因此不需要考虑垃圾回收的问题。而 Java 堆和方法区则不一样，各线程共享，内存的分配和回收都是动态的。因此垃圾收集器所关注的都是堆和方法这部分内存。
 
@@ -260,7 +260,7 @@ MaxMetaspaceSize：限制元空间大小上限
 
 补充一句：并不提倡在程序中调用 `finalize()` 来进行自救。它的执行时间不确定，甚至不保证一定会执行，而且运行代价高昂，无法保证各个对象的调用顺序。`finalize()` 在 Java 9 中被弃用，并在 Java 18 中被标记为待移除。需要管理堆外资源时，可以根据场景使用 `try-with-resources` 或 `java.lang.ref.Cleaner`；`Cleaner` 本身并不是强、软、弱、幻象引用的统称。
 
-![](https://static001.geekbang.org/infoq/8d/8d7f0381c7d857c7ceb8ae5a5fef0f4a.png)
+![](/assets/images/static001.geekbang.org/infoq/8d/8d7f0381c7d857c7ceb8ae5a5fef0f4a.png)
 
 对于重写了 `finalize()` 方法且该方法尚未执行过的对象，其处理过程通常被概括为两次标记：
 
@@ -277,7 +277,7 @@ MaxMetaspaceSize：限制元空间大小上限
 
 HotSpot VM 中的垃圾回收器，以及适用场景
 
-![](https://static001.geekbang.org/infoq/9f/9ff72176ab0bf58bc43e142f69427379.png)
+![](/assets/images/static001.geekbang.org/infoq/9f/9ff72176ab0bf58bc43e142f69427379.png)
 
 在常见的 JDK 8 Server HotSpot 配置中，默认组合通常是 Parallel Scavenge 和 Parallel Old；实际默认值仍可能受虚拟机实现、运行模式和平台影响。
 
@@ -330,7 +330,7 @@ System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 
 
 注意：此处设置的是 Java 堆大小，也就是新生代大小 + 老年代大小
 
-![](https://static001.geekbang.org/infoq/11/114f32ddd295b2e30444f42f6180538c.png)
+![](/assets/images/static001.geekbang.org/infoq/11/114f32ddd295b2e30444f42f6180538c.png)
 
 设置一个 VM options 的参数
 
@@ -338,11 +338,11 @@ System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 
 -Xmx20m -Xms5m -XX:+PrintGCDetails
 ```
 
-![](https://static001.geekbang.org/infoq/7e/7ea0bf0dec20e44bf95128c571d6ef0e.png)
+![](/assets/images/static001.geekbang.org/infoq/7e/7ea0bf0dec20e44bf95128c571d6ef0e.png)
 
 再次启动 main 方法
 
-![](https://static001.geekbang.org/infoq/c8/c89edbd0a147a791cfabdc37923c6836.png)
+![](/assets/images/static001.geekbang.org/infoq/c8/c89edbd0a147a791cfabdc37923c6836.png)
 
 这里 GC 弹出了一个 Allocation Failure 分配失败，这个事情发生在 PSYoungGen，也就是年轻代中
 
@@ -358,7 +358,7 @@ System.out.println("free mem=" + Runtime.getRuntime().freeMemory() / 1024.0 / 10
 System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 1024 + "M");
 ```
 
-![](https://static001.geekbang.org/infoq/db/dbeb6aea0a90949f7d7fe4746ddb11a3.png)
+![](/assets/images/static001.geekbang.org/infoq/db/dbeb6aea0a90949f7d7fe4746ddb11a3.png)
 
 此时 free memory 就又缩水了，不过 total memory 是没有变化的。Java 会尽可能将 total mem 的值维持在最小堆内存大小
 
@@ -370,7 +370,7 @@ System.out.println("free mem=" + Runtime.getRuntime().freeMemory() / 1024.0 / 10
 System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 1024 + "M");  //当前可用的总空间
 ```
 
-![](https://static001.geekbang.org/infoq/b6/b6a7c522166dbd425dbb06eb56c9b071.png)
+![](/assets/images/static001.geekbang.org/infoq/b6/b6a7c522166dbd425dbb06eb56c9b071.png)
 
 这时候我们创建了一个 10M 的字节数据，这时候最小堆内存是顶不住的。我们会发现现在的 total memory 已经变成了 15M，这就是已经申请了一次内存的结果。
 
@@ -383,7 +383,7 @@ System.out.println("free mem=" + Runtime.getRuntime().freeMemory() / 1024.0 / 10
 System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 1024 + "M");  //当前可用的总空间
 ```
 
-![](https://static001.geekbang.org/infoq/8d/8dd6e8fccfd1394b83251c136ee44ceb.png)
+![](/assets/images/static001.geekbang.org/infoq/8d/8dd6e8fccfd1394b83251c136ee44ceb.png)
 
 此处调用 `System.gc()` 只是向 JVM 提交一次垃圾收集建议，并不保证一定执行 Full GC；截图中的这次运行确实触发了相应收集并缩小了已提交堆空间，但不同 JVM 参数和收集器下结果可能不同。
 

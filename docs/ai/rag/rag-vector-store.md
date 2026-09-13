@@ -18,7 +18,7 @@ head:
 
 Embedding 的过程是：把一段文本交给 Embedding 模型，模型输出一个固定维度的稠密向量。可以粗略理解成“文本语义坐标”。两段文本语义越接近，它们在向量空间里的距离通常也越近。
 
-![Embedding 和向量检索是什么关系？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-embedding-vector-retrieval.png)
+![Embedding 和向量检索是什么关系？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-embedding-vector-retrieval.png)
 
 RAG 的向量检索链路可以简化成这样：
 
@@ -37,7 +37,7 @@ RAG 的向量检索链路可以简化成这样：
 
 传统关系型数据库可以存向量，也可以通过函数或 SQL 表达式计算相似度。但如果没有专门的向量索引，通常只能全表扫描，很难支撑生产级低延迟检索。当 Chunk 数量达到几十万、百万甚至更高时，就需要引入向量数据库、向量搜索引擎，或者 PostgreSQL + pgvector 这类带向量索引能力的数据库扩展。
 
-![RAG 场景为什么需要向量数据库？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-why-need-vector-store.png)
+![RAG 场景为什么需要向量数据库？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-why-need-vector-store.png)
 
 ### 高维向量相似度搜索
 
@@ -119,7 +119,7 @@ ANN 的价值不在于永远返回 100% 精确的最近邻，而是在召回率�
 
 实践里，向量索引算法大致可以分成两类。
 
-![向量索引算法分类](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-vector-index-algorithms-Bjze1jhj.png)
+![向量索引算法分类](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-vector-index-algorithms-Bjze1jhj.png)
 
 多数时候我们谈向量索引，谈的是 ANN 算法。索引带来的收益与数据分布、硬件、Top-K、过滤条件和召回目标有关，不能用一个固定倍数概括。调参时应同时记录查询延迟、资源占用和召回率。
 
@@ -172,7 +172,7 @@ ANN 是现代向量检索的主流。它接受一个工程取舍：不保证 100
 
 可以把 HNSW 理解成一个多层高速公路网络。
 
-![HNSW 索引架构](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-hnsw-architecture.png)
+![HNSW 索引架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-hnsw-architecture.png)
 
 HNSW 的核心机制有三点。
 
@@ -424,7 +424,7 @@ MySQL 这边要分版本看。MySQL 8.x 系列，包括 8.4 LTS，没有官方 `
 
 如果项目已经深度绑定 MySQL，可以继续用 MySQL 存业务数据，再搭配 pgvector、Milvus、Qdrant、Weaviate、Elasticsearch / OpenSearch 等外部向量检索组件。没必要为了 RAG 强行把所有东西塞进 MySQL。
 
-![VECTOR 列不能用作任何类型的键，包括主键、外键、唯一键和分区键](https://oss.javaguide.cn/github/javaguide/ai/rag/mysql9-vector-cannot-be-used-as-any-type-of-key.png)
+![VECTOR 列不能用作任何类型的键，包括主键、外键、唯一键和分区键](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/mysql9-vector-cannot-be-used-as-any-type-of-key.png)
 
 关于 MySQL 和 PostgreSQL 的详细对比，可以参考我写的这篇文章：[MySQL vs PostgreSQL，如何选择？](https://mp.weixin.qq.com/s/APWD-PzTcTqGUuibAw7GGw)。
 

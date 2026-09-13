@@ -36,7 +36,7 @@ CPU 正常执行用户程序时，下一条指令由程序计数器和跳转逻�
 - **故障（Fault）**：当前指令执行时遇到问题，但内核可能进行修复。典型例子是缺页异常，修好后会重新执行触发 fault 的那条指令。
 - **终止（Abort）**：处理器发现难以恢复的严重错误，通常不再回到原来的指令流。
 
-![中断、异常与系统调用关系图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/ecf-kernel-entry-map.webp)
+![中断、异常与系统调用关系图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/ecf-kernel-entry-map.webp)
 
 `trap` 这个词在不同资料里的用法不完全一样。CSAPP 语境下，它通常指程序主动触发的同步异常，比如系统调用；RISC-V 则把 trap 定义为异常或中断引起的控制转移。本文提到“trap / 系统调用”时使用前一种狭义含义，涉及 RISC-V 时会单独说明。
 
@@ -108,13 +108,13 @@ x86-64 上，64 位系统调用通常走 `syscall` 指令；异常和外部中�
 
 系统调用一定会进入内核，但不一定切换到另一个线程。`getpid()` 这类调用通常很快返回，还是当前线程继续运行。`read()` 如果要等待数据，内核可能挂起当前线程，先调度别的线程。另外，一些时间相关接口可借助 vDSO 在用户态完成，比如 `clock_gettime()`、`gettimeofday()` 在某些架构和配置下可以读取内核映射给用户态的数据页，不一定每次都真正进入内核。
 
-![用户态内核态切换与上下文切换对比图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/kernel-mode-vs-context-switch.webp)
+![用户态内核态切换与上下文切换对比图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/kernel-mode-vs-context-switch.webp)
 
 ## `read()` 的系统调用路径
 
 以 Linux x86-64 上的 `read(fd, buf, count)` 为例，业务代码一般调用的是 glibc 包装函数，不会自己写汇编。
 
-![read 系统调用流程图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/read-syscall-path.webp)
+![read 系统调用流程图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/read-syscall-path.webp)
 
 glibc 会把系统调用号放进 `rax`，把参数放进约定寄存器。x86-64 的系统调用参数依次放在 `rdi`、`rsi`、`rdx`、`r10`、`r8`、`r9`。
 
@@ -172,7 +172,7 @@ Page Fault 这个名字容易让人以为程序已经出错。实际上，它只
 4. 访问权限不对，比如用户态访问内核页、写只读页、执行不可执行页；
 5. 地址根本不属于进程合法的虚拟地址区域。
 
-![Page Fault 处理分支图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/page-fault-branching.webp)
+![Page Fault 处理分支图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/page-fault-branching.webp)
 
 内核处理 Page Fault 时，先看地址是否落在进程合法的 VMA 中，再看访问类型和权限是否契合。
 

@@ -15,7 +15,7 @@ head:
 
 大家好，我是小 G。最近星球里有不少 G 友分享 Agent 岗位的面经，我看了一下，发现问到上下文管理的次数比较多。
 
-![Claude Code、Skills 与上下文工程面试题记录](https://oss.javaguide.cn/github/javaguide/ai/claude-code/claude-code-context-management-interview-questions.png)
+![Claude Code、Skills 与上下文工程面试题记录](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/claude-code-context-management-interview-questions.png)
 
 我在之前的文章中已经分享过一篇： [上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？](https://javaguide.cn/ai/agent/context-engineering.html)，介绍了上下文管理的核心内容。
 
@@ -33,7 +33,7 @@ Claude Code 执行 `/compact` 后，会用结构化摘要替换此前的会话�
 
 ## Claude Code 架构全景
 
-![Claude Code 架构全景](https://oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-arch-arch.png)
+![Claude Code 架构全景](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-arch-arch.png)
 
 窗口承压时，可以直接清理工具结果、压缩历史、重置上下文，或者把支线隔离到子代理。Skills 的按需加载、任务状态写入文件系统，以及后台任务的独立执行，也会改变可用预算。
 
@@ -43,7 +43,7 @@ Claude Code 执行 `/compact` 后，会用结构化摘要替换此前的会话�
 
 在 `Agent = Model + Harness` 这个公式里，模型提供推理能力，Harness 负责信息获取、工具调用和任务推进。上下文管理属于 Harness：它决定当前窗口保留哪些状态，清理哪些临时结果，以及哪些内容应写到窗口外。
 
-![Agent = Model + Harness](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
+![Agent = Model + Harness](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
 
 面试中问到这类问题，考察的通常是能否把 Agent 看作一个有状态系统。它和传统后端系统有一些相似之处（以下类比用于帮助理解，不是机制等价）：
 
@@ -60,7 +60,7 @@ Prompt Engineering 和 Context Engineering 的区别也在这里。前者关心�
 
 你把 System Prompt 写得再详细，也没办法搞定上下文管理。这反而会起到反作用，增加固定开销，让窗口更早进入高压区/危险区。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 ## 窗口预算与信息加载
 
@@ -74,7 +74,7 @@ Prompt Engineering 和 Context Engineering 的区别也在这里。前者关心�
 
 窗口占用可以分为两部分：启动时就存在的 System Prompt、规则和工具注册，以及任务中不断追加的工具结果和对话历史。前者决定会话起步时的余量；读文件、跑命令和收集日志会不断推高后者。
 
-![上下文窗口（Context Window）= LLM 的工作记忆](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
+![上下文窗口（Context Window）= LLM 的工作记忆](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
 
 启动开销主要来自 System Prompt、`CLAUDE.md`、Skills 描述和部分工具信息。观察到的实现会尽量延迟加载一部分 MCP 工具定义：
 
@@ -86,7 +86,7 @@ Prompt Engineering 和 Context Engineering 的区别也在这里。前者关心�
 
 想看当前会话实际占用，可以使用 `/context` 命令。它会把当前模型窗口、已用 Token、剩余空间，以及 System Prompt、工具、Skills、消息等分类占用列出来。
 
-![Claude Code /context 命令运行结果](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-context-command-result.png)
+![Claude Code /context 命令运行结果](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/claude-code-context-command-result.png)
 
 动态内容里，工具调用通常是大头。一个几百行的源文件可能就是几千 Token；搜索结果和测试日志可能更长。工具调用参数和结果会进入当前会话，文件内容、命令输出和搜索结果会随着任务推进不断累积。接近窗口上限时，Claude Code 会先清理较旧的工具结果，空间仍然不够时再压缩会话。
 
@@ -94,7 +94,7 @@ Prompt Engineering 和 Context Engineering 的区别也在这里。前者关心�
 
 这就是我们常说的上下文腐化（Context Rot）问题。**上下文越长，信息越杂，模型利用上下文的稳定性就越可能变差。**
 
-![上下文腐化](https://oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
+![上下文腐化](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
 
 Claude Code 每次调用 LLM 时，窗口里通常有这些内容：
 
@@ -223,7 +223,7 @@ Cursor 这类 AI IDE 会做 Codebase Indexing，用索引辅助低延迟补全�
 
 长任务里，窗口扩大后会同时装入更多约束、日志和旧判断，当前决策所需的材料因此更难被稳定取用。一些社区实践把 40% 左右当作清理或压缩的提醒线；模型、任务类型和上下文结构不同，出现波动的位置也会变化。
 
-![社区经验中的上下文利用率管理线](https://oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
+![社区经验中的上下文利用率管理线](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
 
 第 3 轮写下“不要改数据库 schema”，到第 30 轮时，这条限制可能被搜索结果和测试日志夹在中间。这类开头与结尾更容易被注意、中间内容容易遗漏的现象，通常称为 **Lost in the Middle**。
 
@@ -233,7 +233,7 @@ Cursor 这类 AI IDE 会做 Codebase Indexing，用索引辅助低延迟补全�
 
 [Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps "Harness design for long-running application development")这篇文章中的完整描述如下：
 
-![context-anxiety-harness-design-long-running-apps](https://oss.javaguide.cn/github/javaguide/ai/claude-code/context-anxiety-harness-design-long-running-apps.png)
+![context-anxiety-harness-design-long-running-apps](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/context-anxiety-harness-design-long-running-apps.png)
 
 旧判断、重复搜索结果、已解决问题和无用日志也会消耗注意力，即使窗口还没有临界。它们在每轮请求里反复出现，新决策却可能只有一句；这种信噪比下降的状态称为 **Context Rot**。窗口变大只能延后压力，信息过多仍会让中间位置的限制被遗漏，最后还可能进入 Context Anxiety。
 
@@ -277,7 +277,7 @@ MicroCompact 会把旧工具结果替换为 `[Old tool result content cleared]`�
 
 工具结果清掉以后，对话历史还在涨。到一定程度，就需要把旧历史改写成状态摘要。在本文观察的实现里，这件事会走一条多级流水线。官方文档能确认的是：接近上限时会先清旧工具结果，不够再摘要会话。
 
-![五级渐进压缩流水线](https://oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-pipeline-flow.png)
+![五级渐进压缩流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-pipeline-flow.png)
 
 | 级别 | 名称         | 动作                                       | 信息损失   | API 成本 |
 | ---- | ------------ | ------------------------------------------ | ---------- | -------- |
@@ -297,7 +297,7 @@ Collapse 也属于这部分实现，比 AutoCompact 更轻。调用 API 时，�
 
 AutoCompact 会用一份新的状态摘要替换旧聊天记录。目标、进度、决策和待办会被保留，读过哪些文件、搜过哪些关键词以及测试输出全文通常不会；需要这些细节时，Agent 需重新从文件系统读取。
 
-![AutoCompact 压缩前后对比](https://oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-compare.png)
+![AutoCompact 压缩前后对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-compare.png)
 
 手动 `/compact` 与自动压缩使用同类能力，但输入参数不同。手动调用可以明确指定摘要必须保留的内容；自动调用会打开 `suppressFollowUpQuestions`，避免摘要器在中途追问。
 
@@ -390,7 +390,7 @@ Full / Partial Compact 结束后，新的消息链通常包含边界标记、摘
 
 第四层就不再执着于“把旧窗口救回来”了。Compaction 是在旧上下文上修补，修补次数多了，细节损失会叠加。到了某个点，继续压不如直接重开。Context Reset 的做法是清空窗口，把当前状态写成交接文档，新的 Agent 从交接文档恢复。
 
-![上下文重置交接流程](https://oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-reset-flow.png)
+![上下文重置交接流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-reset-flow.png)
 
 Anthropic 在基于 Sonnet 4.5 的特定长任务 Harness 中观察到，模型接近上下文上限时会草草收尾，也就是 Context Anxiety。这个场景下，单靠 Compaction 不够。
 
@@ -416,7 +416,7 @@ Reset 的风险也清楚，交接材料是主要桥梁。它不一定只有一�
 
 分析几千行日志、跨文件定位或独立审查时，主会话通常不需要看到全部过程。Sub-agent 在独立窗口完成这些支线后，只回传摘要和必要证据；全文日志与中间试错留在子代理历史中。
 
-![Claude Code Sub-Agent：让主对话保持干净](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
+![Claude Code Sub-Agent：让主对话保持干净](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
 
 主会话只需根因和证据的日志任务适合拆出。任务小到几步就能完成、子任务频繁相互等待，或边界本身说不清时，调度和摘要反而会带来额外成本。
 
@@ -465,7 +465,7 @@ Circuit Breaker 是自动压缩的硬保护。官方文档说明：某个大文�
 
 Anthropic Labs 团队在 2026 年发了一个受 **GAN（Generative Adversarial Network，生成对抗网络）** 思路启发的三智能体架构：
 
-![Anthropic 三智能体架构](https://oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-triagent-arch.png)
+![Anthropic 三智能体架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/ctx-mgmt-triagent-arch.png)
 
 Planner 把 1-4 句话的产品描述扩成完整规格，Generator 按 Sprint 实现功能，Evaluator 再用 Playwright MCP 实际操作运行中的应用，并按产品设计深度、功能性、视觉设计和代码质量打分。角色分工让规划、实现和评估各自保有独立上下文。
 
@@ -557,13 +557,13 @@ Carlini 后来在 [Building a C compiler with a team of parallel Claudes](https:
 
 会话历史只服务当前会话，之后可能被压缩。用户或项目写入的持久指令放在 `CLAUDE.md` / Rules；Auto Memory 按 Git 仓库保存经验笔记，默认路径为 `~/.claude/projects/<project>/memory/`，可由 `CLAUDE_COWORK_MEMORY_PATH_OVERRIDE` 或可信 settings 中的 `autoMemoryDirectory` 覆盖。会话启动时只加载 `MEMORY.md` 的前 200 行或 25KB。
 
-![Claude Code Auto Memory](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-auto-memory.png)
+![Claude Code Auto Memory](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/claude-code-auto-memory.png)
 
 记忆文件变多后，启动时只加载索引；需要具体细节再打开对应文件。
 
 有些 Agent 项目也会把 `AGENTS.md` 当索引用。
 
-![CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![CLAUDE.md 和 AGENTS.md](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
 
 可以参考 [Harness Engineering: Why Coding Agents Need Infrastructure](https://alexlavaee.me/blog/harness-engineering-why-coding-agents-need-infrastructure/ "Harness Engineering: Why Coding Agents Need Infrastructure")。这类文件负责告诉 Agent “资料在哪、什么时候读”，不是把所有资料提前塞进上下文。
 
@@ -581,7 +581,7 @@ Carlini 后来在 [Building a C compiler with a team of parallel Claudes](https:
 | CLAUDE.md / Rules | 用户、项目、组织写入的持久指令   | 项目 `.claude/` 或 `~/.claude/`                                                                                                                         |
 | Auto Memory       | Claude 按 Git 仓库维护的经验笔记 | 默认在 `~/.claude/projects/<project>/memory/`，可被 `CLAUDE_COWORK_MEMORY_PATH_OVERRIDE` 或可信 settings 覆盖；`MEMORY.md` 是索引入口，跨 worktree 共享 |
 
-![Claude Code  /memory](https://oss.javaguide.cn/github/javaguide/ai/skills/claudecode-memory-command.png)
+![Claude Code  /memory](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/claudecode-memory-command.png)
 
 临时绕过 Bug 的方案一旦写入项目记忆，后续会话可能继续沿用错误前提。文件路径、依赖版本和函数签名可直接从源码查询，无需重复记录；条目增加会抬高固定开销，错误条目还会持续影响判断。
 

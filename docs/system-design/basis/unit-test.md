@@ -84,7 +84,7 @@ TDD 原理是开发功能代码之前，先编写测试用例代码，然后针�
 
 TDD 的节奏：“红 - 绿 - 重构”。
 
-![](https://static001.geekbang.org/resource/image/09/7f/090e1fc6aff08b4aa66376f776c2337f.png)
+![](/assets/images/static001.geekbang.org/resource/image/09/7f/090e1fc6aff08b4aa66376f776c2337f.png)
 
 由于 TDD 对开发人员要求非常高，跟传统开发思维不一样，因此实施起来相当困难。
 

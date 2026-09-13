@@ -30,7 +30,7 @@ JWT 的 Header 和 Payload 只是经过 Base64Url 编码，拿到令牌的人都
 
 ## JWT 由哪些部分组成？
 
-![JWT 组成](https://oss.javaguide.cn/javaguide/system-design/jwt/jwt-composition.png)
+![JWT 组成](/assets/images/oss.javaguide.cn/javaguide/system-design/jwt/jwt-composition.png)
 
 JWT 通常由三个使用 `.` 分隔的 Base64Url 编码部分组成：
 
@@ -52,7 +52,7 @@ SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 Header 和 Payload 都是 JSON 数据，Signature 则由编码后的 Header、Payload 和签名密钥计算得到。
 
-![](https://oss.javaguide.cn/javaguide/system-design/jwt/jwt.io.png)
+![](/assets/images/oss.javaguide.cn/javaguide/system-design/jwt/jwt.io.png)
 
 ### JWT 解析和 JWT 验证有什么区别？
 
@@ -140,7 +140,7 @@ HMACSHA256(
 
 在基于 JWT 进行身份验证的应用程序中，服务器通过 Payload、Header 和密钥创建 JWT 并将 JWT 发送给客户端。客户端需要根据应用形态和威胁模型安全地保存令牌，以后发出的请求会携带这个令牌。
 
-![JWT 身份验证示意图](https://oss.javaguide.cn/github/javaguide/system-design/jwt/jwt-authentication%20process.png)
+![JWT 身份验证示意图](/assets/images/oss.javaguide.cn/github/javaguide/system-design/jwt/jwt-authentication process.png)
 
 简化后的步骤如下：
 

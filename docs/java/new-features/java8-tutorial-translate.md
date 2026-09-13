@@ -27,7 +27,7 @@ JDK 8 引入了许多重要的新特性，这篇文章会挑选其中较为重�
 
 下图是从 JDK 8 到 JDK 24 每个版本的更新带来的新特性数量和更新时间：
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 随着 Java 8 的普及度越来越高，很多人都提到面试中关于 Java 8 也是非常常问的知识点。应各位要求和需要，我打算对这部分知识做一个总结。本来准备自己总结的，后面看到 GitHub 上有一个相关的仓库，地址：
 [https://github.com/winterbe/java8-tutorial](https://github.com/winterbe/java8-tutorial)。这个仓库是英文的，我对其进行了翻译并添加和修改了部分内容，下面是正文。
@@ -125,7 +125,7 @@ List 类本身就有一个 `sort` 方法。并且 Java 编译器可以自动推�
 
 Java 语言设计者们投入了大量精力来思考如何使现有的函数友好地支持 Lambda。最终采取的方法是：增加函数式接口的概念。**“函数式接口”是指仅仅只包含一个抽象方法，但是可以有多个非抽象方法（也就是上面提到的默认方法）的接口。** 像这样的接口，可以作为 lambda 表达式的目标类型。`java.lang.Runnable` 与 `java.util.concurrent.Callable` 是函数式接口最典型的两个例子。Java 8 增加了一种特殊的注解 `@FunctionalInterface`，但是这个注解通常不是必须的。只要接口满足函数式接口的定义，Java 编译器就可以将其作为 lambda 表达式的目标类型。一般建议在接口上使用 `@FunctionalInterface` 注解进行声明，这样编译器发现被标注的接口不满足函数式接口要求时就会报错，如下图所示。
 
-![@FunctionalInterface 注解](https://oss.javaguide.cn/github/javaguide/java/@FunctionalInterface.png)
+![@FunctionalInterface 注解](/assets/images/oss.javaguide.cn/github/javaguide/java/@FunctionalInterface.png)
 
 示例：
 
@@ -824,7 +824,7 @@ System.out.println(formatterOfYyyy.format(rightNow));
 
 从下图可以更清晰的看到具体的错误，并且 IDEA 已经智能地提示更倾向于使用 `yyyy` 而不是 `YYYY`。
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/2021042717491413.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/2021042717491413.png)
 
 ### LocalDateTime（本地日期时间）
 

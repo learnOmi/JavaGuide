@@ -47,7 +47,7 @@ Lamport 是分布式系统领域绕不开的人。他因为在分布式和并发
 
 > 在部分节点可能故障、撒谎、伪造信息或发送矛盾信息的情况下，如何让所有正常节点对同一个结果达成一致？
 
-![拜占庭将军问题的基本场景](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-problem-overview.png)
+![拜占庭将军问题的基本场景](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-problem-overview.png)
 
 这里有个细节要先说清。国内很多文章会把信使被截杀、消息丢失、消息篡改也一起放进故事里，这样方便理解“通信不可靠”。但 Lamport 论文里的“口信消息”模型为了做形式化证明，反而假设消息系统满足几个条件：发出的消息会被正确送达，接收者知道消息是谁发的，没收到消息这件事也能被检测出来。
 
@@ -66,7 +66,7 @@ Lamport 是分布式系统领域绕不开的人。他因为在分布式和并发
 
 在更通用的分布式共识问题里，还会关心终止性，也就是正常节点最终要能做出决定，不能无限等下去。有些定义还会加入完整性（Integrity）：一个节点最多只能决定一次。工程系统里，超时、重试、选举轮次、视图切换这些机制，很多都在服务这个目标。
 
-![忠诚节点多数决示意](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-honest-majority.png)
+![忠诚节点多数决示意](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-honest-majority.png)
 
 这里先把问题压回将军故事。假设只有 3 位将军 A、B、C，其中 A 是指挥官，B 和 C 是副官。只要 1 个将军是叛徒，事情就会卡住。
 
@@ -79,7 +79,7 @@ Lamport 是分布式系统领域绕不开的人。他因为在分布式和并发
 
 这就是 3 将军 1 叛徒的困难之处。忠诚节点并不缺少投票规则，真正缺的是判断“谁在撒谎”的信息。对另一个忠诚副官构造对称场景，就会把两个忠诚副官推向不同决定，最终违反一致性。Lamport 论文提醒过，这类问题很容易被直觉证明带偏；论文最终通过归约证明：在只使用口信消息的情况下，如果要容忍 `m` 个叛徒，至少需要 `3m + 1` 个将军。换句话说，忠诚将军必须超过总数的 `2/3`。
 
-![三个将军无法容忍一个叛徒](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-three-general-impossibility.png)
+![三个将军无法容忍一个叛徒](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-three-general-impossibility.png)
 
 容忍 1 个叛徒，至少要 4 个将军；容忍 2 个叛徒，至少要 7 个将军。
 
@@ -96,7 +96,7 @@ Lamport 是分布式系统领域绕不开的人。他因为在分布式和并发
 
 所以，真实系统通常会引入额外假设或机制来恢复活性，比如最终同步、随机化、故障检测器、重试和视图切换。后面说 PBFT 可以运行在互联网这类异步网络里，也要按这个思路理解：安全性和活性不是同一个承诺。
 
-![共识协议中的安全性与活性](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-safety-liveness.png)
+![共识协议中的安全性与活性](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-safety-liveness.png)
 
 ## 口信消息：为什么需要 3m + 1？
 
@@ -123,7 +123,7 @@ Lamport 论文先讨论的是 **Oral Messages**，通常翻译成口信消息。
 3. 如果还需要容忍更多叛徒，就继续让收到转述的节点再向外转述。
 4. 最后，每个忠诚副官对收到的一组值使用相同的 `majority` 函数；如果没有多数，可以使用默认值，论文里默认值是撤退。论文也提到，如果值域有序，也可以取中位数。关键是所有忠诚副官使用同一个确定性规则。
 
-![口信消息模型 OM(m) 的多轮转述](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-oral-messages.png)
+![口信消息模型 OM(m) 的多轮转述](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-oral-messages.png)
 
 可以用 `m = 1` 看这个算法为什么需要 4 个将军。
 
@@ -160,7 +160,7 @@ Lamport 论文先讨论的是 **Oral Messages**，通常翻译成口信消息。
 
 `SM(m)` 最后也不是简单多数决。每个忠诚副官维护一个收到的命令集合 `V`，然后执行共同约定的确定性 `choice(V)` 函数。如果叛徒指挥官分别签了“进攻”和“撤退”，忠诚副官最终拿到相同的集合，再对这个集合执行同一个 `choice`，结果自然一致。
 
-![签名消息模型 SM(m) 的信息传播](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-signed-messages.png)
+![签名消息模型 SM(m) 的信息传播](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-signed-messages.png)
 
 这不代表现实里的 BFT 系统一律只要 `m + 2` 个节点。这里讨论的是 Lamport 论文中特定模型下的一次交互一致性问题。实际系统还要考虑异步网络、性能、客户端请求、状态机复制、视图切换、恶意客户端、重放攻击等问题。原论文也提到，如果要反复执行 `SM(m)`，需要给值附加序列号，避免旧签名消息被重放。PBFT 这类实用协议通常仍然采用 `3f + 1` 副本来容忍 `f` 个拜占庭故障节点。
 
@@ -176,7 +176,7 @@ Lamport 论文先讨论的是 **Oral Messages**，通常翻译成口信消息。
 | 遗漏/时序故障（Omission/Timing Fault） | 消息丢失、延迟、网络分区、响应过慢         | 节点可能还活着，但通信没有按预期完成 |
 | 拜占庭故障（Byzantine Fault）          | 发送矛盾信息、错误计算、状态损坏、恶意作恶 | 行为可以任意偏离协议                 |
 
-![崩溃故障、遗漏时序故障和拜占庭故障](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-fault-models.png)
+![崩溃故障、遗漏时序故障和拜占庭故障](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-fault-models.png)
 
 Paxos、Raft、ZAB 通常属于 CFT（Crash Fault Tolerance，崩溃容错）范畴。它们假设节点不会故意作恶，最多是不响应、响应慢、断网或宕机。以 Raft 为例，Raft 官方介绍里给的典型说法是：5 个服务器组成的集群可以在 2 个服务器失败时继续工作；失败更多时系统会停止前进，但不会返回错误结果。
 
@@ -194,7 +194,7 @@ PBFT 允许网络消息丢失、延迟、重复和乱序，也允许故障节点
 | 经典 BFT 状态机复制  | `f` 个拜占庭故障 | `3f + 1`          | `2f + 1` 法定人数交集里至少包含 `f + 1` 个正常节点 |
 | Lamport 签名消息模型 | `m` 个叛徒       | 不再要求 `3m + 1` | 签名使矛盾消息可验证和传播                         |
 
-![CFT、BFT 和签名消息模型对比](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-cft-vs-bft.png)
+![CFT、BFT 和签名消息模型对比](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-cft-vs-bft.png)
 
 这张表只是常见模型总结，不是所有协议都无条件遵循的通用定律。可信硬件、混合故障模型、不同网络假设和不同安全目标，都可能改变副本数要求。
 
@@ -223,7 +223,7 @@ PBFT 允许网络消息丢失、延迟、重复和乱序，也允许故障节点
 
 区块链里的阈值也不一定按节点数量计算。PoW 通常关心攻击者掌握的算力比例；PoS 和 Tendermint 类协议通常关心恶意验证者掌握的权益或投票权重。一个攻击者即使只控制少量节点，只要控制了足够大的权重，也可能超过协议的安全阈值。
 
-![区块链里的阈值](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-blockchain-weight-thresholds.png)
+![区块链里的阈值](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/byzantine-generals-problem-blockchain-weight-thresholds.png)
 
 另外，PoW 和 PoS 更像抗女巫、领导者选择和权重分配机制。完整系统还需要区块提议、分叉选择、投票或最终确定性规则，不能把它们单独等同于完整共识协议。
 

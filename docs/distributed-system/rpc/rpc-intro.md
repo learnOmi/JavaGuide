@@ -16,7 +16,7 @@ head:
 
 ## RPC 是什么?
 
-![RPC 概览](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 概览](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
 
 **RPC（Remote Procedure Call）** 即远程过程调用，通过名字我们就能看出 RPC 关注的是远程调用而非本地调用。
 
@@ -40,7 +40,7 @@ head:
 
 具体原理图如下，后面我会串起来将整个 RPC 的过程给大家说一下。
 
-![RPC 原理图](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-principle.png)
+![RPC 原理图](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-principle.png)
 
 1. 服务消费端（client）以本地调用的方式调用远程服务；
 1. 客户端 Stub（client stub） 接收到调用后负责将方法、参数等组装成能够进行网络传输的消息体（序列化）：`RpcRequest`；
@@ -62,14 +62,14 @@ head:
 
 ### Dubbo
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111053081.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111053081.png)
 
 Apache Dubbo 是一款微服务框架，为大规模微服务实践提供高性能 RPC 通信、流量治理、可观测性等解决方案，
 涵盖 Java、Golang 等多种语言 SDK 实现。
 
 Dubbo 提供了从服务定义、服务发现、服务通信到流量管控等几乎所有的服务治理能力，支持 Triple 协议（基于 HTTP/2 之上定义的下一代 RPC 通信协议）、应用级服务发现、Dubbo Mesh （Dubbo3 赋予了很多云原生友好的新特性）等特性。
 
-![Dubbo3](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111545343.png)
+![Dubbo3](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111545343.png)
 
 Dubbo 是由阿里开源，后来加入了 Apache 。正是由于 Dubbo 的出现，才使得越来越多的公司开始使用以及接受分布式架构。
 
@@ -91,13 +91,13 @@ Motan 是新浪微博开源的一款 RPC 框架，据说在新浪微博正支撑
 
 ### gRPC
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/2843b10d-0c2f-4b7e-9c3e-ea4466792a8b.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/2843b10d-0c2f-4b7e-9c3e-ea4466792a8b.png)
 
 gRPC 是 Google 开源的一个高性能、通用的开源 RPC 框架。其由主要面向移动应用开发并基于 HTTP/2 协议标准而设计（支持双向流、消息头压缩等功能，更加节省带宽），基于 ProtoBuf 序列化协议开发，并且支持众多开发语言。
 
 **何谓 ProtoBuf？** [ProtoBuf（ Protocol Buffer）](https://github.com/protocolbuffers/protobuf) 是一种更加灵活、高效的数据格式，可用于通讯协议、数据存储等领域，基本支持所有主流编程语言且与平台无关。不过，通过 ProtoBuf 定义接口和数据类型还挺繁琐的，这是一个小问题。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716104304033.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716104304033.png)
 
 不得不说，gRPC 的通信层的设计还是非常优秀的，[Dubbo-go 3.0](https://dubbogo.github.io/) 的通信层改进主要借鉴了 gRPC。
 
@@ -123,11 +123,11 @@ Dubbo 不论是从功能完善程度、生态系统还是社区活跃度来说�
 
 下图展示了 Dubbo 的生态系统。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/eee98ff2-8e06-4628-a42b-d30ffcd2831e.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/eee98ff2-8e06-4628-a42b-d30ffcd2831e.png)
 
 Dubbo 也是 Spring Cloud Alibaba 里面的一个组件。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/0d195dae-72bc-4956-8451-3eaf6dd11cbd.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/0d195dae-72bc-4956-8451-3eaf6dd11cbd.png)
 
 但是，Dubbo 和 Motan 主要是给 Java 语言使用。虽然，Dubbo 和 Motan 目前也能兼容部分语言，但是不太推荐。如果需要跨多种语言调用的话，可以考虑使用 gRPC。
 
@@ -141,7 +141,7 @@ Dubbo 也是 Spring Cloud Alibaba 里面的一个组件。
 
 **内容概览**：
 
-![](https://oss.javaguide.cn/github/javaguide/image-20220308100605485.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/image-20220308100605485.png)
 
 ## 既然有了 HTTP 协议，为什么还要有 RPC ？
 

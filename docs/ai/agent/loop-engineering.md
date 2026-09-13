@@ -22,7 +22,7 @@ Loop Engineering 用来安排 Agent 的多轮任务。它把任务的触发方�
 
 假设 CI 触发了这项任务：Agent 先读取项目规则和失败日志，定位到相关文件后运行目标测试。测试输出、lint、类型检查、截图或审查评论会回到下一轮，帮助判断是否继续。已经试过的方案、失败原因和下一步则写入外部文件、Issue、Linear 卡片或数据库；达到轮次或预算上限，权限不足，或需要业务判断时，流程停止并交给人处理。
 
-![Loop Engineering 外层循环](https://oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
+![Loop Engineering 外层循环](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
 
 Prompt、上下文和工具描述仍然决定一次模型调用如何执行。Loop 在调用前后补上任务调度、材料准备、结果验证和状态恢复，让下一轮可以接着上一轮继续处理。
 
@@ -30,7 +30,7 @@ Prompt、上下文和工具描述仍然决定一次模型调用如何执行。Lo
 
 ### Agent Loop / ReAct：内层循环早就存在
 
-![Agent Loop 工作流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
+![Agent Loop 工作流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
 
 Agent Loop 的基本顺序没有变化：读取当前上下文，交给 LLM 决定下一步，调用工具或生成结果，再把工具输出写回上下文；达到停止条件后结束。
 
@@ -51,7 +51,7 @@ ReAct 也是这个思路：Reasoning 和 Acting 交替进行，模型走一步�
 
 回边是一条从后续节点指向前面节点的有向边：流程已经走到“审核”节点，却因为某个条件不满足，沿着这条边回到“修改”节点，再执行一次后续步骤。
 
-![Workflow、Graph、Loop 三者关系概览](https://oss.javaguide.cn/github/javaguide/ai/workflow/workflow-graph-loop-relation.svg)
+![Workflow、Graph、Loop 三者关系概览](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/workflow-graph-loop-relation.svg)
 
 “生成初稿 → 审核 → 不通过就修改 → 再审核”中，审核不通过的条件边就是从“审核”回到“修改”的回边；审核通过则离开循环。 [AI 工作流中的 Workflow、Graph 与 Loop](https://javaguide.cn/ai/agent/workflow-graph-loop.html) 对这套结构有更完整的说明。运行配置还要写明最大轮次、超时、Token 预算和失败后的降级方式，防止回边没有出口。
 
@@ -61,7 +61,7 @@ ReAct 也是这个思路：Reasoning 和 Acting 交替进行，模型走一步�
 
 一个 CI 故障查到第三轮还没有收敛时，原始日志、测试输出、改动记录和相互矛盾的判断很容易堆在一起。它们全塞进上下文，项目规则反而容易被淹没，已经排除过的方案也可能再跑一遍。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 每轮调用前应先放入 `AGENTS.md`、`CLAUDE.md` 和编码规范等常驻规则，再按当前失败加载相关文件、测试输出、Issue 描述或设计文档。traceId、错误码、日志路径这类排障入口保留原值；已验证的过程压成结论并写入外部状态。
 
@@ -71,19 +71,19 @@ ReAct 也是这个思路：Reasoning 和 Acting 交替进行，模型走一步�
 
 在 [Harness Engineering](https://javaguide.cn/ai/agent/harness-engineering.html) 中，Agent 可以拆成 Model + Harness。模型负责推理和生成，Harness 提供环境、工具、反馈、沙箱、权限、观测和恢复。
 
-![Harness 和 Prompt/Context Engineering 的关系](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
+![Harness 和 Prompt/Context Engineering 的关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
 
 可以把 Harness 看成单轮任务的运行环境。CI triage 能读哪些日志、能否修改文件、能运行哪些测试命令，都由 Harness 决定；Loop 再决定什么时候把这套环境启动一次、结果保存在哪里、需不需要交给另一个 Agent 检查。只有目标而没有文件权限、验证命令和失败处理，任务仍然无法无人值守地执行。
 
 ### Skills：把每轮都要重复解释的经验写下来
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
 
 CI 排查重复发生时，仓库的测试命令、禁止修改的目录、格式化要求、PR 模板和数据库迁移确认规则不应每轮重新解释。
 
 这些内容可写进 Skill：`description` 匹配 CI 排查任务，`SKILL.md` 保存允许读取的目录、测试命令、PR 模板和迁移确认规则。任务命中后加载正文，下一次失败仍沿用同一套限制。
 
-![Skill 渐进式披露](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
+![Skill 渐进式披露](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
 
 Skill 记录的是项目里反复要用的操作说明，而非为当前对话临时拼出来的一段 Prompt。
 
@@ -91,7 +91,7 @@ Skill 记录的是项目里反复要用的操作说明，而非为当前对话�
 
 GitHub Actions、日志平台、Linear 和 Slack 各有自己的 API。CI 排查、PR babysit 和任务分拣在这些系统之间来回切换；全部单独适配时，Agent 面前会出现多套工具描述和调用方式。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 MCP Server 将 GitHub、Issue 系统、日志平台、内部文档和数据库提供为可发现工具；Agent Runtime 负责选择，业务系统仍执行权限和数据校验。
 
@@ -105,13 +105,13 @@ TDD、CI、ReAct 和工作流图早就有循环。代码 Agent 把原来由人�
 
 因此，Loop Engineering 关注的重点其实就三点：**下一轮继续需要什么证据，哪些动作必须暂停，以及前一轮的状态保存在哪里。**
 
-![Loop Engineering 外层循环](https://oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
+![Loop Engineering 外层循环](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
 
 ## Claude Code 的 /loop、/goal 可以怎么理解？
 
 `/loop` 按时间再次运行 Prompt，`/goal` 按完成条件决定是否继续。更多说明可以参考 [Claude Code 命令详解](https://javaguide.cn/ai-coding/claudecode-commands.html)。
 
-![Claude Code 推荐使用 loop 命令](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-father-loop.png)
+![Claude Code 推荐使用 loop 命令](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudecode-father-loop.png)
 
 `/loop` 主要解决“过一会儿再看一次”的问题。它会在当前 session 里重复运行一个 prompt。你可以给固定间隔，比如每 5 分钟检查一次部署；也可以不给间隔，让 Claude 根据观察结果自己选择下一次等待多久。
 
@@ -165,7 +165,7 @@ CI triage 可由每天上午 9 点或 CI 失败触发，读取最近一次失败
 
 能在本地复现时运行最小测试集；不能复现则保留证据。结论写入 `TODO.md`、GitHub Issue 或 Linear 卡片，并标记“可自动修复”“需要负责人确认”或“疑似偶发”。流程不直接推送代码、不改生产配置，连续重试不超过 3 次。
 
-![CI 排查 Loop 示例](https://oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-ci-triage-loop.webp)
+![CI 排查 Loop 示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-ci-triage-loop.webp)
 
 等这个版本稳定之后，再逐步加自动修复：
 
@@ -263,7 +263,7 @@ MCP Server 的来源、工具 description、返回内容和 Prompt 模板也要�
 
 L1/L2 覆盖日志读取、问题复现和草稿修改。L4 需要同时满足问题类型固定、测试覆盖主要风险、回滚路径经过验证；涉及业务判断、权限或数据写入的任务继续保留人工审批。
 
-![Loop 的安全边界](https://oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-safety-boundary.webp)
+![Loop 的安全边界](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-safety-boundary.webp)
 
 ## 第一版先别急着自动修
 

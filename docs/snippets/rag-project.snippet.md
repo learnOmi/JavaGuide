@@ -4,13 +4,13 @@
 
 **系统架构如下**：
 
-![系统架构图](https://oss.javaguide.cn/xingqiu/pratical-project/interview-guide/interview-guide-architecture-diagram.png)
+![系统架构图](/assets/images/oss.javaguide.cn/xingqiu/pratical-project/interview-guide/interview-guide-architecture-diagram.png)
 
 **效果图：**
 
-![Skill 出题 + JD 解析](https://oss.javaguide.cn/xingqiu/pratical-project/interview-guide/page-skill-jd-parse.png)
+![Skill 出题 + JD 解析](/assets/images/oss.javaguide.cn/xingqiu/pratical-project/interview-guide/page-skill-jd-parse.png)
 
-![简历分析详情](https://oss.javaguide.cn/xingqiu/pratical-project/interview-guide/page-resume-analysis-detail.png)
+![简历分析详情](/assets/images/oss.javaguide.cn/xingqiu/pratical-project/interview-guide/page-resume-analysis-detail.png)
 
 完整代码完全免费开源，没有 Pro 版本或者付费版！
 
@@ -23,4 +23,4 @@
 
 内容安排如下（已经更完，一共 18w+ 字）
 
-![配套教程内容概览](https://oss.javaguide.cn/xingqiu/pratical-project/interview-guide/tutorial-overview.png)
+![配套教程内容概览](/assets/images/oss.javaguide.cn/xingqiu/pratical-project/interview-guide/tutorial-overview.png)

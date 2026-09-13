@@ -35,7 +35,7 @@ head:
 
 比如用户点击“提交订单”，页面上只是一次请求，服务端可能已经经过网关、用户服务、商品服务、订单服务、库存服务、优惠券服务、支付服务，还可能写数据库、发消息、更新缓存。用户看到的是一个按钮，后端看到的是一串跨节点协作。
 
-![分布式系统概览](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-system-overview.webp)
+![分布式系统概览](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/distributed-system-overview.webp)
 
 | 维度     | 单机或单进程系统     | 分布式系统                       |
 | -------- | -------------------- | -------------------------------- |
@@ -87,7 +87,7 @@ head:
 - 支付服务负责对接第三方支付渠道；
 - 消息队列负责把支付成功、库存变更、物流通知等事件异步传出去。
 
-![单体到分布式电商](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
+![单体到分布式电商](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
 
 拆分后的好处很直接。商品服务访问量大，可以单独扩容；支付服务对稳定性要求高，可以单独做限流、重试和熔断；库存服务并发冲突多，可以围绕库存扣减设计专门的数据结构和锁策略。
 
@@ -141,7 +141,7 @@ head:
 
 复制是把同一份数据保存多份，比如 MySQL 主从复制、Redis 主从复制、Kafka 分区副本、ZooKeeper 多节点副本。有了副本，节点故障时更容易继续服务，读请求也可能分摊到多个副本上。代价是副本同步有延迟：主节点写成功后，从节点可能还没追上；用户刚写完数据，下一次读请求如果落到旧副本，就可能读到旧值。
 
-![分片复制与一致性](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/sharding-replication-consistency.webp)
+![分片复制与一致性](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/sharding-replication-consistency.webp)
 
 ### 没有完美同步的全局时钟
 
@@ -187,7 +187,7 @@ head:
 
 本地调用和调用方处在同一个进程或故障范围内，执行结果相对好判断。远程调用多了一层不确定性：超时只说明客户端在指定时间内没有收到响应，不能证明服务端没有执行。请求可能没发出去，也可能已经执行成功但响应丢了。这个差别会直接影响重试策略。
 
-![远程调用不确定性](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/remote-call-uncertainty.webp)
+![远程调用不确定性](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/remote-call-uncertainty.webp)
 
 比如订单服务调用库存服务扣库存，客户端设置了 2 秒超时。2 秒后订单服务没收到响应，它有几种选择：
 

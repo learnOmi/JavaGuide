@@ -36,7 +36,7 @@ cat /proc/<pid>/smaps_rollup
 
 从操作系统视角看，内存管理至少要做 5 件事。
 
-![内存管理职责概览](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-management-responsibilities.webp)
+![内存管理职责概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-management-responsibilities.webp)
 
 **第一，分配和回收内存。** 用户态的 `malloc()`/`free()` 负责管理进程堆里的内存块。以 glibc 为例，分配器必要时会通过 `brk()`、`mmap()` 等接口扩展可用虚拟地址区域；虚拟区域建好后，物理页通常还要等首次访问时通过缺页路径建立。内核内部则通过页分配器和 SLAB/SLUB 这类对象分配器管理物理页与内核对象。
 
@@ -64,7 +64,7 @@ cat /proc/<pid>/smaps_rollup
 
 连续分配的问题是碎片。
 
-![连续内存分配与碎片](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-fragmentation.webp)
+![连续内存分配与碎片](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-fragmentation.webp)
 
 **内部碎片**指已经分配出去、但实际没用上的空间。比如系统按 128 字节为单位分配，一个对象只需要 65 字节，剩下 63 字节就浪费在这个分配单元内部。
 
@@ -107,7 +107,7 @@ Linux 管理物理页时使用**伙伴系统（Buddy System）**。它把空闲�
 
 地址转换大致是：CPU 发出虚拟地址，MMU 取出虚拟页号查页表，得到物理页帧号，再拼上页内偏移，得到物理地址。
 
-![虚拟地址到物理地址转换](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-address-translation.webp)
+![虚拟地址到物理地址转换](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-address-translation.webp)
 
 页表项不只保存物理页帧号，还会保存很多状态位，例如 present 位、读写权限、用户/内核权限、脏位、访问位等。present 位表示页面是否已经在物理内存里；权限位用于保护；访问位和脏位会参与页面回收判断。
 
@@ -121,7 +121,7 @@ Linux 管理物理页时使用**伙伴系统（Buddy System）**。它把空闲�
 
 多级页表的做法是分层：顶层页表覆盖整片虚拟地址空间，下级页表按需创建。某段虚拟地址根本没用到，就不创建对应下级页表。Linux 的架构无关页表代码按照 5 层层级编写；如果具体架构或机器没有使用全部层级，多余层会被折叠。
 
-![多级页表按需创建](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-multilevel-page-table.webp)
+![多级页表按需创建](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-multilevel-page-table.webp)
 
 在 x86-64 上，传统配置通常使用 4 级分页；CPU、内核和配置支持 LA57 后才会使用 5 级分页。Linux 文档说明，5 级分页可启用 56 位用户态虚拟地址空间，但为了兼容部分会使用指针高位的程序，内核默认不会主动在 47 位以上分配虚拟地址，除非应用通过高位 hint 地址显式请求。
 
@@ -157,7 +157,7 @@ Linux 的 `getrusage(2)` 把缺页统计分成两类：
 
 物理内存满了，还要装入新页，就必须先回收一批页。页面置换要解决的问题很直接：内存不够时，先把哪一页换出去，才能尽量少影响后面的访问。
 
-![页面置换算法对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-replacement.webp)
+![页面置换算法对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-replacement.webp)
 
 最理想的是 OPT：直接换出未来最长时间不会再访问的页。它只能当理论上限，因为操作系统没法预知未来。FIFO 更容易实现，谁先进内存谁先出去，但它不关心页面是否还热，甚至会出现 Belady 异常：分配更多页框，缺页次数反而可能增加。
 
@@ -165,7 +165,7 @@ LRU 的直觉更接近真实程序：最近一直没访问的页，以后大概�
 
 真实 Linux 不会照搬某个教科书算法。经典回收路径会使用文件页/匿名页、活跃/非活跃 LRU、workingset 和 refault 等机制近似识别冷热页面；较新的内核还可能启用 Multi-Gen LRU，用多个访问代际表示页面新旧程度。文件页、匿名页、cgroup、NUMA、内存水位都会影响回收路径，具体算法还取决于内核版本和配置。
 
-![Linux 页面回收思路](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-reclaim.webp)
+![Linux 页面回收思路](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-reclaim.webp)
 
 因此，把 Linux 页面回收简单说成某一个算法并不准确。它更像一组围绕工作集保护、冷热识别和内存水位控制组合起来的策略。
 

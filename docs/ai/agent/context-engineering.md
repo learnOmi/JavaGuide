@@ -14,7 +14,7 @@ Context Engineering 处理的就是调用前的信息组装：哪些规则进入
 
 ## 同样的 Agent，为什么表现差这么多？
 
-![以电商售后为例图解同样的 Agent，为什么表现差这么多](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-the-same-agent-performs-so-differently.png)
+![以电商售后为例图解同样的 Agent，为什么表现差这么多](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-the-same-agent-performs-so-differently.png)
 
 这里以电商售后为例。
 
@@ -43,7 +43,7 @@ G 友发来一句话： “MD，我上周买的耳机右耳没声音了，怎么
 
 ## Context Engineering 到底在做什么？
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 ### 和 Prompt Engineering 差别
 
@@ -60,11 +60,11 @@ Prompt Engineering 处理指令的写法；Context Engineering 决定一轮调�
 
 Anthropic 官方博客用下图对比了这两个层面：
 
-![Prompt engineering vs. context engineering](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-prompt-engineering.png)
+![Prompt engineering vs. context engineering](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-prompt-engineering.png)
 
 打个比方。如果 Prompt Engineering 是“告诉厨师这道菜怎么做”，那 Context Engineering 更像是给厨师准备厨房——食材放在哪、刀具怎么摆、调料怎么分类、火候参考贴在哪里。
 
-![Prompt vs Context 工程维度对比](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-vs-context-engineering-dimension-comparison.svg)
+![Prompt vs Context 工程维度对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-vs-context-engineering-dimension-comparison.svg)
 
 我个人更喜欢另一个类比：**Context Engineering 就是 LLM 的内存管理。**
 
@@ -72,7 +72,7 @@ Anthropic 官方博客用下图对比了这两个层面：
 
 ### 它具体管哪些东西
 
-![上下文窗口（Context Window）= LLM 的工作记忆](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
+![上下文窗口（Context Window）= LLM 的工作记忆](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
 
 拆开看的话，Context Engineering 至少管这么几块。
 
@@ -90,17 +90,17 @@ JSON Schema、Function Calling 的参数结构和返回约束会限制当前调�
 
 ## 上下文为什么会失效？
 
-![上下文为什么会失效](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
+![上下文为什么会失效](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
 
 窗口容量增加后，筛选问题仍然存在。输入超出当前任务所需范围时，额外材料可能只会增加干扰。
 
-![上下文利用率的 40% 阈值现象](https://oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
+![上下文利用率的 40% 阈值现象](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
 
 以老用户登录改造为例：历史需求、接口文档和会议记录同时进入窗口，其中“仍依赖旧版 token 校验，不能直接切到新鉴权模块”可能只有一行。模型即使读取了全部资料，也可能没有把这一行当作方案前提。
 
 **Context Rot** 讨论的正是这类现象：随着输入变长、噪声增多，模型对关键证据的利用可能不再稳定。
 
-![上下文腐化](https://oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
+![上下文腐化](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
 
 跟它相关的还有一个经典现象叫 **Lost in the Middle**——模型对开头和结尾的信息更敏感，对夹在中间的东西更容易“看漏”。所以有时候你明明把资料给它了，它还是答错，不一定是没读到，而是关键内容在长上下文里不够显眼。
 
@@ -138,7 +138,7 @@ JSON Schema、Function Calling 的参数结构和返回约束会限制当前调�
 
 ## 运行时上下文怎么加载？
 
-![运行时上下文怎么检索](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-run-time-retrieval.png)
+![运行时上下文怎么检索](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-run-time-retrieval.png)
 
 ### 预检索为什么不够
 
@@ -174,7 +174,7 @@ Anthropic 将这类分层获取信息的方式称为 **Progressive Disclosure**�
 
 ## 长任务里，上下文怎么撑住？
 
-![长任务上下文持久化：抵抗腐化的三大武器](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/long-task-context-persistence-three-weapons-against-corruption.svg)
+![长任务上下文持久化：抵抗腐化的三大武器](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/long-task-context-persistence-three-weapons-against-corruption.svg)
 
 ### Compaction：窗口快满时压缩历史
 
@@ -182,7 +182,7 @@ Anthropic 将这类分层获取信息的方式称为 **Progressive Disclosure**�
 
 Anthropic 介绍过 Claude Code 的一种实现思路：摘要保留架构决策、未解决 Bug 和关键实现细节，冗余工具结果则被移除；压缩后的上下文再配合最近访问的文件恢复任务状态。“5 个文件”是该文中的实现示例，具体保留范围应由任务和窗口预算决定。
 
-![ Claude Code 的上下文压缩思路](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/claude-code-context-compression-thinking.png)
+![ Claude Code 的上下文压缩思路](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/claude-code-context-compression-thinking.png)
 
 这块的难点在取舍——保留太多压缩没意义，保留太少关键上下文又丢了。比较实际的做法是拿复杂 Agent 轨迹反复调压缩 Prompt，先保证重要信息别漏，再逐步删掉冗余内容。这不是一次能写准的。
 
@@ -202,7 +202,7 @@ Structured Note-taking 是另一种处理长任务的方式。让 Agent 把关�
 
 Anthropic 在《How we built our multi-agent research system》中介绍过这种隔离检索、压缩回传的模式。是否使用取决于任务能否拆分、子任务依赖关系，以及汇总时是否会丢失关键证据。
 
-![Sub-agent 拆分任务，隔离上下文](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation%20.png)
+![Sub-agent 拆分任务，隔离上下文](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation .png)
 
 三种方式可以这么选：
 
@@ -313,7 +313,7 @@ Context Assembler 的输入可按来源拆成静态规则、工具定义、动�
 
 比较好的状态是具体到能引导行为、抽象到能覆盖常见变化。Anthropic 工程博客里管这叫 Goldilocks zone，就是“刚刚好”的区域。
 
-![上下文工程过程中的系统提示](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/calibrating-the-system-prompt.png)
+![上下文工程过程中的系统提示](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/calibrating-the-system-prompt.png)
 
 实操上更稳的做法是先用最小 Prompt 测基线表现，然后根据 failure case 一条一条补规则，别一上来就试图穷举所有情况。Anthropic 把这叫 Calibrating the system prompt——System Prompt 应该是个持续调校的参数，不是写完就不动的配置文档。发现一个 failure case 就补一条规则，然后重新测试。
 
@@ -347,7 +347,7 @@ Few-shot 示例应覆盖不同的标准场景。保留 3 到 5 个能代表策�
 
 这里讨论的是单次调用内的内容优先级；跨窗口历史由前文的 Compaction 处理。窗口接近上限时，两层策略需要同时生效。
 
-![上下文不是越多越好](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-eviction-strategy.png)
+![上下文不是越多越好](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-eviction-strategy.png)
 
 | 优先级             | 内容                                         | 处理方式                             |
 | ------------------ | -------------------------------------------- | ------------------------------------ |
@@ -372,7 +372,7 @@ Few-shot 示例应覆盖不同的标准场景。保留 3 到 5 个能代表策�
 
 ## 落地时先记录每轮上下文
 
-![Context Engineering 的核心逻辑](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-core-logic.png)
+![Context Engineering 的核心逻辑](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-core-logic.png)
 
 评估 Context Engineering 时，先记录每轮实际进入窗口的消息。检索策略、摘要方式或工具 Schema 挂载顺序变化后，才能将成功率、Token 成本和工具调用质量与基线比较。
 

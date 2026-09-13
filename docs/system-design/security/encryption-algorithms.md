@@ -26,7 +26,7 @@ ps: 严格上来说，哈希算法其实不属于加密算法，只是可以用�
 
 哈希算法也叫散列函数或摘要算法，它的作用是对任意长度的数据生成一个固定长度的唯一标识，也叫哈希值、散列值或消息摘要（后文统称为哈希值）。
 
-![哈希算法效果演示](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/hash-function-effect-demonstration.png)
+![哈希算法效果演示](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/hash-function-effect-demonstration.png)
 
 哈希算法的是不可逆的，你无法通过哈希之后的值再得到原值。
 
@@ -163,7 +163,7 @@ public PasswordEncoder passwordEncoder(){
 
 对称加密算法是指加密和解密使用同一个密钥的算法，也叫共享密钥加密算法。
 
-![对称加密](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/symmetric-encryption.png)
+![对称加密](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/symmetric-encryption.png)
 
 常见的对称加密算法有 DES、3DES、AES 等。
 
@@ -175,7 +175,7 @@ DES（Data Encryption Standard）使用 64 位的密钥(有效秘钥长度为 56
 
 DES 加密算法的基本思想是将 64 位的明文分成两半，然后对每一半进行多轮的变换，最后再合并成 64 位的密文。这些变换包括置换、异或、选择、移位等操作，每一轮都使用了一个子密钥，而这些子密钥都是由同一个 56 位的主密钥生成的。DES 加密算法总共进行了 16 轮变换，最后再进行一次逆置换，得到最终的密文。
 
-![DES（Data Encryption Standard）](https://oss.javaguide.cn/github/javaguide/system-design/security/des-steps.jpg)
+![DES（Data Encryption Standard）](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/des-steps.jpg)
 
 这是一个经典的对称加密算法，但也有明显的缺陷，即 56 位的密钥安全性不足，已被证实可以在短时间内破解。
 
@@ -195,11 +195,11 @@ AES 也是一种分组(或者叫块)密码，分组长度只能是 128 位，也
 
 AES 的速度比 3DES 快，而且更安全。
 
-![AES（Advanced Encryption Standard）](https://oss.javaguide.cn/github/javaguide/system-design/security/aes-steps.jpg)
+![AES（Advanced Encryption Standard）](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/aes-steps.jpg)
 
 DES 算法和 AES 算法简单对比（图片来自于：[RSA vs. AES Encryption: Key Differences Explained](https://cheapsslweb.com/blog/rsa-vs-aes-encryption)）：
 
-![DES 和 AES 对比](https://oss.javaguide.cn/github/javaguide/system-design/security/des-vs-aes.png)
+![DES 和 AES 对比](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/des-vs-aes.png)
 
 基于 Java 实现 AES-GCM 的代码示例。示例把每次加密随机生成的 IV 与密文一起编码；生产环境中的 AES 密钥应由 KMS、HSM 或 KeyStore 生成和保管，不要硬编码在源码中：
 
@@ -278,7 +278,7 @@ AES Decrypted Data : Java学习 + 面试指南：javaguide.cn
 
 如果用公钥加密数据，只能用对应的私钥解密。数字签名则是另一类操作：发送方使用私钥生成签名，接收方使用公钥验证签名。不要把数字签名简单理解为“用私钥加密、公钥解密”，实际项目应分别使用加密 API 和签名 API。
 
-![非对称加密](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/asymmetric-encryption.png)
+![非对称加密](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/asymmetric-encryption.png)
 
 常见的公钥密码算法包括 RSA 和基于椭圆曲线的算法。它们的具体能力不同：RSA 可以用于加密和签名；DSA 只能用于签名；ECC 则是一类算法的统称，包含用于签名或密钥协商的不同方案。
 
@@ -292,7 +292,7 @@ RSA 算法的优点是简单易用，可以用于数据加密和数字签名；�
 
 RSA 算法是是目前应用最广泛的非对称加密算法，像 SSL/TLS、SSH 等协议中就用到了 RSA 算法。
 
-![HTTPS 证书签名算法中带RSA 加密的SHA-256 ](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/https-rsa-sha-256.png)
+![HTTPS 证书签名算法中带RSA 加密的SHA-256 ](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/https-rsa-sha-256.png)
 
 RSA 运算速度慢、可直接处理的数据长度有限，实际项目通常使用混合加密：随机生成对称密钥，通过 AES-GCM 加密业务数据，再通过 RSA-OAEP 加密对称密钥。下面的示例只演示如何用 RSA-OAEP 加密较短的数据：
 

@@ -20,7 +20,7 @@ head:
 
 ## 超时机制
 
-![超时机制](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-mechanism-overview.png)
+![超时机制](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-mechanism-overview.png)
 
 ### 什么是超时机制？
 
@@ -76,7 +76,7 @@ head:
 
 更推荐的做法是传递 **deadline 或 timeout budget**：入口请求有一个总时间预算，每经过一层都要扣除本地处理、排队、网络和下游调用时间。下游超时应小于调用方剩余预算，而不是每层拍脑袋固定 3s、2s、1s。否则上游已经超时返回，下游还在继续执行无效请求，容易放大资源浪费。
 
-![超时预算在微服务链路中的传递](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-timeout-budget-chain.png)
+![超时预算在微服务链路中的传递](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-timeout-budget-chain.png)
 
 更进一步，参考 [美团的 Java 线程池参数动态配置](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html) 思想，我们也可以将超时弄成 **可配置化的参数** 而不是固定的，比较简单的一种办法就是将超时的值放在配置中心中。这样的话，我们就可以根据系统或者服务的状态动态调整超时值了。
 
@@ -96,7 +96,7 @@ head:
 
 ## 重试机制
 
-![重试机制](https://oss.javaguide.cn/github/javaguide/high-availability/retry-mechanism-overview.png)
+![重试机制](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/retry-mechanism-overview.png)
 
 ### 什么是重试机制？
 
@@ -122,7 +122,7 @@ head:
 
 **分布式系统里通常优先使用带 Jitter 的指数退避策略**。Jitter 的具体实现可以是 full jitter（完全随机）、equal jitter（等分抖动）或 decorrelated jitter（去相关抖动），目标都是打散多个客户端的同步重试。
 
-![四种重试策略时间线对比](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-strategies-timeline.png)
+![四种重试策略时间线对比](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-strategies-timeline.png)
 
 ### 重试的次数如何设置？
 
@@ -152,7 +152,7 @@ head:
 
 一般只重试超时、连接断开、临时 5xx、限流后明确允许重试的响应；不要重试参数校验失败、权限失败、业务规则失败、明确的 4xx，以及无法保证幂等的写操作。
 
-![重试前必须先判断：错误类型 + 操作幂等](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
+![重试前必须先判断：错误类型 + 操作幂等](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
 
 ### 重试的风险有哪些？
 
@@ -167,7 +167,7 @@ head:
 
 **重试预算（Retry Budget）** 是一种有效的规避策略：限制在一定时间窗口内的重试次数占总请求数的比例，如不超过 10%。落地时可以按调用方、接口或下游维度统计原始请求数和重试请求数，当重试比例超过预算时，后续请求快速失败或只允许首试，不再重试。
 
-![重试风暴：请求量级联放大](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-storm-cascade.png)
+![重试风暴：请求量级联放大](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-storm-cascade.png)
 
 ### 重试为什么必须考虑幂等？
 

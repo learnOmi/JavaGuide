@@ -29,7 +29,7 @@ public class ArrayList<E> extends AbstractList<E>
 - `Cloneable`：表明它支持通过 `clone()` 方法进行拷贝，`ArrayList#clone()` 返回的是浅拷贝。
 - `Serializable` : 表明它可以进行序列化操作，也就是可以将对象转换为字节流进行持久化存储或网络传输，非常方便。
 
-![ArrayList 类图](https://oss.javaguide.cn/github/javaguide/java/collection/arraylist-class-diagram.png)
+![ArrayList 类图](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/arraylist-class-diagram.png)
 
 ### ArrayList 和 Vector 的区别?（了解即可）
 

@@ -20,7 +20,7 @@ head:
 
 软考有初、中、高三个级别，建议直接考高级。相比于 PMP（项目管理专业人士认证），软考高项的难度更大，特别是论文部分，绝大部分人都挂在了论文部分。过了软考高项，在一些单位可以内部挂证，每个月多拿几百。
 
-![软考高级证书](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/ruankao-advanced-certification%20.jpg)
+![软考高级证书](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/ruankao-advanced-certification .jpg)
 
 官网地址：<https://www.ruankao.org.cn/>。
 
@@ -34,13 +34,13 @@ head:
 
 对于考研浙江大学的同学来说，PAT（甲级）成绩在一年内可以作为硕士研究生招生考试上机复试成绩。
 
-![PAT（甲级）成绩作用](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/pat-enterprise-alliance.png)
+![PAT（甲级）成绩作用](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/pat-enterprise-alliance.png)
 
 ## PMP
 
 PMP（Project Management Professional）认证由美国项目管理协会（PMI）提供，是全球范围内认可度最高的项目管理专业人士资格认证。PMP 认证旨在提升项目管理专业人士的知识和技能，确保项目顺利完成。
 
-![PMP 证书](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/pmp-certification.png)
+![PMP 证书](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/pmp-certification.png)
 
 PMP 是“一证在手，全球通用”的资格认证，对项目管理人士来说，PMP 证书含金量还是比较高的。放眼全球，很多成功企业都会将 PMP 认证作为项目经理的入职标准。
 
@@ -58,13 +58,13 @@ Oracle Certified Professional（OCP）是 Oracle 公司提供的一项专业认�
 
 下图展示了 Oracle 认证的不同路径和相应的认证级别，分别是核心路径（Core Track）和专业路径（Speciality Track）。
 
-![OCP 认证路径](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/oracle-certified-professional.jpg)
+![OCP 认证路径](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/oracle-certified-professional.jpg)
 
 ## 阿里云认证
 
 阿里云（Alibaba Cloud）提供的专业认证，认证方向包括云计算、大数据、人工智能、Devops 等。职业认证分为 ACA、ACP、ACE 三个等级，除了职业认证之外，还有一个开发者 Clouder 认证，这是专门为开发者设立的专项技能认证。
 
-![](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/aliyun-professional-certification.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/aliyun-professional-certification.png)
 
 官网地址：<https://edu.aliyun.com/certification/>。
 
@@ -72,7 +72,7 @@ Oracle Certified Professional（OCP）是 Oracle 公司提供的一项专业认�
 
 华为认证是由华为技术有限公司提供的面向 ICT（信息与通信技术）领域的专业认证，认证方向包括网络、存储、云计算、大数据、人工智能等，非常庞大的认证体系。
 
-![](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/huawei-professional-certification.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/huawei-professional-certification.png)
 
 ## AWS 认证
 
@@ -99,7 +99,7 @@ AWS 认证分为多个级别，包括基础级、从业者级、助理级、专�
 
 微软的认证体系主要针对其 Azure 云平台，分为基础级别、助理级别和专家级别，认证方向包括云计算、数据管理、开发、生产力工具等。
 
-![](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/microsoft-certification.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/microsoft-certification.png)
 
 ## Elastic 认证
 
@@ -111,7 +111,7 @@ Elastic 认证是由 Elastic 公司提供的一系列专业认证，旨在验证
 
 比较建议考 **Elastic Certified Engineer**，这个是 Elastic Stack 的基础认证，考察安装、配置、管理和维护 Elasticsearch 集群等核心技能。
 
-![](https://oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/elastic-certified-engineer-certification.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/programmer-life/programmer-certification/elastic-certified-engineer-certification.png)
 
 ## 其他
 

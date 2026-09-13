@@ -15,7 +15,7 @@ head:
 
 前几天在知乎看到一个问题：**Codex 用上 GPT-5.6 后，Skills 还有多少必要？**
 
-![关于 Codex 使用 GPT-5.6 后是否仍需要 Skills 的提问](https://oss.javaguide.cn/github/javaguide/ai/skills/zhihu-codex-gpt56-skills-question.png)
+![关于 Codex 使用 GPT-5.6 后是否仍需要 Skills 的提问](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/zhihu-codex-gpt56-skills-question.png)
 
 一条提问和我自己的使用变化不能代表行业趋势。更准确地说，我发现手里一部分开发类 Skill 的收益正在下降，所以想重新检查哪些该留、哪些该删。
 
@@ -33,7 +33,7 @@ head:
 
 长任务、审批和多 Agent 协作，Codex 本身也提供了对应能力。需要扩展任务流程或外部能力时，还可以使用 Skills、Plugins、MCP 和 Hooks。过去那种“不把每一步写满就容易跑偏”的情况少了很多。
 
-![Claude Code PreToolUse Hook](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
+![Claude Code PreToolUse Hook](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
 
 一份 `SKILL.md` 如果没有项目特有的约束，也没有脚本、模板和检查项，只是在重复常规开发步骤，我通常不会留。它没有给模型增加多少新信息，却可能让一个小任务多走几道流程。
 
@@ -49,7 +49,7 @@ Codex 不会在会话开始时读取所有 `SKILL.md` 的全文。它先拿到�
 
 上下文窗口变大也没有消除这个问题。旧对话、工具说明和 Skill 描述都能放进去，但项目真正重要的约束往往只有几句。内容越杂，关键要求越容易被淹没。
 
-![上下文为什么会失效](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
+![上下文为什么会失效](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
 
 Skill 和浏览器书签挺像。刚开始看到什么都想存，总觉得以后用得上。半年后回头一看，常用的还是那几个。
 
@@ -69,7 +69,7 @@ Skill 和浏览器书签挺像。刚开始看到什么都想存，总觉得以�
 
 Skill 可以携带脚本、参考资料和模板，在命中任务后按需加载。团队需要统一安装和分发时，再用 Plugin 把这些能力打包起来。
 
-![渐进式披露（三层模型）](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
+![渐进式披露（三层模型）](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
 
 如果想系统了解 Skill 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。这篇文章只讨论怎么选和怎么删，不重复展开技术实现。
 
@@ -79,7 +79,7 @@ Skill 可以携带脚本、参考资料和模板，在命中任务后按需加�
 
 我把这个问题丢到群里聊，大家的反馈也很接近：**Superpowers 容易让小任务背上过重的流程；`grilling` 虽然会连续追问，但需求确实能收得更清楚。**
 
-![群友讨论 Superpowers 流程过重以及 Grilling 减少返工](https://oss.javaguide.cn/github/javaguide/ai/skills/group-chat-superpowers-grilling-feedback.png)
+![群友讨论 Superpowers 流程过重以及 Grilling 减少返工](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/group-chat-superpowers-grilling-feedback.png)
 
 Superpowers 提供的是一套完整的软件开发方法：先通过 brainstorming 澄清需求，再用 writing-plans 拆任务，按 test-driven-development 写测试和实现，通过 Git worktree 隔离开发，交给 Subagent 分段执行，最后做代码审查和完成前验证。
 
@@ -99,7 +99,7 @@ Superpowers 用一套完整方法覆盖开发过程，[mattpocock/skills](https:
 
 这套拆法很适合现在的强模型。Codex 已经能完成的步骤，不需要再教一遍；哪个环节反复出错，就只补哪一块。任务变复杂时，再把几个 Skill 组合起来。
 
-![群友讨论轻量 Skills 与 Superpowers 的使用体验](https://oss.javaguide.cn/github/javaguide/ai/skills/group-chat-lightweight-skills-feedback.png)
+![群友讨论轻量 Skills 与 Superpowers 的使用体验](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/group-chat-lightweight-skills-feedback.png)
 
 这里面我尤其喜欢 [`grilling`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md)。
 
@@ -121,7 +121,7 @@ Superpowers 用一套完整方法覆盖开发过程，[mattpocock/skills](https:
 
 现有实现比我预想的更接近“打通”：知识库面试和普通模拟面试都在使用 `InterviewSession`，作答、评估和部分前端页面也已经复用。这次没有必要先改底层，得先确定首期产品范围。
 
-![使用 Grilling 确认模拟面试与知识库的打通方案](https://oss.javaguide.cn/github/javaguide/ai/skills/grilling-springai-interview-platform-case.png)
+![使用 Grilling 确认模拟面试与知识库的打通方案](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/grilling-springai-interview-platform-case.png)
 
 它问的第一个问题，是首期做“完全基于用户资料的定向面试”，还是让用户照常选择 Java、系统设计等 Skill，知识库只负责补充上下文。
 

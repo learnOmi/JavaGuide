@@ -22,7 +22,7 @@ head:
 
 如果这些线程正好承载订单、支付、库存这类关键流程，外部看到的就不只是某个线程 `BLOCKED` 了，而是接口超时、队列堆积，甚至进程迟迟退不干净。
 
-![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
+![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
 
 把范围放大一点，死锁不只属于 Java 线程。进程、数据库事务、分布式任务，只要互相占着资源再继续等待，都可能卡成同样的形状。这里的资源也不一定是操作系统教材里的打印机、磁带机，它可以是 Java 对象监视器、`ReentrantLock`、数据库行锁、分布式锁、连接池里的连接、线程池里的工作线程，甚至是管道缓冲区。
 
@@ -61,7 +61,7 @@ head:
 | 非抢占                   | 资源不能被外部强行拿走，只能由持有者释放 | Java 内置锁不能被另一个线程直接剥夺           |
 | 循环等待                 | 等待关系形成闭环                         | 线程 1 等线程 2，线程 2 又等线程 1            |
 
-![死锁四个必要条件示意图：互斥、请求与保持、非抢占、循环等待同时成立才会形成死锁](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-four-conditions.png)
+![死锁四个必要条件示意图：互斥、请求与保持、非抢占、循环等待同时成立才会形成死锁](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-four-conditions.png)
 
 这张表不要当成“满足其中一条就死锁”的清单。它真正表达的是：四项同时出现，死锁才具备发生条件；少掉任意一项，等待环就很难闭合。
 
@@ -202,7 +202,7 @@ T2 -> T1
 
 这种只保留“谁等谁”的图叫等待图（Wait-for Graph），可以看成资源分配图的简化版。Java 线程死锁、数据库死锁检测、Linux lockdep 都会用到类似的图思维，只是使用时机不一样：数据库通常等事务真的阻塞后再检查等待环；lockdep 更像是记录锁获取顺序，提前发现某些顺序组合可能绕成环。
 
-![资源分配图与等待图示意图：资源分配图包含线程和资源节点，等待图只保留线程之间的等待关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-resource-allocation-graph.png)
+![资源分配图与等待图示意图：资源分配图包含线程和资源节点，等待图只保留线程之间的等待关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-resource-allocation-graph.png)
 
 ## 预防、避免、检测、恢复
 
@@ -217,7 +217,7 @@ T2 -> T1
 | 检测 | 允许死锁发生，定期或按需检查等待环             | 检测本身有成本                   | 数据库、JVM 工具、内核调试常见 |
 | 恢复 | 检测到死锁后终止、回滚或抢占资源               | 可能丢弃已完成工作               | 数据库事务里比较自然           |
 
-![死锁处理策略图：预防、避免、检测、恢复四类方法的作用位置和工程常见程度](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-strategies.png)
+![死锁处理策略图：预防、避免、检测、恢复四类方法的作用位置和工程常见程度](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-strategies.png)
 
 ### 死锁预防
 
@@ -322,15 +322,15 @@ jstack -l <pid>
 
 本地复现时，JConsole、VisualVM 这类图形化工具也很好用。以 JConsole 为例，先找到 JDK 的 `bin` 目录并打开 `jconsole`。
 
-![jconsole](https://oss.javaguide.cn/github/javaguide/java/concurrent/jdk-home-bin-jconsole.png)
+![jconsole](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jdk-home-bin-jconsole.png)
 
 连接目标 Java 进程后，进入“线程”页面，点击“检测死锁”。
 
-![jconsole 检测死锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock.png)
+![jconsole 检测死锁](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock.png)
 
 如果目标进程里存在 Java 线程死锁，JConsole 会把相关线程单独列出来。
 
-![jconsole 检测到死锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock-done.png)
+![jconsole 检测到死锁](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock-done.png)
 
 线上环境一般还是优先用 `jcmd`、`jstack`。它们可以通过 SSH 执行，输出也容易留档。JConsole 更适合本地复现、教学演示，或者测试环境里快速看线程状态。生产环境远程连 JConsole 要额外考虑权限、网络暴露和运行开销，很多团队会选择先导出线程栈，再离线分析。
 
@@ -437,7 +437,7 @@ WHERE a.wait_event_type = 'Lock';
 | 饥饿 | 某个执行单元长期拿不到资源，但系统整体仍在推进 | 优先级过低、非公平锁竞争       |
 | 活锁 | 执行单元一直在动作，但总是互相让路，没人完成   | 失败后同时重试、退避策略太同步 |
 
-![死锁、饥饿和活锁对比图：死锁表现为等待环，饥饿表现为长期拿不到资源，活锁表现为持续动作但没有进展](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-vs-starvation-livelock.png)
+![死锁、饥饿和活锁对比图：死锁表现为等待环，饥饿表现为长期拿不到资源，活锁表现为持续动作但没有进展](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-vs-starvation-livelock.png)
 
 可以用三个画面记：死锁像两辆车在窄桥中间顶住，谁都不倒车；饥饿像队伍里一直有人插队，队尾那个人始终轮不到；活锁像两个人迎面走来，每次都同时往同一边让，结果一直错不开。
 

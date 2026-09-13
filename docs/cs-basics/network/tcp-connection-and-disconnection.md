@@ -26,7 +26,7 @@ TCP 三次握手和四次挥手很容易被背成一张流程图：客户端发 
 
 ## 建立连接：TCP 三次握手
 
-![TCP 三次握手图解](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-shakes-hands-three-times.png)
+![TCP 三次握手图解](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-shakes-hands-three-times.png)
 
 在最常见的“一端主动发起连接、一端被动监听”的场景下，TCP 连接通常通过三次握手建立：
 
@@ -192,7 +192,7 @@ sequenceDiagram
 
 ## 断开连接：TCP 四次挥手
 
-![TCP 四次挥手图解](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-waves-four-times.png)
+![TCP 四次挥手图解](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-waves-four-times.png)
 
 TCP 是全双工通信，两端的发送方向彼此独立。关闭连接时，通常需要两个方向分别完成“我不发了”和“我确认你不发了”的过程，所以逻辑上常被讲成“四次挥手”。
 
@@ -211,7 +211,7 @@ TCP 是全双工通信，两端的发送方向彼此独立。关闭连接时，�
 
 TCP 连接建立与关闭的常见状态迁移路径如下。图中省略了同时打开、同时关闭、RST、CLOSING 等少见或异常分支。
 
-![TCP 连接建立与关闭的常见状态迁移路径](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-state-diagram.png)
+![TCP 连接建立与关闭的常见状态迁移路径](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-state-diagram.png)
 
 ### 为什么要四次挥手？
 

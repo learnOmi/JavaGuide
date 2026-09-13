@@ -26,7 +26,7 @@ head:
 
 总的来说，网络通信模型可以用下图来表示。访问网页的过程，就是数据从应用层逐层向下封装，经物理网络传输到对端，再逐层向上解封装的过程。
 
-![五层网络模型在网页访问过程中的协作](https://oss.javaguide.cn/github/javaguide/cs-basics/network/five-layers.png)
+![五层网络模型在网页访问过程中的协作](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/five-layers.png)
 
 开始之前，先简单过一遍完整流程：
 
@@ -51,7 +51,7 @@ URL（Uniform Resource Locator，统一资源定位符）是互联网上资源�
 
 ### URL 的组成结构
 
-![URL的组成结构](https://oss.javaguide.cn/github/javaguide/cs-basics/network/URL-parts.png)
+![URL的组成结构](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/URL-parts.png)
 
 一个完整的 URL 由以下几部分组成：
 
@@ -97,7 +97,7 @@ DNS（Domain Name System，域名系统）要解决的是**域名和 IP 地址�
 
 下图展示了一个典型的 DNS 迭代查询过程：
 
-![DNS 解析流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process.png)
+![DNS 解析流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process.png)
 
 实际场景中，本地 DNS 服务器通常已经缓存了大量 TLD 服务器地址，多数查询不需要从根服务器开始，跳过根服务器直接查 TLD 的情况非常普遍。
 
@@ -111,7 +111,7 @@ DNS（Domain Name System，域名系统）要解决的是**域名和 IP 地址�
 
 TCP 三次握手的目的是**同步双方的初始序列号**，并**确认双方的收发路径是可用的**。
 
-![TCP 三次握手图解](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-shakes-hands-three-times.png)
+![TCP 三次握手图解](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-shakes-hands-three-times.png)
 
 1. **第一次握手（SYN）**：客户端发送 SYN 报文段，携带自己的初始序列号 `seq=x`，进入 `SYN_SENT` 状态。
 2. **第二次握手（SYN+ACK）**：服务端收到后回复 SYN+ACK，携带自己的初始序列号 `seq=y`，确认号 `ack=x+1`，进入 `SYN_RCVD` 状态。
@@ -213,7 +213,7 @@ HTTP 请求从浏览器发出后，数据并不是直接「飞」到服务器的
 
 应用层的 HTTP 报文，经过传输层、网络层、链路层的逐层封装，最终变成能在物理介质上传输的比特流：
 
-![TCP/IP 各层协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/network-protocol-overview.png)
+![TCP/IP 各层协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/network-protocol-overview.png)
 
 每一层只关心自己要添加的头部信息，并使用下层提供的服务来传输数据：
 

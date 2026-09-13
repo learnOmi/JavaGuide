@@ -21,7 +21,7 @@ head:
 
 下图是 BIO、NIO 和 AIO 处理客户端请求的简单对比图（关于 AIO 的介绍，可以看我写的这篇文章：[Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)，不是重点，了解即可）。
 
-![BIO、NIO 和 AIO 对比](https://oss.javaguide.cn/github/javaguide/java/nio/bio-aio-nio.png)
+![BIO、NIO 和 AIO 对比](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/bio-aio-nio.png)
 
 ⚠️需要注意：使用 NIO 并不一定意味着高性能，它的性能优势主要体现在高并发和高延迟的网络环境下。当连接数较少、并发程度较低或者网络传输速度较快时，NIO 的性能并不一定优于传统的 BIO。
 
@@ -35,7 +35,7 @@ NIO 主要包括以下三个核心组件：
 
 三者的关系如下图所示（暂时不理解没关系，后文会详细介绍）：
 
-![Buffer、Channel和Selector三者之间的关系](https://oss.javaguide.cn/github/javaguide/java/nio/channel-buffer-selector.png)
+![Buffer、Channel和Selector三者之间的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/channel-buffer-selector.png)
 
 下面详细介绍一下这三个组件。
 
@@ -47,7 +47,7 @@ NIO 主要包括以下三个核心组件：
 
 `Buffer` 的子类如下图所示。其中，最常用的是 `ByteBuffer`，它可以用来存储和操作字节数据。
 
-![Buffer 的子类](https://oss.javaguide.cn/github/javaguide/java/nio/buffer-subclasses.png)
+![Buffer 的子类](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/buffer-subclasses.png)
 
 你可以将 Buffer 理解为一段线性的、有限的同类型数据序列。部分 Buffer 由数组支持，但直接缓冲区等实现不一定具有可访问的底层数组。
 
@@ -74,9 +74,9 @@ public abstract class Buffer {
 
 另外，Buffer 有读模式和写模式这两种模式，分别用于从 Buffer 中读取数据或者向 Buffer 中写入数据。Buffer 被创建之后默认是写模式，调用 `flip()` 可以切换到读模式。如果要再次切换回写模式，可以调用 `clear()` 或者 `compact()` 方法。
 
-![position 、limit 和 capacity 之前的关系](https://oss.javaguide.cn/github/javaguide/java/nio/JavaNIOBuffer.png)
+![position 、limit 和 capacity 之前的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/JavaNIOBuffer.png)
 
-![position 、limit 和 capacity 之前的关系](https://oss.javaguide.cn/github/javaguide/java/nio/NIOBufferClassAttributes.png)
+![position 、limit 和 capacity 之前的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/NIOBufferClassAttributes.png)
 
 `Buffer` 对象不能通过 `new` 调用构造方法创建对象，只能通过静态方法实例化 `Buffer`。
 
@@ -166,7 +166,7 @@ capacity: 8, limit: 8, position: 0
 
 为了帮助理解，我绘制了一张图片展示 `capacity`、`limit` 和 `position` 每一阶段的变化。
 
-![capacity、limit和position每一阶段的变化](https://oss.javaguide.cn/github/javaguide/java/nio/NIOBufferClassAttributesDataChanges.png)
+![capacity、limit和position每一阶段的变化](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/NIOBufferClassAttributesDataChanges.png)
 
 ### Channel（通道）
 
@@ -176,13 +176,13 @@ BIO 中的流是单向的，分为各种 `InputStream`（输入流）和 `Output
 
 Channel 与前面介绍的 Buffer 打交道，读操作的时候将 Channel 中的数据填充到 Buffer 中，而写操作时将 Buffer 中的数据写入到 Channel 中。
 
-![Channel 和 Buffer之间的关系](https://oss.javaguide.cn/github/javaguide/java/nio/channel-buffer.png)
+![Channel 和 Buffer之间的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/channel-buffer.png)
 
 另外，部分 Channel（例如 `SocketChannel`）同时支持读写，可以更直接地映射底层操作系统的双向通信能力。
 
 `Channel` 的子类如下图所示。
 
-![Channel 的子类](https://oss.javaguide.cn/github/javaguide/java/nio/channel-subclasses.png)
+![Channel 的子类](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/channel-subclasses.png)
 
 其中，最常用的是以下几种类型的通道：
 
@@ -190,7 +190,7 @@ Channel 与前面介绍的 Buffer 打交道，读操作的时候将 Channel 中�
 - `SocketChannel`、`ServerSocketChannel`：TCP 通信通道；
 - `DatagramChannel`：UDP 通信通道；
 
-![Channel继承关系图](https://oss.javaguide.cn/github/javaguide/java/nio/channel-inheritance-relationship.png)
+![Channel继承关系图](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/channel-inheritance-relationship.png)
 
 Channel 最核心的两个方法：
 
@@ -210,7 +210,7 @@ channel.read(buffer);
 
 Selector（选择器） 是 NIO 中的一个关键组件，它允许一个线程处理多个 Channel。Selector 是基于事件驱动的 I/O 多路复用模型，主要运作原理是：通过 Selector 注册通道的事件，Selector 会不断地轮询注册在其上的 Channel。当事件发生时，比如：某个 Channel 上面有新的 TCP 连接接入、读和写事件，这个 Channel 就处于就绪状态，会被 Selector 轮询出来。Selector 会将相关的 Channel 加入到就绪集合中。通过 SelectionKey 可以获取就绪 Channel 的集合，然后对这些就绪的 Channel 进行相应的 I/O 操作。
 
-![Selector 选择器工作示意图](https://oss.javaguide.cn/github/javaguide/java/nio/selector-channel-selectionkey.png)
+![Selector 选择器工作示意图](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/selector-channel-selectionkey.png)
 
 一个多路复用器 Selector 可以同时监控多个 Channel。Selector 的底层实现由平台的 `SelectorProvider` 决定，例如 Linux 上可以使用 epoll，但其他平台会使用各自的实现。可接入的连接数量仍然受文件描述符、内存和系统配置等资源限制。
 

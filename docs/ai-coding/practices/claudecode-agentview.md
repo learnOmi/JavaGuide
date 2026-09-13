@@ -12,7 +12,7 @@ head:
 
 我平时用 Claude Code，经常会同时开几个会话：一个开发新功能，一个重构，一个跑测试，一个看报错，另一个整理 PR 评论或补文档。
 
-![开启多个命令行窗口，让多个 Agent 在不同会话中并行](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/multi-agent-parallel-sessions.png)
+![开启多个命令行窗口，让多个 Agent 在不同会话中并行](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/multi-agent-parallel-sessions.png)
 
 以前这么用其实挺累。我一般会在 Ghostty 里开多个分屏，再配上几个终端标签页。窗口铺得满满当当，看起来像是把并行效率拉满了，脑子里却一直要记着：哪个会话还在跑？哪个已经完成？哪个卡在权限确认？哪个报错了？
 
@@ -41,7 +41,7 @@ claude --version
 claude agents
 ```
 
-![终端直接运行 claude agents 即可进入](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view.png)
+![终端直接运行 claude agents 即可进入](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view.png)
 
 打开后，每个后台会话占一行。左边是状态图标，中间是会话名和最近的执行摘要，右边是运行时长。会话默认按状态分组，需要你处理的会排在前面。
 
@@ -53,13 +53,13 @@ claude agents
 
 也可以在输入框为空时按左方向键 `←`。这两个操作都是把会话分离到后台，不会结束任务。之后用方向键选中会话，再按 `Enter` 或 `→`，就能重新进入完整对话。
 
-![进入指定的 Agent 会话](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/enter-agent-session.png)
+![进入指定的 Agent 会话](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/enter-agent-session.png)
 
 ## 先看黄色，再看红色
 
 Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话名更值得看，因为它直接告诉你哪里需要介入。
 
-![Claude Code Agent View](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
+![Claude Code Agent View](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
 
 | 状态          | 界面表现 | 怎么处理                                      |
 | ------------- | -------- | --------------------------------------------- |
@@ -78,7 +78,7 @@ Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话
 
 选中会话后按空格键 `Space`，底部会弹出 Peek Panel，显示最近一次输出，或者 Claude 正在等待的问题。
 
-![Agent View 选中一个会话后按空格键弹出 Peek Panel](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/peek-panel-reply.png)
+![Agent View 选中一个会话后按空格键弹出 Peek Panel](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/peek-panel-reply.png)
 
 如果只是确认“是否允许修改这个文件”或者“要不要继续跑测试”，直接在面板里回复就行。会话收到消息后继续执行，不需要进入完整对话。
 
@@ -111,7 +111,7 @@ Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话
 
 这会把当前会话后台化，然后返回 Agent View。
 
-![/bg 把任务甩到后台里跑](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/bg-background-session.png)
+![/bg 把任务甩到后台里跑](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/bg-background-session.png)
 
 也可以顺手补一条指令再转入后台：
 

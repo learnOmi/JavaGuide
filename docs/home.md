@@ -145,7 +145,7 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 > 计算机基础（计算机网络、操作系统、数据结构与算法）已独立为单独模块，详见 [计算机基础知识总结](./cs-basics/)。
 
-[![Banner](https://oss.javaguide.cn/xingqiu/xingqiu.png)](./about-the-author/zhishixingqiu-two-years.md)
+[![Banner](/assets/images/oss.javaguide.cn/xingqiu/xingqiu.png)](./about-the-author/zhishixingqiu-two-years.md)
 
 ## 数据库
 
@@ -206,7 +206,7 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 [Elasticsearch 常见面试题总结(付费)](./database/elasticsearch/elasticsearch-questions-01.md)
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![JavaGuide 官方公众号](/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
 
 ## 开发工具
 
@@ -410,4 +410,4 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 如果大家想要实时关注我更新的文章以及分享的干货的话，可以关注我的公众号“**JavaGuide**”。
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![JavaGuide 官方公众号](/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)

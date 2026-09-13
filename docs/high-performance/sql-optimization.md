@@ -30,7 +30,7 @@ SQL 慢了，不要一上来就套“加索引”“不要 `SELECT *`”这类�
 
 > 【强制】超过三个表禁止 join。需要 join 的字段，数据类型保持绝对一致;多表关联查询时，保证被关联 的字段需要有索引。
 
-![尽量避免多表做 join](https://oss.javaguide.cn/github/javaguide/mysql/alibaba-java-development-handbook-multi-table-join.png)
+![尽量避免多表做 join](/assets/images/oss.javaguide.cn/github/javaguide/mysql/alibaba-java-development-handbook-multi-table-join.png)
 
 Join 是关系型数据库的基本能力，不应该简单理解成低效。单库内，如果关联字段类型一致、索引合适、返回数据量可控，Join 往往比应用层多次查询再组装更清晰，也更容易保证结果一致。
 
@@ -75,7 +75,7 @@ MySQL 8.0.20 之后，Block Nested-Loop Join 已被 Hash Join 替代。分析 Jo
 
 > 不得使用外键与级联，一切外键概念必须在应用层解决。
 
-![](https://oss.javaguide.cn/github/javaguide/mysql/alibaba-java-development-handbook-multi-table-join-foreign-keys-and-cascades.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/mysql/alibaba-java-development-handbook-multi-table-join-foreign-keys-and-cascades.png)
 
 这个规范主要面向高并发互联网业务、微服务拆分、分库分表等场景。在这些场景里，依赖外键和级联会增加跨表耦合、迁移成本和线上变更复杂度。
 

@@ -30,7 +30,7 @@ Docker 是常见的软件容器平台。想要搞懂 Docker，先要理解容器
 
 如果需要通俗地描述容器的话，我觉得容器就是一个存放东西的地方，就像书包可以装各种文具、衣柜可以放各种衣服、鞋架可以放各种鞋子一样。我们现在所说的容器存放的东西可能更偏向于应用比如网站、程序甚至是系统环境。
 
-![认识容器](https://oss.javaguide.cn/github/javaguide/tools/docker/container.png)
+![认识容器](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/container.png)
 
 ### 图解物理机、虚拟机与容器
 
@@ -38,15 +38,15 @@ Docker 是常见的软件容器平台。想要搞懂 Docker，先要理解容器
 
 **物理机：**
 
-![物理机](https://oss.javaguide.cn/github/javaguide/tools/docker/%E7%89%A9%E7%90%86%E6%9C%BA%E5%9B%BE%E8%A7%A3.jpeg)
+![物理机](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/物理机图解.jpeg)
 
 **虚拟机：**
 
-![虚拟机](https://oss.javaguide.cn/github/javaguide/tools/docker/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9B%BE%E8%A7%A3.jpeg)
+![虚拟机](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/虚拟机图解.jpeg)
 
 **容器：**
 
-![](https://oss.javaguide.cn/javaguide/image-20211110104003678.png)
+![](/assets/images/oss.javaguide.cn/javaguide/image-20211110104003678.png)
 
 通过上面这三张抽象图，我们可以大概通过类比概括出：**容器虚拟化的是操作系统而不是硬件，容器之间是共享同一套操作系统资源的。虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统。因此容器的隔离级别会稍低一些。**
 
@@ -58,11 +58,11 @@ Docker 是常见的软件容器平台。想要搞懂 Docker，先要理解容器
 
 传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬件虚拟。因此容器要比传统虚拟机更为轻便。
 
-![](https://oss.javaguide.cn/javaguide/2e2b95eebf60b6d03f6c1476f4d7c697.png)
+![](/assets/images/oss.javaguide.cn/javaguide/2e2b95eebf60b6d03f6c1476f4d7c697.png)
 
 **容器和虚拟机的对比**：
 
-![](https://oss.javaguide.cn/javaguide/4ef8691d67eb1eb53217099d0a691eb5.png)
+![](/assets/images/oss.javaguide.cn/javaguide/4ef8691d67eb1eb53217099d0a691eb5.png)
 
 - 容器是一个应用层抽象，用于将代码和依赖资源打包在一起。 多个容器可以在同一台机器上运行，共享操作系统内核，但各自作为独立的进程在用户空间中运行 。与虚拟机相比， **容器占用的空间较少**（容器镜像大小通常只有几十兆），**瞬间就能完成启动** 。
 
@@ -72,7 +72,7 @@ Docker 是常见的软件容器平台。想要搞懂 Docker，先要理解容器
 
 就我而言，对于两者无所谓谁会取代谁，而是两者可以和谐共存。
 
-![](https://oss.javaguide.cn/javaguide/056c87751b9dd7b56f4264240fe96d00.png)
+![](/assets/images/oss.javaguide.cn/javaguide/056c87751b9dd7b56f4264240fe96d00.png)
 
 ## Docker 介绍
 
@@ -114,7 +114,7 @@ Docker 中有非常重要的三个基本概念：镜像（Image）、容器（Co
 
 理解了这三个概念，就理解了 Docker 的整个生命周期。
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-build-run.jpeg)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-build-run.jpeg)
 
 ### 镜像（Image）：一个特殊的文件系统
 
@@ -156,7 +156,7 @@ Docker 设计时，就充分利用 **Union FS** 的技术，将其设计为**分
 
 比如我们想要搜索自己想要的镜像：
 
-![利用 Docker Hub 搜索镜像](https://oss.javaguide.cn/github/javaguide/tools/docker/Screen%20Shot%202019-11-04%20at%208.21.39%20PM.png)
+![利用 Docker Hub 搜索镜像](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/Screen Shot 2019-11-04 at 8.21.39 PM.png)
 
 在 Docker Hub 的搜索结果中，有几项关键的信息有助于我们选择合适的镜像：
 
@@ -182,7 +182,7 @@ mysql/mysql-server                Optimized MySQL Server Docker images. Create�
 
 下面这一张图很形象地展示了 Image、Container、Repository 和 Registry/Hub 这四者的关系：
 
-![Docker 架构](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-regitstry.png)
+![Docker 架构](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-regitstry.png)
 
 - Dockerfile 是一个文本文件，包含了一系列的指令和参数，用于定义如何构建一个 Docker 镜像。运行 `docker build`命令并指定一个 Dockerfile 时，Docker 会读取 Dockerfile 中的指令，逐步构建一个新的镜像，并将其保存在本地。
 - `docker pull` 命令可以从指定的 Registry/Hub 下载一个镜像到本地，默认使用 Docker Hub。
@@ -197,7 +197,7 @@ Docker 的概念基本上已经讲完，我们再来谈谈：Build, Ship, and Ru
 
 如果你搜索 Docker 官网，会发现如下的字样：**“Docker - Build, Ship, and Run Any App, Anywhere”**。那么 Build, Ship, and Run 到底是在干什么呢？
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-build-ship-run.jpg)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-build-ship-run.jpg)
 
 - **Build（构建镜像）**：镜像就像是集装箱包括文件以及运行环境等等资源。
 - **Ship（运输镜像）**：主机和仓库间运输，这里的仓库就像是超级码头一样。
@@ -285,7 +285,7 @@ docker push harbor.example.com/ubuntu:18.04
 1. 数据卷（Volumes）
 2. 挂载主机目录 (Bind mounts)
 
-![Docker 数据管理](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-data-management.png)
+![Docker 数据管理](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-data-management.png)
 
 数据卷是由 Docker 管理的数据存储区域，有如下这些特点：
 
@@ -481,7 +481,7 @@ LXC 技术主要是借助 Linux 内核中提供的 CGroup 功能和 namespace �
 
 另外，再给大家推荐一本质量非常高的开源书籍[《Docker 从入门到实践》](https://yeasy.gitbook.io/docker_practice/introduction/why) ，这本书的内容非常新，毕竟书籍的内容是开源的，可以随时改进。
 
-![《Docker 从入门到实践》网站首页](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-getting-started-practice-website-homepage.png)
+![《Docker 从入门到实践》网站首页](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-getting-started-practice-website-homepage.png)
 
 ## 参考
 

@@ -35,7 +35,7 @@ head:
 - 1 分钟之内每处理一个请求之后就将 `counter+1` ，当 `counter=33` 之后（也就是说在这 1 分钟内接口已经被访问 33 次的话），后续的请求就会被全部拒绝。
 - 等到 1 分钟结束后，将 `counter` 重置 0，重新开始计数。
 
-![固定窗口计数器算法](https://static001.infoq.cn/resource/image/8d/15/8ded7a2b90e1482093f92fff555b3615.png)
+![固定窗口计数器算法](/assets/images/static001.infoq.cn/resource/image/8d/15/8ded7a2b90e1482093f92fff555b3615.png)
 
 优点：实现简单，易于理解。
 
@@ -54,7 +54,7 @@ head:
 
 很显然， **当滑动窗口的格子划分得越多，滑动窗口的滚动就越平滑，限流的统计就会越精确。**
 
-![滑动窗口计数器算法](https://static001.infoq.cn/resource/image/ae/15/ae4d3cd14efb8dc7046d691c90264715.png)
+![滑动窗口计数器算法](/assets/images/static001.infoq.cn/resource/image/ae/15/ae4d3cd14efb8dc7046d691c90264715.png)
 
 优点：
 
@@ -72,7 +72,7 @@ head:
 
 如果想要实现这个算法的话也很简单，准备一个队列用来保存请求，然后我们定期从队列中拿请求来执行就好了（和消息队列削峰/限流的思想是一样的）。
 
-![漏桶算法](https://static001.infoq.cn/resource/image/75/03/75938d1010138ce66e38c6ed0392f103.png)
+![漏桶算法](/assets/images/static001.infoq.cn/resource/image/75/03/75938d1010138ce66e38c6ed0392f103.png)
 
 优点：
 
@@ -90,7 +90,7 @@ head:
 
 令牌桶算法也比较简单。和漏桶算法一样，我们的主角还是桶（这限流算法和桶过不去啊）。不过现在桶里装的是令牌了，请求在被处理之前需要从桶中获取一个令牌（获取即消费）。如果桶中没有令牌，请求就需要等待或被拒绝。我们根据限流大小，按照一定的速率往桶里添加令牌。如果桶装满了，就不能继续往里面继续添加令牌了。
 
-![令牌桶算法](https://static001.infoq.cn/resource/image/ec/93/eca0e5eaa35dac938c673fecf2ec9a93.png)
+![令牌桶算法](/assets/images/static001.infoq.cn/resource/image/ec/93/eca0e5eaa35dac938c673fecf2ec9a93.png)
 
 优点：
 
@@ -267,7 +267,7 @@ Resilience4j 不仅提供限流，还提供了熔断、负载保护、自动重�
 
 > ShenYu 地址: <https://github.com/apache/incubator-shenyu>
 
-![ShenYu 限流脚本](https://oss.javaguide.cn/github/javaguide/high-availability/limit-request/shenyu-ratelimit-lua-scripts.png)
+![ShenYu 限流脚本](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/limit-request/shenyu-ratelimit-lua-scripts.png)
 
 另外，如果不想自己写 Lua 脚本的话，也可以直接利用 Redisson 中的 `RRateLimiter` 来实现分布式限流，其底层实现就是基于 Lua 代码+令牌桶算法。
 

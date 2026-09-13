@@ -52,7 +52,7 @@ head:
 
 十种常见排序算法可以分类两大类别：**比较类排序**和**非比较类排序**。
 
-![排序算法分类](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/sort2.png)
+![排序算法分类](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/sort2.png)
 
 常见的**快速排序**、**归并排序**、**堆排序**以及**冒泡排序**等都属于**比较类排序算法**。比较类排序通过比较决定元素间的相对次序。在比较模型中，通用排序在最坏情况下需要 `Ω(nlogn)` 次比较。冒泡排序需要多轮扫描，平均时间复杂度为 `O(n²)`；归并排序和快速排序利用分治把问题拆成更小的子问题，平均时间复杂度为 `O(nlogn)`。
 
@@ -75,7 +75,7 @@ head:
 
 ### 图解算法
 
-![冒泡排序](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/bubble_sort.gif)
+![冒泡排序](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/bubble_sort.gif)
 
 ### 代码实现
 
@@ -128,7 +128,7 @@ public static int[] bubbleSort(int[] arr) {
 
 ### 图解算法
 
-![选择排序每轮选择最小元素放到已排序区末尾](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/selection_sort.gif)
+![选择排序每轮选择最小元素放到已排序区末尾](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/selection_sort.gif)
 
 ### 代码实现
 
@@ -182,7 +182,7 @@ public static int[] selectionSort(int[] arr) {
 
 ### 图解算法
 
-![插入排序过程演示](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/insertion_sort.gif)
+![插入排序过程演示](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/insertion_sort.gif)
 
 ### 代码实现
 
@@ -231,7 +231,7 @@ public static int[] insertionSort(int[] arr) {
 
 ### 图解算法
 
-![希尔排序按增量分组并插入排序的过程](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/shell_sort.png)
+![希尔排序按增量分组并插入排序的过程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/shell_sort.png)
 
 ### 代码实现
 
@@ -288,7 +288,7 @@ public static int[] shellSort(int[] arr) {
 
 ### 图解算法
 
-![归并排序递归拆分数组并合并有序子数组](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/merge_sort.gif)
+![归并排序递归拆分数组并合并有序子数组](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/merge_sort.gif)
 
 ### 代码实现
 
@@ -373,7 +373,7 @@ public static int[] merge(int[] arr_1, int[] arr_2) {
 
 ### 图解算法
 
-![随机快速排序选择基准并递归划分子序列](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/random_quick_sort.gif)
+![随机快速排序选择基准并递归划分子序列](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/random_quick_sort.gif)
 
 ### 代码实现
 
@@ -453,7 +453,7 @@ class Solution {
 
 ### 图解算法
 
-![堆排序构建大顶堆并依次取出堆顶元素](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/heap_sort.gif)
+![堆排序构建大顶堆并依次取出堆顶元素](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/heap_sort.gif)
 
 ### 代码实现
 
@@ -547,7 +547,7 @@ public static int[] heapSort(int[] arr) {
 
 ### 图解算法
 
-![计数排序通过统计元素出现次数确定有序位置](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/counting_sort.gif)
+![计数排序通过统计元素出现次数确定有序位置](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/counting_sort.gif)
 
 ### 代码实现
 
@@ -628,7 +628,7 @@ public static int[] countingSort(int[] arr) {
 
 ### 图解算法
 
-![桶排序将数据分配到多个桶后分别排序再合并](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/bucket_sort.gif)
+![桶排序将数据分配到多个桶后分别排序再合并](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/bucket_sort.gif)
 
 ### 代码实现
 
@@ -712,7 +712,7 @@ public static List<Integer> bucketSort(List<Integer> arr, int bucket_size) {
 
 ### 图解算法
 
-![基数排序按数字位从低到高依次排序并收集](https://oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/radix_sort.gif)
+![基数排序按数字位从低到高依次排序并收集](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/sorting-algorithms/radix_sort.gif)
 
 ### 代码实现
 

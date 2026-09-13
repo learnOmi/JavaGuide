@@ -27,7 +27,7 @@ JDK 8 引入了许多重要的新特性，这篇文章会挑选其中较为重�
 
 下图是从 JDK 8 到 JDK 24 每个版本的更新带来的新特性数量和更新时间：
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 Oracle 于 2014 年发布了 Java 8（JDK 1.8），此后它在 Java 生态中得到了长期而广泛的使用。很多程序员对其部分新特性仍不够了解，尤其是习惯了 Java 8 之前版本的开发者，比如我。
 

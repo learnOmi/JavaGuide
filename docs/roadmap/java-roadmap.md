@@ -30,11 +30,11 @@ head:
 
 下图中涉及到的每一个知识点都会在下文中详细介绍（附带学习资源推荐）。
 
-![Java 后端学习路线概览](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/java-learning-route-2024.png)
+![Java 后端学习路线概览](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/java-learning-route-2024.png)
 
 上面这张图片的原图+PDF 版本，可以在公众号**「JavaGuide」**后台回复“**学习路线**”获取。
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![JavaGuide 官方公众号](/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
 
 **内容比较多？劝退？** 如果你只想找到一份小厂的开发工作的话，建议你把重心放在 Java 基础、数据库、常用框架、常用工具上。
 
@@ -106,11 +106,11 @@ head:
 
 如果你之前没有学习过编程的话，我建议你可以看看视频教程。像尚硅谷的 [《Java 基础教程系列》](https://www.bilibili.com/video/BV1PY411e7J6/)和韩顺平老师的[《零基础 30 天学会 Java》](https://www.bilibili.com/video/BV1fh411y7R8)就很不错。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409143842888.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409143842888.png)
 
 👉我整理了尚硅谷最新的 Java 后端学习系列完整的视频教程&资料，喜欢看视频的朋友可以点此链接下载： [【最新整理】尚硅谷 Java 后端全套教程 & 实战项目](https://mp.weixin.qq.com/s/jkZthmOSDgTF1PrCeNus_A)（推荐）。
 
-![](https://oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
 
 看视频的同时，配套一本好书也是非常有作用的。
 
@@ -118,7 +118,7 @@ head:
 
 **1、《Head First Java》**
 
-![《Head First Java》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424103035793.png)
+![《Head First Java》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424103035793.png)
 
 《Head First Java》这本书的内容很轻松有趣，可以说是我学习编程初期最喜欢的几本书之一了。同时，这本书也是我的 Java 启蒙书籍。我在学习 Java 的初期多亏了这本书的帮助，自己才算是跨进 Java 语言的大门。我在 Java 这块能够坚持下来，这本书有很大的功劳。我身边的很多朋友学习 Java 初期都是看的这本书。
 
@@ -128,7 +128,7 @@ head:
 
 **2、《Java 核心技术卷 1+卷 2》**
 
-![《Java 核心技术卷 1》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424101217849.png)
+![《Java 核心技术卷 1》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424101217849.png)
 
 《Java 核心技术卷 1+卷 2》这两本书的内容很多，全看的话比较费时间，比较适合当工作书。我当时在大学的时候就买了两本放在寝室，没事的时候就翻翻。个人建议有点 Java 基础之后再读这两本，介绍的还是比较深入和全面的。
 
@@ -136,7 +136,7 @@ head:
 
 《Java 编程的逻辑》是一本非常低调的好书，相比于入门书来说，内容更有深度。适合初学者，同时也适合大家拿来复习 Java 基础知识。这篇文章中有这本书的阅读建议：[八股文骚套路之 Java 基础](https://mp.weixin.qq.com/s/UceEYGWM9qq9WvntV7y-Aw) 。
 
-![《Java编程的逻辑》](https://oss.javaguide.cn/github/javaguide/books/image-20230721153650488.png)
+![《Java编程的逻辑》](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20230721153650488.png)
 
 学完 Java 基础之后，你可以用自己学的东西实现一个简单的 Java 程序，也可以尝试用 Java 解决一些编程问题，以此来将自己学到的东西付诸于实践。
 
@@ -175,11 +175,11 @@ head:
 
 Java 并发书籍的话，挺多写的还不错的，比如《实战 Java 高并发程序设计》、《Java 并发编程之美》、《Java 并发实现原理：JDK 源码剖析》。
 
-![《实战 Java 高并发程序设计》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424112554830.png)
+![《实战 Java 高并发程序设计》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424112554830.png)
 
-![《Java 并发编程之美》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424112413660.png)
+![《Java 并发编程之美》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424112413660.png)
 
-![《Java 并发实现原理：JDK 源码剖析》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/0b1b046af81f4c94a03e292e66dd6f7d.png)
+![《Java 并发实现原理：JDK 源码剖析》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/0b1b046af81f4c94a03e292e66dd6f7d.png)
 
 想要系统学习的话，还是找从里面找一本认真阅读一下。当然，你也可以多选几本结合起来一起看，遇到不懂的知识点再去看看别的书籍的讲解或者找对应的博客讲解。
 
@@ -187,7 +187,7 @@ Java 并发书籍的话，挺多写的还不错的，比如《实战 Java 高并
 
 👉我整理了尚硅谷最新的 Java 后端学习系列完整的视频教程&资料，喜欢看视频的朋友可以点此链接下载： [【最新整理】尚硅谷 Java 后端全套教程 & 实战项目](https://mp.weixin.qq.com/s/jkZthmOSDgTF1PrCeNus_A)（推荐）。
 
-![](https://oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
 
 学习的过程中，强烈建议配合上我总结的常见问题和重要知识点：
 
@@ -207,7 +207,7 @@ JVM 属于是比并发更高阶一些的内容，学习顺序可以适当延后�
 
 书籍的话，《深入理解 Java 虚拟机》 这本书是首先要推荐的。
 
-![《深入理解 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/20210710104655705.png)
+![《深入理解 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/20210710104655705.png)
 
 这本书就一句话形容：**国产书籍中的战斗机，实实在在的优秀！** （真心希望国内能有更多这样的优质书籍出现！加油！💪）
 
@@ -217,13 +217,13 @@ JVM 属于是比并发更高阶一些的内容，学习顺序可以适当延后�
 
 类似的书籍还有 《实战 Java 虚拟机》、《虚拟机设计与实现:以 JVM 为例》，这两本都是非常不错的！
 
-![《实战 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113158144.png)
+![《实战 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113158144.png)
 
-![《虚拟机设计与实现:以 JVM 为例》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113210153.png)
+![《虚拟机设计与实现:以 JVM 为例》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113210153.png)
 
 如果你对实战比较感兴趣，想要自己动手写一个简易的 JVM 的话，可以看看 《自己动手写 Java 虚拟机》 这本书。
 
-![《自己动手写 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113445246.png)
+![《自己动手写 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113445246.png)
 
 书中的代码是基于 Go 语言实现的，搞懂了原理之后，你可以使用 Java 语言模仿着写一个，也算是练练手！ 如果你当前没有能力独立使用 Java 语言模仿着写一个的话，你也可以在网上找到很多基于 Java 语言版本的实现，比如[《zachaxy 的手写 JVM 系列》](https://zachaxy.github.io/tags/JVM/)。
 
@@ -237,11 +237,11 @@ JVM 属于是比并发更高阶一些的内容，学习顺序可以适当延后�
 2. 《字节码与类的加载篇》
 3. 《性能监控与调优篇》
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409181534319.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409181534319.png)
 
 👉我整理了尚硅谷最新的 Java 后端学习系列完整的视频教程&资料，喜欢看视频的朋友可以点此链接下载： [【最新整理】尚硅谷 Java 后端全套教程 & 实战项目](https://mp.weixin.qq.com/s/jkZthmOSDgTF1PrCeNus_A)（推荐）。
 
-![](https://oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
 
 学习的过程中，强烈建议配合上我总结的常见问题和重要知识点：
 
@@ -261,17 +261,17 @@ JVM 属于是比并发更高阶一些的内容，学习顺序可以适当延后�
 
 书籍的话，强烈推荐《数据库系统概念》，这本书涵盖了数据库系统的全套概念，知识体系清晰，是学习数据库系统非常经典的教材！不是参考书！
 
-![](https://oss.javaguide.cn/github/javaguide/booksimage-20220409150441742.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/booksimage-20220409150441742.png)
 
 如果你觉得书籍比较枯燥，自己坚持不下来的话，我推荐你可以先看看一些不错的视频。就比如北京师范大学的[《数据库系统原理》](https://www.icourse163.org/course/BNU-1002842007)这个就很不错。
 
 这个课程的老师讲的非常详细，而且每一小节的作业设计的也与所讲知识很贴合，后面还有很多配套实验。
 
-![](https://oss.javaguide.cn/github/javaguide/books/up-e113c726a41874ef5fb19f7ac14e38e16ce.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/up-e113c726a41874ef5fb19f7ac14e38e16ce.png)
 
 如果你比较喜欢动手，对于理论知识比较抵触的话，我推荐你看看[《如何开发一个简单的数据库》](https://cstack.github.io/db_tutorial/) ，这个 project 会手把手教你编写一个简单的数据库。
 
-![](https://oss.javaguide.cn/github/javaguide/books/up-11de8cb239aa7201cc8d78fa28928b9ec7d.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/up-11de8cb239aa7201cc8d78fa28928b9ec7d.png)
 
 纸上学来终觉浅 绝知此事要躬行！强烈推荐 CS 专业的小伙伴一定要多多实践！！！
 
@@ -296,11 +296,11 @@ MySQL 入门可以找一些视频看看，比如黑马的[《MySQL 数据库入�
 
 更进一步的话，可以找一些优秀的书籍来学习底层原理和性能优化，比如[《高性能 MySQL》](https://book.douban.com/subject/23008813/)和[《MySQL 技术内幕》](https://book.douban.com/subject/24708143/)。
 
-![](https://oss.javaguide.cn/github/javaguide/books/up-3d31e762933f9e50cc7170b2ebd8433917b.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/up-3d31e762933f9e50cc7170b2ebd8433917b.png)
 
 另外，强推一波 [《MySQL 是怎样运行的》](https://book.douban.com/subject/35231266/) 这本书，内容很适合拿来准备面试。讲的很细节，但又不枯燥，内容非常良心！
 
-![](https://oss.javaguide.cn/github/javaguide/csdn/20210703120643370.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/csdn/20210703120643370.png)
 
 如果你想让自己更加了解 MySQL ，同时也是为了准备面试的话，下面这些知识点要格外注意：
 
@@ -322,7 +322,7 @@ MySQL 入门可以找一些视频看看，比如黑马的[《MySQL 数据库入�
 
 和 MySQL 一样，PostgreSQL 也是开源免费且功能强大的关系型数据库。PostgreSQL 的 Slogan 是“**世界上最先进的开源关系型数据库**” 。
 
-![](https://oss.javaguide.cn/github/javaguide/books/image-20220702144954370.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220702144954370.png)
 
 客观来说，PostgreSQL 确实比 MySQL 优秀。不过，目前国内 MySQL 还是主流，PostgreSQL 是可选择性学习的。
 
@@ -336,7 +336,7 @@ PostgreSQL 中文文档建议看看：[PostgreSQL 14 中文文档](http://www.po
 
 书籍的话，强烈推荐 [《Redis 设计与实现》](https://book.douban.com/subject/25900156/)和 《Redis 核心原理与实践》 这两本书。[《Redis 核心原理与实践》](https://book.douban.com/subject/26612779/)这本书出版日期相对近一些，主要是结合源码来分析 Redis 的重要知识点比如各种数据结构和高级特性。
 
-![《Redis 设计与实现》和《Redis 设计与实现》](https://oss.javaguide.cn/github/javaguide/books/redis-books.png)
+![《Redis 设计与实现》和《Redis 设计与实现》](/assets/images/oss.javaguide.cn/github/javaguide/books/redis-books.png)
 
 付费专栏的话，推荐一个极客时间的[《Redis 核心技术与实战》](https://time.geekbang.org/column/intro/100056701?utm_campaign=geektime_search&utm_content=geektime_search&utm_medium=geektime_search&utm_source=geektime_search&utm_term=geektime_search)，虽然未涉及到太多新版 Redis 的内容，但胜在内容全面且清晰易懂。我当时看这个专栏确实学了不少东西，尤其是评论区有很多大佬的精彩的评论。
 
@@ -387,7 +387,7 @@ MongoDB 作为 Java 后端开发来说，是可选择性学习的，用的不多
 - 使用 IDEA 进行重构的小技巧
 - 使用 IDEA 进行源码阅读的技巧
 
-![「IDEA 高效使用指南网站首页](https://oss.javaguide.cn/github/awesome-idea-tutorial/awesome-idea-tutorial-website-homepage%20%20%20%20%20%20.png)
+![「IDEA 高效使用指南网站首页](/assets/images/oss.javaguide.cn/github/awesome-idea-tutorial/awesome-idea-tutorial-website-homepage .png)
 
 ### Maven
 
@@ -416,11 +416,11 @@ Git 技能对于程序员来说也是必备的！试着在学习的过程中将�
 
 整个教程分为很多关，每一关都有非常详细的指导，还会有详细的动图展示结果。并且，你做错了之后还可以使用 `reset` 命令从头开始。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423182350378.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423182350378.png)
 
 如果你实在不知道答案的话，还可以使用 `show solution` 命令查看答案。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423181725451.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423181725451.png)
 
 这种即时反馈的学习让过程变得有趣！真心感谢这个网站的作者，太爱了！
 
@@ -428,9 +428,9 @@ Git 技能对于程序员来说也是必备的！试着在学习的过程中将�
 
 如果想要详细了解 Git 的话，可以看看[《Pro Git》](https://www.progit.cn/ "《Pro Git》")这本书，介绍的非常全面，免费，支持阅读，并且有中文版！
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423183640734.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423183640734.png)
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423183749743.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210423183749743.png)
 
 这是这本书的另外一个在线阅读地址：<https://git-scm.com/book/zh/v2>。
 
@@ -450,11 +450,11 @@ Docker 常见概念解读，可以看 JavaGuide 的这篇[Docker 基本概念解
 
 另外，再给大家推荐一本质量非常高的开源书籍[《Docker 从入门到实践》](https://yeasy.gitbook.io/docker_practice/introduction/why)，这本书的内容非常新，毕竟书籍的内容是开源的，可以随时改进。
 
-![《Docker 从入门到实践》网站首页](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-getting-started-practice-website-homepage.png)
+![《Docker 从入门到实践》网站首页](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-getting-started-practice-website-homepage.png)
 
 如果想看视频的话，推荐这个：[Docker 1 小时快速上手教程](https://www.bilibili.com/video/BV11L411g7U1/)，没啥废话，干货挺多。而且，课件也是直接免费分享出来的：[Docker 1 小时教程课件](https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP)。
 
-![Docker 1小时快速上手教程](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/docker-1-hour-quick-start-guide.png)
+![Docker 1小时快速上手教程](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/docker-1-hour-quick-start-guide.png)
 
 最后，在学习完 Docker 的常见操作之后，建议大家以一个前后端分离的项目为例，去实践部署一下。比如，你可以选择部署自己的简历项目，这样的话，项目经历部分贴上在线体验地址，也算是一个加分项了！
 
@@ -470,11 +470,11 @@ Docker 常见概念解读，可以看 JavaGuide 的这篇[Docker 基本概念解
 
 想要看书学习设计模式的话，首推 《重学 Java 设计模式》 。有趣的例子，配合形象的图片，通过实战案例讲解设计模式的方式妙极了！文中的每一个细节无不透露着作者的用心！每一种设计模式实际都不难理解，大部分读者最需要的还是设计模式的实战经验。如果你能细心思考实践《重学 Java 设计模式》 中的每一个案例，我相信，你对设计模式的理解一定会更上一层楼！
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4da6f8cc0cf4a8e8238d3d8671e0462~tplv-k3u1fbpfcp-watermark.image)
+![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4da6f8cc0cf4a8e8238d3d8671e0462~tplv-k3u1fbpfcp-watermark.image)
 
 想要看视频学习的话，首推 [《尚硅谷 Java 设计模式（图解+框架源码剖析）》](https://www.bilibili.com/video/BV1G4411c7N4) 这个视频。
 
-![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/029687d24c7b4882ba81b5b629c323a1~tplv-k3u1fbpfcp-watermark.image)
+![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/029687d24c7b4882ba81b5b629c323a1~tplv-k3u1fbpfcp-watermark.image)
 
 这个视频通过图解+框架源码分析的方式全面地讲解了设计模式相关的内容，包括设计模式七大原则、UML 类图-类的六大关系、23 种设计模式及其分类等知识点。
 
@@ -488,7 +488,7 @@ Docker 常见概念解读，可以看 JavaGuide 的这篇[Docker 基本概念解
 
 对于想要系统学习的同学来说，还是建议看书籍，像《鸟哥的 Linux 私房菜》系列就挺不错的。不过，内容有点太多了，个人还是更建议作为工具书参考或者选择自己感兴趣的内容章节进行学习。
 
-![](https://oss.javaguide.cn/github/javaguide/books/linux-private-kitchen-basic-learning.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/linux-private-kitchen-basic-learning.png)
 
 不要忘记学习一下 Shell 编程了，这个也是必须要掌握的，快速入门可以阅读我写的 [Shell 编程基础知识总结](https://javaguide.cn/cs-basics/operating-system/shell-intro.html)这篇文章，总结了 Shell 变量、基本运算符、流程控制、函数这些重要的知识点。
 
@@ -508,7 +508,7 @@ JavaScript 的水更深，也是前端面试中的重心。
 
 除此之外，开源的 JS 教程[《The Modern JavaScript Tutorial》](https://javascript.info/)非常赞！目前的话，这个系列的教程还被翻译成了多国的语言。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409151045407.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210409151045407.png)
 
 这个教程的内容分为 3 部分
 
@@ -549,7 +549,7 @@ Tomcat 是 Apache 基金会下的一个项目，主要用作 Web 服务器。
 
 这个专栏不光可以加深自己对于 Tomcat 的理解，还能提高自己对于系统架构、性能优化等领域的思考。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210512202540785.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/20210512202540785.png)
 
 除了 Tomcat 之外，Nginx 也是必须要学习的！
 
@@ -579,11 +579,11 @@ Nginx 是一个高性能的 HTTP 和反向代理服务器，经常被拿来做�
 
 对于想要实战的同学，我强烈不推荐看书，直接看尚硅谷的实战项目即可。这篇文章可以获取到最新的视频且对尚硅谷的实战项目做了介绍：[【最新整理】尚硅谷 Java 后端全套教程 & 实战项目](https://mp.weixin.qq.com/s/jkZthmOSDgTF1PrCeNus_A)（推荐）。
 
-![](https://oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/88714e9becd0485aae247772b6ed9949.png)
 
 对于专研 Spring Boot 底层原理同学，可以看看 **[《Spring Boot 编程思想（核心篇）》](https://book.douban.com/subject/33390560/)**。
 
-![《Spring Boot 编程思想（核心篇）》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113546513.png)
+![《Spring Boot 编程思想（核心篇）》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113546513.png)
 
 这本书稍微有点啰嗦，不过，原理介绍的比较清楚（不适合初学者）。
 
@@ -591,7 +591,7 @@ Nginx 是一个高性能的 HTTP 和反向代理服务器，经常被拿来做�
 
 另外，Spring Boot 这块还有很多优质的开源教程，我已经整理好放到 [Java 优质开源技术教程](https://javaguide.cn/open-source-project/tutorial.html#springboot) 中了。
 
-![](https://oss.javaguide.cn/github/javaguide/open-source-project/open-source-project-springboot-technical-course.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/open-source-project-springboot-technical-course.png)
 
 ### MyBatis
 
@@ -642,7 +642,7 @@ Netty 是 Java 网络编程最热门的框架，大家可以根据个人需要�
 
 [《Netty 实战》](https://book.douban.com/subject/27038538/)
 
-![《Netty 实战》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113715369.png)
+![《Netty 实战》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113715369.png)
 
 这本书可以用来入门 Netty ，内容从 BIO 聊到了 NIO、之后才详细介绍为什么有 Netty 、Netty 为什么好用以及 Netty 重要的知识点讲解。
 
@@ -650,19 +650,19 @@ Netty 是 Java 网络编程最热门的框架，大家可以根据个人需要�
 
 [《Netty 进阶之路：跟着案例学 Netty》](https://book.douban.com/subject/30381214/)
 
-![《Netty 进阶之路：跟着案例学 Netty》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113747345.png)
+![《Netty 进阶之路：跟着案例学 Netty》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113747345.png)
 
 内容都是关于使用 Netty 的实践案例比如内存泄露这些东西。如果你觉得你的 Netty 已经完全入门了，并且你想要对 Netty 掌握的更深的话，推荐你看一下这本书。
 
 **[《跟闪电侠学 Netty：Netty 即时聊天实战与底层原理》](https://book.douban.com/subject/35752082/)**
 
-![](https://oss.javaguide.cn/github/javaguide/open-source-project/image-20220503085034268.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/image-20220503085034268.png)
 
 这本书分为上下两篇，上篇通过一个即时聊天系统的实战案例带你入门 Netty，下篇通过 Netty 源码分析带你搞清 Netty 比较重要的底层原理。
 
 视频的话，黑马的 [黑马程序员 Netty 全套教程](https://www.bilibili.com/video/BV1py4y1E7oA) 就挺不错的，从 Netty 的基础知识 NIO 讲起，比较容易接受。
 
-![](https://oss.javaguide.cn/github/javaguide/open-source-project/image-20220503115418795.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/image-20220503115418795.png)
 
 ### 工作流（可选）
 
@@ -684,7 +684,7 @@ ps：Flowable 和 Camunda 都是 Activiti5 的一个分支发展而来， 三者
 
 书籍可以看看《一本书讲透Elasticsearch：原理、进阶与工程实践》。这本书基于 8.x 版本编写，目前全网最新的 Elasticsearch 讲解书籍。内容覆盖 Elastic 官方认证的核心知识点，源自真实项目案例和企业级问题解答。
 
-![](https://oss.javaguide.cn/github/javaguide/books/one-book-guide-to-elasticsearch.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/one-book-guide-to-elasticsearch.png)
 
 最后，再推荐一些 ElasticSearch 相关的优秀文章和专辑来帮助你学习和更好的使用 ElasticSearch：
 
@@ -704,15 +704,15 @@ ps：Flowable 和 Camunda 都是 Activiti5 的一个分支发展而来， 三者
 
 《深入理解分布式系统》这本书非常不错。这本书的作者用了大量篇幅来介绍分布式领域中非常重要的共识算法，并且还会基于 Go 语言带着你从零实现了一个共识算法的鼻祖 Paxos 算法。
 
-![](https://oss.javaguide.cn/github/javaguide/books/deep-understanding-of-distributed-system.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/deep-understanding-of-distributed-system.png)
 
 《从零开始学架构》这本书的内容比较全面，分布式、微服务、高并发、高可用这些都有涉及到。这本书对应的是极客时间的专栏：[《从零开始学架构》](http://gk.link/a/10pKZ)，里面的很多内容都是这个专栏里面的，两者选一个阅读就行了。
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210412224443177.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210412224443177.png)
 
 余老师的 [《软件架构设计：大型网站技术架构与业务架构融合之道》](https://book.douban.com/subject/30443578/)这本书类似于《从零开始学架构》，内容同样比较全面，也很不错。
 
-![img](https://oss.javaguide.cn/github/javaguide/books/20210412232441459.png)
+![img](/assets/images/oss.javaguide.cn/github/javaguide/books/20210412232441459.png)
 
 **公开课推荐（理论向）**：
 
@@ -726,7 +726,7 @@ MIT6.824: Distributed System 这门公开课挺经典的。这门课每节课都
 
 视频可以直接学习尚硅谷的 [2024 最新版 Spring Cloud 教程](https://www.bilibili.com/video/BV1gW421P7RD/)，这门课程介绍了 SpringCloud 和 SpringCloud Alibaba 中目前最主流的组件。学完了这门课程之后，就可以直接上手为微服务项目的开发实战了。
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/shangguigu-springcloud.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/java-learning-route/shangguigu-springcloud.png)
 
 ### 理论&算法&协议
 
@@ -823,7 +823,7 @@ ID 是数据的唯一标识，分布式 ID 是分布式系统下的 ID。
 
 举个例子：电商系统中，你创建一个订单往往会涉及到订单服务（订单数加一）、库存服务（库存减一）等等服务，这些服务会有供自己单独使用的数据库。
 
-![分布式事务示意图](https://cdn.jsdelivr.net/gh/javaguide-tech/blog-images-6@main/12-04-1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![分布式事务示意图](https://cdn.jsdelivr.net/gh/javaguide-tech/blog-images-6@main/12-04-1/分布式事务示意图.png)
 
 **那么如何保证这一组操作要么都执行成功，要么都执行失败呢？**
 
@@ -879,13 +879,13 @@ Kafka、RocketMQ、RabbitMQ 学习资源推荐请看[知识星球](https://javag
 
 读写分离可以大幅提高读性能，小幅提高写的性能。因此，读写分离更适合单机并发读请求比较多的场景。
 
-![读写分离示意图](https://oss.javaguide.cn/github/javaguide/high-performance/read-and-write-separation-and-library-subtable/read-and-write-separation.png)
+![读写分离示意图](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/read-and-write-separation-and-library-subtable/read-and-write-separation.png)
 
 分库分表是为了解决由于库、表数据量过大，而导致数据库性能持续下降的问题。
 
 常见的分库分表工具有：sharding-jdbc（当当）、TSharding（蘑菇街）、MyCAT（基于 Cobar）、Cobar（阿里巴巴）...。 推荐使用 sharding-jdbc。 因为，sharding-jdbc 是一款轻量级 Java 框架，以 jar 包形式提供服务，不要我们做额外的运维工作，并且兼容性也很好。
 
-![分库分表](https://oss.javaguide.cn/java-guide-blog/662ea3bda90061d0b40177e3a46fefc3.jpg)
+![分库分表](/assets/images/oss.javaguide.cn/java-guide-blog/662ea3bda90061d0b40177e3a46fefc3.jpg)
 
 现在很多公司都是用的类似于 TiDB 这种分布式关系型数据库，不需要我们手动进行分库分表，因此我们只需要掌握读写分离&分库分表的常见概念和原理即可，不需要花费太多时间去实践，推荐阅读我写的 [读写分离&分库分表常见问题总结](https://javaguide.cn/high-performance/read-and-write-separation-and-library-subtable.html)这篇文章。
 
@@ -991,7 +991,7 @@ AI 已经成为 Java 后端能力体系的一部分，但不建议一开始就�
 
 学习路线的最新更新会第一时间同步在公众号，推荐大家关注一波！
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![JavaGuide 官方公众号](/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
 
 ## 知识星球
 
@@ -999,4 +999,4 @@ AI 已经成为 Java 后端能力体系的一部分，但不建议一开始就�
 
 **欢迎准备 Java 面试以及学习 Java 的同学加入我的 [知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)，干货非常多，学习氛围也很不错！收费虽然是白菜价，但星球里的内容或许比你参加上万的培训班质量还要高。**
 
-[![星球服务](https://oss.javaguide.cn/xingqiu/xingqiufuwu.png)](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)
+[![星球服务](/assets/images/oss.javaguide.cn/xingqiu/xingqiufuwu.png)](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)

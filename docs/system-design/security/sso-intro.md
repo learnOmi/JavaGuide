@@ -45,7 +45,7 @@ SSO 英文全称 Single Sign On，单点登录。SSO 是在多个应用系统中
 
 ### 核心应用与依赖
 
-![单点登录（SSO）设计](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-system.png-kblb.png)
+![单点登录（SSO）设计](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-system.png-kblb.png)
 
 | 应用/模块/对象    | 说明                                |
 | ----------------- | ----------------------------------- |
@@ -77,7 +77,7 @@ SSO 英文全称 Single Sign On，单点登录。SSO 是在多个应用系统中
 
 **登录时序图**
 
-![SSO系统设计-登录时序图](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-login-sequence.png-kbrb.png)
+![SSO系统设计-登录时序图](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-login-sequence.png-kbrb.png)
 
 上图展示的是通过父域 Cookie 在多个子域间共享 AuthToken 的做法。新系统不建议把认证 Cookie 的 `Domain` 设置为 `.test.com`：这样会把同一凭据发送给所有匹配的子域，任一薄弱、废弃或被接管的子域都可能扩大攻击面。
 
@@ -85,7 +85,7 @@ SSO 英文全称 Single Sign On，单点登录。SSO 是在多个应用系统中
 
 **登录信息获取/登录状态校验**
 
-![SSO系统设计-登录信息获取/登录状态校验](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-logincheck-sequence.png-kbrb.png)
+![SSO系统设计-登录信息获取/登录状态校验](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-logincheck-sequence.png-kbrb.png)
 
 ### 用户登出
 
@@ -97,7 +97,7 @@ SSO 登出不只是删除一个 Cookie：
 
 **登出时序图**
 
-![SSO系统设计-用户登出](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-logout-sequence.png-kbrb.png)
+![SSO系统设计-用户登出](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-logout-sequence.png-kbrb.png)
 
 ### 跨域登录、登出
 
@@ -111,15 +111,15 @@ SSO 登出不只是删除一个 Cookie：
 
 **跨域登录（主域名已登录）**
 
-![SSO系统设计-跨域登录（主域名已登录）](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-login-loggedin-sequence.png-kbrb.png)
+![SSO系统设计-跨域登录（主域名已登录）](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-login-loggedin-sequence.png-kbrb.png)
 
 **跨域登录（主域名未登录）**
 
-![SSO系统设计-跨域登录（主域名未登录）](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-login-unlogin-sequence.png-kbrb.png)
+![SSO系统设计-跨域登录（主域名未登录）](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-login-unlogin-sequence.png-kbrb.png)
 
 **跨域登出**
 
-![SSO系统设计-跨域登出](https://oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-logout-sequence.png-kbrb.png)
+![SSO系统设计-跨域登出](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/sso/sso-crossdomain-logout-sequence.png-kbrb.png)
 
 上面的时序图来自原转载方案，主要用于帮助理解登录跳转和通知关系，其中直接传递 AuthToken、共享父域 Cookie 等细节不应作为新系统的实现依据。新系统应以所选 OpenID Connect/OAuth 协议的当前安全规范为准。
 

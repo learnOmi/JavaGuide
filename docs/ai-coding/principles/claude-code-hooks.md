@@ -27,7 +27,7 @@ head:
 
 这两者的差别，可以先用一张图概括：
 
-![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
+![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
 
 我更愿意把 Hooks 理解成 Claude Code 工作流里的固定卡点。会话开始、用户提交 Prompt、工具调用前后、上下文压缩前后，都可以挂上对应的处理动作。
 
@@ -39,11 +39,11 @@ Hook 配置主要看事件和 handler。事件决定什么时候触发，handler
 
 handler 也不限于 shell command，官方还支持 HTTP endpoint、MCP 工具和 LLM prompt 等形式（见官方文档 [Hooks reference](https://code.claude.com/docs/en/hooks) 中 "Hook handler fields" 一节）。
 
-![Claude Code 官方文档 Hooks reference 页面列出的五类 handler：command、http、mcp_tool、prompt 和 agent](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-handler-types-official-docs.png)
+![Claude Code 官方文档 Hooks reference 页面列出的五类 handler：command、http、mcp_tool、prompt 和 agent](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-handler-types-official-docs.png)
 
 下图标出了常用触发点：
 
-![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
+![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
 
 Hook handler 主要有五类：
 
@@ -71,7 +71,7 @@ Hook handler 主要有五类：
 
 五类 handler 的关系如下：
 
-![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hook-handler-types.webp)
+![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hook-handler-types.webp)
 
 ## Hooks 到底解决了什么问题
 
@@ -231,7 +231,7 @@ Claude Code 会在每个退出码下检查 stdout。如果去掉开头空白后�
 
 另外，`command` Hook 会直接以当前用户的权限运行 shell 命令。它能访问、修改甚至删除当前用户有权限操作的文件，所以接入第三方脚本前，一定要先看懂并单独测试。
 
-![Claude Code 官方文档提醒 command Hook 会以当前用户权限执行 shell 命令，可能访问、修改或删除文件](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-security-warning-official-docs.png)
+![Claude Code 官方文档提醒 command Hook 会以当前用户权限执行 shell 命令，可能访问、修改或删除文件](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-security-warning-official-docs.png)
 
 ## 常用生命周期事件怎么理解
 
@@ -445,15 +445,15 @@ Skills 通过 `SKILL.md` 扩展 Coding Agent 的能力。Coding Agent 在执行�
 
 Skill 的正文只有在使用时才加载进上下文（渐进式加载），所以很适合沉淀长流程、检查清单、项目知识、脚本和参考资料。
 
-![Skill 渐进式披露](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
+![Skill 渐进式披露](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
 
 如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 
 Hooks 在生命周期节点上自动执行动作，Skills 则把完成某类任务所需的说明、脚本和参考资料交给 Claude。两者可以按下表区分：
 
-![Hooks 适合自动触发、固定动作和安全阻断，Skills 适合按需加载、上下文判断和复杂流程](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-skills-responsibilities.webp)
+![Hooks 适合自动触发、固定动作和安全阻断，Skills 适合按需加载、上下文判断和复杂流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-skills-responsibilities.webp)
 
 | 维度             | Hooks                                                        | Skills                                                   |
 | ---------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
@@ -474,7 +474,7 @@ Hooks 在生命周期节点上自动执行动作，Skills 则把完成某类任�
 
 第一版不用急着覆盖所有生命周期事件，按 `Notification`、`PostToolUse`、`PreToolUse` 的顺序接入就够了。
 
-![Claude Code Hooks 建议按 Notification、PostToolUse、PreToolUse 的顺序渐进接入](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-progressive-rollout.webp)
+![Claude Code Hooks 建议按 Notification、PostToolUse、PreToolUse 的顺序渐进接入](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-progressive-rollout.webp)
 
 Hook 配得越多，出问题时越难定位。比如 Claude 突然不再响应，你得逐个确认：`PreToolUse` 有没有返回 deny，`PermissionRequest` 有没有给出权限决定，`Stop` 是否反复触发，某个 `PostToolUse` 脚本是不是跑超时了。这几种问题表面上很像，排查方式却完全不同。
 
@@ -500,11 +500,11 @@ Hook 配得越多，出问题时越难定位。比如 Claude 突然不再响应�
 
 真遇到问题，我更建议按下面的顺序排查：
 
-![Claude Code Hook 没生效时，从配置加载、脚本单独运行到 matcher 逐层排查](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-troubleshooting-flow.webp)
+![Claude Code Hook 没生效时，从配置加载、脚本单独运行到 matcher 逐层排查](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-troubleshooting-flow.webp)
 
 1. 先运行 `/hooks`，确认配置已经加载，并且挂在预期的事件上。如果这里看不到，先检查 settings 文件的位置和 JSON 格式，暂时不用管脚本逻辑。
 
-   ![Claude Code 官方文档说明 /hooks 菜单可以查看事件、matcher、handler 详情和配置来源](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-menu-official-docs.png)
+   ![Claude Code 官方文档说明 /hooks 菜单可以查看事件、matcher、handler 详情和配置来源](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-menu-official-docs.png)
 
 2. 把脚本从 Claude Code 里拿出来单独运行。Hook 脚本会从 `stdin` 读取 JSON，先确认它能读到字段、给出预期的退出码，再接回配置。
 

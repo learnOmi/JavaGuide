@@ -33,7 +33,7 @@ head:
 
 先设想一个最常见的场景：同一份数据存了多个副本，节点可能宕机，节点之间的网络也可能中断。CAP、BASE 和共识算法讨论的，都是这个场景里的选择与约束。
 
-![分布式系统通信机制：中心化 vs 去中心化](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/gossip-centralized-vs-decentralized.png)
+![分布式系统通信机制：中心化 vs 去中心化](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/protocol/gossip-centralized-vs-decentralized.png)
 
 相关内容：
 
@@ -62,11 +62,11 @@ RPC 处理服务之间的调用，API 网关承接外部请求。复习时可以
 
 API 网关示意图如下：
 
-![网关示意图](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
+![网关示意图](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
 
 RPC 示意图如下：
 
-![RPC 概览](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 概览](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
 
 相关内容：
 

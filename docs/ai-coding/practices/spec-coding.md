@@ -12,7 +12,7 @@ head:
 
 Spec Coding 很早之前就有群友提到说建议写一下。确实还蛮重要的，工作中能用到，面试也开始问了。
 
-![spec coding 被读者催写](https://oss.javaguide.cn/github/javaguide/cs-basics/network/readers-urging-spec-coding-to-be-written.png)
+![spec coding 被读者催写](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/readers-urging-spec-coding-to-be-written.png)
 
 上周和同事聊到 Spec Coding，他问：“Claude Code 都能自己写代码了，为什么还要花时间写规范？”
 
@@ -115,7 +115,7 @@ Vibe Coding 更像是你给 AI 一个大方向，然后让它自由发挥。代�
 
 理解起来其实很简单，核心就是**先写清楚要做什么，再写清楚怎么做，然后拆任务，最后交给 AI 执行**。
 
-![Spec Coding 规范驱动编程流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
+![Spec Coding 规范驱动编程流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
 
 ### Specify：先搞清楚做什么
 
@@ -348,7 +348,7 @@ AI 遇到拿不准的操作时，到底该自己决定还是停下来问你？
 
 三种颜色，三种权限。
 
-![三色标签：AI 决策权限的风险控制机制](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-three-color-labels.png)
+![三色标签：AI 决策权限的风险控制机制](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-three-color-labels.png)
 
 - ✅ **Always（自动执行）**：代码检查、测试、格式化这些，AI 自己拍板就行。比如提交前自动跑 `make lint`。
 - ⚠️ **Ask first（需确认）**：可能影响其他模块的变更，AI 出方案等你审。改数据库索引、改 API 路由这种就属于这类。
@@ -378,7 +378,7 @@ AI 遇到拿不准的操作时，到底该自己决定还是停下来问你？
 
 按规模选策略。
 
-![Spec 管理策略：分层过滤 + 精准召回](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-spec-management-strategy.png)
+![Spec 管理策略：分层过滤 + 精准召回](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-spec-management-strategy.png)
 
 ### 规则不多时：分文件存储
 
@@ -480,7 +480,7 @@ AI 很容易把代码写完当成任务完成。可真实项目里，功能能�
 
 可以，但坑比你想的多。
 
-![Multi-Agent 三代理协作流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
+![Multi-Agent 三代理协作流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
 
 三代理协作的思路是代码、测试、审查各管一段，流水线推进。代码代理接到 Task 写功能，写完交给测试代理出用例跑测试，通过后再交给审查代理看代码质量，最后人类终审合并。
 

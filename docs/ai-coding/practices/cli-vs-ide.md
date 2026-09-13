@@ -20,13 +20,13 @@ head:
 
 **AI IDE 工具**把代码编辑、运行调试和 AI 对话放进同一个图形界面。Cursor、Kiro、Qoder、TRAE、Windsurf 都属于这一类，其中 Cursor、Windsurf、Kiro、TRAE 基于 VS Code 二次开发，界面和操作习惯对 VS Code 用户比较友好。Zed 走的是原生 IDE 路线；JetBrains + Qoder 插件则是在现有 IDE 里接入 Agent 能力。
 
-![Qoder 主界面](https://oss.javaguide.cn/github/javaguide/ai/coding/qoder-view.png)
+![Qoder 主界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/qoder-view.png)
 
 **AI CLI 工具**把主要交互放在终端里，Claude Code、Codex、Qwen Code、OpenCode 都是常见选择。你输入一段自然语言指令，Agent 会自己读仓库、改代码、跑测试，再根据报错继续调整。任务跑起来之后，开发者不必一直盯着每一行代码，更多时候是在定目标、补充约束和验收结果。
 
-![Claude Code 运行 /simplify 命令](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-command-run.png)
+![Claude Code 运行 /simplify 命令](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-command-run.png)
 
-![Claude Code 开启优化代码](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-optimization-start.png)
+![Claude Code 开启优化代码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/simplify-optimization-start.png)
 
 粗略地说，CLI 更适合把目标和验收条件交给 Agent，让它连续执行；IDE 更适合开发者盯着代码，随时插手修改。不过，这条线已经越来越模糊了，后面会专门讲到。
 
@@ -44,7 +44,7 @@ Vibe Coding 比 Claude Code 早了三周多。
 
 2025 年 2 月 2 日，Andrej Karpathy 在 X 上提出了 [Vibe Coding](https://x.com/karpathy/status/1886192184808149383)。他描述的是一种很随性的编程方式：用自然语言让 AI 改代码，接受改动，遇到报错再把错误丢回去继续修，甚至可以不仔细阅读 Diff。接受改动却不仔细看 Diff，让它和常规 AI 辅助开发拉开了距离。后者仍然要求人理解关键改动、检查测试结果，并为最终交付负责。
 
-![前 Tesla AI 主管 Andrej Karpathy 提出了“Vibe Coding”](https://oss.javaguide.cn/github/javaguide/ai/coding/karpathy-vibe-coding.png)
+![前 Tesla AI 主管 Andrej Karpathy 提出了“Vibe Coding”](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/karpathy-vibe-coding.png)
 
 2 月 24 日，Anthropic 又以限量研究预览的形式发布了 [Claude Code](https://www.anthropic.com/news/claude-3-7-sonnet)。它把 Agent 直接放进终端，可以读取文件、执行命令、修改代码并运行测试。讨论的单位随之变了：过去大家比较一次补全准不准，现在开始追问 Agent 能不能独立完成一整个任务。
 

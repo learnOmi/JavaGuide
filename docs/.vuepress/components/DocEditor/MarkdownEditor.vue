@@ -89,7 +89,6 @@ watch(
 .markdown-editor {
   height: 100%;
   overflow: hidden;
-  border-top: 1px solid var(--vp-c-border);
 
   // 让 CodeMirror 内部撑满容器（:deep 穿透 scoped 隔离）
   :deep(.cm-editor) {

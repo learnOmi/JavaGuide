@@ -30,13 +30,13 @@ PS：Claude Code 迭代非常快，本文按 v2.1.218（2026-07-24）的官方�
 
 `CLAUDE.md` 最好别写成第二份 README。它更像是写给 Claude Code 的项目备忘录：哪些规则代码里看不出来、哪些命令经常被它猜错、哪些目录不要碰、改完某类代码必须跑哪条测试。
 
-![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
 
 我的项目文件里通常只留这些东西：**Claude 容易猜错的规则、代码里读不出来的约定、团队必须遵守的规范，以及技术栈版本、常用命令、架构取舍、项目坑点。**
 
 官方文档建议每份 `CLAUDE.md` 目标控制在 200 行以内。文件太长会消耗更多上下文，也可能降低规则遵守度。内容继续膨胀时，再拆到带 `paths` 的 `.claude/rules/`，低频参考内容放进 Skills。
 
-![Claude Code 官方文档对 CLAUDE.md 的建议](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudemd-claude-docs.png)
+![Claude Code 官方文档对 CLAUDE.md 的建议](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudemd-claude-docs.png)
 
 我判断一条规则该不该留，会问一句：
 
@@ -48,7 +48,7 @@ PS：Claude Code 迭代非常快，本文按 v2.1.218（2026-07-24）的官方�
 
 `CLAUDE.md` 可以放在多个位置。官方的加载顺序大致从全局到局部，别只盯着项目根目录那一份：
 
-![CLAUDE.md 层级与优先级](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
+![CLAUDE.md 层级与优先级](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
 
 最外层是组织级文件，通常给 IT 或 DevOps 统一下发规范。macOS 路径是 `/Library/Application Support/ClaudeCode/CLAUDE.md`，Linux/WSL 是 `/etc/claude-code/CLAUDE.md`，Windows 是 `C:\Program Files\ClaudeCode\CLAUDE.md`。这类规则一般不是个人项目里要动的东西。
 
@@ -187,7 +187,7 @@ Claude Code 周边东西很多，刚接触时确实容易混在一起。我自�
 
 MCP（Model Context Protocol，模型上下文协议）管连接外部系统。外部系统提供一个 MCP Server，Claude Code 这类客户端连上来后，就能看到并调用里面的工具。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 这是 Claude Code 接外部工具的主要方式。查数据库、读 Sentry 报错、访问浏览器、拉 Notion 文档、取 Figma 设计稿，都属于这一类。
 
@@ -222,7 +222,7 @@ Skill 就是一份按需加载的任务说明。某类任务怎么做、有哪�
 
 还有一个版本变化要注意：Claude Code 里 custom commands 已经合并进 Skills。`.claude/commands/deploy.md` 和 `.claude/skills/deploy/SKILL.md` 都能创建 `/deploy` 这类命令；旧的 `.claude/commands/` 还能用，新内容更推荐按 Skill 组织。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
 
 重复性很强的步骤都可以沉淀成 Skill。写功能前固定走 TDD，先写失败测试再实现；代码审查时固定检查安全、事务、性能和边界条件；写技术文章时固定核对事实来源、引用、标题层级和 AI 味。
 
@@ -252,7 +252,7 @@ Skill 就是一份按需加载的任务说明。某类任务怎么做、有哪�
 
 Sub-Agent 我用得比较多。
 
-![Claude Code Sub-Agent：让主对话保持干净](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
+![Claude Code Sub-Agent：让主对话保持干净](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
 
 排查复杂问题时，Claude 经常要读几十个文件、搜一堆代码、跑几条命令。主会话很快被日志、搜索结果和文件内容塞满，后面再继续写代码，就容易飘。
 
@@ -314,7 +314,7 @@ rm -rf /tmp/build
 
 下面这张图来自 Claude Code 官方 Hooks 文档，展示的就是这条链路。
 
-![Claude Code PreToolUse Hook](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
+![Claude Code PreToolUse Hook](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
 
 我会把几类动作交给 Hook：编辑后自动格式化，会话结束前跑测试，禁止改 `migrations/` 或 `.github/workflows/`，拦截 `curl | bash`、`rm -rf`、向外部端点发送敏感内容，或者在 Sub-Agent 启动时注入额外上下文。
 
@@ -451,7 +451,7 @@ claude
 
 每个 Worktree 有独立目录和分支。一个会话改认证模块，另一个会话修支付 bug，文件不会互相踩。官方桌面应用也会为新会话自动创建 Worktree，这个方向和 CLI 是一致的。
 
-![Claude Code Git Worktree](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
+![Claude Code Git Worktree](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
 
 如果你已经有多个后台会话，可以用：
 

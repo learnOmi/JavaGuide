@@ -24,7 +24,7 @@ TCP 和 UDP 报文头里都有源端口和目的端口字段，字段长度都�
 
 `TCP/443` 和 `UDP/443` 只是数字一样，协议栈处理路径不同。收到 IP 包后，内核会先看 IP 层的协议标识：IPv4 里是 Protocol 字段，IPv6 里对应 Next Header。TCP 的协议号是 `6`，UDP 是 `17`。在进入端口分发之前，内核已经根据协议号把报文交给对应的 TCP 或 UDP 协议栈。
 
-![内核协议分发流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-kernel-protocol-dispatching-process.png)
+![内核协议分发流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-kernel-protocol-dispatching-process.png)
 
 TCP 和 UDP 虽然都在传输层，但差异很大。下表从 8 个维度对比一下，方便建立整体认知：
 
@@ -81,7 +81,7 @@ ss -tulnp | grep 8000
 
 ## 什么时候会冲突？
 
-![端口什么情况下会冲突](https://oss.javaguide.cn/github/javaguide/cs-basics/network/when-does-tcp-conflict-occur.png)
+![端口什么情况下会冲突](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/when-does-tcp-conflict-occur.png)
 
 TCP 和 UDP 之间不冲突，不代表端口可以随便重复绑定。
 
@@ -99,7 +99,7 @@ TCP 和 UDP 之间不冲突，不代表端口可以随便重复绑定。
 
 ### DNS 为什么同时用 TCP/UDP 53？
 
-![DNS 和 HTTP/3 同时使用 TCP 与 UDP 端口的实际案例](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-practical-application-example.png)
+![DNS 和 HTTP/3 同时使用 TCP 与 UDP 端口的实际案例](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-practical-application-example.png)
 
 DNS 是最经典的例子。IANA 注册表里，`domain` 服务同时注册了 `TCP/53` 和 `UDP/53`，实际 DNS 服务也经常同时监听这两个端口。
 
@@ -109,7 +109,7 @@ DNS 是最经典的例子。IANA 注册表里，`domain` 服务同时注册了 `
 
 传统 HTTPS 通常是 HTTP/1.1 或 HTTP/2 over TLS over TCP，默认使用 `TCP/443`。HTTP/3 跑在 QUIC 上，而 QUIC 基于 UDP。浏览器通常会通过 `Alt-Svc` 或 `HTTPS` DNS 记录获知服务端支持 HTTP/3，然后尝试建立 QUIC 连接；常见部署是同时开放 `TCP/443` 和 `UDP/443`。
 
-![HTTP/3 协议栈实现](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-3-implementation.png)
+![HTTP/3 协议栈实现](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-3-implementation.png)
 
 这不会和原来的 `TCP/443` 冲突。一个服务器完全可以同时提供：
 

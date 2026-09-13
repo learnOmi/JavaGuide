@@ -22,7 +22,7 @@ K3 这次带来了：**2.8T 参数、1M 上下文、原生多模态，以及面�
 
 可以看到，它要的核心就是让 Agent 在更长任务里持续读代码、看截图、跑工具、修问题。
 
-![Kimi K3 官方发布信息](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-official-announcement.png)
+![Kimi K3 官方发布信息](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-official-announcement.png)
 
 这篇还是按我的老办法来：先看怎么接入，再看它在几个工程任务里的实际表现，最后回头聊 K3 这次更新的亮点。
 
@@ -52,7 +52,7 @@ irm https://code.kimi.com/kimi-code/install.ps1 | iex
 
 安装完成后，可以用 `kimi --version` 看一下版本号：
 
-![Kimi Code CLI 安装完成并查看版本号](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-kimi-cli-install.png)
+![Kimi Code CLI 安装完成并查看版本号](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-kimi-cli-install.png)
 
 装好后，切到准备测试的项目目录，运行：
 
@@ -62,7 +62,7 @@ kimi
 
 第一次启动会要求登录 Kimi 账号。进入 Kimi Code CLI 后输入 `/model`，选择 `k3` 即可。
 
-![使用 kimi -y 启动后在模型列表中选择 k3](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-kimi-y-model-list.png)
+![使用 kimi -y 启动后在模型列表中选择 k3](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-kimi-y-model-list.png)
 
 对于我个人来说，我一般在正式用之前会做一个只读小测试：
 
@@ -70,7 +70,7 @@ kimi
 阅读当前项目的目录结构和核心代码，说明各模块的职责。先不要修改文件，也不要执行有副作用的命令。
 ```
 
-![Kimi 先读取 Java 项目的目录结构和核心代码](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-read-java-project.png)
+![Kimi 先读取 Java 项目的目录结构和核心代码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-read-java-project.png)
 
 ### 已有 Coding Agent 也能继续用
 
@@ -80,23 +80,23 @@ OpenClaw、Hermes 等通用 Agent 框架也能调用 Kimi Code。K3 负责模型
 
 以 CC Switch 为例，新增供应商时可以直接选择 Kimi For Coding：
 
-![新增供应商时选择 Kimi For Coding](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-select.png)
+![新增供应商时选择 Kimi For Coding](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-select.png)
 
 然后填入 API Key 和请求地址，API 格式默认即可：
 
-![配置 Kimi For Coding API Key 和请求地址](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-config.png)
+![配置 Kimi For Coding API Key 和请求地址](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-config.png)
 
 点击获取模型列表，把模型角色映射到 `k3`：
 
-![Kimi For Coding 模型映射中选择 k3](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-model-mapping.png)
+![Kimi For Coding 模型映射中选择 k3](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-provider-model-mapping.png)
 
 这里不需要额外开路由：
 
-![CC Switch 中直接选择 Kimi For Coding](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-cc-switch-direct-provider.png)
+![CC Switch 中直接选择 Kimi For Coding](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-cc-switch-direct-provider.png)
 
 实际测试一下：
 
-![Claude Code 接入 Kimi ](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-claude-code-read-project.png)
+![Claude Code 接入 Kimi ](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-claude-code-read-project.png)
 
 ## 案例一：搭建热点追踪系统
 
@@ -112,7 +112,7 @@ OpenClaw、Hermes 等通用 Agent 框架也能调用 Kimi Code。K3 负责模型
 
 任务推进用到了 `/goal` 命令。为了看模型本身在长任务里的能力，我没有启用任何 Skills，也没有给它额外的项目专用外挂。
 
-![Kimi Code CLI 中使用 goal 推进 HotPulse 任务](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-goal-active.png)
+![Kimi Code CLI 中使用 goal 推进 HotPulse 任务](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-goal-active.png)
 
 这里有个小细节：图里出现了 8 小时多，不代表模型实际连续工作了这么久。我是昨晚 12 点左右开始跑的，中途卡住后就放着了，早上继续推进。实际有效完成时间大概在 1 小时左右。
 
@@ -122,19 +122,19 @@ K3 的推进顺序还挺稳：先做 shared 契约、Zod schema 和单测，再�
 
 中间也不是一路绿灯。K3 会自己跑 TypeScript 检查和测试，看到报错后再回去修 helper、handler 和测试。
 
-![Kimi 修复服务端测试和 TypeScript 报错](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-server-tests.png)
+![Kimi 修复服务端测试和 TypeScript 报错](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-server-tests.png)
 
 ### 后端全绿后再做前端
 
 服务端这边中途先跑到了 `94/94` 全绿，然后 K3 才开始处理 client 侧。
 
-![服务端测试通过后切到前端 SPA](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-client-stage.png)
+![服务端测试通过后切到前端 SPA](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-client-stage.png)
 
 前端部分补了 Monitor、Feed、Targets、Deliveries、System 这些页面。
 
 下面是 HotPulse MVP 最终交付报告：
 
-![HotPulse MVP 最终交付报告](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-goal-complete.png)
+![HotPulse MVP 最终交付报告](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-goal-complete.png)
 
 最终交付的功能范围，基本覆盖了我给它的 MVP 验收条件。
 
@@ -142,17 +142,17 @@ K3 的推进顺序还挺稳：先做 shared 契约、Zod schema 和单测，再�
 
 Monitor 编辑页能配置名称、关键词、运行间隔、启用状态和来源：
 
-![HotPulse Monitor 编辑页](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-monitor-edit.png)
+![HotPulse Monitor 编辑页](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-monitor-edit.png)
 
 Feed 页能展示抓取和分析后的 Entry，也支持按状态、Monitor、排序和收藏过滤：
 
-![HotPulse Feed 页面](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-feed.png)
+![HotPulse Feed 页面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-feed.png)
 
 ### 继续优化
 
 后面，我又让 Kimi 继续优化了几轮。
 
-![HotPulse MVP 进一步优化后的最终报告](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-optimization-report.png)
+![HotPulse MVP 进一步优化后的最终报告](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-optimization-report.png)
 
 这轮主要是把第一版「能用」的地方继续往产品形态上推了一步。比如默认首页、新手引导、手动运行反馈、按钮 pending、防重复提交、toast、删除确认弹窗，还有更统一的中文文案。
 
@@ -160,7 +160,7 @@ Feed 页能展示抓取和分析后的 Entry，也支持按状态、Monitor、�
 
 这次就不是单纯修界面了。HotPulse 不再只看 Hacker News / RSS，而是把 RSS、Webpage、GitHub、Twitter 都接进同一条 scrape → analyze → notify 管线里。
 
-![HotPulse V1.1 多源扩展完成并通过验证](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-v11-multisource-complete.png)
+![HotPulse V1.1 多源扩展完成并通过验证](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-hotpulse-v11-multisource-complete.png)
 
 这块最有意思的不是多写了几个抓取器，而是 K3 把这些来源统一到了 `source_items` 中间层，用 `(monitorId, externalId)` 做唯一键，再用 `contentFingerprint` 做内容变化检测。
 
@@ -186,7 +186,7 @@ Feed 页能展示抓取和分析后的 Entry，也支持按状态、Monitor、�
 
 问题现象一眼就能看出来：股票搜索结果里的中文名称全变成了乱码，只剩股票代码还能看。
 
-![股票搜索结果出现乱码](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-stock-garbled-before.png)
+![股票搜索结果出现乱码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-stock-garbled-before.png)
 
 我把截图和现象丢给 K3 后，它先顺着搜索入口找到 `marketDataService.searchStock`，再继续追到数据源回退逻辑。
 
@@ -194,7 +194,7 @@ Feed 页能展示抓取和分析后的 Entry，也支持按状态、Monitor、�
 
 修复核心就是让新浪数据源按 GBK 解码，并补上支持 `Referer` 请求头的请求方法。
 
-![Kimi 定位并修复股票搜索乱码](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-stock-garbled-fixed.png)
+![Kimi 定位并修复股票搜索乱码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-stock-garbled-fixed.png)
 
 修完后，K3 跑了 `mvn -pl stock-crawler -am install`，重启后端，并实测 `GET /api/market/search?keyword=开`，确认返回“神开股份、开立医疗、经纬辉开、开开 B 股、开发科技”等正常中文名。
 
@@ -206,17 +206,17 @@ Feed 页能展示抓取和分析后的 Entry，也支持按状态、Monitor、�
 
 它要做的是基于已有自选股的成本价、持仓量和实时行情，算出总市值、浮动盈亏、今日盈亏、最大仓位等信息。并且，样式需要和现有的保持一致。
 
-![K3 接到持仓收益看板的开发任务](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-task.png)
+![K3 接到持仓收益看板的开发任务](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-task.png)
 
 这个需求看着像一张页面，实际要同时把后端计算、接口分层、前端展示和测试补齐。
 
 K3 先读了项目的自选股字段、行情接口和现有分层，再开始实现。金额计算统一用 `BigDecimal`，行情缺失时让单只股票降级，避免一条异常把整页带崩。
 
-![K3 完成持仓收益看板并给出验证结果](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-complete.png)
+![K3 完成持仓收益看板并给出验证结果](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-complete.png)
 
 最后交付的是一个能直接访问的看板：上面是总市值、总成本、浮动盈亏等汇总卡片，下面能看到每只股票的成本、现价、仓位和收益。后端接口、前端路由和测试也一起补上了。
 
-![持仓收益看板最终页面](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-dashboard.png)
+![持仓收益看板最终页面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-dashboard.png)
 
 到这一步，其实已经能用了。
 
@@ -226,19 +226,19 @@ K3 先读了项目的自选股字段、行情接口和现有分层，再开始�
 
 这一版会继续补业务口径和风险指标。比如修复部分行情不可用时汇总口径不一致的问题，增加收益贡献排行、前三大持仓占比、HHI 集中度、年化波动率、最大回撤。
 
-![K3 继续优化持仓收益看板 V2](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-task.png)
+![K3 继续优化持仓收益看板 V2](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-task.png)
 
 这里我觉得比较有意思的是，它没有直接在前端堆字段，而是先回到后端确认 K 线服务字段、交易日期对齐、停牌和数据不足时怎么降级，再把计算逻辑放进独立的 `PortfolioRiskCalculator` 里。
 
 这就很像一个正常工程师干活的节奏。
 
-![K3 完成持仓收益看板 V2 并通过验证](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-complete.png)
+![K3 完成持仓收益看板 V2 并通过验证](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-complete.png)
 
 最后 V2 页面里，原来的持仓明细还在，下面多了收益贡献和风险概览。
 
 收益贡献能看到哪只股票真正贡献了组合盈亏，风险概览里也能看到年化波动率、最大回撤、VaR、HHI 集中度和前三大持仓占比。
 
-![持仓收益看板 V2 页面](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-dashboard.png)
+![持仓收益看板 V2 页面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-case2-portfolio-v2-dashboard.png)
 
 这个案例中，它能在已有项目的约束里把完整链路接起来：先复用数据，再补计算和接口，最后跑测试、验页面。更关键的是，第二轮继续优化时，它还能顺着业务口径往下追，把「能展示」推进到「数据口径更靠谱」。
 
@@ -260,7 +260,7 @@ K3 先读了项目的自选股字段、行情接口和现有分层，再开始�
 
 我在海外社区也刷到不少类似反馈，有人直接说 K3 一句话 prompt 做小游戏很猛，甚至拿它去复刻《我的世界》风格的 3D Demo。
 
-![海外社区对 K3 做游戏能力的反馈](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-community-feedback.png)
+![海外社区对 K3 做游戏能力的反馈](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-community-feedback.png)
 
 那我就想，行，别只看别人玩。
 
@@ -270,7 +270,7 @@ K3 先读了项目的自选股字段、行情接口和现有分层，再开始�
 
 技术上，我要求它用 Vite、TypeScript、Three.js 和 Rapier。不要手写物理引擎，角色移动、碰撞、重力都交给 Rapier。游戏里必须有移动、奔跑、闪避、瞄准、射击、受击、死亡重开、普通敌人、精英敌人、多阶段 Boss、完整任务循环、PBR 材质、动态光影、阴影、雾效、粒子、Bloom、命中反馈和镜头震动。
 
-![让 K3 从零开发 3A 质感第三人称动作游戏 Demo](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-prompt.jpg)
+![让 K3 从零开发 3A 质感第三人称动作游戏 Demo](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-prompt.jpg)
 
 说实话，我写这个 prompt 的时候，心里预期也没那么高。
 
@@ -280,7 +280,7 @@ K3 先读了项目的自选股字段、行情接口和现有分层，再开始�
 
 K3 先给了游戏设计和技术方案。项目叫《STEEL HAVEN · 钢铁庇护所》，完整流程是降落平台、突破基地大门、中央庭院精英守卫、夺取能源核心、唤醒 WARDEN-9 Boss、三阶段 Boss 战、撤离点坚守，死亡后从检查点重开。
 
-![K3 给出的游戏设计和目录结构](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-design.jpg)
+![K3 给出的游戏设计和目录结构](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-design.jpg)
 
 然后它开始直接写项目。
 
@@ -288,7 +288,7 @@ K3 先给了游戏设计和技术方案。项目叫《STEEL HAVEN · 钢铁庇�
 
 它真的把游戏循环做出来了：第三人称角色控制、WASD 移动、Shift 奔跑、空格闪避、右键瞄准、左键射击、R 换弹、E 交互、普通敌人、精英敌人、三阶段 Boss、任务目标、Boss 血条、死亡重开、胜利结算，甚至还有 PBR 材质、环境反射、阴影、雾效、Bloom、枪口火光、爆炸粒子、命中标记和屏幕震动。
 
-![STEEL HAVEN 第一版交付报告](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-report-v1.jpg)
+![STEEL HAVEN 第一版交付报告](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-report-v1.jpg)
 
 当然，第一版不是没有问题。
 
@@ -300,7 +300,7 @@ K3 先给了游戏设计和技术方案。项目叫《STEEL HAVEN · 钢铁庇�
 
 然后它开始改 Player、PlayerController、CameraRig、Weapon、Game、Physics、AudioManager、HUD 和敌人模块。
 
-![K3 第二轮优化射击动作和战斗手感](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-report-v2.jpg)
+![K3 第二轮优化射击动作和战斗手感](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-game-steel-haven-report-v2.jpg)
 
 这轮改完之后，变化就更像游戏了。
 
@@ -328,7 +328,7 @@ K3 先给了游戏设计和技术方案。项目叫《STEEL HAVEN · 钢铁庇�
 
 几个 Coding 榜单里，K3 基本都站到了第一梯队，有些项目甚至直接排到第一。尤其是 Terminal Bench、Program Bench、SWE Marathon 这类更接近日常开发和长任务的测试，表现都挺亮眼。
 
-![Kimi K3 Coding benchmark 对比](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-coding-benchmarks.png)
+![Kimi K3 Coding benchmark 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-coding-benchmarks.png)
 
 当然了，benchmark 只能当参考。
 
@@ -342,7 +342,7 @@ K3 先给了游戏设计和技术方案。项目叫《STEEL HAVEN · 钢铁庇�
 
 Agent 和多模态这块也挺有意思。通用 Agent、表格、浏览器任务里，K3 基本都在第一梯队，部分项目直接排第一。视觉任务也没有掉队，整体看下来很均衡。
 
-![Kimi K3 General Agents 和 Visual Agents benchmark 对比](https://oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-agent-visual-benchmarks.png)
+![Kimi K3 General Agents 和 Visual Agents benchmark 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/k3/k3-agent-visual-benchmarks.png)
 
 不过普通开发者最后看的还是三件事：**效果够不够，成本扛不扛得住，速度快不快。**
 

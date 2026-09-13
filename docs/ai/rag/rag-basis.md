@@ -18,11 +18,11 @@ RAG 会在模型回答前从知识库中检索相关内容，再把这些内容�
 
 **RAG（Retrieval-Augmented Generation，检索增强生成）** 就是把信息检索和大语言模型绑在一起用。系统先从知识库里检索出和当前问题相关的片段，知识库可以是数据库、文档集合，也可以是企业内部系统。然后把这些片段和原始问题一起喂给 LLM，让模型基于检索内容回答，而不是只靠训练时记住的知识。
 
-![RAG 示意图](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-index-and-retrieval-explainer.webp)
+![RAG 示意图](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-index-and-retrieval-explainer.webp)
 
 ## 为什么需要 RAG？
 
-![RAG（检索增强生成）如何解决 LLM 的核心挑战](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-llm-challenges.png)
+![RAG（检索增强生成）如何解决 LLM 的核心挑战](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-llm-challenges.png)
 
 LLM 训练数据再大，也绕不开几个问题。RAG 正好可以在这些地方进行弥补。
 
@@ -78,7 +78,7 @@ RAG 的工程链路通常分两个阶段：离线索引和在线检索生成。�
 
 索引和检索阶段的简化流程图如下：
 
-![索引和检索阶段的简化流程图](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-engineering-link.png)
+![索引和检索阶段的简化流程图](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-engineering-link.png)
 
 索引阶段主要做这些事：
 
@@ -114,7 +114,7 @@ Embedding 就是把文本变成一串数字。更准确地说，它会把文本�
 
 它们字面不一样，但语义接近。好的 Embedding 模型会把它们映射到相近位置，向量检索才能把相关 Chunk 找出来。
 
-![Embedding：把文本映射到语义空间](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-2-embedding-map-text-to-semantic-space.png)
+![Embedding：把文本映射到语义空间](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-2-embedding-map-text-to-semantic-space.png)
 
 Embedding 维度常见的有 768、1024、1536、3072 等。维度是模型设计和训练方式的一部分，不能脱离模型直接得出“维度越高，语义效果越好”的结论；较高维度通常会增加存储、索引和相似度计算成本。以 OpenAI Embedding 为例，`text-embedding-3-small` 默认输出 1536 维，`text-embedding-3-large` 默认输出 3072 维，并支持通过 `dimensions` 参数降低输出维度。实际选型要在业务评测集上比较召回质量、延迟和存储开销。
 
@@ -143,7 +143,7 @@ Embedding 模型也不是“实时理解世界”的东西。它主要负责把�
 
 ## RAG 与传统搜索引擎的区别是什么？
 
-![RAG 与传统搜索引擎的区别](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-vs-search-engine.png)
+![RAG 与传统搜索引擎的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-vs-search-engine.png)
 
 RAG 和传统搜索都在“找信息”，但拿到信息之后做的事不一样。
 
@@ -199,7 +199,7 @@ RAG 会把检索到的多个知识片段一起放进 LLM 上下文，让模型�
 
 RAG 这两年一直在迭代，大致可以分成三个阶段。
 
-![RAG 演进阶段](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-2-evolution-stages.png)
+![RAG 演进阶段](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-2-evolution-stages.png)
 
 | 阶段         | 典型链路                                                         | 特点                                         |
 | ------------ | ---------------------------------------------------------------- | -------------------------------------------- |

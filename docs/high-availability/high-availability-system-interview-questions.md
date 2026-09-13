@@ -38,7 +38,7 @@ head:
 
 高可用并不等于永不故障。系统设计要回答的是：怎样减少故障，故障发生后如何限制影响，以及多久能够恢复服务。多部署几个实例只能减少应用层单点，数据库、缓存、消息队列、配置中心、DNS 和负载均衡仍可能成为故障源。
 
-![提高系统可用性的三层方法](https://oss.javaguide.cn/github/javaguide/high-availability/ha-interview-availability-methods.png)
+![提高系统可用性的三层方法](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/ha-interview-availability-methods.png)
 
 相关内容：[高可用系统设计指南](https://javaguide.cn/high-availability/high-availability-system-design.html)
 
@@ -57,7 +57,7 @@ head:
 
 冗余解决“备用资源在哪里”，容灾还要处理检测、切换、数据复制和恢复。对无状态服务，自动摘除故障实例通常比较容易；数据库主切、跨地域切流和资金链路涉及数据风险，往往需要更谨慎的确认与回切方案。
 
-![RTO 与 RPO](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
+![RTO 与 RPO](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
 
 相关内容：[冗余设计详解](https://javaguide.cn/high-availability/redundancy.html)
 
@@ -78,7 +78,7 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 这三种机制处理的问题不同。限流控制进入系统的请求量，降级根据业务优先级减少服务能力，熔断在下游持续异常时停止调用。隔离则把线程、连接或并发额度分开，避免一个依赖占满全部资源。
 
-![熔断器状态机](https://oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
+![熔断器状态机](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
 
 相关内容：
 
@@ -106,7 +106,7 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 超时只表示调用方在期限内没有收到结果，不能证明服务端执行失败。查询请求可以在总时间预算内有限重试；支付、下单和库存扣减等写请求，必须先用幂等键、唯一约束或状态机控制重复执行。
 
-![重试前必须先判断：错误类型 + 操作幂等](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
+![重试前必须先判断：错误类型 + 操作幂等](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
 
 相关内容：
 
@@ -134,7 +134,7 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 没有容量数据和演练结果，高可用方案只能停留在设计稿。压测用于观察系统在不同流量下的延迟、吞吐和资源变化，故障演练则验证节点宕机、依赖变慢或网络分区后，保护和恢复机制是否按预期工作。
 
-![性能压测主流程](https://oss.javaguide.cn/github/javaguide/high-availability/ha-interview-performance-test-flow.png)
+![性能压测主流程](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/ha-interview-performance-test-flow.png)
 
 相关内容：[性能测试入门](https://javaguide.cn/high-availability/performance-test.html)
 

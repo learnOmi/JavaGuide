@@ -25,7 +25,7 @@ head:
 
 官网地址：<https://www.docker.com/> 。
 
-![认识容器](https://oss.javaguide.cn/github/javaguide/tools/docker/container.png)
+![认识容器](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/container.png)
 
 ### 为什么要用 Docker?
 
@@ -43,7 +43,7 @@ Docker 的出现完美地解决了这一问题，我们可以在容器中安装 
 
 另外，[《Docker 从入门到实践》](https://yeasy.gitbook.io/docker_practice/introduction/why) 这本开源书籍中也已经给出了使用 Docker 的原因。
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/20210412220015698.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/20210412220015698.png)
 
 ## Docker 的安装
 
@@ -51,35 +51,35 @@ Docker 的出现完美地解决了这一问题，我们可以在容器中安装 
 
 Windows 推荐安装 Docker Desktop。访问 Docker 官网下载安装包：
 
-![安装 Docker](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-install-windows.png)
+![安装 Docker](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-install-windows.png)
 
 然后点击 `Get Started`：
 
-![安装 Docker](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-install-windows-download.png)
+![安装 Docker](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-install-windows-download.png)
 
 在此处点击 `Download for Windows` 即可下载。
 
 目前 Docker Desktop for Windows 推荐使用 WSL 2 后端。安装前建议确认系统满足 Docker Desktop 的版本要求，并已经启用 WSL 2。部分场景也可以使用 Hyper-V 后端，开启方式如下。打开控制面板，选择程序：
 
-![开启 Hyper-V](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv.png)
+![开启 Hyper-V](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv.png)
 
 点击 `启用或关闭 Windows 功能`：
 
-![开启 Hyper-V](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-enable.png)
+![开启 Hyper-V](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-enable.png)
 
 勾选 `Hyper-V`，点击确定即可：
 
-![开启 Hyper-V](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-check.png)
+![开启 Hyper-V](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-check.png)
 
 完成更改后需要重启一下计算机。
 
 开启 `Hyper-V` 后，就可以安装 Docker Desktop 了。打开安装程序后，等待片刻点击 `Ok` 即可：
 
-![安装 Docker](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-install.png)
+![安装 Docker](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-install.png)
 
 安装完成后，我们仍然需要重启计算机，重启后，若提示如下内容：
 
-![安装 Docker](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-wsl2.png)
+![安装 Docker](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-windows-hyperv-wsl2.png)
 
 如果安装过程中提示使用 WSL 2，一般建议优先选择 WSL 2 后端。它是 Windows 上运行 Linux 容器更常用的方式；如果你的环境必须使用 Hyper-V，再切换到 Hyper-V 后端。
 
@@ -147,21 +147,21 @@ systemctl enable docker
 
 和 GitHub 一样，Docker 也提供了 Docker Hub 用于查询各种镜像的地址和使用说明。我们先访问 Docker Hub：[https://hub.docker.com/](https://hub.docker.com/)
 
-![Docker Hub](https://oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-com.png)
+![Docker Hub](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-com.png)
 
 在左上角的搜索框中输入 `mysql` 并回车：
 
-![Docker Hub 搜索 MySQL](https://oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql.png)
+![Docker Hub 搜索 MySQL](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql.png)
 
 可以看到相关 MySQL 的镜像非常多，若右上角有 `OFFICIAL IMAGE` 标识，则说明是官方镜像，所以我们点击第一个 MySQL 镜像：
 
-![MySQL 官方镜像](https://oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql-official-image.png)
+![MySQL 官方镜像](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql-official-image.png)
 
 右边提供了下载 MySQL 镜像的指令为 `docker pull mysql`，但该指令会拉取默认标签对应的版本。实际项目中更建议显式指定版本标签，避免环境不可控。
 
 若是想下载指定版本的镜像，则点击下面的`View Available Tags`：
 
-![查看其他版本的 MySQL](https://oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql-view-available-tags.png)
+![查看其他版本的 MySQL](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/dockerhub-mysql-view-available-tags.png)
 
 这里就可以看到各种版本的镜像，右边有下载指令。比如想下载 8.4 版本的 MySQL 镜像，可以执行：
 
@@ -231,7 +231,7 @@ docker pull mysql:8.4
 docker search mysql
 ```
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-search-mysql-terminal.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-search-mysql-terminal.png)
 
 不过，`docker search` 只能搜索镜像仓库，不能列出某个镜像的全部标签。想查看 MySQL 支持哪些版本，建议直接去 Docker Hub 的 Tags 页面查看。
 
@@ -241,7 +241,7 @@ docker pull mysql:8.4
 
 如果标签不存在，执行 `docker pull` 时会返回类似 `manifest unknown` 的错误：
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-search-mysql-404-terminal.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-search-mysql-404-terminal.png)
 
 删除镜像使用指令：
 
@@ -300,7 +300,7 @@ docker pull tomcat:8.0-jre8
 
 下载完成后就可以运行了，运行后查看一下当前运行的容器：`docker ps` 。
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-ps-terminal.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-ps-terminal.png)
 
 其中`CONTAINER_ID`为容器的 id，`IMAGE`为镜像名，`COMMAND`为容器内执行的命令，`CREATED`为容器的创建时间，`STATUS`为容器的状态，`PORTS`为容器内服务监听的端口，`NAMES`为容器的名称。
 
@@ -314,7 +314,7 @@ docker run -p 8080:8080 tomcat:8.0-jre8
 
 此时外部就可以访问 Tomcat 了：
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-run-tomact-8080.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-run-tomact-8080.png)
 
 若是这样进行映射：
 
@@ -492,7 +492,7 @@ docker cp 289cc00dc5ed:/usr/local/tomcat/webapps/test.html ./
 docker inspect 923c969b0d91
 ```
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-inspect-terminal.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-inspect-terminal.png)
 
 ## Docker 数据卷
 
@@ -506,7 +506,7 @@ docker run -d -p 8080:8080 --name tomcat01 -v /opt/apps:/usr/local/tomcat/webapp
 
 然而此时访问 tomcat 会发现无法访问：
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-data-volume-webapp-8080.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-data-volume-webapp-8080.png)
 
 这就说明我们的数据卷设置成功了，Docker 会将容器内的`webapps`目录与`/opt/apps`目录进行同步，而此时`/opt/apps`目录是空的，导致`webapps`目录也会变成空目录，所以就访问不到了。
 
@@ -549,7 +549,7 @@ public class HelloServlet extends HttpServlet {
 
 这是一个非常简单的 Servlet，我们将其打包上传到`/opt/apps`中，那么容器内肯定就会同步到该文件，此时进行访问：
 
-![](https://oss.javaguide.cn/github/javaguide/tools/docker/docker-data-volume-webapp-8080-hello-world.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/tools/docker/docker-data-volume-webapp-8080-hello-world.png)
 
 这种方式通常称为绑定挂载（bind mount），因为宿主机目录由我们自己指定。Docker 还提供了另一种更常见的数据卷方式：命名卷（named volume）。
 

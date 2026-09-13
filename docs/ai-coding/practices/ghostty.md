@@ -19,7 +19,7 @@ head:
 
 Ghostty 不是 Claude Code 的官方指定终端，但确实被 Claude Code 带火了一把。Claude Code 创始人 Boris Cherny 在聊团队使用习惯时提到，他们的开发团队程序员非常喜欢 Ghostty。
 
-![Boris Cherny 提到 Claude Code 团队喜欢 Ghostty](https://oss.javaguide.cn/github/javaguide/ai/coding/boris-ghostty-x.png)
+![Boris Cherny 提到 Claude Code 团队喜欢 Ghostty](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/boris-ghostty-x.png)
 
 我自己也是看了这个分享，后来被 iTerm2 搞烦了之后转去的。
 
@@ -29,7 +29,7 @@ Ghostty 做的事情就是把终端模拟器这件事做好，没有什么花里
 
 当然了，iTerm2、Warp、Kitty 等等，都是不错的，我希望看到这篇文章的朋友不要因为这些争论，你自己用着顺手才是最重要的！
 
-![Ghostty 官网首页](https://oss.javaguide.cn/github/javaguide/ai/coding/ghostty-homepage.png)
+![Ghostty 官网首页](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/ghostty-homepage.png)
 
 ## 安装
 
@@ -53,7 +53,7 @@ brew install --cask ghostty
 ghostty +version
 ```
 
-![Ghostty 版本检查输出](https://oss.javaguide.cn/github/javaguide/ai/coding/ghostty-version.png)
+![Ghostty 版本检查输出](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/ghostty-version.png)
 
 > 版本说明：本文配置按我本机的 Ghostty 1.3.1（1.3.x 系列）校对。Ghostty 更新挺快，配置项以你本机的 `ghostty +show-config --default --docs` 为准。Ghostty 1.4.0 计划提供 `ghostty +ssh`；下文保留 1.3.x 的 SSH 处理方式，1.4 用户请先看 [Ghostty SSH 文档](https://ghostty.org/docs/features/ssh)，不要直接照抄旧配置。
 
@@ -175,7 +175,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 
 `scrollback-limit` 的单位是字节，不是行数；`10000000` 大约是 10 MB，而且每个分屏、标签页都会单独算。
 
-![Ghostty 配合 Catppuccin Mocha、JetBrainsMono Nerd Font 和 Starship 的效果](https://oss.javaguide.cn/github/javaguide/ai/coding/ghostty-terminal-demo.png)
+![Ghostty 配合 Catppuccin Mocha、JetBrainsMono Nerd Font 和 Starship 的效果](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/ghostty-terminal-demo.png)
 
 ## 主题
 
@@ -227,7 +227,7 @@ command -v starship >/dev/null && eval "$(starship init zsh)"
 starship explain
 ```
 
-![Starship explain 展示 prompt 中的路径、分支和 Git 状态](https://oss.javaguide.cn/github/javaguide/ai/coding/starship-explain.png)
+![Starship explain 展示 prompt 中的路径、分支和 Git 状态](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/starship-explain.png)
 
 我不建议一开始就把 Starship 模块全开。目录、Git 分支、Git 状态、耗时够用；Kubernetes、云账号、容器这些东西，用到再加。prompt 每次回车都要计算，信息太满反而慢。
 
@@ -257,7 +257,7 @@ macOS 下先记这些：
 
 这个布局不用 tmux，也不用多个窗口来回摆。
 
-![Ghostty 分屏运行 Claude Code、开发服务和日志](https://oss.javaguide.cn/github/javaguide/ai/coding/ghostty-split-claude-code.png)
+![Ghostty 分屏运行 Claude Code、开发服务和日志](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/ghostty-split-claude-code.png)
 
 想自己绑快捷键，用这个格式：
 

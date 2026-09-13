@@ -139,7 +139,7 @@ Agent 场景还要看 Trial 数量。同一条任务跑一次成功，不代表�
 
 Golden Set 准备好之后，要决定谁来评分。人工评测、规则评测、LLM-as-Judge 不是替代关系，更多时候是分工关系。
 
-![规则评测、LLM-as-Judge 与人工评测协作评估 AI 输出](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-three-grader-collaboration.webp)
+![规则评测、LLM-as-Judge 与人工评测协作评估 AI 输出](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-three-grader-collaboration.webp)
 
 | 方法         | 准确性                     | 速度 | 成本 | 典型评测内容                                          | 典型使用场景                                                   |
 | ------------ | -------------------------- | ---- | ---- | ----------------------------------------------------- | -------------------------------------------------------------- |
@@ -582,7 +582,7 @@ Skill 的输出也要贴着用途看。`grilling` 这类需求澄清 Skill，要
 
 Eval Harness 负责把一批任务跑起来：准备输入、调用被测系统、记录 Trace、执行 Grader、汇总报告、保存结果。没有 Harness，评测很容易退回到“我手动试了几条，感觉还行”。
 
-![Eval Harness 从读取评测集到执行评分并进入发布门禁的运行流程](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-eval-harness-flow.webp)
+![Eval Harness 从读取评测集到执行评分并进入发布门禁的运行流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-evaluation-eval-harness-flow.webp)
 
 一个最小可用的 Harness 至少要做四件事：
 

@@ -132,7 +132,7 @@ Cannot assign requested address
 
 ## 排查时别只盯着数量，要先看谁在主动关闭
 
-![TIME_WAIT 与 CLOSE_WAIT 问题的排查流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-time-wait-close-wait-troubleshooting-flowchart.png)
+![TIME_WAIT 与 CLOSE_WAIT 问题的排查流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-time-wait-close-wait-troubleshooting-flowchart.png)
 
 看到大量 `TIME_WAIT` 或 `CLOSE_WAIT`，可以先用下面几条命令定位方向：
 
@@ -161,7 +161,7 @@ sudo lsof -nP -iTCP -sTCP:CLOSE_WAIT
 ss -ltn
 ```
 
-![macOS：查看各 TCP 状态数量和 TIME-WAIT 主要集中在哪些远端](https://oss.javaguide.cn/github/javaguide/cs-basics/network/macos-check-tcp-state-count-and-time-wait-remote-distribution.png)
+![macOS：查看各 TCP 状态数量和 TIME-WAIT 主要集中在哪些远端](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/macos-check-tcp-state-count-and-time-wait-remote-distribution.png)
 
 命令背后的判断：
 

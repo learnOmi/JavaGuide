@@ -14,6 +14,22 @@
         <span v-if="state.dirty" class="dirty-dot" title="有未保存改动">●</span>
       </div>
       <div class="editor-actions">
+        <button
+          class="icon-btn"
+          type="button"
+          title="新建页面"
+          @click="showNewPage = true"
+        >
+          ＋ 新建页
+        </button>
+        <button
+          class="icon-btn danger"
+          type="button"
+          title="删除当前页面（移入回收站）"
+          @click="showDelete = true"
+        >
+          删除
+        </button>
         <label
           class="autosave-toggle"
           title="开启后编辑停止 0.8 秒自动写回源文件"
@@ -75,9 +91,37 @@
       <button type="button" @click="state.draftRestored = false">知道了</button>
     </div>
 
-    <!-- 编辑主体：CodeMirror -->
+    <!-- Tab 切换：正文 / 属性 -->
+    <nav class="editor-tabs" role="tablist">
+      <button
+        type="button"
+        role="tab"
+        :aria-selected="activeTab === 'body'"
+        :class="{ active: activeTab === 'body' }"
+        @click="activeTab = 'body'"
+      >
+        正文
+      </button>
+      <button
+        type="button"
+        role="tab"
+        :aria-selected="activeTab === 'meta'"
+        :class="{ active: activeTab === 'meta' }"
+        @click="activeTab = 'meta'"
+      >
+        属性
+      </button>
+    </nav>
+
+    <!-- 编辑主体：正文（CodeMirror）/ 属性（frontmatter 表单） -->
     <main class="editor-body">
+      <FrontmatterForm
+        v-if="activeTab === 'meta'"
+        :raw-content="state.rawContent"
+        @update:raw-content="onContentChange"
+      />
       <MarkdownEditor
+        v-else
         :model-value="state.rawContent"
         @update:model-value="onContentChange"
         @save="manualSave"
@@ -93,13 +137,33 @@
       <span v-else-if="state.autosaveOn">自动保存已开启</span>
       <span v-else>手动模式：Ctrl+S 保存</span>
     </footer>
+
+    <!-- 新建页对话框 -->
+    <NewPageDialog v-if="showNewPage" @close="showNewPage = false" />
+
+    <!-- 删除确认对话框 -->
+    <DeleteDialog
+      v-if="showDelete"
+      @close="showDelete = false"
+      @deleted="onPageDeleted"
+    />
+
+    <!-- 全局轻量 toast（不随抽屉关闭而消失） -->
+    <Teleport to="body">
+      <div v-if="toastMessage.text" class="editor-toast" role="status">
+        {{ toastMessage.text }}
+      </div>
+    </Teleport>
   </aside>
 </template>
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { usePageData } from "vuepress/client";
+import { usePageData, useRouter } from "vuepress/client";
+import DeleteDialog from "./DeleteDialog.vue";
+import FrontmatterForm from "./FrontmatterForm.vue";
 import MarkdownEditor from "./MarkdownEditor.vue";
+import NewPageDialog from "./NewPageDialog.vue";
 import {
   AUTOSAVE_DEBOUNCE_MS,
   EDITOR_DRAWER_WIDTH,
@@ -111,11 +175,21 @@ import {
   readDraft,
   saveFile,
   setAutosavePreference,
+  toastMessage,
   writeDraft,
 } from "../docEditorState";
 
 /** 是否全屏编辑（默认 45% 宽，左页右编辑） */
 const isFull = ref(false);
+
+/** 当前 Tab：body 正文 / meta 属性（frontmatter 表单） */
+const activeTab = ref<"body" | "meta">("body");
+
+/** 对话框开关 */
+const showNewPage = ref(false);
+const showDelete = ref(false);
+
+const router = useRouter();
 
 /** 防抖定时器句柄（自动保存） */
 let autosaveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -258,6 +332,17 @@ function close(): void {
 function onToggleAutosave(event: Event): void {
   const enabled = (event.target as HTMLInputElement).checked;
   setAutosavePreference(enabled);
+}
+
+/**
+ * 删除成功后的跳转：回首页（回收站中的文件已不存在，
+ * 由首页接管展示；编辑抽屉保持打开，路由监听会加载 README）。
+ */
+async function onPageDeleted(): Promise<void> {
+  showDelete.value = false;
+  clearAutosaveTimer();
+  state.dirty = false;
+  await router.push("/");
 }
 
 /** 全局 Ctrl+S：编辑抽屉打开时拦截浏览器默认保存 */
@@ -427,6 +512,43 @@ defineExpose({
   }
 }
 
+.icon-btn.danger {
+  color: var(--vp-c-danger-content, #a33);
+
+  &:hover:not(:disabled) {
+    border-color: var(--vp-c-danger, #a33);
+  }
+}
+
+.editor-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 3rem;
+  z-index: 500;
+  transform: translateX(-50%);
+  max-width: min(80vw, 36rem);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg-elv, var(--vp-c-bg));
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  color: var(--vp-c-text-1);
+  font-size: 0.82rem;
+  word-break: break-all;
+  animation: toast-rise 0.25s ease;
+}
+
+@keyframes toast-rise {
+  from {
+    transform: translate(-50%, 8px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
 .banner {
   display: flex;
   align-items: center;
@@ -467,9 +589,41 @@ defineExpose({
   gap: 0.4rem;
 }
 
+.editor-tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.35rem 0.9rem 0;
+  border-bottom: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-soft, transparent);
+
+  button {
+    padding: 0.35rem 0.9rem;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--vp-c-text-2);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+
+    &:hover {
+      color: var(--vp-c-text-1);
+    }
+
+    &.active {
+      border-bottom-color: var(--vp-c-accent, var(--vp-c-brand));
+      color: var(--vp-c-accent, var(--vp-c-brand));
+      font-weight: 600;
+    }
+  }
+}
+
 .editor-body {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
 }
 
 .editor-status {

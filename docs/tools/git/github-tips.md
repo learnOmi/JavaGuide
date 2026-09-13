@@ -18,7 +18,7 @@ GitHub 不只是代码托管平台。对开发者来说，它同时承担了项�
 
 不过，简历里是否放 GitHub 链接要看账号内容质量。如果账号里有完整项目、持续维护记录、清晰 README 和比较规范的提交历史，GitHub 链接会加分；如果只有空仓库或者临时练习代码，就没必要强行放。生成后的效果如下图所示。
 
-![GitHub简历](https://oss.javaguide.cn/2020-11/image-20201108192205620.png)
+![GitHub简历](/assets/images/oss.javaguide.cn/2020-11/image-20201108192205620.png)
 
 通过 <https://www.githubtrends.io/wrapped> 这个网站，你可以生成一份 GitHub 个人年报，这个年报会列举出你在这一年的项目贡献情况、最常使用的编程语言、详细的贡献信息。
 
@@ -28,17 +28,17 @@ GitHub 不只是代码托管平台。对开发者来说，它同时承担了项�
 
 GitHub 目前支持在个人主页自定义展示一些内容。展示效果如下图所示。
 
-![个性化首页展示效果](https://oss.javaguide.cn/java-guide-blog/image-20210616221212259.png)
+![个性化首页展示效果](/assets/images/oss.javaguide.cn/java-guide-blog/image-20210616221212259.png)
 
 想要做到这样非常简单，你只需要创建一个和你的 GitHub 账户同名的仓库，然后自定义`README.md`的内容即可。
 
 展示在你主页的自定义内容就是`README.md`的内容（_不会 Markdown 语法的小伙伴自行面壁 5 分钟_）。
 
-![创建一个和你的GitHub账户同名的仓库](https://oss.javaguide.cn/java-guide-blog/image-20201107110309341.png)
+![创建一个和你的GitHub账户同名的仓库](/assets/images/oss.javaguide.cn/java-guide-blog/image-20201107110309341.png)
 
 这个也是可以玩出花来的！比如说：通过 [github-readme-stats](https://hellogithub.com/periodical/statistics/click/?target=https://github.com/anuraghazra/github-readme-stats) 这个开源项目，你可以在 README 中展示动态生成的 GitHub 统计信息。展示效果如下图所示。
 
-![通过github-readme-stats动态生成GitHub统计信息 ](https://oss.javaguide.cn/java-guide-blog/image-20210616221312426.png)
+![通过github-readme-stats动态生成GitHub统计信息 ](/assets/images/oss.javaguide.cn/java-guide-blog/image-20210616221312426.png)
 
 关于个性化首页这个就不多提了，感兴趣的小伙伴自行研究一下。
 
@@ -46,15 +46,15 @@ GitHub 目前支持在个人主页自定义展示一些内容。展示效果如�
 
 你在 GitHub 上看到的项目徽章都是通过 [https://shields.io/](https://shields.io/) 这个网站生成的。我的 JavaGuide 这个项目的徽章如下图所示。
 
-![项目徽章](https://oss.javaguide.cn/2020-11/image-20201107143136559.png)
+![项目徽章](/assets/images/oss.javaguide.cn/2020-11/image-20201107143136559.png)
 
 并且，你不光可以生成静态徽章，shield.io 还可以动态读取你项目的状态并生成对应的徽章。
 
-![自定义项目徽章](https://oss.javaguide.cn/2020-11/image-20201107143502356.png)
+![自定义项目徽章](/assets/images/oss.javaguide.cn/2020-11/image-20201107143502356.png)
 
 生成的描述项目状态的徽章效果如下图所示。
 
-![描述项目状态的徽章](https://oss.javaguide.cn/2020-11/image-20201107143752642.png)
+![描述项目状态的徽章](/assets/images/oss.javaguide.cn/2020-11/image-20201107143752642.png)
 
 ## 自动为项目添加贡献情况图标
 
@@ -66,11 +66,11 @@ GitHub 目前支持在个人主页自定义展示一些内容。展示效果如�
 
 ## GitHub 表情
 
-![GitHub表情](https://oss.javaguide.cn/2020-11/image-20201107162254582.png)
+![GitHub表情](/assets/images/oss.javaguide.cn/2020-11/image-20201107162254582.png)
 
 如果你想要在 GitHub 使用表情的话，可以在这里找找：[www.webfx.com/tools/emoji-cheat-sheet/](https://www.webfx.com/tools/emoji-cheat-sheet/)。
 
-![在线GitHub表情](https://oss.javaguide.cn/2020-11/image-20201107162432941.png)
+![在线GitHub表情](/assets/images/oss.javaguide.cn/2020-11/image-20201107162432941.png)
 
 ## 高效阅读 GitHub 项目的源代码
 
@@ -82,7 +82,7 @@ GitHub Codespaces 可以提供类似 VS Code 的在线开发环境，适合临�
 
 这个已经老生常谈了，是我最喜欢的一种方式。使用了 Octotree 之后网页侧边栏会按照树形结构展示项目，为我们带来 IDE 般的阅读源代码的感受。
 
-![Chrome插件Octotree](https://oss.javaguide.cn/2020-11/image-20201107144944798.png)
+![Chrome插件Octotree](/assets/images/oss.javaguide.cn/2020-11/image-20201107144944798.png)
 
 ### Sourcegraph
 
@@ -90,11 +90,11 @@ GitHub Codespaces 可以提供类似 VS Code 的在线开发环境，适合临�
 
 当你下载了这个插件之后，你的项目主页会多出一个小图标如下图所示。点击这个小图标即可在线阅读项目源代码。
 
-![](https://oss.javaguide.cn/2020-11/image-20201107145749659.png)
+![](/assets/images/oss.javaguide.cn/2020-11/image-20201107145749659.png)
 
 使用 Sourcegraph 阅读代码的效果类似下面这样，同样是树形结构展示代码，还支持类之间的跳转。
 
-![](https://oss.javaguide.cn/2020-11/image-20201107150307314.png)
+![](/assets/images/oss.javaguide.cn/2020-11/image-20201107150307314.png)
 
 ### 克隆项目到本地
 
@@ -108,7 +108,7 @@ git clone https://github.com/Snailclimb/JavaGuide.git
 
 **Enhanced GitHub** 可以让你的 GitHub 更好用。这个浏览器插件可以展示仓库大小、文件大小，并支持快速下载单个文件。
 
-![](https://oss.javaguide.cn/2020-11/image-20201107160817672.png)
+![](/assets/images/oss.javaguide.cn/2020-11/image-20201107160817672.png)
 
 ## 自动为 Markdown 文件生成目录
 
@@ -134,7 +134,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 4. GitHub Collections 类似一个收藏夹集合。比如 [Teaching materials for computational social science](https://github.com/collections/teaching-computational-social-science) 这个收藏夹就汇总了计算机课程相关的开源资源，[Learn to Code](https://github.com/collections/learn-to-code) 这个收藏夹就汇总了对你学习编程有帮助的一些仓库；
 5. ……
 
-![](https://oss.javaguide.cn/github/javaguide/github-explore.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/github-explore.png)
 
 ## GitHub Actions 很强大
 
@@ -144,7 +144,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 
 GitHub Actions 有一个官方市场，上面有很多别人提交的 Actions，可以直接复用。
 
-![](https://oss.javaguide.cn/github/javaguide/image-20211227100147433.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/image-20211227100147433.png)
 
 ## 后记
 

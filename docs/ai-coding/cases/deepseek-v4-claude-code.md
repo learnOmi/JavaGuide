@@ -62,7 +62,7 @@ npm install -g @anthropic-ai/claude-code
 
 API Key 创建地址：<https://platform.deepseek.com/> 。
 
-![DeepSeek 创建 API Key](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-api-keys.png)
+![DeepSeek 创建 API Key](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-api-keys.png)
 
 这里的 `[1m]` 用于请求 V4 Pro 的 1M 上下文版本。日常任务如果想优先使用 Flash，可以把 `ANTHROPIC_MODEL` 改为 `deepseek-v4-flash`；模型 ID 和映射方式以 [DeepSeek 官方接入文档](https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code/)为准。
 
@@ -78,11 +78,11 @@ claude
 
 如果你想在 DeepSeek、Claude、MiniMax 等多个 Provider 之间灵活切换，推荐安装 **CC Switch**。这是一个专门管理 Claude Code 模型切换的小工具，支持一键横跳，还支持管理 Skills、MCP 和提示词。
 
-![CC Switch 主界面](https://oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-main-interface.png)
+![CC Switch 主界面](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/cc-switch-main-interface.png)
 
 启动 CC Switch，点击右上角 **"+"** ，选择自定义供应商，Base URL 填写 `https://api.deepseek.com/anthropic`，API Key 填写你的 DeepSeek API Key。
 
-![CC Switch 添加 DeepSeek Provider](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/cc-switch-add-deepseek-provider.png)
+![CC Switch 添加 DeepSeek Provider](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/cc-switch-add-deepseek-provider.png)
 
 将模型名称改为 `deepseek-v4-pro[1m]`（或 `deepseek-v4-flash`），完成后点击右下角的“添加”。
 
@@ -90,7 +90,7 @@ claude
 
 直接在命令行输入 `claude`，进入 Claude Code 后再输入 `/status` 确认。model 显示 `deepseek-v4-pro[1m]` 或 `deepseek-v4-flash`，说明路由已经生效。
 
-![验证是否生效](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/verify-deepseek-v4-ready.png)
+![验证是否生效](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/verify-deepseek-v4-ready.png)
 
 之后就可以通过 Claude Code 调用 DeepSeek V4。第三方模型是否支持 Claude Code 的某项新能力，还要以兼容接口和实际测试结果为准。
 
@@ -112,7 +112,7 @@ claude
 
 这次 V4-Pro 一轮就完成了修改。
 
-![搜索并更新最新 LLM 模型](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/search-and-update-latest-models.png)
+![搜索并更新最新 LLM 模型](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/search-and-update-latest-models.png)
 
 模型配置全部更新成功，各家推荐的模型示例都切到了最新版本。改了三个文件：
 
@@ -129,7 +129,7 @@ claude
 | GLM       | `glm-5.1`、`glm-5`、`glm-4.7-flash` 等 8 款                     |
 | Kimi      | `kimi-k2.6`、`kimi-k2.5`、`kimi-k2-thinking` 等 5 款            |
 
-![编辑 DeepSeek 模型配置](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/edit-deepseek-model-config.png)
+![编辑 DeepSeek 模型配置](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/edit-deepseek-model-config.png)
 
 ## 实战二：数据库迁移方案诊断与 Flyway 集成
 
@@ -137,7 +137,7 @@ claude
 
 因为换了新电脑，所有环境都是重新搭建的。项目有两个 SQL 文件，一个在项目启动时自动执行了，另一个没有。这块逻辑我也忘了，需要让模型帮我诊断。
 
-![技能管理界面报错](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/skill-management-error.png)
+![技能管理界面报错](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/skill-management-error.png)
 
 提示词：
 
@@ -145,7 +145,7 @@ claude
 
 V4-Pro 找到的直接原因是：**`V2__knowledge_skill.sql` 没有被挂载到 Docker 容器中，项目也没有引入数据库迁移工具**，而 `init.sql` 的执行来自 Docker Compose 中的固定挂载。
 
-![数据库表未执行原因分析](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/database-table-analysis.png)
+![数据库表未执行原因分析](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/database-table-analysis.png)
 
 它给出的解决方案是**集成 Flyway 作为数据库迁移工具**。
 
@@ -162,7 +162,7 @@ Flyway 是 Java 生态中最成熟的数据库迁移方案之一，用文件命�
 
 第一次运行后，Flyway 没有成功执行。我把错误日志贴过去，经过两轮调教后修复成功。
 
-![DeepSeek 完成 Flyway 集成后的总结](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/deepseek-flyway-integration-summary.png)
+![DeepSeek 完成 Flyway 集成后的总结](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/deepseek-flyway-integration-summary.png)
 
 这个问题值得单独拿出来讲——因为 DeepSeek V4-Pro 在第一次集成时也踩到了这个坑，经过两轮调试才找到根因。
 
@@ -194,13 +194,13 @@ Flyway 是 Java 生态中最成熟的数据库迁移方案之一，用文件命�
 
 通过配置界面，将默认模型切换到 DeepSeek，选择 **deepseek-v4-flash**。
 
-![将面试平台的模型切换到 deepseek-v4-flash](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/interview-guide-model-deepseek-v4-flash.png)
+![将面试平台的模型切换到 deepseek-v4-flash](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/interview-guide-model-deepseek-v4-flash.png)
 
 然后上传一份简历，基于这份简历生成一次模拟面试，来看看效果。
 
 面试题是通过 deepseek-v4-flash 生成的，答案也是让 DeepSeek 在快速非思考模式下给出的（有两个问题没有回答）。
 
-![模拟面试评估结果](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/interview-guide-model-deepseek-v4-flash-interview.png)
+![模拟面试评估结果](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/interview-guide-model-deepseek-v4-flash-interview.png)
 
 在这次简历面试题生成任务中，Flash 的非思考模式可以完成主要问题，仍有两个问题没有回答。它适合对成本敏感、允许人工检查的批量生成任务。
 
@@ -212,7 +212,7 @@ Flyway 是 Java 生态中最成熟的数据库迁移方案之一，用文件命�
 
 在 Claude Code 里直接让 DeepSeek V4-Pro 启动多个 Agent，从安全性、功能正确性、代码质量等不同维度扫描整个项目，把发现的问题汇总写入文档。
 
-![DeepSeek V4-Pro 扫描分析代码](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/deepseek-v4-pro-scan-analyze-code.png)
+![DeepSeek V4-Pro 扫描分析代码](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/deepseek-v4-pro-scan-analyze-code.png)
 
 V4-Pro 确实找出来不少问题，最紧急的 TOP 5：
 
@@ -226,7 +226,7 @@ V4-Pro 确实找出来不少问题，最紧急的 TOP 5：
 
 接下来我把 V4-Pro 找出来的问题直接丢给当时账户可用的 **GPT-5.5** 复核。
 
-![GPT5.5 对 DeepSeek V4-Pro 找出的问题进行修复](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/gpt5-5-fix-problems-found-by-deepseek-v4-pro.png)
+![GPT5.5 对 DeepSeek V4-Pro 找出的问题进行修复](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/gpt5-5-fix-problems-found-by-deepseek-v4-pro.png)
 
 **为什么不让 V4-Pro 自己修？** 因为代码审计和代码修复是两种能力，用不同模型交叉验证更靠谱——一个负责找问题，一个负责确认问题并执行修复。
 
@@ -238,13 +238,13 @@ GPT-5.5 复核后执行了修复。这里记录的是案例发生时的模型选
 
 这个就简单了，我主要是想验证一下 V4-Pro 的分析质量，顺便看看最后的 Token 消耗。
 
-![让 V4-Pro 扫描分析 agent-invest](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/claudecode-deepseek-v4-pro%5B1m%5D.png)
+![让 V4-Pro 扫描分析 agent-invest](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/claudecode-deepseek-v4-pro[1m].png)
 
-![V4-Pro 扫描分析 agent-invest 的结果](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-pro-scan-analyze-result-of-agent-invest.png)
+![V4-Pro 扫描分析 agent-invest 的结果](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-pro-scan-analyze-result-of-agent-invest.png)
 
 这是 V4-Pro 最终输出的文档，覆盖了项目结构、主要模块和待处理问题：
 
-![V4-Pro 最终输出的 agent-invest 文档](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-pro-final-output-agent-invest-document.png)
+![V4-Pro 最终输出的 agent-invest 文档](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-pro-final-output-agent-invest-document.png)
 
 ## DeepSeek V4 一览：看完实战再看数字
 
@@ -268,7 +268,7 @@ V4 Preview 同时提供两款模型。下表参数和 Benchmark 来自 DeepSeek 
 
 这里的竞品名称和分数是 V4 Preview 发布报告的历史快照，不是截至本文核验日的模型排行榜。
 
-![V4 Benchmark 数据](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-benchmark.png)
+![V4 Benchmark 数据](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-benchmark.png)
 
 再看定价：
 

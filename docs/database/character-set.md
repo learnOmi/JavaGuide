@@ -51,7 +51,7 @@ ASCII 字符集至今为止共定义了 128 个字符，其中有 33 个控制�
 
 由于，ASCII 码可以表示的字符实在是太少了。后来，人们对其进行了扩展得到了 **ASCII 扩展字符集** 。ASCII 扩展字符集使用 8 位（bits）表示一个字符，所以，ASCII 扩展字符集可以定义 256（2^8）个字符。
 
-![ASCII字符编码](https://oss.javaguide.cn/github/javaguide/csdn/c1c6375d08ca268690cef2b13591a5b4.png)
+![ASCII字符编码](/assets/images/oss.javaguide.cn/github/javaguide/csdn/c1c6375d08ca268690cef2b13591a5b4.png)
 
 ### GB2312
 
@@ -85,11 +85,11 @@ BIG5 主要针对的是繁体中文，收录了 13000 多个汉字。
 
 你可以通过这个网站在线进行编码和解码：<https://www.haomeili.net/HanZi/ZiFuBianMaZhuanHuan>
 
-![](https://oss.javaguide.cn/github/javaguide/csdn/836c49b117ee4408871b0020b74c991d.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/csdn/836c49b117ee4408871b0020b74c991d.png)
 
 这样我们就搞懂了乱码的本质：**编码和解码时用了不同或者不兼容的字符集** 。
 
-![](https://oss.javaguide.cn/javaguide/a8808cbabeea49caa3af27d314fa3c02-1.jpg)
+![](/assets/images/oss.javaguide.cn/javaguide/a8808cbabeea49caa3af27d314fa3c02-1.jpg)
 
 为了解决这个问题，人们就想：“如果我们能够有一种字符集将世界上所有的字符都纳入其中就好了！”。
 
@@ -107,7 +107,7 @@ UTF-32 的规则最简单，不过缺陷也比较明显，对于英文字母这�
 
 **UTF-8** 是目前使用最广的一种字符编码。
 
-![](https://oss.javaguide.cn/javaguide/1280px-Utf8webgrowth.svg.png)
+![](/assets/images/oss.javaguide.cn/javaguide/1280px-Utf8webgrowth.svg.png)
 
 ## MySQL 字符集
 
@@ -117,7 +117,7 @@ MySQL 支持很多种字符集的方式，比如 GB2312、GBK、BIG5、多种 Un
 
 你可以通过 `SHOW CHARSET` 命令来查看，支持 like 和 where 子句。
 
-![](https://oss.javaguide.cn/javaguide/image-20211008164229671.png)
+![](/assets/images/oss.javaguide.cn/javaguide/image-20211008164229671.png)
 
 ### 默认字符集
 
@@ -291,7 +291,7 @@ MySQL 字符编码集中有两套 UTF-8 编码实现：
 
 **为什么有两套 UTF-8 编码实现呢？** 原因如下：
 
-![](https://oss.javaguide.cn/javaguide/image-20211008164542347.png)
+![](/assets/images/oss.javaguide.cn/javaguide/image-20211008164542347.png)
 
 因此，如果你需要存储`emoji`类型的数据或者一些比较复杂的文字、繁体字到 MySQL 数据库的话，数据库的编码一定要指定为`utf8mb4` 而不是`utf8` ，要不然存储的时候就会报错了。
 

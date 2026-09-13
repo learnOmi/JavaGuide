@@ -14,7 +14,7 @@ GraphRAG 在检索链路中加入图结构，用实体、关系或主题摘要�
 
 ## 什么是 RAG？
 
-![什么是 RAG？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-index-and-retrieval-explainer.webp)
+![什么是 RAG？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-index-and-retrieval-explainer.webp)
 
 RAG（Retrieval-Augmented Generation，检索增强生成）就是把信息检索和生成式大语言模型结合起来的框架。
 
@@ -24,7 +24,7 @@ RAG（Retrieval-Augmented Generation，检索增强生成）就是把信息检�
 
 ## 什么是 GraphRAG？
 
-![什么是 GraphRAG？](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-knowledge-relationship-explainer.webp)
+![什么是 GraphRAG？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-knowledge-relationship-explainer.webp)
 
 GraphRAG（Graph-based Retrieval-Augmented Generation）是一类把图结构用于检索增强的方案。系统可以把文档中的实体、关系和结构化上下文显式建模，查询时沿图关系收集证据，再交给大模型生成答案。
 
@@ -43,7 +43,7 @@ GraphRAG 会把节点、边、路径和社区摘要纳入检索上下文；图�
 
 ## 传统向量 RAG 有什么局限性？
 
-![传统向量 RAG 的局限性](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vector-rag-limitation.png)
+![传统向量 RAG 的局限性](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vector-rag-limitation.png)
 
 一次向量检索会把文档与问题编码到同一向量空间，再按相似度取回 Top-K Chunk，最后由 LLM 读取这些 Chunk。链路短，适合证据集中在少数片段中的问题，例如：
 
@@ -88,7 +88,7 @@ GraphRAG 会把节点、边、路径和社区摘要纳入检索上下文；图�
 
 ## GraphRAG 和传统向量 RAG 的区别
 
-![GraphRAG 和传统向量 RAG 的区别](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vs-rag.png)
+![GraphRAG 和传统向量 RAG 的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vs-rag.png)
 
 | 维度     | 传统向量 RAG                 | GraphRAG                               |
 | -------- | ---------------------------- | -------------------------------------- |
@@ -118,7 +118,7 @@ GraphRAG 会把节点、边、路径和社区摘要纳入检索上下文；图�
 
 理解 GraphRAG，先把几个关键词拆开。
 
-![GraphRAG 的核心概念](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-core-concept.png)
+![GraphRAG 的核心概念](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-core-concept.png)
 
 ### 知识图谱：把知识变成可遍历的关系网
 
@@ -236,7 +236,7 @@ GraphRAG 里经常会看到两个词：**全局检索（Global Search）** 和 *
 
 文档到图谱的处理链路如下：
 
-![GraphRAG 索引流程](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-build-process.png)
+![GraphRAG 索引流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-build-process.png)
 
 索引处理会经过下列步骤：
 
@@ -269,7 +269,7 @@ GraphRAG 的查询阶段最关键的一步是**查询路由**。
 
 问题类型与检索模式的对应关系如下：
 
-![GraphRAG 查询阶段：先判断问题类型](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-query-routing.png)
+![GraphRAG 查询阶段：先判断问题类型](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-query-routing.png)
 
 一个成熟系统不会把所有问题都扔给 GraphRAG。很多简单问题，用向量检索更便宜、更快、更稳。
 

@@ -17,7 +17,7 @@ head:
 
 **[《重构》](https://book.douban.com/subject/30468597/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210328174841577.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210328174841577.png)
 
 必看书籍！无需多言。编程书籍领域的瑰宝。
 
@@ -27,7 +27,7 @@ head:
 
 **[《Clean Code》](https://book.douban.com/subject/4199741/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210328174824891.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210328174824891.png)
 
 《Clean Code》是 Bob 大叔的一本经典著作，强烈建议小伙伴们一定要看看。
 
@@ -35,7 +35,7 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《Effective Java 》](https://book.douban.com/subject/30412517/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/82d510c951384383b325080428af6c0a.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/82d510c951384383b325080428af6c0a.png)
 
 《Effective Java 》这本书是 Java 领域国宝级别的书，非常经典。Java 程序员必看！
 
@@ -43,7 +43,7 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《代码大全》](https://book.douban.com/subject/1477390/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210314173253221.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210314173253221.png)
 
 其实，《代码大全（第 2 版）》这本书我本身是不太想推荐给大家了。但是，看在它的豆瓣评分这么高的份上，还是拿出来说说吧！
 
@@ -55,11 +55,11 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《编写可读代码的艺术》](https://book.douban.com/subject/10797189/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210314175536443.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210314175536443.png)
 
 《编写可读代码的艺术》这本书要表达的意思和《Clean Code》很像，你看它俩的目录就可以看出来了。
 
-![](https://oss.javaguide.cn/github/javaguide/books/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309230739963.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309230739963.png)
 
 在我看来，如果你看过 《Clean Code》 的话，就不需要再看这本书了。当然，如果你有时间和精力，也可以快速过一遍。
 
@@ -67,13 +67,13 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 在实践中学习的效果肯定会更好！推荐小伙伴们都抓紧学起来啊！
 
-![](https://oss.javaguide.cn/github/javaguide/books/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309230743258.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309230743258.png)
 
 ## 程序员职业素养
 
 **[《The Clean Coder》](https://book.douban.com/subject/26919457/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210314191210273.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210314191210273.png)
 
 《 The Clean Coder》是 Bob 大叔的又一经典著作。
 
@@ -85,7 +85,7 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《架构整洁之道》](https://book.douban.com/subject/30333919/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/2021031412342771.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/2021031412342771.png)
 
 你没看错，《架构整洁之道》这本书又是 Bob 大叔的经典之作。
 
@@ -105,7 +105,7 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《人月神话》](https://book.douban.com/subject/1102259/)**
 
-![](https://oss.javaguide.cn/2021/03/8ece325c-4491-4ffd-9d3d-77e95159ec40.png)
+![](/assets/images/oss.javaguide.cn/2021/03/8ece325c-4491-4ffd-9d3d-77e95159ec40.png)
 
 这本书主要描述了软件开发的基本定律：**一个需要 10 天才能干完的活，不可能让 10 个人在 1 天干完！**
 
@@ -115,7 +115,7 @@ Bob 大叔将自己对整洁代码的理解浓缩在了这本书中，真可谓�
 
 **[《领域驱动设计:软件核心复杂性应对之道》](https://book.douban.com/subject/5344973/)**
 
-![](https://oss.javaguide.cn/2021/03/7e80418d-20b1-4066-b9af-cfe434b1bf1a.png)
+![](/assets/images/oss.javaguide.cn/2021/03/7e80418d-20b1-4066-b9af-cfe434b1bf1a.png)
 
 这本领域驱动设计方面的经典之作一直被各种推荐，但是我还来及读。
 

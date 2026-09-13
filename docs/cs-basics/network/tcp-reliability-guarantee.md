@@ -23,7 +23,7 @@ TCP 常被说成可靠传输协议，但“可靠”不是一句抽象承诺，�
 
 先澄清一个容易误解的点：TCP 可靠的是**字节流**，不是应用层的一条条“消息”。TCP 不会保留 HTTP、RPC 或业务协议里的消息边界，它做的是给字节流编号，并尽量把这些字节按序、无重复地交付给应用层。至于“一个请求从哪里开始、到哪里结束”，要靠上层协议自己定义，比如长度字段、分隔符、HTTP 报文格式等。
 
-![TCP 粘包 / 拆包为什么会出现？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
+![TCP 粘包 / 拆包为什么会出现？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
 
 ## TCP 如何保证传输的可靠性？
 
@@ -47,7 +47,7 @@ TCP 可以用 ARQ 思想来理解，但它不是教材里的某一种简单 ARQ�
 
 因此，停止等待 ARQ 和 Go-Back-N 更适合理解可靠传输的基础思想，而现代 TCP 在 SACK 的帮助下更接近选择重传。
 
-![ARQ 与 TCP 重传机制的关系](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-arq-retransmission-model.png)
+![ARQ 与 TCP 重传机制的关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-arq-retransmission-model.png)
 
 ARQ 包括停止等待 ARQ 协议和连续 ARQ 协议。
 
@@ -101,7 +101,7 @@ TCP 的重传不是只有一种触发方式。最基础的是**超时重传**：
 - **RTT（Round Trip Time）**：往返时间，也就是 TCP 段从发出去到收到对应 ACK 的时间。
 - **RTO（Retransmission Time Out）**：重传超时时间，即从数据发送时刻算起，超过这个时间便执行重传。
 
-![RTO 超时时间的计算流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-rto-calculation-flow.png)
+![RTO 超时时间的计算流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-rto-calculation-flow.png)
 
 RTO 的确定是一个关键问题，因为它直接影响到 TCP 的性能和效率。如果 RTO 设置得太小，会导致不必要的重传，增加网络负担；如果 RTO 设置得太大，会导致数据传输的延迟，降低吞吐量。因此，RTO 应该根据网络的实际状况，动态地进行调整。
 
@@ -152,7 +152,7 @@ TCP 首部里的窗口字段本身是 16 位，最大只能表示 65,535 字节�
 
 **零窗口怎么恢复？** 当接收方通告 `rwnd = 0` 时，发送方会暂停发送新数据。但如果接收方后来腾出了缓冲区，并发送了新的窗口通告，而这个 ACK 在网络中丢失，双方就可能陷入互相等待：发送方等窗口打开，接收方等新数据到来。
 
-![TCP 零窗口探测机制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-zero-window-probe.png)
+![TCP 零窗口探测机制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-zero-window-probe.png)
 
 为了解决这个问题，TCP 引入了**零窗口探测（Zero Window Probe）**。发送方在窗口为 0 时，依赖持续计时器（persist timer）定期发送很小的探测报文，迫使接收方回复当前窗口大小。这样即使之前的窗口更新 ACK 丢失，发送方也能重新得知窗口是否已经打开。
 
@@ -176,7 +176,7 @@ TCP 为全双工（Full-Duplex，FDX）通信，双方可以进行双向通信�
 
 **TCP 发送窗口结构图示**：
 
-![TCP发送窗口结构](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-send-window.png)
+![TCP发送窗口结构](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-send-window.png)
 
 - **SND.WND**：发送窗口。
 - **SND.UNA**：Send Unacknowledged，表示最早尚未被确认的序号，也就是发送窗口左边界。
@@ -192,7 +192,7 @@ TCP 为全双工（Full-Duplex，FDX）通信，双方可以进行双向通信�
 
 **TCP 接收窗口结构图示**：
 
-![TCP接收窗口结构](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-receive-window.png)
+![TCP接收窗口结构](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-receive-window.png)
 
 **接收窗口的大小是动态调整的。** 它通常会受应用读取速度、接收缓冲区占用、系统 socket buffer 配置和自动调优策略影响。
 
@@ -200,7 +200,7 @@ TCP 为全双工（Full-Duplex，FDX）通信，双方可以进行双向通信�
 
 **糊涂窗口综合征（Silly Window Syndrome，SWS）** 指的是发送方或接收方不断以很小的粒度发送数据、通告窗口，导致网络中充满“头部很大、载荷很小”的小包，传输效率很差。
 
-![SWS、Nagle 算法与延迟 ACK 的关系](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-sws-nagle-delayed-ack.png)
+![SWS、Nagle 算法与延迟 ACK 的关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-reliability-guarantee-sws-nagle-delayed-ack.png)
 
 常见优化有几类：
 
@@ -214,7 +214,7 @@ TCP 为全双工（Full-Duplex，FDX）通信，双方可以进行双向通信�
 
 在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络性能就会下降，表现为排队变长、延迟升高、丢包增加。这种情况就叫拥塞。拥塞控制就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机、路由器，以及与降低网络传输性能有关的所有因素。相反，流量控制往往是点对点通信量的控制，是个端到端的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。
 
-![TCP的拥塞控制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-congestion-control.png)
+![TCP的拥塞控制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-congestion-control.png)
 
 为了进行拥塞控制，TCP 发送方要维持一个 **拥塞窗口（cwnd）** 的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接收窗口中较小的一个。
 

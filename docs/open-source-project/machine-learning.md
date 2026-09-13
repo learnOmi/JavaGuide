@@ -29,7 +29,7 @@ icon: "mdi:robot-outline"
 
 [Spring AI Alibaba](https://github.com/alibaba/spring-ai-alibaba) 集成 Spring AI 生态，它是一个专为多智能体系统和工作流编排设计的项目。项目从架构上包含如下三层：
 
-![Spring AI Alibaba 架构](https://oss.javaguide.cn/github/javaguide/open-source-project/ai/springai-alibaba-architecture-new.png)
+![Spring AI Alibaba 架构](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/ai/springai-alibaba-architecture-new.png)
 
 - **Agent Framework**：以 ReactAgent 设计理念为核心的 Agent 开发框架，构建具备自动上下文工程和人机交互能力的 Agent。
 - **Graph**：低级别的工作流和多代理协调框架，是 Agent Framework 的底层运行时基座，帮助实现复杂的应用程序编排。
@@ -91,7 +91,7 @@ icon: "mdi:robot-outline"
 
 > **提示**：架构图采用 draw.io 绘制，导出为 SVG 格式，在 GitHub 深色模式下的显示效果会有问题。
 
-![系统架构图](https://oss.javaguide.cn/xingqiu/pratical-project/interview-guide/interview-guide-architecture-diagram.png)
+![系统架构图](/assets/images/oss.javaguide.cn/xingqiu/pratical-project/interview-guide/interview-guide-architecture-diagram.png)
 
 ### AI 工作流编排系统
 
@@ -99,4 +99,4 @@ icon: "mdi:robot-outline"
 
 **系统架构如下**：
 
-![](https://oss.javaguide.cn/github/javaguide/open-source-project/ai/paiagent-architecture-diagram.jpg)
+![](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/ai/paiagent-architecture-diagram.jpg)

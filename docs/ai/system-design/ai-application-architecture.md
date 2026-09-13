@@ -118,7 +118,7 @@ public record AiRequest(
 
 模型网关负责统一接入 OpenAI、Anthropic、Google Gemini、私有化模型、Embedding 模型、Rerank 模型等能力。它隐藏不同 API 的差异，对上提供稳定接口。模型网关本身可以单独展开一篇，细节可以看 [大模型网关详解：多模型路由、Fallback、限流与成本控制](./llm-gateway.md)。
 
-![LLM 网关示意图](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
+![LLM 网关示意图](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
 
 模型调用在网关处收口后，路由、限额和观测才有一致的处理位置：
 
@@ -146,7 +146,7 @@ Prompt 改动会改变回答内容，也可能改变检索、工具调用、成�
 
 Prompt 写法本身可以看 [大模型提示词工程（Prompt Engineering）是什么？提示词技巧有哪些？](../agent/prompt-engineering.md)。如果你关心的是“哪些信息该进上下文、进多少、什么时候压缩”，更适合看 [上下文工程（Context Engineering）是什么？和 Prompt Engineering 有什么区别？](../agent/context-engineering.md)。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 ### RAG、Memory、Tool：三类上下文不要混在一起
 
@@ -160,7 +160,7 @@ Prompt 写法本身可以看 [大模型提示词工程（Prompt Engineering）�
 
 它们底层都可能使用向量检索、结构化存储和重排，但不能按同一套规则治理。RAG 对应共享知识源，Memory 保存个性化背景，Tool 则连接真实业务系统；权限检查和失效策略要分别设计。
 
-![长期记忆与 RAG（检索增强生成）的区别](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
+![长期记忆与 RAG（检索增强生成）的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
 
 不要把 Memory 当成个人版 RAG 随便写入。记忆一旦写错，后续多轮对话都会受到影响。不同类型的 Memory 需要不同控制：用户明确确认的偏好可以同步写入；由模型抽取的长期事实更适合先做 Schema 校验、来源记录和置信度过滤，再按风险决定是否异步写入、设置过期时间或进入人工审核。
 
@@ -286,7 +286,7 @@ Anthropic、OpenAI 和 Google 的官方工具/函数调用文档都强调工具�
 
 工具调用这块如果想从概念补起，可以先看 [大模型结构化输出：从 JSON 契约到 Function Calling 落地](../llm-basis/structured-output-function-calling.md)。如果你的工具要被多个模型、Agent 或 IDE 复用，再看 [什么是 Model Context Protocol（MCP）？和 Function Calling、Agent 什么关系？](../agent/mcp.md)。
 
-![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
+![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
 
 工具接口可以这样定义：
 
@@ -316,7 +316,7 @@ public enum ToolRiskLevel {
 
 编排层根据 `sideEffect + riskLevel + preAuthorization` 选择控制策略。高风险写操作默认转换成“待确认动作”；高风险读取则要加强资源级鉴权、字段脱敏、结果数量限制和审计。如果业务允许预授权自动执行写操作，也要使用范围明确、可撤销的授权凭证，并配套幂等、审计和补偿机制。
 
-![工具调用安全风险分层：按风险等级匹配不同的控制策略](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
+![工具调用安全风险分层：按风险等级匹配不同的控制策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
 
 ## RAG 与 Memory：共享知识和个性化记忆怎么协作
 

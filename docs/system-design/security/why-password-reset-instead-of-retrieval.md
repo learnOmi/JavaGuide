@@ -16,7 +16,7 @@ head:
 
 这是一个挺有意思的问题，很多公司也在面试中问过。挺简单的，不知道大家平时在重置密码的时候有没有想过这个问题。
 
-![重置帐号密码](https://oss.javaguide.cn/github/javaguide/system-design/security/reset-password-page.png)
+![重置帐号密码](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/reset-password-page.png)
 
 回答这个问题其实就一句话：**因为服务端也不知道你的原密码是什么**。存原密码的程序员已经被开了 🤣。
 
@@ -26,7 +26,7 @@ head:
 
 这篇文章不会谈论太多加密算法相关的内容，感兴趣的朋友可以看这篇文章：[常见加密算法总结](https://javaguide.cn/system-design/security/encryption-algorithms.html)。
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/javaguide-security-encryption-algorithms.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/javaguide-security-encryption-algorithms.png)
 
 ## 为什么服务端不知道你的原密码？
 
@@ -44,7 +44,7 @@ head:
 
 哈希算法也叫散列函数或摘要算法，它的作用是对任意长度的数据生成一个固定长度的唯一标识，也叫哈希值、散列值或消息摘要（后文统称为哈希值）。
 
-![哈希算法效果演示](https://oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/hash-function-effect-demonstration.png)
+![哈希算法效果演示](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/encryption-algorithms/hash-function-effect-demonstration.png)
 
 哈希算法有两个关键特点：
 

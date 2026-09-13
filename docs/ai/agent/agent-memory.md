@@ -16,11 +16,11 @@ head:
 
 ## Agent 的记忆系统是如何设计的？
 
-![Agent 记忆分类全景图](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
+![Agent 记忆分类全景图](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
 
 记忆系统通常分两层：短期记忆和长期记忆。短期记忆是 Session 级的，服务当前任务；长期记忆是跨 Session 的，负责把用户偏好、历史决策、过往经验沉淀下来。两者在物理和逻辑上都应该分开，不要混成一锅。
 
-![AI Agent 记忆系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
+![AI Agent 记忆系统架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
 
 ### 记忆有哪些存储形式？
 
@@ -52,7 +52,7 @@ head:
 
 ### 记忆操作的生命周期是怎样的？
 
-![记忆操作的生命周期](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-lifestyle.png)
+![记忆操作的生命周期](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-lifestyle.png)
 
 一条记忆从进入系统到最终被淘汰，一般会经历这些环节。不同论文里的名字会有差异，但语义基本能对上。
 
@@ -81,7 +81,7 @@ head:
 
 窗口大，不等于可以无限塞上下文。推理成本会随 Token 数线性增长。《Lost in the Middle》研究也表明，在多文档检索型任务中，模型更容易利用上下文首尾的信息，中间段的信息利用率明显更低。窗口越长，这种位置偏差越明显，所以上下文工程里要主动控制输入信息的分布。
 
-![上下文利用率的 40% 阈值现象](https://oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
+![上下文利用率的 40% 阈值现象](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-utilization-40-percent-threshold-phenomenon.svg)
 
 为了控制短期记忆膨胀，框架层常见三种做法，和上下文工程里的 Token 降级、JIT 卸载属于同一类思路。
 
@@ -105,7 +105,7 @@ head:
 
 ### 长期记忆和 RAG 有什么区别？
 
-![长期记忆与 RAG（检索增强生成）的区别](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
+![长期记忆与 RAG（检索增强生成）的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
 
 长期记忆和 RAG 技术上很像，都会用向量库和语义检索。但它们服务的对象不一样。
 
@@ -174,7 +174,7 @@ MemOS 则在论文和宣传里画了“文本 → KV Cache（激活）→ LoRA�
 
 只会写入和检索还不够。生产级 Agent 系统还需要一套代谢机制，让记忆能被反思、合并、清理和遗忘，否则库越大，噪声也越大。
 
-![记忆系统的高级演化机制](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-evolution.png)
+![记忆系统的高级演化机制](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-evolution.png)
 
 ### 记忆反思与合成如何实现？
 
@@ -210,7 +210,7 @@ score = relevance × importance × decay(t)
 
 在 VectorStore 和 GraphStore 之外，生产环境通常还需要一层混合检索策略。
 
-![长期记忆的检索优化策略](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-retrieval-optimization.png)
+![长期记忆的检索优化策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-retrieval-optimization.png)
 
 ### 混合检索与元数据过滤怎么做？
 
@@ -385,7 +385,7 @@ Auto Memory 需要 Claude Code v2.1.59+，默认开启。
 
 ### Markdown 记忆和传统长期记忆的边界在哪里？
 
-![Markdown 记忆和传统长期记忆的适用边界](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-markdown-memory-boundary.svg)
+![Markdown 记忆和传统长期记忆的适用边界](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-markdown-memory-boundary.svg)
 
 Markdown 和向量库各有适用边界，不建议一刀切。
 

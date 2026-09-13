@@ -22,7 +22,7 @@ head:
 
 如下图所示，在 Windows 中通过查看任务管理器的方式，我们就可以清楚看到 Windows 当前运行的进程（`.exe` 文件的运行）。
 
-![进程示例图片-Windows](https://oss.javaguide.cn/github/javaguide/java/%E8%BF%9B%E7%A8%8B%E7%A4%BA%E4%BE%8B%E5%9B%BE%E7%89%87-Windows.png)
+![进程示例图片-Windows](/assets/images/oss.javaguide.cn/github/javaguide/java/进程示例图片-Windows.png)
 
 #### 何为线程？
 
@@ -76,7 +76,7 @@ public class MultiThread {
 2. 多对一（多个用户线程映射到一个内核线程）
 3. 多对多（多个用户线程映射到多个内核线程）
 
-![常见的三种线程模型](https://oss.javaguide.cn/github/javaguide/java/concurrent/three-types-of-thread-models.png)
+![常见的三种线程模型](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/three-types-of-thread-models.png)
 
 在 Windows 和 Linux 等主流操作系统中，HotSpot 的平台线程通常采用一对一模型，也就是一个平台线程对应一个操作系统线程。虚拟线程不采用这种一对一映射，而是由 JVM 调度到一组平台线程上执行。
 
@@ -84,7 +84,7 @@ public class MultiThread {
 
 下图是 Java 内存区域，通过下图我们从 JVM 的角度来说一下线程和进程之间的关系。
 
-![Java 运行时数据区域（JDK1.8 之后）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
+![Java 运行时数据区域（JDK1.8 之后）](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
 
 从上图可以看出：一个进程中可以有多个线程，多个线程共享进程的**堆**和**方法区（JDK1.8 之后的元空间）**资源，但是每个线程有自己的**程序计数器**、**虚拟机栈** 和 **本地方法栈**。
 
@@ -139,7 +139,7 @@ Java 线程在运行的生命周期中的指定时刻只可能处于下面 6 种
 
 Java 线程状态变迁图(图源：[挑错 |《Java 并发编程的艺术》中关于线程状态的三处错误](https://mp.weixin.qq.com/s/0UTyrJpRKaKhkhHcQtXAiA))：
 
-![Java 线程状态变迁图](https://oss.javaguide.cn/github/javaguide/java/concurrent/640.png)
+![Java 线程状态变迁图](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/640.png)
 
 由上图可以看出：线程创建之后它将处于 **NEW（新建）** 状态，调用 `start()` 方法后开始运行，线程这时候处于 **READY（可运行）** 状态。可运行状态的线程获得了 CPU 时间片（timeslice）后就处于 **RUNNING（运行）** 状态。
 
@@ -147,7 +147,7 @@ Java 线程状态变迁图(图源：[挑错 |《Java 并发编程的艺术》中
 >
 > **为什么 JVM 没有区分这两种状态呢？** Java 的 `Thread.State` 描述的是 JVM 层面的线程状态，不用于反映操作系统调度器的全部内部状态。具体调度策略、时间片长度和是否采用轮转方式都由操作系统及其配置决定，不能固定概括为 10～20 ms 的轮转调度。
 
-![RUNNABLE-VS-RUNNING](https://oss.javaguide.cn/github/javaguide/java/RUNNABLE-VS-RUNNING.png)
+![RUNNABLE-VS-RUNNING](/assets/images/oss.javaguide.cn/github/javaguide/java/RUNNABLE-VS-RUNNING.png)
 
 - 当线程执行 `wait()` 方法之后，线程进入 **WAITING（等待）** 状态。进入等待状态的线程需要依靠其他线程的通知才能够返回到运行状态。
 - **TIMED_WAITING（超时等待）** 状态相当于在等待状态的基础上增加了超时限制，比如通过 `sleep（long millis）` 方法或 `wait（long millis）` 方法可以将线程置于 TIMED_WAITING 状态。当超时时间结束后，线程将会返回到 RUNNABLE 状态。
@@ -263,7 +263,7 @@ Java 使用的线程调度是抢占式的。也就是说，JVM 本身不负责�
 
 如下图所示，线程 A 持有资源 2，线程 B 持有资源 1，他们同时都想申请对方的资源，所以这两个线程就会互相等待而进入死锁状态。
 
-![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
+![死锁场景示意图：线程 A 持有 resource1 并等待 resource2，线程 B 持有 resource2 并等待 resource1，等待链形成闭环](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/dead-lock-deadlock-scenario.png)
 
 下面通过一个例子来说明线程死锁，代码模拟了上图的死锁的情况（代码来源于《并发编程之美》）：
 
@@ -333,7 +333,7 @@ Thread[线程 2,5,main]waiting get resource1
 
 首先，我们要找到 JDK 的 bin 目录，找到 jconsole 并双击打开。
 
-![jconsole](https://oss.javaguide.cn/github/javaguide/java/concurrent/jdk-home-bin-jconsole.png)
+![jconsole](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jdk-home-bin-jconsole.png)
 
 对于 MAC 用户来说，可以通过 `/usr/libexec/java_home -V` 查看 JDK 安装目录，找到后通过 `open . + 文件夹地址` 打开即可。例如，我本地的某个 JDK 的路径是：
 
@@ -343,9 +343,9 @@ Thread[线程 2,5,main]waiting get resource1
 
 打开 jconsole 后，连接对应的程序，然后进入线程界面选择检测死锁即可！
 
-![jconsole 检测死锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock.png)
+![jconsole 检测死锁](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock.png)
 
-![jconsole 检测到死锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock-done.png)
+![jconsole 检测到死锁](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/jconsole-check-deadlock-done.png)
 
 ### 如何预防和避免线程死锁？
 

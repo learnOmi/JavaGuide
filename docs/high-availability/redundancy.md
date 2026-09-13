@@ -24,7 +24,7 @@ head:
 
 冗余设计可以从以下几个维度来理解：
 
-![冗余设计类型](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-redundancy-types.png)
+![冗余设计类型](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-redundancy-types.png)
 
 | 冗余类型     | 说明                   | 典型实现                                                     |
 | ------------ | ---------------------- | ------------------------------------------------------------ |
@@ -44,7 +44,7 @@ head:
 
 在讨论容灾架构之前，需要先理解两个核心指标：
 
-![RTO 与 RPO](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
+![RTO 与 RPO](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
 
 - **RPO（Recovery Point Objective，恢复点目标）**：系统在灾难发生后可接受的数据丢失窗口，也可以理解为恢复时数据最多允许回退到多久之前。RPO 越小，对同步复制、日志复制、跨站点一致性和写入延迟的要求越高。RPO = 0 通常意味着写入必须在多个故障域确认后才能返回，或者有等价的强一致提交机制；代价是写入延迟上升，并且在网络分区时需要在可用性和一致性之间做取舍。
 - **RTO（Recovery Time Objective，恢复时间目标）**：可容忍的 **最大恢复时间**，即从故障发生到系统恢复正常服务的时间。RTO=0 表示目标上不允许可感知中断，但在真实系统中更常见的表述是接近 0 或用户无感切换，仍要看故障检测、流量切换和客户端重试行为。
@@ -66,7 +66,7 @@ head:
 
 高可用集群（High Availability Cluster，简称 HA Cluster）、同城灾备、异地灾备、同城多活和异地多活是冗余思想在高可用系统设计中最典型的应用。
 
-![容灾架构对比](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-disaster-recovery-comparison.png)
+![容灾架构对比](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-disaster-recovery-comparison.png)
 
 ### 高可用集群
 
@@ -74,7 +74,7 @@ head:
 
 高可用集群有两种常见模式：
 
-![主备与主主模式](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-ha-cluster-modes.png)
+![主备与主主模式](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-ha-cluster-modes.png)
 
 | 模式                           | 说明                       | 优点                     | 缺点                                                |
 | ------------------------------ | -------------------------- | ------------------------ | --------------------------------------------------- |
@@ -118,7 +118,7 @@ head:
 
 从容灾等级来看，从低到高可以形成如下连续光谱：
 
-![容灾等级光谱](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-dr-level-spectrum.png)
+![容灾等级光谱](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-dr-level-spectrum.png)
 
 | 容灾等级 | 资源状态                       | 恢复速度 | 成本 | 典型场景                   |
 | -------- | ------------------------------ | -------- | ---- | -------------------------- |
@@ -137,7 +137,7 @@ head:
 
 故障转移通常包含以下几个步骤：
 
-![故障转移流程](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-failover-process.png)
+![故障转移流程](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-failover-process.png)
 
 1. **故障检测**：通过心跳检测、健康检查等机制发现故障节点。检测阈值要权衡误判和漏判，太敏感容易误切，太保守会延长故障时间。
 2. **故障确认**：避免误判，通常需要多次检测确认，并通过多数派投票、仲裁节点或租约机制防止脑裂。
@@ -147,7 +147,7 @@ head:
 
 对于有状态系统，还需要 **fencing 机制**，确保旧主在失联或恢复后不能继续对共享资源写入。否则即使新主切换成功，也可能出现双主写入和脑裂问题。常见手段包括 fencing token、STONITH（Shoot The Other Node In The Head）、写入令牌和租约。故障恢复后旧主不能直接重新加入写路径，需要先同步数据并通过仲裁确认。
 
-![Fencing 防脑裂](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-stateful-failover-fencing.png)
+![Fencing 防脑裂](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-stateful-failover-fencing.png)
 
 ### Redis 哨兵模式示例
 
@@ -165,7 +165,7 @@ Redis Sentinel 可以监控 primary（旧文档中也常称 master）节点，�
 | 客户端感知 | 客户端重连耗时、主从切换期间写失败率               |
 | 集群状态   | Sentinel quorum / majority 状态、Sentinel 节点存活 |
 
-![Redis 哨兵模式](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-redis-sentinel.png)
+![Redis 哨兵模式](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-redis-sentinel.png)
 
 ### Nginx + Keepalived 示例
 
@@ -179,13 +179,13 @@ Nginx 可以结合 Keepalived 来实现高可用。Keepalived 基于 VRRP 管理
 - 健康检查脚本要检查 Nginx 进程和业务端口，而不只是 Keepalived 进程本身。
 - 生产中还要根据业务选择抢占或非抢占模式，避免主节点恢复后发生不必要的二次切换。
 
-![Nginx 高可用架构](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-nginx-keepalived.png)
+![Nginx 高可用架构](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-nginx-keepalived.png)
 
 ## 异地多活的挑战
 
 异地多活架构实施起来非常难，需要考虑的因素非常多：
 
-![异地多活挑战](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-geo-active-active-challenges.png)
+![异地多活挑战](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-geo-active-active-challenges.png)
 
 | 挑战           | 说明                           | 解决思路                                                                                                        |
 | -------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------- |

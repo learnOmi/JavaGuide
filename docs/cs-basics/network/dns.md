@@ -21,13 +21,13 @@ DNS 要解决的是**域名和 IP 地址的映射问题**。它看起来只是�
 3. 递归查询和迭代查询有什么区别？
 4. DNS 为什么通常基于 UDP，什么情况下会改用 TCP？
 
-![DNS 将域名解析为 IP 地址的系统概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/dns-overview.png)
+![DNS 将域名解析为 IP 地址的系统概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/dns-overview.png)
 
 在实际使用中，有一种情况下，浏览器是可以不必动用 DNS 就可以获知域名和 IP 地址的映射的。浏览器在本地会维护一个 `hosts` 列表，一般来说浏览器要先查看要访问的域名是否在 `hosts` 列表中，如果有的话，直接提取对应的 IP 地址记录，就好了。如果本地 `hosts` 列表内没有域名-IP 对应记录的话，那么 DNS 就闪亮登场了。
 
 目前 DNS 的设计采用的是分布式、层次数据库结构，**DNS 是应用层协议，通常基于 UDP 协议，端口为 53**。当响应数据超过 UDP 报文长度限制（512 字节，EDNS0 可扩展至更大）或进行区域传送（Zone Transfer）时，会改用 TCP 协议以保证数据完整性。
 
-![TCP/IP 各层协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/network-protocol-overview.png)
+![TCP/IP 各层协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/network-protocol-overview.png)
 
 ## DNS 服务器
 
@@ -46,7 +46,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 每个根服务器标识背后可以通过 **IP 任播（Anycast）** 部署多个物理实例。BGP 会根据当前网络路由把查询引导到路径上合适的实例，而不一定是地理距离最近的实例。实例数量和地点会持续变化，应以 **[Root-Servers.org](https://root-servers.org/)** 的实时数据为准。
 
-![Root-Servers.org 展示全球根服务器实例分布](https://oss.javaguide.cn/github/javaguide/cs-basics/network/root-servers-org.png)
+![Root-Servers.org 展示全球根服务器实例分布](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/root-servers-org.png)
 
 ## DNS 工作流程
 
@@ -57,7 +57,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 下图是实践中常采用的方式，从请求主机到本地 DNS 服务器的查询是递归的，其余的查询时迭代的。
 
-![DNS 递归查询与迭代查询结合的解析流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process.png)
+![DNS 递归查询与迭代查询结合的解析流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process.png)
 
 现在，主机 `cis.poly.edu` 想知道 `gaia.cs.umass.edu` 的 IP 地址。假设主机 `cis.poly.edu` 的本地 DNS 服务器为 `dns.poly.edu`，并且 `gaia.cs.umass.edu` 的权威 DNS 服务器为 `dns.cs.umass.edu`。
 
@@ -72,7 +72,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 除了迭代式查询，还有一种递归式查询如下图，具体过程和上述类似，只是顺序有所不同。
 
-![DNS 递归查询解析域名的流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process2.png)
+![DNS 递归查询解析域名的流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-process2.png)
 
 递归解析器会缓存此前查询得到的转介和资源记录，因此很多查询不需要每次都从根服务器开始。只要相关缓存仍在 TTL 有效期内，解析器就可以直接联系已知的 TLD 或权威服务器，从而缩短查询路径并减少上游服务器负担。
 
@@ -80,7 +80,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 DNS 的报文格式如下图所示：
 
-![DNS 查询报文和回答报文的字段格式](https://oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-packet.png)
+![DNS 查询报文和回答报文的字段格式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/DNS-packet.png)
 
 DNS 报文分为查询和回答报文，两种形式的报文结构相同。
 
@@ -96,13 +96,13 @@ DNS 报文分为查询和回答报文，两种形式的报文结构相同。
 
 DNS 服务器在响应查询时，需要查询自己的数据库，数据库中的条目被称为 **资源记录（Resource Record，RR）**。RR 提供了主机名到 IP 地址的映射。RR 是一个包含了 `Name`、`Value`、`Type`、`TTL` 四个字段的四元组。
 
-![DNS 资源记录的四元组字段](https://oss.javaguide.cn/github/javaguide/cs-basics/network/20210506174303797.png)
+![DNS 资源记录的四元组字段](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/20210506174303797.png)
 
 `TTL` 是该记录的生存时间，它决定了资源记录应当从缓存中删除的时间。
 
 `Name` 和 `Value` 字段的取值取决于 `Type`：
 
-![不同 DNS 资源记录类型的 Name 和 Value 含义](https://oss.javaguide.cn/github/javaguide/cs-basics/network/20210506170307897.png)
+![不同 DNS 资源记录类型的 Name 和 Value 含义](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/20210506170307897.png)
 
 - 如果 `Type=A`，则 `Name` 是主机名信息，`Value` 是该主机名对应的 IP 地址。这样的 RR 记录了一条主机名到 IP 地址的映射。
 - 如果 `Type=AAAA`（与 `A` 记录非常相似），唯一的区别是 A 记录使用的是 IPv4，而 `AAAA` 记录使用的是 IPv6。

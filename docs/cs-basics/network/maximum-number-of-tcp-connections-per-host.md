@@ -30,7 +30,7 @@ TCP 连接不是靠“本地端口”唯一标识，而是靠四元组标识：
 
 假设服务器 IP 是 `192.168.1.100`，监听端口 `8080`：
 
-![TCP 连接靠四元组区分和真正的限制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-tcp-four-tuple-and-server-connection.png)
+![TCP 连接靠四元组区分和真正的限制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-tcp-four-tuple-and-server-connection.png)
 
 - 客户端 A（`10.0.0.1:50000`）连过来 → 四元组 `(10.0.0.1, 50000, 192.168.1.100, 8080)`
 - 客户端 A（`10.0.0.1:50001`）再连过来 → 四元组 `(10.0.0.1, 50001, 192.168.1.100, 8080)`
@@ -79,7 +79,7 @@ Linux 实际上维护两个队列：
 
 ## 客户端为什么更容易撞到端口限制？
 
-![客户端直连和 NAT 网关瓶颈](https://oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-client-and-nat-port-restriction.png)
+![客户端直连和 NAT 网关瓶颈](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-client-and-nat-port-restriction.png)
 
 服务端不是 65535 上限，但客户端访问同一个目标时，临时端口可能先耗尽。
 
@@ -93,7 +93,7 @@ sysctl net.ipv4.ip_local_port_range
 
 Mac 下可以这样查看：
 
-![Mac 下自动分配临时端口范围查看](https://oss.javaguide.cn/github/javaguide/cs-basics/network/check-automatic-temporary-port-range-mac.jpg)
+![Mac 下自动分配临时端口范围查看](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/check-automatic-temporary-port-range-mac.jpg)
 
 很多 Linux 环境默认临时端口范围是 `32768 60999`，大约 2.8 万个端口；实际值以 `sysctl net.ipv4.ip_local_port_range` 输出为准，且不是全部 `0~65535` 都会自动拿来做临时端口。
 
@@ -113,7 +113,7 @@ NAT 做的事情是把内网地址转换成公网地址。比如内网机器 `19
 
 ## TIME_WAIT 会怎样影响连接数？
 
-![TIME_WAIT 状态占用本地端口并影响可建立连接数](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/how-time-wait-affects-number-of-connections.png)
+![TIME_WAIT 状态占用本地端口并影响可建立连接数](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/how-time-wait-affects-number-of-connections.png)
 
 典型情况下，**主动关闭连接的一方会进入 `TIME_WAIT`**——因为它需要在发送最后一个 ACK 后等待一段时间，防止最后 ACK 丢失以及旧报文影响后续连接。（同时关闭场景下，双方都会进入 TIME_WAIT，不过日常碰到的绝大多数是前者。）
 
@@ -143,7 +143,7 @@ NAT 做的事情是把内网地址转换成公网地址。比如内网机器 `19
 
 排查这类问题，优先修连接复用。确认连接池、keep-alive、超时和关闭策略都没问题之后，再考虑扩大临时端口范围，或者增加源 IP。不要一上来就改内核参数。
 
-![TIME_WAIT 与 CLOSE_WAIT 问题的排查流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-time-wait-close-wait-troubleshooting-flowchart.png)
+![TIME_WAIT 与 CLOSE_WAIT 问题的排查流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-time-wait-close-wait-troubleshooting-flowchart.png)
 
 排查时可以用 `ss -ant` 统计各 TCP 状态数量，`ss -ant state time-wait | awk 'NR>1 {print $5}' | sort | uniq -c | sort -nr | head` 查看 TIME_WAIT 集中在哪些目标，`ss -ltn` 查看监听 socket 的 accept queue 堆积情况。看到 TIME_WAIT 集中在某个远端服务，检查短连接和连接池；看到 CLOSE_WAIT 集中在某个本地进程，优先查应用代码有没有正确关闭连接。
 

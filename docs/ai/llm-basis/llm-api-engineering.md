@@ -62,7 +62,7 @@ flowchart LR
 
 模型调用最好收口到统一的 `LLMGateway` 或共享客户端层，由它处理 API Key、超时、重试、限流、日志和供应商切换。否则每个业务模块都会形成一套略有差异的失败语义，排查时很难复现。
 
-![LLM 网关示意图](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
+![LLM 网关示意图](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
 
 ## 同步返回和流式返回有什么区别？
 
@@ -96,7 +96,7 @@ TTFT（Time To First Token）指从请求发出到收到第一个可展示 Token
 | WebSocket    | 双向长连接，客户端和服务端都能随时发消息                                     | 实时语音、多人协作、需要频繁取消或插话 | 连接管理更复杂，网关、鉴权、心跳都要自己管好                |
 | HTTP chunked | HTTP/1.1 的分块传输机制，响应体分块发送                                      | 后端到后端流式代理、低层传输           | 它是传输机制，不是应用事件协议；HTTP/2 之后有自己的流式机制 |
 
-![SSE、WebSocket 与 HTTP chunked 的流式协议选型对比](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-streaming-protocols.webp)
+![SSE、WebSocket 与 HTTP chunked 的流式协议选型对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-streaming-protocols.webp)
 
 SSE 的优势是简单。浏览器端几行代码就能接收事件，服务端按 `data:` 一段段写出去即可。MDN 对 EventSource 的描述也强调了它和 WebSocket 的区别：SSE 是服务端到客户端的单向数据流。
 
@@ -188,7 +188,7 @@ location /api/ {
 
 流式链路的结束状态需要单独设计。取消、超时、断流和重连不能共用一个“失败”状态。
 
-![流式调用中取消、TTFT 超时、连接断开和客户端重连的处理分支](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-streaming-exceptions.webp)
+![流式调用中取消、TTFT 超时、连接断开和客户端重连的处理分支](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-streaming-exceptions.webp)
 
 **用户取消。**
 
@@ -235,7 +235,7 @@ SSE 的 `EventSource` 有自动重连能力，但大模型输出不是普通新�
 1. **请求贵**：失败请求也可能消耗配额，甚至已经消耗了部分 Token。
 2. **输出非确定**：即使 Prompt 一样，第二次返回也可能和第一次不同。
 
-![从生成幂等 Key、原子占位、调用模型到退避重试和最终落库的处理流程](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-retry-idempotency.webp)
+![从生成幂等 Key、原子占位、调用模型到退避重试和最终落库的处理流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-retry-idempotency.webp)
 
 ### 错误类型对照表
 
@@ -461,7 +461,7 @@ HTTP 429 表示请求过多。后端处理 429 时，建议按这个顺序：
 | Structured Outputs          | 更强     | 供应商在解码或 SDK 层增强约束 | 受模型、SDK、Schema 子集限制   |
 | Function Calling / Tool Use | 面向动作 | 适合让模型选择工具和参数      | 不是最终自然语言答案的万能替代 |
 
-![JSON Mode 保证语法，JSON Schema 定义契约，Structured Outputs 在生成阶段应用契约](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
+![JSON Mode 保证语法，JSON Schema 定义契约，Structured Outputs 在生成阶段应用契约](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
 
 OpenAI 官方 Structured Outputs 文档强调可以让输出遵循开发者提供的 JSON Schema，并提供 `strict` 相关配置；Gemini 官方文档说明 structured output 使用 `response_format` 和 JSON Schema，且支持的是 JSON Schema 的子集；Anthropic 官方文档也提供 Structured Outputs 和 Strict tool use，二者解决的问题并不完全一样。具体模型、字段、Schema 子集变化较快，仍然以官方文档最新展示为准。
 

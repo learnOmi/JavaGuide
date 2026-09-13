@@ -25,7 +25,7 @@ head:
 
 群里讨论时，大家提到的也是类似问题：完整套件容易让小任务背上过重的流程，`grilling` 虽然会连续追问，但需求确实能收得更清楚。
 
-![群友讨论 Superpowers 流程过重以及 Grilling 减少返工](https://oss.javaguide.cn/github/javaguide/ai/skills/group-chat-superpowers-grilling-feedback.png)
+![群友讨论 Superpowers 流程过重以及 Grilling 减少返工](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/group-chat-superpowers-grilling-feedback.png)
 
 除了 `grilling` 之外，`research`、`diagnosing-bugs` 和 `code-review` 这三个也非常不错，这篇文章都会分享。
 
@@ -35,7 +35,7 @@ head:
 
 当前版本的 [`grilling`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) 很短，里面把访谈怎么往下走规定得很细。
 
-![grilling Skill 的完整访谈规则](https://oss.javaguide.cn/github/javaguide/ai/skills/grilling-skill-content.png)
+![grilling Skill 的完整访谈规则](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/grilling-skill-content.png)
 
 它会沿着决策树往下问，一次只处理一个决定。前面的答案可能改变后面的分支，所以不能一口气扔出十几个问题，让用户像填问卷一样回答。
 
@@ -49,9 +49,9 @@ head:
 
 讨论会产生长期使用的领域术语或架构决定时，可以换成 [`/grill-with-docs`](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)。它还会调用 `domain-modeling`：术语确定后写入 `CONTEXT.md`，少量难以撤销、以后看起来可能奇怪的决定再记录为 ADR。
 
-![grill-with-docs Skill 的调用关系](https://oss.javaguide.cn/github/javaguide/ai/skills/grill-with-docs-skill-content.png)
+![grill-with-docs Skill 的调用关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/grill-with-docs-skill-content.png)
 
-![domain-modeling Skill 的领域建模规则](https://oss.javaguide.cn/github/javaguide/ai/skills/domain-modeling-skill-content.png)
+![domain-modeling Skill 的领域建模规则](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/domain-modeling-skill-content.png)
 
 三者的关系可以理解为：
 
@@ -72,7 +72,7 @@ grill-with-docs ───> grilling + domain-modeling
 
 现有实现其实已经打通了一部分：普通模拟面试和知识库面试都使用 `InterviewSession`，作答、异步评估和部分前端页面也已经复用。此时继续设计底层，可能改掉本来可以保留的代码，首期产品范围反而还没确定。
 
-![使用 Grilling 确认模拟面试与知识库的打通方案](https://oss.javaguide.cn/github/javaguide/ai/skills/grilling-springai-interview-platform-case.png)
+![使用 Grilling 确认模拟面试与知识库的打通方案](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/grilling-springai-interview-platform-case.png)
 
 `grilling` 问的第一个决定，是知识库在面试里扮演什么角色。
 
@@ -102,7 +102,7 @@ grill-with-docs ───> grilling + domain-modeling
 
 [`research`](https://github.com/mattpocock/skills/blob/main/skills/engineering/research/SKILL.md) 会把问题交给后台 Agent，只查官方文档、源码、规范和第一方 API。结论写进仓库里的一个 Markdown 文件并标明来源，主 Agent 可以继续处理其他工作。
 
-![research Skill 的资料检索和结果保存规则](https://oss.javaguide.cn/github/javaguide/ai/skills/research-skill-content.png)
+![research Skill 的资料检索和结果保存规则](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/research-skill-content.png)
 
 我看中的是它把资料来源和交付物钉死了：不拿二手教程替代官方资料，也不把几十页搜索过程塞回主会话，只留下可复查的结论。
 
@@ -114,7 +114,7 @@ Agent 排查 Bug 时很容易过早形成判断。看到一个可疑分支，马
 
 [`diagnosing-bugs`](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md) 把最多精力放在第一阶段：先做出一个能准确捕获当前 Bug 的反馈环。
 
-![diagnosing-bugs Skill 的 Bug 诊断流程](https://oss.javaguide.cn/github/javaguide/ai/skills/diagnosing-bugs-skill-content.png)
+![diagnosing-bugs Skill 的 Bug 诊断流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/diagnosing-bugs-skill-content.png)
 
 反馈环可以是一条失败测试、一段 `curl`、带固定输入的 CLI、Playwright 脚本或线上请求回放。它要能捕获原故障，运行稳定、足够快，并且 Agent 可以独立执行。
 
@@ -132,7 +132,7 @@ Agent 排查 Bug 时很容易过早形成判断。看到一个可疑分支，马
 
 [`code-review`](https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md) 把审查分为 `Standards` 和 `Spec` 两条线。
 
-![code-review Skill 的双轴代码审查流程](https://oss.javaguide.cn/github/javaguide/ai/skills/code-review-skill-content.png)
+![code-review Skill 的双轴代码审查流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/code-review-skill-content.png)
 
 `Standards` 会读取仓库自己的 `CONTRIBUTING.md` 和编码规范，再检查变更是否遵守约定。当前版本还内置了一组 `Fowler Code Smells`。仓库明文规则优先，Smell 只能作为判断线索，不能直接算违规。
 
@@ -160,7 +160,7 @@ npx skills@latest add mattpocock/skills
 请帮我从 mattpocock/skills 仓库安装 4 个 Agent Skill：grilling、research、diagnosing-bugs、code-review。
 ```
 
-![Codex 使用 skill-installer 安装 mattpocock skills](https://oss.javaguide.cn/github/javaguide/ai/skills/codex-install-mattpocock-skills.png)
+![Codex 使用 skill-installer 安装 mattpocock skills](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/codex-install-mattpocock-skills.png)
 
 安装完成后，通常要到下一轮对话才会出现在可用 Skill 列表里。
 

@@ -41,7 +41,7 @@ head:
 
 事务会把这两个操作看成逻辑上的一个整体，这个整体包含的操作要么都成功，要么都失败。这样就不会出现小明余额减少而小红的余额却并没有增加的情况。
 
-![](https://oss.javaguide.cn/github/javaguide/mysql/%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/mysql/事务示意图.png)
 
 ## 数据库事务
 
@@ -62,11 +62,11 @@ SQL1,SQL2...
 COMMIT;
 ```
 
-![数据库事务示意图](https://oss.javaguide.cn/github/javaguide/mysql/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
+![数据库事务示意图](/assets/images/oss.javaguide.cn/github/javaguide/mysql/数据库事务示意图.png)
 
 另外，关系型数据库（例如：`MySQL`、`SQL Server`、`Oracle` 等）事务都有 **ACID** 特性：
 
-![ACID](https://oss.javaguide.cn/github/javaguide/mysql/ACID.png)
+![ACID](/assets/images/oss.javaguide.cn/github/javaguide/mysql/ACID.png)
 
 1. **原子性**（`Atomicity`）：事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；
 2. **一致性**（`Consistency`）：执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；
@@ -75,7 +75,7 @@ COMMIT;
 
 🌈 这里要额外补充一点：**只有保证了事务的持久性、原子性、隔离性之后，一致性才能得到保障。也就是说 A、I、D 是手段，C 是目的！** 想必大家和我一样，被 ACID 这个概念误导了很久！我也是看周志明老师的公开课[《周志明的软件架构课》](https://time.geekbang.org/opencourse/intro/100064201)才搞清楚的（多看好书！！！）。
 
-![AID->C](https://oss.javaguide.cn/github/javaguide/mysql/AID-%3EC.png)
+![AID->C](/assets/images/oss.javaguide.cn/github/javaguide/mysql/AID-_C.png)
 
 另外，DDIA 也就是 [《Designing Data-Intensive Application（数据密集型应用系统设计）》](https://book.douban.com/subject/30329536/) 的作者在他的这本书中如是说：
 
@@ -88,7 +88,7 @@ COMMIT;
 
 《Designing Data-Intensive Application（数据密集型应用系统设计）》这本书强推一波，值得读很多遍！豆瓣有接近 90% 的人看了这本书之后给了五星好评。另外，中文翻译版本已经在 GitHub 开源，地址：[https://github.com/Vonng/ddia](https://github.com/Vonng/ddia)。
 
-![](https://img-blog.csdnimg.cn/20210526162552353.png)
+![](/assets/images/img-blog.csdnimg.cn/20210526162552353.png)
 
 **数据库事务的实现原理呢？**
 
@@ -100,7 +100,7 @@ MySQL InnoDB 引擎使用 **redo log（重做日志）** 保证事务的**持久
 
 微服务架构下，一个系统被拆分为多个小的微服务。每个微服务都可能存在不同的机器上，并且每个微服务可能都有一个单独的数据库供自己使用。这种情况下，一组操作可能会涉及到多个微服务以及多个数据库。举个例子：电商系统中，你创建一个订单往往会涉及到订单服务（订单数加一）、库存服务（库存减一）等等服务，这些服务会有供自己单独使用的数据库。
 
-![分布式事务示意图](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
+![分布式事务示意图](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
 
 **那么如何保证这一组操作要么都执行成功，要么都执行失败呢？**
 
@@ -144,7 +144,7 @@ CAP 理论和 BASE 理论是理解分布式事务取舍的前置知识。跨服�
 
 与柔性事务相对的就是 **刚性事务** 了。前面我们说了，**柔性事务追求的是最终一致性**。那么，与之对应，刚性事务追求的就是 **强一致性**。像 **2PC**、**3PC** 就属于刚性事务。
 
-![分布式事务解决方案总结](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-solution-summary.png)
+![分布式事务解决方案总结](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-solution-summary.png)
 
 ## 分布式事务解决方案
 
@@ -164,7 +164,7 @@ CAP 理论和 BASE 理论是理解分布式事务取舍的前置知识。跨服�
 
 开始介绍 2PC 和 3PC 之前，我们先来介绍一下 2PC 和 3PC 涉及到的一些角色（XA 规范的角色组成）：
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/xa-specification-roles.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/xa-specification-roles.png)
 
 - **AP（Application Program）**：应用程序本身。
 - **RM（Resource Manager）**：资源管理器，也就是事务的参与者，绝大部分情况下就是指数据库（后文会以关系型数据库为例），一个分布式事务往往涉及到多个 RM。
@@ -172,7 +172,7 @@ CAP 理论和 BASE 理论是理解分布式事务取舍的前置知识。跨服�
 
 ### 2PC（两阶段提交协议）
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/2pc-work-flow.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/2pc-work-flow.png)
 
 2PC（Two-Phase Commit）这三个字母的含义：
 
@@ -203,7 +203,7 @@ CAP 理论和 BASE 理论是理解分布式事务取舍的前置知识。跨服�
 3. **RM** 回复：“事务已经提交” （**ACK 消息**）。
 4. **TM** 收到所有 **事务参与者** 的 **ACK 消息** 之后，整个分布式事务过程正式结束。
 
-![2PC示意图-就绪](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-2pc-ready.png)
+![2PC示意图-就绪](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-2pc-ready.png)
 
 当任一事务参与者是“未就绪”状态的话：
 
@@ -212,7 +212,7 @@ CAP 理论和 BASE 理论是理解分布式事务取舍的前置知识。跨服�
 3. **RM** 回复：“事务已经回滚” （**ACK 消息**）。
 4. **TM** 收到所有 **RM** 的 **ACK 消息** 之后，中断事务。
 
-![2PC示意图-未就绪](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-2pc-not-ready.png)
+![2PC示意图-未就绪](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-2pc-not-ready.png)
 
 #### 总结
 
@@ -253,7 +253,7 @@ Seata 从 1.2 版本开始支持 XA 模式。Seata XA 模式利用数据库、�
 
 ### 3PC（三阶段提交协议）
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/3pc-work-flow.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/3pc-work-flow.png)
 
 3PC 是在 2PC 基础上的优化版本。它将 2PC 的 **Prepare 阶段**拆成两个独立阶段：CanCommit（只询问能否提交，不执行事务预操作）和 PreCommit（执行事务预操作、写 redo/undo log）。再加上最后的 DoCommit，共三个阶段：
 
@@ -261,7 +261,7 @@ Seata 从 1.2 版本开始支持 XA 模式。Seata XA 模式利用数据库、�
 2. PreCommit（执行事务预操作）
 3. DoCommit（真正提交）
 
-![3PC示意图-就绪](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-3pc-ready.png)
+![3PC示意图-就绪](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-3pc-ready.png)
 
 #### 准备阶段(CanCommit)
 
@@ -321,11 +321,11 @@ TCC 属于目前比较常见的一种柔性事务解决方案。数据库专家�
 
 正常情况下，会执行 `try`、`confirm` 方法。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-tcc-confirm.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-tcc-confirm.png)
 
 出现异常的话，会执行 `try`、`cancel` 方法。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-tcc-cancel.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-tcc-cancel.png)
 
 Try 阶段出现问题的话，可以执行 Cancel。**那如果 Confirm 或者 Cancel 阶段失败了怎么办呢？**
 
@@ -345,7 +345,7 @@ TCC 落地时有三个非常经典的工程问题：
 
 TCC 事务模型的思想类似 2PC，我简单花了一张图对比一下二者。
 
-![2PC 对比 TCC](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/2pc-vs-tcc.png)
+![2PC 对比 TCC](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/2pc-vs-tcc.png)
 
 **TCC 和 2PC/3PC 有什么区别呢？**
 
@@ -387,7 +387,7 @@ RocketMQ、Kafka、Pulsar、QMQ 都提供了事务相关的功能。事务允许
 
 这里我们拿 RocketMQ 来说（图源：《消息队列高手课》）。相关阅读：[RocketMQ 事务消息参考文档](https://rocketmq.apache.org/docs/featureBehavior/04transactionmessage/)。
 
-![](https://img-blog.csdnimg.cn/2021060810404597.png)
+![](/assets/images/img-blog.csdnimg.cn/2021060810404597.png)
 
 1. MQ 发送方（比如物流服务）在消息队列上开启一个事务，然后发送一个“半消息”给 MQ Server/Broker。事务提交之前，半消息对于 MQ 订阅方/消费者（比如第三方通知服务）不可见
 2. “半消息”发送成功的话，MQ 发送方就开始执行本地事务。
@@ -401,13 +401,13 @@ RocketMQ 中的 Broker 会定期去 MQ 发送方上反查这个事务的本地�
 
 事务反查机制的实现依赖于我们业务代码实现的对应的接口，比如你要查看创建物流信息的本地事务是否执行成功的话，直接在数据库中查询对应的物流信息是否存在即可。
 
-![](https://img-blog.csdnimg.cn/20210608114710962.png)
+![](/assets/images/img-blog.csdnimg.cn/20210608114710962.png)
 
 **如果正常消息没有被正确消费怎么办呢？**
 
 消息消费失败的话，RocketMQ 会自动进行消费重试。如果超过最大重试次数这个消息还是没有正确消费，RocketMQ 就会认为这个消息有问题，然后将其放到 **死信队列**。
 
-![](https://img-blog.csdnimg.cn/20210608120207740.png)
+![](/assets/images/img-blog.csdnimg.cn/20210608120207740.png)
 
 进入死信队列的消息一般需要人工处理，手动排查问题。
 
@@ -434,14 +434,14 @@ Saga 绝对可以说是历史非常悠久了，Saga 事务理论在 1987 年 Hec
 
 Saga 属于长事务解决方案，其核心思想是将长事务拆分为多个本地短事务（本地短事务序列）。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-saga.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-saga.png)
 
 - 长事务 —> T1,T2 ~ Tn 个本地短事务
 - 每个短事务都有一个补偿动作 —> C1,C2 ~ Cn
 
 下图来自于 [微软技术文档—Saga 分布式事务](https://docs.microsoft.com/zh-cn/azure/architecture/reference-architectures/saga/saga) 。
 
-![](https://img-blog.csdnimg.cn/20210611101344496.png)
+![](/assets/images/img-blog.csdnimg.cn/20210611101344496.png)
 
 如果 T1,T2 ~ Tn 这些短事务都能顺利完成的话，整个事务也就顺利结束，否则，将采取恢复模式。
 

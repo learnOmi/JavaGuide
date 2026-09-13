@@ -24,7 +24,7 @@ Prompt 写得好不好，不看长度，看它有没有把任务说清楚。
 
 一个合格的 Prompt，通常要交代四件事：Role、Task、Context、Format。
 
-![Prompt 四要素框架](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-four-element-framework.svg)
+![Prompt 四要素框架](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-four-element-framework.svg)
 
 | 要素              | 作用                             | 常见表述                                        |
 | ----------------- | -------------------------------- | ----------------------------------------------- |
@@ -87,7 +87,7 @@ Prompt 写得好不好，不看长度，看它有没有把任务说清楚。
 
 ## 常用提示技巧有哪些？
 
-![六大核心技巧](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-six-core-techniques.svg)
+![六大核心技巧](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-six-core-techniques.svg)
 
 ### 角色扮演
 
@@ -172,7 +172,7 @@ Zero-shot CoT 最简单，直接加一句“请给出关键步骤后再回答”
 
 ### 任务分解
 
-![任务分解](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/task-decomposition.svg)
+![任务分解](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/task-decomposition.svg)
 
 复杂任务可以拆成多个输入、输出都能单独检查的子任务。这样某一步出错时，可以定位到对应步骤，而不必重写整条任务链。
 
@@ -202,7 +202,7 @@ BabyAGI 这类架构里，则会把任务拆给几个不同 Agent：
 
 ### 结构化输出
 
-![结构化输出格式对比](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/structured-output-formats.svg)
+![结构化输出格式对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/structured-output-formats.svg)
 
 固定格式的输出要先定义 Schema，包括字段、类型和枚举值等约束。
 
@@ -468,7 +468,7 @@ Agent 场景风险更高，因为模型不只是聊天，还可能调工具、�
 
 ### 三层防护
 
-![prompt-injection-protection-three-layer-defense-in-depth-system](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-injection-protection-three-layer-defense-in-depth-system.svg)
+![prompt-injection-protection-three-layer-defense-in-depth-system](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-injection-protection-three-layer-defense-in-depth-system.svg)
 
 防护一般从三层做。
 
@@ -504,7 +504,7 @@ Prompt 只能参与这套防护，不能替代工具权限和审批机制。
 
 一个真实的上下文窗口里，通常会包含这些东西：
 
-![上下文窗口（Context Window）= LLM 的工作记忆](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
+![上下文窗口（Context Window）= LLM 的工作记忆](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
 
 - 系统提示词：角色、约束、输出格式
 - 工具上下文：可调用函数签名、上一步工具返回结果

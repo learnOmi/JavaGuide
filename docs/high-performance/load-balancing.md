@@ -14,7 +14,7 @@ head:
 
 下图是[《Java 面试指北》](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247519384&idx=1&sn=bc7e71af75350b755f04ca4178395b1a&chksm=cea1c353f9d64a458f797696d4144b4d6e58639371a4612b8e4d106d83a66d2289e7b2cd7431&token=660789642&lang=zh_CN&scene=21#wechat_redirect) 「高并发篇」中的一篇文章的配图，从图中可以看出，系统的商品服务部署了多份在不同的服务器上，为了实现访问商品服务请求的分流，我们用到了负载均衡。
 
-![多服务实例-负载均衡](https://oss.javaguide.cn/github/javaguide/high-performance/load-balancing/multi-service-load-balancing.drawio.png)
+![多服务实例-负载均衡](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/load-balancing/multi-service-load-balancing.drawio.png)
 
 负载均衡是一种比较常用且实施起来较为简单的提高系统并发能力和可靠性的手段，不论是单体架构的系统还是微服务架构的系统几乎都会用到。
 
@@ -32,7 +32,7 @@ head:
 
 下图是我画的一个简单的基于 Nginx 的服务端负载均衡示意图：
 
-![基于 Nginx 的服务端负载均衡](https://oss.javaguide.cn/github/javaguide/high-performance/load-balancing/server-load-balancing.png)
+![基于 Nginx 的服务端负载均衡](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/load-balancing/server-load-balancing.png)
 
 **硬件负载均衡** 通过专门的硬件设备（比如 **F5、A10、Array** ）实现负载均衡功能。
 
@@ -54,7 +54,7 @@ head:
 > - [What Is Layer 4 Load Balancing?](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)
 > - [What Is Layer 7 Load Balancing?](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)
 
-![OSI 七层模型](https://oss.javaguide.cn/github/javaguide/cs-basics/network/osi-7-model.png)
+![OSI 七层模型](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/osi-7-model.png)
 
 - **四层负载均衡** 工作在 OSI 模型第四层，也就是传输层，这一层的主要协议是 TCP/UDP，负载均衡器在这一层能够看到数据包里的源端口地址以及目的端口地址，会基于这些信息通过一定的负载均衡算法将数据包转发到后端真实服务器。也就是说，四层负载均衡的核心就是 IP+端口层面的负载均衡，不涉及具体的报文内容。
 - **七层负载均衡** 工作在 OSI 模型第七层，也就是应用层，这一层的主要协议是 HTTP 。这一层的负载均衡比四层负载均衡路由网络请求的方式更加复杂，它会读取报文的数据部分（比如说我们的 HTTP 部分的报文），然后根据读取到的数据内容（如 URL、Cookie）做出负载均衡决策。也就是说，七层负载均衡器的核心是报文内容（如 URL、Cookie）层面的负载均衡，执行第七层负载均衡的设备通常被称为 **反向代理服务器** 。
@@ -85,7 +85,7 @@ head:
 
 关于 Nginx 的常见知识点总结，[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 中「技术面试题篇」中已经有对应的内容了，感兴趣的小伙伴可以去看看。
 
-![](https://oss.javaguide.cn/github/javaguide/image-20220328105759300.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/image-20220328105759300.png)
 
 不过，LVS 这个绝大部分公司真用不上，像阿里、百度、腾讯、eBay 等大厂才会使用到，用的最多的还是 Nginx。
 
@@ -101,7 +101,7 @@ Java 领域主流的微服务框架 Dubbo、Spring Cloud 等都内置了开箱�
 
 下图是我画的一个简单的基于 Spring Cloud Load Balancer（Ribbon 也类似） 的客户端负载均衡示意图：
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/load-balancing/spring-cloud-lb-gateway.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/load-balancing/spring-cloud-lb-gateway.png)
 
 ## 负载均衡常见的算法有哪些？
 
@@ -129,7 +129,7 @@ Java 领域主流的微服务框架 Dubbo、Spring Cloud 等都内置了开箱�
 
 平滑的加权轮训算法最早是在 Nginx 中被实现，可以参考这个 commit：<https://github.com/phusion/nginx/commit/27e94984486058d73157038f7950a0a36ecc6e35>。如果你认真学习过 Dubbo 负载均衡策略的话，就会发现 Dubbo 的加权轮询就借鉴了该算法实现并进一步做了优化。
 
-![Dubbo 加权轮询负载均衡算法](https://oss.javaguide.cn/github/javaguide/high-performance/load-balancing/dubbo-round-robin-load-balance.png)
+![Dubbo 加权轮询负载均衡算法](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/load-balancing/dubbo-round-robin-load-balance.png)
 
 ### 两次随机法
 
@@ -177,11 +177,11 @@ DNS 解析是比较早期的七层负载均衡实现方式，非常简单。
 
 DNS 解析实现负载均衡的原理是这样的：在 DNS 服务器中为同一个主机记录配置多个 IP 地址，这些 IP 地址对应不同的服务器。当用户请求域名的时候，DNS 服务器采用轮询算法返回 IP 地址，这样就实现了轮询版负载均衡。
 
-![](https://oss.javaguide.cn/github/javaguide/high-performance/load-balancing/6997605302452f07e8b28d257d349bf0.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/load-balancing/6997605302452f07e8b28d257d349bf0.png)
 
 现在的 DNS 解析几乎都支持 IP 地址的权重配置，这样的话，在服务器性能不等的集群中请求分配会更加合理化。像我自己目前正在用的阿里云 DNS 就支持权重配置。
 
-![](https://oss.javaguide.cn/github/javaguide/aliyun-dns-weight-setting.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/aliyun-dns-weight-setting.png)
 
 ### 反向代理
 
@@ -191,7 +191,7 @@ Nginx 就是最常用的反向代理服务器，它可以将接收到的客户�
 
 反向代理负载均衡同样属于七层负载均衡。
 
-![](https://oss.javaguide.cn/github/javaguide/nginx-load-balance.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/nginx-load-balance.png)
 
 ### 健康检查和摘流量
 
@@ -276,7 +276,7 @@ Spring Cloud 2020.0.0 版本移除了 Netflix 除 Eureka 外的所有组件。Sp
 
 我们早期学习微服务，肯定接触过 Netflix 公司开源的 Feign、Ribbon、Zuul、Hystrix、Eureka 等知名的微服务系统构建所必须的组件，直到现在依然有非常非常多的公司在使用这些组件。不夸张地说，Netflix 公司引领了 Java 技术栈下的微服务发展。
 
-![](https://oss.javaguide.cn/github/javaguide/SpringCloudNetflix.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/SpringCloudNetflix.png)
 
 **那为什么 Spring Cloud 这么急着移除 Netflix 的组件呢？** 主要是因为在 2018 年的时候，Netflix 宣布其开源的核心组件 Hystrix、Ribbon、Zuul、Eureka 等进入维护状态，不再进行新特性开发，只修 BUG。于是，Spring 官方不得不考虑移除 Netflix 的组件。
 

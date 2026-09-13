@@ -22,7 +22,7 @@ head:
 
 ### 内存管理主要做了什么？
 
-![内存管理职责概览](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-management-responsibilities.webp)
+![内存管理职责概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-management-responsibilities.webp)
 
 面试里回答“内存管理做什么”，可以从 5 件事说起：
 
@@ -58,7 +58,7 @@ cat /proc/<pid>/smaps_rollup
 - **内部内存碎片（Internal Memory Fragmentation，简称为内存碎片）**：已经分配给进程使用但未被使用的内存。导致内部内存碎片的主要原因是，当采用固定比例比如 2 的幂次方进行内存分配时，进程所分配的内存可能会比其实际所需要的大。举个例子，一个进程只需要 65 字节的内存，但为其分配了 128（2^7）大小的内存，那 63 字节的内存就成为了内部内存碎片。
 - **外部内存碎片（External Memory Fragmentation，简称为外部碎片）**：由于未分配的连续内存区域太小，以至于不能满足任意进程所需要的内存分配请求，这些小片段且不连续的内存空间被称为外部碎片。也就是说，外部内存碎片指的是那些并未分配给进程但又不能使用的内存。我们后面介绍的分段机制就会导致外部内存碎片。
 
-![连续内存分配与碎片](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-fragmentation.webp)
+![连续内存分配与碎片](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-fragmentation.webp)
 
 内存碎片会导致内存利用率下降，如何减少内存碎片是内存管理要非常重视的一件事情。
 
@@ -79,11 +79,11 @@ cat /proc/<pid>/smaps_rollup
 
 假设两块相邻的内存块都被释放，系统会将这两个内存块合并，进而形成一个更大的内存块，以便后续的内存分配。这样就可以减少内存碎片的问题，提高内存利用率。
 
-![伙伴系统（Buddy System）内存管理](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/linux-buddy-system.png)
+![伙伴系统（Buddy System）内存管理](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/linux-buddy-system.png)
 
 虽然解决了外部内存碎片的问题，但伙伴系统仍然存在内存利用率不高的问题（内部内存碎片）。这主要是因为伙伴系统只能分配大小为 2^n 的内存块，因此当需要分配的内存大小不是 2^n 的整数倍时，会浪费一定的内存空间。举个例子：如果要分配 65 大小的内存块，依然需要分配 2^7=128 大小的内存块。
 
-![伙伴系统内存浪费问题](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/buddy-system-memory-waste.png)
+![伙伴系统内存浪费问题](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/buddy-system-memory-waste.png)
 
 对于小对象频繁分配带来的内部内存碎片和性能问题，Linux 还会使用 **SLAB/SLUB** 这类分配器优化。它们会把常用内核对象缓存起来，按对象类型复用已经初始化过的内存块，减少重复分配、初始化和释放的成本。由于这部分内容不是本篇文章的重点，这里点到为止。
 
@@ -103,7 +103,7 @@ cat /proc/<pid>/smaps_rollup
 
 简单来说，虚拟内存把“程序使用的地址”和“内存条上的真实地址”隔开了。进程访问虚拟地址时，CPU 中的 MMU 会根据页表等映射关系，把虚拟地址转换成物理地址，再去访问真正的内存。
 
-![虚拟内存作为进程访问主存的桥梁](https://oss.javaguide.cn/xingqiu/virtual-memory.png)
+![虚拟内存作为进程访问主存的桥梁](/assets/images/oss.javaguide.cn/xingqiu/virtual-memory.png)
 
 总结来说，虚拟内存主要提供了下面这些能力：
 
@@ -133,7 +133,7 @@ cat /proc/<pid>/smaps_rollup
 
 操作系统一般通过 CPU 芯片中的一个重要组件 **MMU（Memory Management Unit，内存管理单元）** 将虚拟地址转换为物理地址，这个过程被称为 **地址翻译/地址转换（Address Translation）**。在现代系统里，这个转换通常依赖页表完成，TLB 会缓存最近使用过的地址转换结果，减少查页表的开销。
 
-![地址翻译过程](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation.png)
+![地址翻译过程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation.png)
 
 通过 MMU 将虚拟地址转换为物理地址后，CPU 再访问对应的物理内存位置，完成读写请求。也正是因为有这层转换，不同进程里数值相同的虚拟地址，最终可以落到完全不同的物理页上。
 
@@ -176,7 +176,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 3. 检查段内偏移量是否超过段界限，检查访问权限是否合法；
 4. 合法的话，用段基址加上段内偏移量得到最终的物理地址。
 
-![分段地址转换示意图：虚拟地址由段号和段内偏移组成，通过段表查到基地址后计算物理地址](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-segmentation.png)
+![分段地址转换示意图：虚拟地址由段号和段内偏移组成，通过段表查到基地址后计算物理地址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-segmentation.png)
 
 举个例子，要访问段 3、偏移量 500 的地址，如果段 3 的基地址是 7000，且偏移量没有越界，那么最终物理地址就是 7000 + 500 = 7500。
 
@@ -195,7 +195,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 
 此时，我们关闭了进程 1 和进程 4，则第 1 段和第 4 段的内存会被释放，空闲物理内存还有 1.5 GB。由于这 1.5 GB 物理内存并不是连续的，导致没办法将空闲的物理内存分配给一个需要 1.5 GB 连续物理内存的进程。
 
-![分段机制导致外部内存碎片](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/segment-external-memory-fragmentation.png)
+![分段机制导致外部内存碎片](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/segment-external-memory-fragmentation.png)
 
 外部碎片可以通过内存紧凑来缓解，也就是把还在使用的段搬到一起，腾出连续空间。但搬移大段很费时间，如果还伴随换出、换入磁盘，系统会明显变慢。
 
@@ -213,7 +213,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 
 分页管理通过 **页表（Page Table）** 映射虚拟地址和物理地址。页表项记录虚拟页号和物理页帧号的对应关系，还会记录访问位、脏位、权限位、存在位等状态信息。我这里画了一张基于单级页表进行地址翻译的示意图。
 
-![单级页表](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/page-table.png)
+![单级页表](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/page-table.png)
 
 在分页机制下，每个进程都会有自己的页表。正因为页表是进程私有的，不同进程相同的虚拟页号可以映射到不同的物理页帧，从而实现地址空间隔离。
 
@@ -228,7 +228,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 2. 通过虚拟页号去该进程的页表中取出对应的物理页帧号（找到对应的页表项）；
 3. 用物理页帧号对应的起始地址加上虚拟地址中的页内偏移量，得到最终的物理地址。
 
-![分页地址转换示意图：虚拟地址拆成页号和页内偏移，页表把虚拟页映射到物理页帧](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-paging.png)
+![分页地址转换示意图：虚拟地址拆成页号和页内偏移，页表把虚拟页映射到物理页帧](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-paging.png)
 
 如果页表项不存在、页面当前不在物理内存中，或者访问权限不匹配，CPU 会触发 Page Fault。内核随后判断这次访问能否修复：可以修复就建立映射或调入页面，无法修复则通常向当前线程投递 `SIGSEGV`。
 
@@ -248,7 +248,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 
 假设只需要 2 个二级页表，那两级页表的内存占用情况为：4 KB（一级页表占用） + 4 KB \* 2（二级页表占用） = 12 KB。
 
-![多级页表示意图：PGD、PUD、PMD、PTE 分层索引，只为实际使用的地址范围创建下级页表](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-multi-level-page-table.png)
+![多级页表示意图：PGD、PUD、PMD、PTE 分层索引，只为实际使用的地址范围创建下级页表](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-multi-level-page-table.png)
 
 多级页表是在省页表空间：多走几层索引，换来更小的页表内存占用。实际系统会配合 TLB 缓存常用页表项，所以多级页表的额外查表开销不会每次都完整发生。
 
@@ -256,7 +256,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 
 为了提高虚拟地址到物理地址的转换速度，CPU/MMU 会使用 **转址旁路缓存（Translation Lookaside Buffer，TLB，也被称为快表）** 缓存近期的地址转换结果。
 
-![加入 TLB 之后的地址翻译](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation-mmu.png)
+![加入 TLB 之后的地址翻译](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/physical-virtual-address-translation-mmu.png)
 
 在主流的 AArch64 和 x86-64 体系结构下，TLB 是 MMU 使用的硬件缓存。可以把它理解为按虚拟页匹配物理页框的高速缓存，但不能把具体硬件结构等同于软件哈希表。操作系统负责维护页表；页表映射发生变化后，还要按体系结构要求使相关 TLB 项失效，避免 CPU 继续使用旧映射。
 
@@ -267,7 +267,7 @@ MMU 将虚拟地址翻译为物理地址的主要机制有 3 种：
 3. 如果不能查到对应的物理页的话，还是需要去查询主存中的页表，同时将页表中的该映射表项添加到 TLB 中，这种情况称为 TLB 未命中（TLB miss）。
 4. 当 TLB 填满后，又要登记新页时，就按照一定的淘汰策略淘汰掉快表中的一个页。
 
-![TLB 缓存地址转换结果的流程：CPU 先查 TLB，命中直接访问内存，未命中再查多级页表并更新 TLB](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-tlb-cache.png)
+![TLB 缓存地址转换结果的流程：CPU 先查 TLB，命中直接访问内存，未命中再查多级页表并更新 TLB](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-tlb-cache.png)
 
 由于页表也在主存中，因此在没有 TLB 之前，CPU 访问一个虚拟地址，往往要先访问内存查页表，再访问真正的数据；多级页表下查表次数还会更多。有了 TLB 之后，命中时可以跳过页表查询，直接拿到物理页帧号，地址转换会快很多。
 
@@ -299,7 +299,7 @@ Page Fault 是 CPU 在地址翻译或页级权限检查无法直接完成时触�
 
 C/C++ 越界访问也不保证立刻触发 `SIGSEGV`。如果越界地址仍落在已映射且权限允许的页面中，CPU 不会仅凭语言层面的数组边界识别错误，程序可能只是破坏了相邻数据。
 
-![缺页异常处理流程：MMU 发现地址翻译或权限检查无法完成后进入内核，检查访问合法性、分配或置换页帧、更新页表并重试指令](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-page-fault.png)
+![缺页异常处理流程：MMU 发现地址翻译或权限检查无法完成后进入内核，检查访问合法性、分配或置换页帧、更新页表并重试指令](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-page-fault.png)
 
 Page Fault 与系统调用、信号之间的关系可以看：[中断、异常与系统调用详解：从内核入口到缺页异常](./interrupt-exception-syscall.md)。
 
@@ -313,7 +313,7 @@ Page Fault 与系统调用、信号之间的关系可以看：[中断、异常�
 
 常见的页面置换算法有下面这 5 种（其他还有很多页面置换算法都是基于这些算法改进得来的）：
 
-![页面置换算法对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-replacement.webp)
+![页面置换算法对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-replacement.webp)
 
 1. **最佳页面置换算法（OPT，Optimal）**：优先淘汰未来最长时间不会再被访问的页面，理论上缺页率最低。但它需要预知未来，现实中无法实现，通常作为衡量其他算法的基准。
 2. **先进先出页面置换算法（FIFO，First In First Out）**：总是淘汰最早进入内存的页面，实现简单，但容易误伤热点页，并且可能出现 Belady 异常。
@@ -321,7 +321,7 @@ Page Fault 与系统调用、信号之间的关系可以看：[中断、异常�
 4. **最少使用页面置换算法（LFU，Least Frequently Used）**：淘汰一段时间内访问次数最少的页面。它关注访问频率，但容易让早期频繁访问、后来不再使用的页面长期留在内存中，因此实际使用时常配合计数衰减。
 5. **时钟页面置换算法（Clock）**：也叫二次机会算法，是 LRU 的一种低成本近似实现。它给每个页面维护一个访问位，页面排成环形队列；访问位为 1 时先清零并跳过，访问位为 0 时才淘汰。
 
-![CLOCK 页面置换算法示意图：页面按环形队列排列，指针根据访问位 R 判断给第二次机会还是淘汰页面](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-clock-algorithm.png)
+![CLOCK 页面置换算法示意图：页面按环形队列排列，指针根据访问位 R 判断给第二次机会还是淘汰页面](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-clock-algorithm.png)
 
 **FIFO 页面置换算法性能为何不好？**
 
@@ -334,7 +334,7 @@ Page Fault 与系统调用、信号之间的关系可以看：[中断、异常�
 
 LRU 及其近似算法在实际系统中应用较多，因为它比较符合程序的局部性规律。不过，真实系统通常不会原样照搬教科书算法，而是做大量工程化改造。比如 Linux 内核不是简单地在 OPT/FIFO/LRU/CLOCK 里挑一个，而是使用活跃/非活跃 LRU、workingset、refault 检测等机制做近似回收；InnoDB Buffer Pool 也对传统 LRU 做了改进，避免预读和全表扫描把热点页挤出去。
 
-![Linux 页面回收思路](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-reclaim.webp)
+![Linux 页面回收思路](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/memory-page-reclaim.webp)
 
 ### Swap、工作集和抖动分别是什么？
 
@@ -422,7 +422,7 @@ Linux 允许进程申请的虚拟内存超过当前 RAM 和 Swap，这叫 **Over
 
 进程访问的是虚拟地址（VA），真正落到内存条上的是物理地址（PA）。每个进程都有自己的虚拟地址空间和页表，所以不同进程即使使用相同的虚拟地址，也可以映射到不同的物理页，从而实现进程隔离。
 
-![虚拟地址到物理地址的映射过程：不同进程的相同虚拟地址通过 MMU 和页表映射到不同物理页](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-virtual-physical-mapping.png)
+![虚拟地址到物理地址的映射过程：不同进程的相同虚拟地址通过 MMU 和页表映射到不同物理页](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-virtual-physical-mapping.png)
 
 不过，隔离不代表进程之间完全不能共享数据。操作系统可以有控制地让多个进程映射同一批物理页，例如动态库共享、`mmap` 文件映射、共享内存 IPC。区别在于：默认隔离由页表权限保证，共享则必须由内核显式建立映射并配合权限控制；如果是共享内存 IPC，还需要额外处理同步问题。
 
@@ -452,7 +452,7 @@ I/O 多路复用解决的不是“单次读写更快”，而是**一个线程�
 
 一次网络读取通常分成两个阶段：先等数据从网卡到达并进入内核缓冲区，再把数据从内核缓冲区拷贝到用户缓冲区。阻塞 I/O 的问题在第一阶段：一个线程调用 `recv` 后，如果这个连接没数据，线程就只能卡在那里等。
 
-![网络读取中的两个阶段：先等待网卡数据进入内核缓冲区，再通过 copy_to_user 拷贝到用户缓冲区](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-io-two-phases.png)
+![网络读取中的两个阶段：先等待网卡数据进入内核缓冲区，再通过 copy_to_user 拷贝到用户缓冲区](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-io-two-phases.png)
 
 I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll` 或 `epoll` 这类系统调用上。只要其中任意 fd 就绪，调用就返回，应用再去处理对应的连接。这样一个线程就能管理成千上万个连接，特别适合大量连接空闲、少量连接活跃的场景，比如 Redis、Nginx、Netty 这类高性能网络程序。
 
@@ -470,7 +470,7 @@ I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll`
 
 `epoll` 通过 `epoll_ctl` 维护监听集合，通过 `epoll_wait` 获取就绪事件。内核会维护 interest list 和 ready list，fd 就绪后进入 ready list，应用等待时只取这批就绪事件。它还支持 LT（水平触发）和 ET（边缘触发）：LT 只要缓冲区还有数据就会反复通知；ET 只在状态变化时通知一次，必须配合非阻塞 fd，并循环读到 `EAGAIN`。
 
-![select、poll 和 epoll 对比：数据结构、fd 限制、每次等待传参、查找就绪 fd 的开销和触发模式](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-select-poll-epoll.png)
+![select、poll 和 epoll 对比：数据结构、fd 限制、每次等待传参、查找就绪 fd 的开销和触发模式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-select-poll-epoll.png)
 
 不过，epoll 不是所有场景都更快。如果连接数量很少，或者所有连接都很活跃，`epoll_ctl`、回调、就绪链表等维护成本也要算进去。它的主场是海量长连接、大部分时间空闲的服务端程序。
 
@@ -482,7 +482,7 @@ I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll`
 
 以传统 `read + write` 文件发送为例，数据通常要经历 4 次拷贝：磁盘到内核缓冲区是 DMA 拷贝，内核缓冲区到用户缓冲区是 CPU 拷贝，用户缓冲区到 Socket 缓冲区还是 CPU 拷贝，Socket 缓冲区到网卡是 DMA 拷贝。这里最浪费的是中间两次 CPU 拷贝，因为应用并没有修改数据，只是让数据到用户空间绕了一圈。
 
-![传统 read/write 的数据拷贝路径：磁盘到内核缓冲区、内核到用户缓冲区、用户到 Socket 缓冲区、Socket 到网卡](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-traditional-read-write.png)
+![传统 read/write 的数据拷贝路径：磁盘到内核缓冲区、内核到用户缓冲区、用户到 Socket 缓冲区、Socket 到网卡](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-traditional-read-write.png)
 
 零拷贝的思路就是让数据尽量留在内核路径里转发。比如 `sendfile` 可以把文件数据从 Page Cache 直接送到 Socket；如果网卡支持 SG-DMA，Socket 缓冲区里甚至可以只放描述信息，payload 由 DMA 从内核缓冲区直接送到网卡。
 
@@ -500,7 +500,7 @@ I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll`
 
 `splice` 借助 pipe 在内核中移动页引用，适合更一般的描述符之间转发，比如 socket 到 socket、文件到管道再到 socket。它的限制是路径里通常要有 pipe，而且文件到 socket 往往需要两次 `splice` 调用，代码复杂度和系统调用次数都要考虑。
 
-![传统 read/write、mmap + write、sendfile + SG-DMA 和 splice 的拷贝次数与模式切换对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-four-ways-comparison.png)
+![传统 read/write、mmap + write、sendfile + SG-DMA 和 splice 的拷贝次数与模式切换对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-four-ways-comparison.png)
 
 零拷贝也有失效场景：TLS 加密、压缩、格式转换、内容过滤、水印处理等都需要应用真正处理 payload，数据就很难一直停留在内核路径里。小文件或随机访问下，映射、缺页、管道的固定成本也可能盖过收益。
 
@@ -512,7 +512,7 @@ I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll`
 
 文件系统负责把存储设备上的块组织成应用能理解的文件和目录。面试里可以从这 6 件事回答：
 
-![文件系统职责概览](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-system-responsibilities.webp)
+![文件系统职责概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-system-responsibilities.webp)
 
 1. **命名**：用路径和文件名找到目标文件，例如 `/var/log/app.log`。
 2. **组织**：用目录树管理文件和目录，让不同文件有清晰层次。
@@ -527,7 +527,7 @@ I/O 多路复用把一批 fd 交给内核，让线程阻塞在 `select`、`poll`
 
 在 Linux/Unix 文件系统里，文件名通常不存放在 inode 中。
 
-![文件名 dentry 和 inode 关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-inode-dentry-relation.webp)
+![文件名 dentry 和 inode 关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-inode-dentry-relation.webp)
 
 - **目录项**：保存文件名到 inode 号的映射。
 - **inode**：记录文件类型、权限、所有者、大小、时间戳、链接计数，以及数据块或 extent 的映射信息。
@@ -548,7 +548,7 @@ df -i
 
 `open()` 不会把整个文件读进内存，它主要做路径解析和打开对象创建。
 
-![路径到文件描述符](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-path-to-fd.webp)
+![路径到文件描述符](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-path-to-fd.webp)
 
 大致流程是：
 
@@ -563,7 +563,7 @@ fd 是进程文件描述符表里的索引，不是 inode。`dup()`、`fork()` �
 
 文件系统会把一个分区或卷划分成很多块，再用元数据记录文件内容和块之间的关系。教材里常见三种分配方式：
 
-![文件数据块定位方式](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-block-allocation.webp)
+![文件数据块定位方式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-block-allocation.webp)
 
 - **连续分配**：文件占用一段连续块，顺序读写和随机访问都快；缺点是文件增长麻烦，容易产生外部碎片。
 - **链式分配**：每个块指向下一个块，不要求连续空间；缺点是随机访问差。
@@ -575,7 +575,7 @@ fd 是进程文件描述符表里的索引，不是 inode。`dup()`、`fork()` �
 
 硬链接和软链接都能让一个路径关联到另一个文件，但它们指向的对象不同。
 
-![硬链接和软链接对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-hardlink-symlink.webp)
+![硬链接和软链接对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-hardlink-symlink.webp)
 
 | 对比项           | 硬链接                                               | 软链接                               |
 | ---------------- | ---------------------------------------------------- | ------------------------------------ |
@@ -607,7 +607,7 @@ ls -li a.txt hard.txt soft.txt
 
 不一定。对于普通 buffered I/O，`write()` 成功通常只表示数据已经被内核接收，常见情况是进入 Page Cache 并被标记为脏页，不代表数据已经持久化到底层设备。
 
-![文件写入到持久化路径](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-write-persistence.webp)
+![文件写入到持久化路径](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-write-persistence.webp)
 
 如果应用需要更强持久性，要调用：
 
@@ -666,7 +666,7 @@ iostat -x 1
 
 常见的磁盘调度算法有下面这 6 种（其他还有很多磁盘调度算法都是基于这些算法改进得来的）：
 
-![常见的磁盘调度算法](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/disk-scheduling-algorithms.png)
+![常见的磁盘调度算法](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/disk-scheduling-algorithms.png)
 
 1. **先来先服务算法（First-Come First-Served，FCFS）**：按照请求到达磁盘调度器的顺序处理，实现简单，但没有考虑磁头移动的路径和方向，平均寻道时间可能较长。它不会把某个请求无限期跳过，因此通常没有算法意义上的饥饿问题，不过排在长请求后面的请求可能等待较久。
 2. **最短寻道时间优先算法（Shortest Seek Time First，SSTF）**：也被称为最佳服务优先（Shortest Service Time First，SSTF）算法，优先选择距离当前磁头位置最近的请求进行服务。SSTF 算法能够最小化磁头的寻道时间，但容易出现饥饿问题，即磁头附近的请求不断被服务，远离磁头的请求长时间得不到响应。实际应用中，需要优化一下该算法的实现，避免出现饥饿问题。

@@ -55,7 +55,7 @@ Codex App 可以在侧边栏的 Plugins 中搜索 Superpowers；Codex CLI 则可
 
 Claude Code 安装界面会让你选择作用范围：
 
-![Superpowers 下载](https://oss.javaguide.cn/github/javaguide/ai/superpowers/superpowers-download.png)
+![Superpowers 下载](/assets/images/oss.javaguide.cn/github/javaguide/ai/superpowers/superpowers-download.png)
 
 | 选项                               | 作用范围         | 建议                                           |
 | ---------------------------------- | ---------------- | ---------------------------------------------- |
@@ -106,7 +106,7 @@ Everything Claude Code 现在已经更名为 **ECC**。
 
 ECC 仓库同时放了 Skills、Agents、Hooks、Rules，以及记忆管理、安全扫描、持续学习和多语言工程规则。仓库里的 Skills 已经达到数百个，更像一套团队级 Harness 配置库。团队需要统一 Agent 的工作方式、记忆策略和安全检查时，集中管理会省去不少重复配置。
 
-![上下文腐化](https://oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
+![上下文腐化](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
 
 组件一多，选择成本也会跟着上来。项目只缺代码审查或 TDD 时，可以用 ECC 的选择性安装，只取 Java 代码审查、上下文持久化或安全扫描等对应组件，不必把整套系统塞进每个仓库。
 
@@ -147,7 +147,7 @@ Claude Code 的安装命令如下：
 
 这是一个专为 AI 编程 Agent（Claude Code、Cursor、Windsurf 等）设计的专业 UI/UX 设计智能 Skill。
 
-![UI UX Pro Max](https://oss.javaguide.cn/github/javaguide/ai/harness/ui-ux-pro-max-skill.png)
+![UI UX Pro Max](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/ui-ux-pro-max-skill.png)
 
 它会根据产品类型和行业特性生成设计系统，再把配色、字体、布局、动效和反模式交给 Agent 执行。与只有几段审美提示词的轻量 Skill 相比，它带了一套可以检索的设计资料。
 

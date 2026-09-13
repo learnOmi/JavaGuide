@@ -25,7 +25,7 @@ head:
 
 你可以通过慕课网、哔哩哔哩、拉勾、极客时间、培训机构（比如黑马、尚硅谷）等渠道获取到适合自己的实战项目视频/专栏。
 
-![慕课网实战课](https://oss.javaguide.cn/javamianshizhibei/mukewangzhiazhanke.png)
+![慕课网实战课](/assets/images/oss.javaguide.cn/javamianshizhibei/mukewangzhiazhanke.png)
 
 尽量选择一个适合自己的项目，没必要必须做分布式/微服务项目，对于绝大部分同学来说，能把一个单机项目做好就已经很不错了。
 
@@ -45,7 +45,7 @@ GitHub 或者码云上面有很多实战类别项目，你可以选择一个来�
 
 你可以参考 [Java 优质开源实战项目](https://javaguide.cn/open-source-project/practical-project.html "Java 优质开源实战项目") 上面推荐的实战类开源项目，质量都很高，项目类型也比较全面，涵盖博客/论坛系统、考试/刷题系统、商城系统、权限管理系统、快速开发脚手架以及各种轮子。
 
-![Java 优质开源实战项目](https://oss.javaguide.cn/javamianshizhibei/javaguide-practical-project.png)
+![Java 优质开源实战项目](/assets/images/oss.javaguide.cn/javamianshizhibei/javaguide-practical-project.png)
 
 一定要记住：**不光要做，还要改进，改善。不论是实战项目视频或者专栏还是实战类开源项目，都一定会有很多可以完善改进的地方。**
 
@@ -59,7 +59,7 @@ GitHub 或者码云上面有很多实战类别项目，你可以选择一个来�
 
 如果参加这种赛事能获奖的话，项目含金量非常高。即使没获奖也没啥，也可以写简历上。
 
-![阿里云天池大赛](https://oss.javaguide.cn/xingqiu/up-673f598477242691900a1e72c5d8b26df2c.png)
+![阿里云天池大赛](/assets/images/oss.javaguide.cn/xingqiu/up-673f598477242691900a1e72c5d8b26df2c.png)
 
 ### 参与实际项目
 
@@ -79,7 +79,7 @@ GitHub 或者码云上面有很多实战类别项目，你可以选择一个来�
 
 **[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)** 的「面试准备篇」中有一篇文章专门整理了一些比较高质量的实战项目，包含业务项目、轮子项目、国外公开课 Lab 和视频类实战项目教程推荐，非常适合用来学习或者作为项目经验。
 
-![优质 Java 实战项目推荐](https://oss.javaguide.cn/javamianshizhibei/project-experience-guide.png)
+![优质 Java 实战项目推荐](/assets/images/oss.javaguide.cn/javamianshizhibei/project-experience-guide.png)
 
 这篇文章一共推荐了 15+ 个实战项目，有业务类的，也有轮子类的，有开源项目、也有视频教程。对于参加校招的小伙伴，我更建议做一个业务类项目加上一个轮子类的项目。
 
@@ -108,15 +108,15 @@ GitHub 或者码云上面有很多实战类别项目，你可以选择一个来�
 
 分析你的代码：右键项目-> Analyze->Inspect Code
 
-![](https://oss.javaguide.cn/xingqiu/up-651672bce128025a135c1536cd5dc00532e.png)
+![](/assets/images/oss.javaguide.cn/xingqiu/up-651672bce128025a135c1536cd5dc00532e.png)
 
 扫描完成之后，IDEA 会给出一些可能存在的代码坏味道比如命名问题。
 
-![](https://oss.javaguide.cn/xingqiu/up-05c83b319941995b07c8020fddc57f26037.png)
+![](/assets/images/oss.javaguide.cn/xingqiu/up-05c83b319941995b07c8020fddc57f26037.png)
 
 并且，你还可以自定义检查规则。
 
-![](https://oss.javaguide.cn/xingqiu/up-6b618ad3bad0bc3f76e6066d90c8cd2f255.png)
+![](/assets/images/oss.javaguide.cn/xingqiu/up-6b618ad3bad0bc3f76e6066d90c8cd2f255.png)
 
 ## 项目做完后怎么准备项目深挖？
 

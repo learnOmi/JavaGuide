@@ -32,7 +32,7 @@ HTTP 接口不是已经能调了吗？
 
 RPC 全称是 Remote Procedure Call，翻译过来就是远程过程调用。它想解决的问题很朴素：**让你调用远程服务时，尽量像调用本地方法一样。**
 
-![RPC 通过本地代理隐藏远程调用细节](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 通过本地代理隐藏远程调用细节](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
 
 比如本地代码里调用用户服务：
 
@@ -56,11 +56,11 @@ User user = userService.getUser(1001);
 
 **HTTP 是一种应用层协议，RPC 是一种远程调用模型。**
 
-![HTTP：超文本传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
+![HTTP：超文本传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
 
 具体到实现上，RPC 可以有很多种。Dubbo 是 RPC 框架，Thrift 是 RPC 框架，gRPC 也是 RPC 框架。gRPC 官方文档里也说得很直接：客户端可以像调用本地对象一样，调用另一台机器上服务端应用的方法；服务端定义可远程调用的方法以及参数和返回类型。 
 
-![Dubbo3 使用 Triple 协议同时支持 HTTP/1、HTTP/2 和 HTTP/3](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111545343.png)
+![Dubbo3 使用 Triple 协议同时支持 HTTP/1、HTTP/2 和 HTTP/3](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/image-20220716111545343.png)
 
 这就解释了一个很容易绕晕的点：**gRPC 是 RPC，但它基于 HTTP/2。**
 
@@ -68,7 +68,7 @@ User user = userService.getUser(1001);
 
 gRPC 的 GitHub 上专门有一篇文章 [gRPC over HTTP2  基于 HTTP2 的 gRPC 协议](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) 详细介绍：
 
-![gRPC over HTTP2 基于 HTTP2 的 gRPC 协议](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/grpc-over-http2-github.png)
+![gRPC over HTTP2 基于 HTTP2 的 gRPC 协议](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/grpc-over-http2-github.png)
 
 ## **光有 TCP 还不够**
 
@@ -89,7 +89,7 @@ getOrder:8888
 
 服务端收到的可能不是两段规规整整的消息，而是一段字节流。你必须自己判断：第一条消息在哪里结束，第二条消息从哪里开始。还要考虑半包、粘包、编码、超时、错误码、请求 ID 等问题。
 
-![TCP 与 UDP 的消息边界](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
+![TCP 与 UDP 的消息边界](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
 
 这就是为什么应用层协议一定要定义消息格式。
 
@@ -134,7 +134,7 @@ inventoryService.deductStock(skuId, count);
 
 调用方更关心的是：我要调哪个服务？哪个方法？传什么参数？返回什么对象？
 
-![RPC 原理图](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-principle.png)
+![RPC 原理图](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-principle.png)
 
 这和 Java 后端平时写代码的习惯更接近。尤其是微服务内部调用时，服务和服务之间本来就是围绕业务方法协作，比如创建订单、扣库存、查询余额、校验权限。RPC 把这种调用关系表达得更直接。
 
@@ -160,7 +160,7 @@ HTTP 当然能做内部服务调用。
 
 Dubbo 官方文档里对服务发现的描述很典型：Provider 把地址注册到注册中心，Consumer 从注册中心读取并订阅地址列表，地址变化时注册中心通知消费者。Dubbo 支持 Nacos、Consul、ZooKeeper 等常见注册中心。
 
-![Dubbo 架构中的核心角色](https://oss.javaguide.cn/%E6%BA%90%E7%A0%81/dubbo/dubbo-relation.jpg)
+![Dubbo 架构中的核心角色](/assets/images/oss.javaguide.cn/源码/dubbo/dubbo-relation.jpg)
 
 这类能力当然也可以用 HTTP 做。你可以用注册中心、网关、负载均衡、SDK 自己拼一套。
 
@@ -257,7 +257,7 @@ gRPC 经常让人混乱，就是因为它同时踩在两个概念上。
 
 **另一方面，它基于 HTTP/2 传输。**
 
-![gRPC over HTTP2 基于 HTTP2 的 gRPC 协议](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/grpc-over-http2-github.png)
+![gRPC over HTTP2 基于 HTTP2 的 gRPC 协议](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/grpc-over-http2-github.png)
 
 所以你不能把它简单理解成“HTTP 的对立面”。
 

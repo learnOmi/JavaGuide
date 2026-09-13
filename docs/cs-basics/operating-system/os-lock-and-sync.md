@@ -35,7 +35,7 @@ head:
 
 **临界区（critical section）** 指的是访问共享可变状态、并且不能被多个执行流随意交错执行的代码段。它可能是用户程序里的一段计数器更新，也可能是内核里修改调度队列、文件描述符表、页表、设备状态的代码。
 
-![临界区保护访问协议示意图：多个线程通过统一加锁入口访问共享状态，绕开锁或更换锁对象都会破坏互斥关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-critical-section.png)
+![临界区保护访问协议示意图：多个线程通过统一加锁入口访问共享状态，绕开锁或更换锁对象都会破坏互斥关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-critical-section.png)
 
 评价一种锁或同步机制时，可以从正确性、进展性、公平性和性能这 4 个角度看。
 
@@ -82,7 +82,7 @@ mutex 拿不到时，线程可以睡下去，等内核以后再唤醒它。**自
 
 这听起来有点傻，实际要看等待时间。
 
-![mutex 和 spinlock 等待方式对比：mutex 在可阻塞路径中睡眠等待，spinlock 在不能睡眠的短路径中短暂忙等](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-mutex-spinlock.png)
+![mutex 和 spinlock 等待方式对比：mutex 在可阻塞路径中睡眠等待，spinlock 在不能睡眠的短路径中短暂忙等](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-mutex-spinlock.png)
 
 如果一把锁只保护几行代码，持锁线程马上就会离开临界区，等待线程睡下去反而不划算。睡眠和唤醒都要经过调度器，期间还可能发生上下文切换；在多 CPU 机器上，持锁线程也许正在另一个 CPU 上执行，几条指令后就释放锁。这个时候，等待线程原地转几圈，成本可能更低。
 
@@ -118,7 +118,7 @@ sem_post(&sem);
 
 二值信号量可以模拟互斥，但它不等于 mutex。mutex 强调持有者和临界区所有权，semaphore 强调计数和许可数量。一个有界缓冲区通常会把这两类问题拆开：信号量管槽位数量，mutex 管缓冲区内部结构。
 
-![semaphore 管理有界缓冲区资源数量示意图：empty_slots 记录空位数量，filled_slots 记录可消费数量，buffer_mutex 保护缓冲区结构](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-semaphore-buffer.png)
+![semaphore 管理有界缓冲区资源数量示意图：empty_slots 记录空位数量，filled_slots 记录可消费数量，buffer_mutex 保护缓冲区结构](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-semaphore-buffer.png)
 
 下面代码省略了 `item_t` 和缓冲区的具体实现，只保留同步骨架：
 
@@ -215,7 +215,7 @@ void producer(item_t item) {
 
 `pthread_cond_wait()` 做了一件非常关键的事：它会原子地释放 mutex，并让当前线程等待条件变量；被唤醒返回前，又会重新获得 mutex。这个“释放锁并睡眠”的动作必须连在一起，否则就可能出现丢信号：线程刚准备睡，生产者已经发完通知，消费者随后睡下去，再也没人叫醒它。
 
-![condition variable 等待条件成立流程图：线程在 while 中检查共享状态，条件不满足时释放 mutex 并睡眠，被 signal 唤醒后重新检查条件](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-condition-variable.png)
+![condition variable 等待条件成立流程图：线程在 while 中检查共享状态，条件不满足时释放 mutex 并睡眠，被 signal 唤醒后重新检查条件](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-condition-variable.png)
 
 条件变量有三条使用规则很重要。
 
@@ -240,7 +240,7 @@ futex 的设计思路是：没有竞争时，完全在用户态用原子指令�
 3. 如果失败，说明锁被占用，再调用 `FUTEX_WAIT` 让内核把线程挂起。
 4. 持锁线程释放锁后，如果发现有人等待，调用 `FUTEX_WAKE` 唤醒一个或多个等待者。
 
-![futex 用户态快路径与内核慢路径示意图：无竞争时通过用户态原子操作拿锁，竞争失败后进入 FUTEX_WAIT，释放时通过 FUTEX_WAKE 唤醒等待线程](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-futex.png)
+![futex 用户态快路径与内核慢路径示意图：无竞争时通过用户态原子操作拿锁，竞争失败后进入 FUTEX_WAIT，释放时通过 FUTEX_WAKE 唤醒等待线程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-futex.png)
 
 `FUTEX_WAIT` 走的是 compare-and-block：内核会先确认 futex word 仍然等于调用者传入的期望值，只有匹配时才把线程挂起。这个比较和阻塞动作是原子的，所以它能把用户态原子操作和内核睡眠队列接起来。
 
@@ -298,7 +298,7 @@ POSIX mutex 的 protocol 属性里就有 `PTHREAD_PRIO_INHERIT` 和 `PTHREAD_PRI
 - 当前运行的是普通内核，还是 PREEMPT_RT 内核？
 - 是否需要优先级继承来控制实时延迟？
 
-![用户态锁和内核锁的上下文差异示意图：用户态主要关注线程协作，内核态还要判断能否睡眠、能否抢占、是否处于中断路径以及是否跨 CPU 共享](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-kernel-context.png)
+![用户态锁和内核锁的上下文差异示意图：用户态主要关注线程协作，内核态还要判断能否睡眠、能否抢占、是否处于中断路径以及是否跨 CPU 共享](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/os-lock-kernel-context.png)
 
 可以先抓住几个常见区别：
 

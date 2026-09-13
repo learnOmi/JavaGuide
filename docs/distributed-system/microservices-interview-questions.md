@@ -34,7 +34,7 @@ head:
 
 微服务是一种按业务能力组织服务的架构方式。一个系统进程很多，并不等于服务边界合理；如果多个服务必须一起修改、一起发布，还直接共享数据库表，最终往往得到一个运维成本更高的分布式单体。
 
-![单体到分布式电商](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
+![单体到分布式电商](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
 
 相关内容：
 
@@ -57,9 +57,9 @@ head:
 
 服务拆开以后，原来的进程内调用会变成网络通信。同步调用需要处理超时和结果不确定，异步消息需要处理重复、顺序和最终一致性；注册发现、网关和配置中心则负责支撑服务数量增加后的寻址、流量入口和配置变更。
 
-![RPC 调用流程与核心能力](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 调用流程与核心能力](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
 
-![API 网关的职责与部署位置](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
+![API 网关的职责与部署位置](/assets/images/oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
 
 相关内容：
 
@@ -87,7 +87,7 @@ head:
 
 服务独立演进通常要求数据归属也清晰。多个服务直接读写同一张表虽然省掉了接口调用，但任何一方修改表结构或数据语义，都可能影响其他服务，服务也很难真正独立发布。
 
-![订单服务与库存服务形成的分布式事务](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
+![订单服务与库存服务形成的分布式事务](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
 
 相关内容：
 
@@ -112,7 +112,7 @@ head:
 
 微服务把一次请求分散到多个节点，局部故障发生的频率会随调用环节增加。超时限制等待时间，重试处理短暂错误，熔断阻止持续调用异常下游，限流和隔离保护有限资源；这些机制需要放在同一条调用链中设置。
 
-![熔断器状态机](https://oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
+![熔断器状态机](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
 
 相关内容：
 

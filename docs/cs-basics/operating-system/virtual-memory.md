@@ -34,7 +34,7 @@ head:
 
 进程访问虚拟地址时，CPU 里的内存管理单元（MMU）会根据映射关系，把它翻译成物理地址，再去访问内存。不同进程写的虚拟地址哪怕数值一样，映射到的物理地址也可以完全不同，自然就不会打架。
 
-![虚拟地址到物理地址的映射过程：不同进程的相同虚拟地址通过 MMU 和页表映射到不同物理页](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-virtual-physical-mapping.png)
+![虚拟地址到物理地址的映射过程：不同进程的相同虚拟地址通过 MMU 和页表映射到不同物理页](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-virtual-physical-mapping.png)
 
 我们可以把虚拟内存的好处归成三条，后面整篇文章其实都在围绕它们展开：
 
@@ -56,7 +56,7 @@ head:
 
 翻译过程也不复杂：拿段号去段表里查到段基地址，再检查段内偏移量有没有超过段界限。在只使用分段、不启用分页的模型里，基地址加偏移量就是物理地址。比如要访问段 3、偏移 500 的地址，段 3 的基地址是 7000，那物理地址就是 7000 + 500 = 7500；如果系统还启用了分页，这一步得到的是线性地址，还要再经过页表转换。
 
-![分段地址转换示意图：虚拟地址由段号和段内偏移组成，通过段表查到基地址后计算物理地址](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-segmentation.png)
+![分段地址转换示意图：虚拟地址由段号和段内偏移组成，通过段表查到基地址后计算物理地址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-segmentation.png)
 
 分段解决了“程序不用关心物理地址”的问题，但它也留下两个坑。
 
@@ -76,7 +76,7 @@ head:
 - 用页号去页表里查出对应的物理页号；
 - 物理页号拼上页内偏移，得到最终物理地址。
 
-![分页地址转换示意图：虚拟地址拆成页号和页内偏移，页表把虚拟页映射到物理页帧](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-paging.png)
+![分页地址转换示意图：虚拟地址拆成页号和页内偏移，页表把虚拟页映射到物理页帧](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-paging.png)
 
 分页怎么解决分段的毛病？
 
@@ -136,7 +136,7 @@ head:
 - 中间页目录 PMD（Page Middle Directory）
 - 页表项 PTE（Page Table Entry）
 
-![多级页表示意图：PGD、PUD、PMD、PTE 分层索引，只为实际使用的地址范围创建下级页表](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-multi-level-page-table.png)
+![多级页表示意图：PGD、PUD、PMD、PTE 分层索引，只为实际使用的地址范围创建下级页表](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-multi-level-page-table.png)
 
 在只用四级硬件分页的 x86-64 上，P4D 这一层会被“折叠”掉，不实际参与地址转换。所以你常听到的“四级页表”，说的是这种折叠后的形态，不是 Linux 只定义了四级。
 
@@ -155,7 +155,7 @@ head:
 - 命中（TLB Hit），直接拿到物理页号，跳过多级页表查找。
 - 未命中（TLB Miss），再去查内存里的多级页表，查到后把这一项塞进 TLB，方便下次访问。
 
-![TLB 缓存地址转换结果的流程：CPU 先查 TLB，命中直接访问内存，未命中再查多级页表并更新 TLB](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-tlb-cache.png)
+![TLB 缓存地址转换结果的流程：CPU 先查 TLB，命中直接访问内存，未命中再查多级页表并更新 TLB](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-tlb-cache.png)
 
 因为热点页就那么多，TLB 命中率通常不低。多级页表带来的查表成本，大多数时候都被 TLB 扛掉了。
 
@@ -171,7 +171,7 @@ head:
 4. 把需要的页从磁盘（Swap 区或文件）读进物理内存，更新页表项，让它指向新的物理页帧。
 5. 返回用户态，重新执行刚才触发缺页的那条指令，这次就能正常访问了。
 
-![缺页异常处理流程：MMU 发现地址翻译或权限检查无法完成后进入内核，检查访问合法性、分配或置换页帧、更新页表并重试指令](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-page-fault.png)
+![缺页异常处理流程：MMU 发现地址翻译或权限检查无法完成后进入内核，检查访问合法性、分配或置换页帧、更新页表并重试指令](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-page-fault.png)
 
 从 Linux 的性能统计角度看，缺页主要分两类，`getrusage` 里也只有 `ru_minflt` 和 `ru_majflt`：
 
@@ -196,7 +196,7 @@ head:
 
 **CLOCK（时钟 / 二次机会）**：LRU 的近似实现，用来避开 LRU 的高成本。给每个页加一个访问位（reference bit），所有页排成一个环，一根指针像时钟一样转。要换页时，指针指到谁就看它的访问位：是 1，说明最近用过，给它“第二次机会”，把访问位清 0，指针往下走；是 0，就换这一页出去。一个访问位加一圈环形扫描，就能便宜地模拟“最近有没有被用过”。
 
-![CLOCK 页面置换算法示意图：页面按环形队列排列，指针根据访问位 R 判断给第二次机会还是淘汰页面](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-clock-algorithm.png)
+![CLOCK 页面置换算法示意图：页面按环形队列排列，指针根据访问位 R 判断给第二次机会还是淘汰页面](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/virtual-memory-clock-algorithm.png)
 
 **LFU（最不经常使用）**：给每个页记访问次数，换出访问次数最少的页。它看的是访问频率，不是访问时间。问题是早期被频繁访问、后来不用的页，计数很高却赖着不走，所以实际中常配合计数衰减来用。
 

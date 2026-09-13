@@ -36,7 +36,7 @@ Prompt Chain 管理处理步骤，多 Agent 管理能够独立完成子目标的
 | 结果交付 | 节点输出通常作为后续节点的输入       | 可以传消息、共享状态，也可以交付结构化结果        |
 | 失败处理 | 重试失败节点或从 Workflow 检查点恢复 | 还要决定哪个角色可以降级、跳过或重新执行          |
 
-![多 Agent 和多阶段 Prompt Chain 的区别](https://oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-vs-prompt-chain.webp)
+![多 Agent 和多阶段 Prompt Chain 的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-vs-prompt-chain.webp)
 
 如果 AgentInvest 的四个角色只是四次固定模型调用，共用一份上下文和一组工具，每一步只加工上一步的文本，那它仍然是一条多阶段 Prompt Chain。
 
@@ -67,7 +67,7 @@ Prompt Chain 管理处理步骤，多 Agent 管理能够独立完成子目标的
 
 Anthropic 公开的 [Multi-Agent Research 系统](https://www.anthropic.com/engineering/multi-agent-research-system)采用了这种设计。主 Agent 根据问题分出多个研究方向，Subagent 分别搜索，完成后再由主 Agent 汇总。各分支可以独立探索，适合并行；如果分支频繁依赖彼此的中间结论，或者必须反复同步完整上下文，通信成本很快就会抵消拆分带来的收益。
 
-![Multi-Agent 系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-multi-agent-arch.png)
+![Multi-Agent 系统架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-multi-agent-arch.png)
 
 代码变更任务里，编码 Agent 负责修改文件并交付 Diff，测试 Agent 运行测试并返回失败信息，Reviewer 根据需求和 Diff 做检查。三个角色使用的工具和验收标准都不一样，拆开后各自有清楚的任务。如果它们只是读取同一份 Diff，再分别写一段相似的总结，增加的只是模型调用次数。
 
@@ -87,7 +87,7 @@ Anthropic 公开的 [Multi-Agent Research 系统](https://www.anthropic.com/engi
 
 外层由项目自定义的 `AgentScopePipelineExecutionStrategy` 控制阶段顺序。角色内部才交给 ReAct，让模型判断当前缺什么数据、调用哪个工具、拿到结果后是否继续分析。这样既能保证投研流程稳定，又没有把每个角色写成完全固定的 Prompt Chain。
 
-![Sub-agent 拆分任务，隔离上下文](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation%20.png)
+![Sub-agent 拆分任务，隔离上下文](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation .png)
 
 进入投资经理阶段需要满足两个条件。研究员已经产出核心论点，技术分析师和舆情分析师中至少有一个成功。上游结果明显不足时，系统直接跳过投资经理，并通过 SSE 返回错误，避免模型硬凑一份看起来完整的投资建议。
 
@@ -123,7 +123,7 @@ AgentInvest 使用的是 **Sequential + Parallel + Aggregator** 混合编排。�
 
 两种方式可以混用。例如，外层固定收集资料、分析和审核三个阶段，资料收集阶段再由主 Agent 根据问题创建 Subagent。审核和发布门槛仍由固定流程控制，调研方向可以在运行时扩展。
 
-![多 Agent 固定 DAG 和动态委派的区别](https://oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-static-vs-dynamic-orchestration.webp)
+![多 Agent 固定 DAG 和动态委派的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-static-vs-dynamic-orchestration.webp)
 
 ## 如何把子任务拆成可执行契约？
 
@@ -361,7 +361,7 @@ WHERE task_id = :taskId
 
 AgentInvest 采用的是带门槛的 Best-effort：研究员必须成功，技术分析师和舆情分析师至少成功一个，投资经理才会继续。技术面失败但舆情结果可用时，投资经理可以根据已有结果继续，运行状态仍要保留技术面失败，不能把这次分析当成全量成功。两个补充角色都失败时，则不让投资经理硬凑结论。
 
-![多 Agent 分支失败后的处理策略](https://oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-partial-failure-strategies.webp)
+![多 Agent 分支失败后的处理策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/multi-agent-partial-failure-strategies.webp)
 
 ### 外部副作用怎么补偿？
 

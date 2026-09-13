@@ -22,7 +22,7 @@ head:
 4. Java `HashMap` 和普通哈希表有什么关系？
 5. 哈希表在算法题和工程场景中怎么用？
 
-![哈希表通过哈希函数把键映射到数组位置的结构示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/hash-table.png)
+![哈希表通过哈希函数把键映射到数组位置的结构示意图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/hash-table.png)
 
 ## 什么是哈希表？
 

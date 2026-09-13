@@ -85,7 +85,7 @@ HTTP/3.0 之前是基于 TCP 协议的，而 HTTP/3.0 将弃用 TCP，改用 **�
 - **HTTP/1.x 和 HTTP/2.0**：这两个版本的 HTTP 协议都明确建立在 TCP 之上。TCP 提供了可靠的、面向连接的传输，确保数据按序、无差错地到达，这对于网页内容的正确展示非常重要。发送 HTTP 请求前，需要先通过 TCP 的三次握手建立连接。
 - **HTTP/3.0**：这是一个重大的改变。HTTP/3 弃用了 TCP，转而使用 QUIC 协议，而 QUIC 是构建在 UDP 之上的。
 
-![HTTP/1、HTTP/2 和 HTTP/3 协议栈对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-3-implementation.png)
+![HTTP/1、HTTP/2 和 HTTP/3 协议栈对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-3-implementation.png)
 
 **为什么 HTTP/3 要做这个改变呢？主要有两大原因：**
 
@@ -109,16 +109,16 @@ HTTP/2 的 HTTPS 连接需要先建立 TCP 连接，再完成 TLS 握手。HTTP/
 
 ### 为什么 TCP 是面向字节流，UDP 是面向报文？
 
-![TCP 与 UDP 的消息边界](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
+![TCP 与 UDP 的消息边界](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-udp-message-boundary.png)
 
 TCP 是面向字节流的。应用层写入的数据会进入内核缓冲区，TCP 只保证这些字节可靠、有序地到达对端，不保证一次 `send()` 对应一次 `recv()`，也不保留应用层消息边界。因此接收方可能一次读到多条消息，也可能只读到半条消息，这就是常说的粘包、拆包现象。
-![TCP 粘包 / 拆包为什么会出现？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
+![TCP 粘包 / 拆包为什么会出现？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-sticky-split-causes.png)
 
 UDP 是面向报文的。应用层交给 UDP 的一次数据会作为一个 UDP 数据报发送，接收端也是按数据报读取，所以天然保留消息边界。不过 UDP 不保证可靠到达，也不保证顺序。
 
 解决 TCP 粘包/拆包，本质是应用层协议自己定义消息边界。常见方案有固定长度、分隔符、长度头。工程里更常用长度头，因为它对二进制协议和变长消息更友好，但要处理字节序、最大长度限制、半包缓存和异常连接关闭等问题。
 
-![应用层如何定义消息边界？](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-message-boundary-solutions.png)
+![应用层如何定义消息边界？](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-udp-byte-stream-tcp-message-boundary-solutions.png)
 
 详细介绍：[为什么 TCP 是面向字节流，UDP 是面向报文？](./tcp-byte-stream-udp-datagram.md)
 
@@ -174,7 +174,7 @@ TCP（传输控制协议）和 UDP（用户数据报协议）是互联网传输�
 
 **不同 HTTP 版本里，Keep-Alive 的默认行为不一样**：
 
-![不同 HTTP 版本里，Keep-Alive 的默认行为不一样](https://oss.javaguide.cn/github/javaguide/cs-basics/network/different-http-versions-have-different-default-keep-alive-behaviors.png)
+![不同 HTTP 版本里，Keep-Alive 的默认行为不一样](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/different-http-versions-have-different-default-keep-alive-behaviors.png)
 
 如果从“谁来决定关连接”的角度看，两个机制的态度完全相反：
 
@@ -182,9 +182,9 @@ HTTP Keep-Alive 是“主动回收”——服务器到了超时或请求次数�
 
 TCP Keepalive 是“被动回收”——它必须先发探测包去问“你还在吗？”。只要对方在线、能回 ACK，服务器就只能继续维持连接，刷新定时器。只有确认对方已经不在了，才能释放资源。这是一种温和的回收策略。
 
-![TCP Keepalive 工作原理](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-working-principle.png)
+![TCP Keepalive 工作原理](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-working-principle.png)
 
-![TCP Keepalive 探测机制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-detection-mechanism.png)
+![TCP Keepalive 探测机制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-detection-mechanism.png)
 
 实际项目中，两者经常同时在跑，各管各的。HTTP Keep-Alive 管的是“一条连接最多用多久、服务多少次请求”，TCP Keepalive 管的是“如果长时间没数据，检查一下对方是不是已经消失了”。两者互不干扰，也不能互相替代。
 
@@ -224,13 +224,13 @@ TCP Keepalive 是“被动回收”——它必须先发探测包去问“你还
 
 内核收到 IP 包后，会先看 IP 层的协议标识（TCP 协议号是 `6`，UDP 是 `17`），根据协议号把报文交给对应的 TCP 或 UDP 协议栈，然后再在各自协议栈内按地址和端口分发。所以 `TCP/8080` 和 `UDP/8080` 可以共存，内核压根不会把它们当成同一条通信。
 
-![内核协议分发流程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-kernel-protocol-dispatching-process.png)
+![内核协议分发流程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-kernel-protocol-dispatching-process.png)
 
 真正容易冲突的是**同一协议**下的重复绑定，比如两个 TCP 服务通常不能同时监听同一个本地 IP 和端口；这时才涉及 `SO_REUSEADDR`、`SO_REUSEPORT` 这类 socket 复用选项。
 
 经典例子：DNS 同时使用 `UDP/53`（日常查询）和 `TCP/53`（响应过大、区域传送）；HTTP/3 常见部署是 `UDP/443`（QUIC），可以和传统 HTTPS 的 `TCP/443` 同时存在。
 
-![DNS 和 HTTP/3 同时使用 TCP 与 UDP 端口的实际案例](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-practical-application-example.png)
+![DNS 和 HTTP/3 同时使用 TCP 与 UDP 端口的实际案例](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/can-tcp-and-udp-use-the-same-port-practical-application-example.png)
 
 详细介绍：[TCP 和 UDP 可以使用同一个端口吗？](./can-tcp-and-udp-use-the-same-port.md)
 
@@ -240,7 +240,7 @@ TCP Keepalive 是“被动回收”——它必须先发探测包去问“你还
 
 TCP 连接靠四元组区分：源 IP、源端口、目的 IP、目的端口。只要四元组不同，内核就识别为不同连接。服务端监听同一个端口时，只要客户端 IP 或客户端端口不同，连接就可以继续增加。
 
-![TCP 连接靠四元组区分和真正的限制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-tcp-four-tuple-and-server-connection.png)
+![TCP 连接靠四元组区分和真正的限制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/maximum-number-of-tcp-connections-per-host-tcp-four-tuple-and-server-connection.png)
 
 真正限制连接数的因素：
 
@@ -270,7 +270,7 @@ IP 地址通常分配给网络接口，用于在特定作用域和路由上下�
 
 这种基于 IP 地址的寻址方式是互联网通信的基础，它允许数据包在不同网络之间传递。地址是否唯一、能否全局路由取决于地址类型和作用域，不能笼统地把 IP 地址描述为每台设备全球唯一的身份证。
 
-![IP 地址使数据包到达其目的地](https://oss.javaguide.cn/github/javaguide/cs-basics/network/internet_protocol_ip_address_diagram.png)
+![IP 地址使数据包到达其目的地](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/internet_protocol_ip_address_diagram.png)
 
 ### 什么是 IP 地址过滤？
 
@@ -282,11 +282,11 @@ IP 地址过滤是一种简单的网络安全措施，实际应用中一般会�
 
 **IPv4（Internet Protocol version 4）** 是目前广泛使用的 IP 地址版本，其格式是四组由点分隔的数字，例如：123.89.46.72。IPv4 使用 32 位地址作为其 Internet 地址，这意味着共有约 42 亿（2^32）个可用 IP 地址。
 
-![IPv4 地址使用点分十进制格式表示 32 位地址](https://oss.javaguide.cn/github/javaguide/cs-basics/network/Figure-1-IPv4Addressformatwithdotteddecimalnotation-29c824f6a451d48d8c27759799f0c995.png)
+![IPv4 地址使用点分十进制格式表示 32 位地址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/Figure-1-IPv4Addressformatwithdotteddecimalnotation-29c824f6a451d48d8c27759799f0c995.png)
 
 这么少当然不够用啦！为了解决 IP 地址耗尽的问题，最根本的办法是采用具有更大地址空间的新版本 IP 协议 - **IPv6（Internet Protocol version 6）**。IPv6 地址使用更复杂的格式，该格式使用由单或双冒号分隔的一组数字和字母，例如：2001:0db8:85a3:0000:0000:8a2e:0370:7334。IPv6 使用 128 位互联网地址，这意味着越有 2^128（3 开头的 39 位数字，恐怖如斯）个可用 IP 地址。
 
-![IPv6 地址使用十六进制冒号分隔格式表示 128 位地址](https://oss.javaguide.cn/github/javaguide/cs-basics/network/Figure-2-IPv6Addressformatwithhexadecimalnotation-7da3a419bd81627a9b2cef3b0efb4940.png)
+![IPv6 地址使用十六进制冒号分隔格式表示 128 位地址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/Figure-2-IPv6Addressformatwithhexadecimalnotation-7da3a419bd81627a9b2cef3b0efb4940.png)
 
 除了更大的地址空间之外，IPv6 的优势还包括：
 
@@ -321,7 +321,7 @@ IP 地址过滤是一种简单的网络安全措施，实际应用中一般会�
 
 NAT 不光可以缓解 IPv4 地址资源短缺的问题，还会隐藏内部地址和拓扑。许多 NAT 设备的过滤行为使没有既有映射的外部流量难以直接到达内部主机，但决定哪些入站报文可以通过的是过滤策略，而不是地址转换本身。NAT 不能替代状态防火墙、访问控制和主机安全措施。
 
-![NAT 实现 IP地址转换](https://oss.javaguide.cn/github/javaguide/cs-basics/network/network-address-translation.png)
+![NAT 实现 IP地址转换](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/network-address-translation.png)
 
 相关阅读：[NAT 协议详解（网络层）](https://javaguide.cn/cs-basics/network/nat.html)。
 
@@ -331,7 +331,7 @@ NAT 不光可以缓解 IPv4 地址资源短缺的问题，还会隐藏内部地�
 
 MAC 地址的全称是 **媒体访问控制地址（Media Access Control Address）**，用于标识链路层接口并在本地网络中传输数据帧。它属于网络接口，而不是整台设备的永久身份证；一台设备可以有多个网络接口，每个接口可以使用不同的 MAC 地址。
 
-![路由器的背面就会注明 MAC 位址](https://oss.javaguide.cn/github/javaguide/cs-basics/network/router-back-will-indicate-mac-address.png)
+![路由器的背面就会注明 MAC 位址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/router-back-will-indicate-mac-address.png)
 
 MAC 地址也常被称为 LAN 地址、物理地址或以太网地址。与用于网络层路由的 IP 地址不同，MAC 地址主要在当前链路或广播域内使用。
 

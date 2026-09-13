@@ -29,7 +29,7 @@ head:
 
 小 G 更建议这样看文件系统：它不是只负责“保存文件内容”，还要同时解决 4 件事。
 
-![文件系统职责概览](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-system-responsibilities.webp)
+![文件系统职责概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-system-responsibilities.webp)
 
 - **命名**：用路径和文件名找到目标文件，例如 `/var/log/app.log`。
 - **组织**：用目录树管理文件，让不同文件能归到不同目录下。
@@ -77,7 +77,7 @@ Linux VFS 还会在内存中维护 dentry。dentry 表示路径中的一个目�
 
 这也解释了为什么重命名文件通常很快。`mv a.txt b.txt` 如果发生在同一个文件系统内，很多时候只是修改目录项里的名字映射，文件内容本身不用移动。
 
-![文件名 dentry 和 inode 关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-inode-dentry-relation.webp)
+![文件名 dentry 和 inode 关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-inode-dentry-relation.webp)
 
 可以用下面几个命令观察这些信息：
 
@@ -107,7 +107,7 @@ Linux man-pages 对这块说得很清楚：`open()` 返回的是进程文件描�
 
 这几个结构容易混：
 
-![路径到文件描述符](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-path-to-fd.webp)
+![路径到文件描述符](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-path-to-fd.webp)
 
 | 结构          | 归属               | 主要记录什么                   |
 | ------------- | ------------------ | ------------------------------ |
@@ -138,7 +138,7 @@ Linux man-pages 对这块说得很清楚：`open()` 返回的是进程文件描�
 
 经典 ext2/ext3 使用直接块指针、一级间接、二级间接和三级间接块定位文件数据。ext4 通常改用 extent tree：一个 extent 记录一段连续物理块的逻辑起点、物理起点和长度；对于连续大文件，它比“每个块记录一个地址”节省大量映射元数据。
 
-![文件数据块定位方式](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-block-allocation.webp)
+![文件数据块定位方式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-block-allocation.webp)
 
 其他现代文件系统也可能使用 B 树、extent、延迟分配、写时复制等不同组合，不能把直接/间接块结构当成所有现代文件系统的统一实现。
 
@@ -184,7 +184,7 @@ Linux 官方 VFS 文档把几个对象讲得很直接：
 | 是否能跨文件系统 | 不能                                                     | 可以                                     |
 | 是否能链接目录   | Linux 不允许通过普通硬链接接口链接目录                   | 可以                                     |
 
-![硬链接和软链接对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-hardlink-symlink.webp)
+![硬链接和软链接对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-hardlink-symlink.webp)
 
 硬链接不能跨文件系统，因为 inode 号只在当前文件系统内有意义。另一个文件系统有自己的 inode 表，同一个数字不代表同一个文件。
 
@@ -218,7 +218,7 @@ ls -li a.txt hard.txt soft.txt
 
 数据库、消息队列、日志系统都绕不开这点。它们经常自己管理刷盘策略：有的追求每次事务提交都尽量落盘，有的允许短窗口内的数据丢失来换取吞吐。这里没有通用最优解，只有业务能接受的恢复点目标。
 
-![文件写入到持久化路径](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-write-persistence.webp)
+![文件写入到持久化路径](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/file-write-persistence.webp)
 
 ## 日志文件系统是怎么减少崩溃损坏的？
 

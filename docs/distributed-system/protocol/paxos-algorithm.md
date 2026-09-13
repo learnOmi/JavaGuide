@@ -27,7 +27,7 @@ Paxos 算法是 Leslie Lamport（莱斯利·兰伯特）在 **1990** 年提出�
 
 《Paxos Made Simple》这篇论文就 14 页，相比于 《The Part-Time Parliament》的 33 页精简了不少。最关键的是这篇论文的摘要就一句话：
 
-![《Paxos Made Simple》](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/paxos-made-simple.png)
+![《Paxos Made Simple》](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/protocol/paxos-made-simple.png)
 
 > The Paxos algorithm, when presented in plain English, is very simple.
 
@@ -62,7 +62,7 @@ Basic Paxos 中存在 3 个重要的角色：
 2. **接受者（Acceptor）**：也可以叫做投票员（voter），负责对提案进行投票，同时需要记住自己的投票历史。
 3. **学习者（Learner）**：负责学习（learn）已被选定的值。在复制状态机（RSM）实现中，该值通常对应一条待执行的命令，由状态机按序 apply 后再由对外服务层返回结果。
 
-![Basic Paxos中的角色](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/up-890fa3212e8bf72886a595a34654918486c.png)
+![Basic Paxos中的角色](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/protocol/up-890fa3212e8bf72886a595a34654918486c.png)
 
 **角色交互关系图**：
 

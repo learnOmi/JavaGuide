@@ -51,7 +51,7 @@ head:
 - 切分：`[你好]` `[，]` `[我是]` `[小 G]` `[。]`
 - 统计：原文 9 字符 → Token 数 5 个 → 压缩比约 1.8 倍
 
-![Token 化过程示例](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
+![Token 化过程示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
 
 上面的切分只用于说明过程，不代表某个具体模型的真实结果。不同供应商或模型使用的 Tokenizer 不同，同一段文本得到的 Token 序列也可能不同。
 
@@ -66,7 +66,7 @@ head:
 
 上下文窗口往往被隐形成本占用：
 
-![上下文窗口（Context Window）= LLM 的「工作记忆」](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
+![上下文窗口（Context Window）= LLM 的「工作记忆」](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-context-window.png)
 
 - System Prompt：调节模型行为的系统指令（对用户隐藏，但占用窗口）。
 - User Prompt：业务数据与指令。
@@ -110,7 +110,7 @@ head:
 - Top-p / Top-k：直接砍掉不靠谱的候选项，缩小“抽签池”。
 - Penalty 系列：对已经出现过的词降分，防止“复读机”。
 
-![Temperature 参数：控制模型输出的随机性](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-temperature-params.png)
+![Temperature 参数：控制模型输出的随机性](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/llm-temperature-params.png)
 
 ### Prompt
 
@@ -118,7 +118,7 @@ Prompt 是输入给大语言模型（LLM）的任务指令。LLM 根据当前上
 
 Prompt 的作用是缩小模型的生成范围，质量与长度没有直接关系。比起堆叠修饰词，更重要的是交代清楚 Role、Task、Context 和 Format 四项信息。
 
-![Prompt 四要素框架](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-four-element-framework.svg)
+![Prompt 四要素框架](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/prompt-four-element-framework.svg)
 
 | 要素              | 作用                             | 常见表述                                        |
 | ----------------- | -------------------------------- | ----------------------------------------------- |
@@ -163,7 +163,7 @@ Prompt 的作用是缩小模型的生成范围，质量与长度没有直接关�
 
 JSON Schema 负责描述契约，Structured Outputs、Function Calling / Tool Calling 等模型 API 能力负责在生成阶段应用这份契约。只提供 Schema 文本而没有对应的生成约束，模型仍可能返回不符合字段要求的内容。
 
-![生成阶段三层约束：JSON Mode 管语法，JSON Schema 管契约，Structured Outputs 把契约前移到模型生成阶段](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
+![生成阶段三层约束：JSON Mode 管语法，JSON Schema 管契约，Structured Outputs 把契约前移到模型生成阶段](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
 
 ### Function Calling / Tool Calling
 
@@ -171,7 +171,7 @@ JSON Schema 负责描述契约，Structured Outputs、Function Calling / Tool Ca
 
 一次完整调用包含模型生成意图、业务校验、工具执行和结果回填：
 
-![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
+![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
 
 1. 服务端注册工具名、用途和参数 Schema。
 2. 用户提出“帮我查一下订单 1029384756 到哪了”。
@@ -234,7 +234,7 @@ JSON Schema 负责描述契约，Structured Outputs、Function Calling / Tool Ca
 
 这套系统通常写成：**Agent = LLM + Planning + Memory + Tools**。LLM 处理任务理解和决策，Planning 管理步骤与依赖，Memory 保存当前状态或历史信息，Tools 连接数据库、API、文件系统和代码执行环境。
 
-![AI Agent 核心架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
+![AI Agent 核心架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
 
 短期记忆通常保留本次会话和任务状态，长期记忆负责跨会话复用用户偏好、历史决策或任务经验。工具执行产生的返回值属于 Observation（观察），运行时把它追加到上下文，模型才能根据真实结果继续判断。
 
@@ -242,7 +242,7 @@ JSON Schema 负责描述契约，Structured Outputs、Function Calling / Tool Ca
 
 Agent Loop 把模型决策和工具执行连成反馈循环。每轮读取当前上下文，由模型选择直接回复还是调用工具；运行时执行动作并保存结果，然后进入下一轮。
 
-![Agent Loop 工作流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
+![Agent Loop 工作流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
 
 1. 初始化 System Prompt、工具列表和用户请求。
 2. 模型读取上下文，返回文本或工具调用意图。
@@ -257,11 +257,11 @@ ReAct 是 Reasoning + Acting，由 Shunyu Yao 等人在 2022 年提出，论文�
 
 比如模型不知道订单当前状态时，可以先调用查询工具。订单系统返回“已支付、待发货”后，模型再决定直接回答，还是继续查询物流。外部结果给后续判断提供了依据，但不会自动保证答案正确。
 
-![ReAct-LLM](https://oss.javaguide.cn/github/javaguide/ai/agent/ReAct-LLM.png)
+![ReAct-LLM](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/ReAct-LLM.png)
 
 落地 ReAct 时，运行时要保存执行历史和当前状态，向模型提供可用工具或 Skills，并把工具响应作为 Observation 关联到对应调用。系统告警、用户补充信息等环境变化，也要在后续轮次中更新。
 
-![ReAct 模式流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-react-flow.png)
+![ReAct 模式流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-react-flow.png)
 
 多轮工具调用会增加响应延迟和 Token 消耗，结果质量也受工具描述、参数校验、返回数据和停止条件影响。Trace 可以记录它执行过哪些动作，但模型输出的推理文本不能直接等同于内部决策机制。
 
@@ -305,17 +305,17 @@ AI 工作流的数据结构是有向图（Graph），三个元素：Node（节�
 
 Context Engineering 负责在有限的 Token 窗口中选择、组织和更新模型当前需要的信息，包括规则、记忆、工具描述、会话状态、外部观察结果和 Token 预算。Prompt Engineering 更关注指令本身如何表达，是其中一个更局部的问题。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
 进一步的设计方法见[《提示词工程（Prompt Engineering）》](https://javaguide.cn/ai/agent/prompt-engineering.html)和[《上下文工程（Context Engineering）》](https://javaguide.cn/ai/agent/context-engineering.html)。
 
 ### Memory
 
-![Agent 记忆分类全景图](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
+![Agent 记忆分类全景图](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
 
 记忆系统通常分两层：短期记忆和长期记忆。短期记忆是 Session 级的，服务当前任务；长期记忆跨越 Session，保存需要复用的用户偏好、历史决策和任务经验。两类数据的生命周期、权限和更新方式不同，存储时应在逻辑上分开。
 
-![AI Agent 记忆系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
+![AI Agent 记忆系统架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
 
 按功能目的看，Agent 记忆可以分成三类。
 
@@ -331,7 +331,7 @@ RAG 挂载的是可检索知识源，比如公司规章、产品文档、实时�
 
 长期记忆管理的是 Agent 与特定用户交互中动态沉淀的个性化经验，比如用户偏好、习惯、历史决策、专属背景。它高度个性化，因人而异。
 
-![长期记忆与 RAG（检索增强生成）的区别](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
+![长期记忆与 RAG（检索增强生成）的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-rag-vs-memory.svg)
 
 ### MCP
 
@@ -343,11 +343,11 @@ MCP 全称是 Model Context Protocol，中文一般叫“模型上下文协议�
 
 MCP 定义了 **MCP Client 和 MCP Server 之间的通信方式**。Host 承载用户交互和模型调用，Client 与 Server 通信，Server 对外提供具体能力；模型本身不会因为接入 MCP 而获得内置插件。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
 
 Function Calling、MCP、Agent 和 Skills 经常出现在同一套系统里，但各自处理不同问题：Function Calling 让模型表达调用工具的意图；MCP 规定宿主如何发现外部能力并连接后端服务；Agent 负责在多轮执行中决定下一步；Skills 则保存完成某类任务所需的流程和经验。
 
-![FC/MCP/Agent 三层关系图](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-fc-agent-layer.png)
+![FC/MCP/Agent 三层关系图](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/mcp-fc-agent-layer.png)
 
 ### Skills
 
@@ -355,11 +355,11 @@ Function Calling、MCP、Agent 和 Skills 经常出现在同一套系统里，�
 
 Skill 是一份可被 Agent 发现、按需加载的任务说明。接口格式、日志字段、慢 SQL 排查顺序、代码 Review 的检查重点等团队经验，都可以放进 `SKILL.md`，避免每次把整套规则写进 Prompt。它与 Prompt、Function Calling 和 MCP 分别处理任务输入、调用意图、工具连接和执行方法，职责可以同时出现在一次任务里。
 
-![ Skill 和 Prompt、MCP、Function Calling 对比](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
+![ Skill 和 Prompt、MCP、Function Calling 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
 
 Skill 的加载和执行包含五步：
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 
 1. 用户提出任务（Prompt）
 2. 宿主把可用 Skills 的简短描述放进上下文（Skill 元数据）
@@ -373,11 +373,11 @@ Skill 的加载和执行包含五步：
 
 Vivek Trivedi 在《The Anatomy of an Agent Harness》中也采用了先区分模型职责、再检查外围系统的思路。排查 Agent 时，除了模型输出，还要看上下文是否完整、工具是否可用、执行环境是否受控，以及失败后能否恢复。
 
-![Agent = Model + Harness](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
+![Agent = Model + Harness](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-agent-equals-model-harness-arch.png)
 
 Prompt Engineering、Context Engineering 和 Harness Engineering 的作用范围不同。Prompt 关注指令表达，Context 决定当前调用要提供哪些信息，Harness 管理模型之外的执行、验证、观测和恢复机制。
 
-![Harness 和 Prompt/Context Engineering 的关系](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
+![Harness 和 Prompt/Context Engineering 的关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
 
 | 层级                | 解决的问题                         | 关注点                                     | 典型工作                                  |
 | ------------------- | ---------------------------------- | ------------------------------------------ | ----------------------------------------- |
@@ -399,7 +399,7 @@ Loop Engineering 为 Agent 的重复执行补齐触发、目标、上下文、�
 - 状态：这轮试过什么、失败在哪里、下一步做什么，要写到外部文件、Issue、Linear 卡片或数据库里，不能只靠当前对话记住。
 - 停止：什么时候退出，什么时候转人工，什么时候因为预算或轮次耗尽直接停。
 
-![Loop Engineering 外层循环](https://oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
+![Loop Engineering 外层循环](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/loop-engineering-outer-loop.webp)
 
 最小循环可以写成一条执行链：读取上下文 → 判断下一步 → 调用工具或输出答案 → 回写结果 → 检查停止条件。ReAct 把 Reasoning 和 Acting 交替放进这条循环；Loop Engineering 还要处理循环外部的触发、验证、持久化、预算和人工接管。
 
@@ -418,7 +418,7 @@ Loop Engineering 为 Agent 的重复执行补齐触发、目标、上下文、�
 
 **RAG（Retrieval-Augmented Generation，检索增强生成）** 把信息检索接入大语言模型的生成过程。系统先从数据库、文档集合或企业内部系统中查找与问题相关的内容，再把检索结果和原始问题一起交给 LLM。模型由此获得参数知识之外的证据。
 
-![RAG 示意图](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-simplified-architecture-diagram.jpeg)
+![RAG 示意图](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-simplified-architecture-diagram.jpeg)
 
 RAG 主要补充三类信息缺口：
 
@@ -432,7 +432,7 @@ RAG 的工程链路通常分两个阶段：离线索引和在线检索生成。�
 
 索引和检索阶段的简化流程图如下：
 
-![索引和检索阶段的简化流程图](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-engineering-link.png)
+![索引和检索阶段的简化流程图](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-rag-engineering-link.png)
 
 索引阶段主要做这些事：
 
@@ -455,7 +455,7 @@ Embedding 就是把文本变成一串数字。更准确地说，它会把文本�
 
 它们字面不一样，但语义接近。好的 Embedding 模型会把它们映射到相近位置，向量检索才能把相关 Chunk 找出来。
 
-![Embedding：把文本映射到语义空间](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-2-embedding-map-text-to-semantic-space.png)
+![Embedding：把文本映射到语义空间](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-2-embedding-map-text-to-semantic-space.png)
 
 Embedding 维度常见的有 768、1024、1536、3072 等。维度是模型设计和训练方式的一部分，不能脱离模型直接得出“维度越高，语义效果越好”的结论；较高维度通常会增加存储、索引和相似度计算成本。以 OpenAI Embedding 为例，`text-embedding-3-small` 默认输出 1536 维，`text-embedding-3-large` 默认输出 3072 维，并支持通过 `dimensions` 参数降低输出维度。
 
@@ -472,7 +472,7 @@ RAG 的检索流程里，最基础的一步是：把用户问题和文档都变�
 5. 向量数据库检索出最相似的 Top-K 文档向量。
 6. 系统把这些文档片段放进 Prompt，交给 LLM 生成答案。
 
-![Embedding 和向量检索是什么关系？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-embedding-vector-retrieval.png)
+![Embedding 和向量检索是什么关系？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-embedding-vector-retrieval.png)
 
 Embedding 负责把文本变成可比较的向量，向量检索据此查找语义接近的内容。向量检索只是 RAG 的一种实现；RAG 还可以使用 BM25、SQL、知识图谱、搜索 API 或其他业务查询来取得外部证据。
 
@@ -480,13 +480,13 @@ Embedding 负责把文本变成可比较的向量，向量检索据此查找语�
 
 向量数据库除了保存向量，还要处理相似度索引、元数据过滤、更新删除、并发查询和持久化等工程问题：
 
-![RAG 场景为什么需要向量数据库？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-why-need-vector-store.png)
+![RAG 场景为什么需要向量数据库？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-why-need-vector-store.png)
 
 ### 文档处理
 
 文档从上传到进入向量库，中间要经过至少六个环节：
 
-![RAG 文档处理总链路：上传前半段决定了后半段效果上限](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-overall-link.png)
+![RAG 文档处理总链路：上传前半段决定了后半段效果上限](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-overall-link.png)
 
 质量校验不应只发生在入库之后。Chunking 阶段完成采样校验，可以提前发现问题，避免把低质量数据大批量写入向量库。
 
@@ -506,7 +506,7 @@ Embedding 负责把文本变成可比较的向量，向量检索据此查找语�
 
 ### Chunking
 
-![如何选择合适的切分策略？](https://oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-chunking-strategy.png)
+![如何选择合适的切分策略？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/rag-document-processing-chunking-strategy.png)
 
 如果文档本身有清晰结构，按结构切通常更合适。NVIDIA 的一组测试中，Page-Level Chunking（按页面切分）在金融报告和法律文档上表现最好，平均准确率为 0.648，方差也最低。页面边界在这类材料中经常承载章节或版式语义，切分时应尽量保留。
 
@@ -595,7 +595,7 @@ LangChain 的 `MultiQueryRetriever`、`SelfQueryRetriever` 等组件提供了对
 
 ### GraphRAG
 
-![什么是 GraphRAG？](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-simplified-architecture-diagram.png)
+![什么是 GraphRAG？](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-simplified-architecture-diagram.png)
 
 GraphRAG（Graph-based Retrieval-Augmented Generation）是一类把图结构用于检索增强的方案。系统可以把文档中的实体、关系和结构化上下文显式建模，查询时沿图关系收集证据，再交给大模型生成答案。
 
@@ -610,7 +610,7 @@ GraphRAG 改变了检索对象。图数据库可以承载这些数据，但是�
 
 向量 RAG 擅长判断“这段话和我的问题像不像”，GraphRAG 更擅长理解“这些对象之间到底怎么连起来”。
 
-![GraphRAG 和传统向量 RAG 的本质区别](https://oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vs-rag.png)
+![GraphRAG 和传统向量 RAG 的本质区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/rag/graphrag-vs-rag.png)
 
 | 维度     | 传统向量 RAG               | GraphRAG                               |
 | -------- | -------------------------- | -------------------------------------- |

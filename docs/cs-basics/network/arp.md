@@ -27,7 +27,7 @@ ARP 要解决的就是这个转换问题：**已知目标 IP 地址，如何找�
 
 MAC 地址的全称是 **媒体访问控制地址（Media Access Control Address）**，用于标识链路层接口并在本地网络中传输数据帧。它属于网络接口，而不是整台设备的永久身份证；一台设备可以有多个网络接口，每个接口可以使用不同的 MAC 地址。
 
-![路由器的背面就会注明 MAC 位址](https://oss.javaguide.cn/github/javaguide/cs-basics/network/router-back-will-indicate-mac-address.png)
+![路由器的背面就会注明 MAC 位址](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/router-back-will-indicate-mac-address.png)
 
 MAC 地址也常被称为 LAN 地址、物理地址或以太网地址。与用于网络层路由的 IP 地址不同，MAC 地址主要在当前链路或广播域内使用。
 

@@ -22,7 +22,7 @@ Trie，也叫前缀树或字典树，适合处理大量字符串的前缀匹配�
 4. Trie 的插入、查询和前缀查询怎么写？
 5. Trie 和哈希表应该怎么选？
 
-![Trie 树按字符路径组织字符串集合的结构示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/trie.png)
+![Trie 树按字符路径组织字符串集合的结构示意图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/trie.png)
 
 ## 什么是 Trie？
 

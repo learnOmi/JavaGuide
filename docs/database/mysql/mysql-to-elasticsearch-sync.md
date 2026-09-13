@@ -34,7 +34,7 @@ MySQL 到 Elasticsearch 的同步通常分成两类：
 
 还要注意，ES 写入成功不代表数据已经立刻可以被搜索到。Elasticsearch 通过 `refresh` 让新写入的文档对搜索可见，因此端到端延迟至少包含变更捕获、消息排队、数据处理、ES 写入和 `refresh` 等环节。官方将这种搜索可见性称为[近实时搜索](https://www.elastic.co/docs/manage-data/data-store/near-real-time-search)。
 
-![MySQL 到 ES 全量与增量衔接](https://oss.javaguide.cn/github/javaguide/database/es/mysql-es-full-incremental-sync.webp)
+![MySQL 到 ES 全量与增量衔接](/assets/images/oss.javaguide.cn/github/javaguide/database/es/mysql-es-full-incremental-sync.webp)
 
 ## 选型前先定义同步契约
 
@@ -68,7 +68,7 @@ MySQL 到 Elasticsearch 的同步通常分成两类：
 
 应用层双写是在业务代码更新 MySQL 后，再调用 Elasticsearch API 更新索引。
 
-![应用层同步双写](https://oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-synchronous-double-write.png)
+![应用层同步双写](/assets/images/oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-synchronous-double-write.png)
 
 假设写入顺序是“先 MySQL，后 ES”，常见结果如下：
 
@@ -104,7 +104,7 @@ MySQL 事务无法回滚已经提交到 Elasticsearch 的写入，Elasticsearch 
 
 如果数据量不大、更新频率低，并且业务可以接受分钟级甚至天级延迟，定时任务往往已经够用。个人博客、内部知识库、小型后台搜索都是比较典型的场景。
 
-![定时同步](https://oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-scheduled-task.png)
+![定时同步](/assets/images/oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-scheduled-task.png)
 
 定时同步不一定每次都要全量扫描，也可以按更新时间做增量查询：
 
@@ -171,11 +171,11 @@ CDC（Change Data Capture，变更数据捕获）方案会读取 MySQL binlog，
 
 [Canal](https://github.com/alibaba/canal) 会模拟 MySQL Replica 的交互协议，向 MySQL 请求 binlog 并解析为结构化变更事件。
 
-![Canal 工作原理](https://oss.javaguide.cn/github/javaguide/open-source-project/canal-overview.png)
+![Canal 工作原理](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/canal-overview.png)
 
 Canal Server 的核心职责是增量日志订阅和解析。下游可以使用 Canal Client 直接消费，也可以让 Canal 把消息投递到 Kafka、RocketMQ 等 MQ，再由同步服务更新 ES。
 
-![Canal 通过 MQ 同步数据](https://oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-canal-with-mq.png)
+![Canal 通过 MQ 同步数据](/assets/images/oss.javaguide.cn/github/javaguide/database/es/es-mq-synchronization-canal-with-mq.png)
 
 引入 MQ 主要有几个作用：
 
@@ -199,7 +199,7 @@ Flink CDC 的 MySQL Source 可以先读取表快照，再继续消费 binlog。�
 - 不需要在整个快照阶段持有 `FLUSH TABLES WITH READ LOCK` 获取的全局读锁。
 - 全量快照结束后自动继续读取 binlog，减少手工衔接位点的工作。
 
-![Flink CDC 增量快照衔接 binlog](https://oss.javaguide.cn/github/javaguide/database/es/flink-cdc-incremental-snapshot.webp)
+![Flink CDC 增量快照衔接 binlog](/assets/images/oss.javaguide.cn/github/javaguide/database/es/flink-cdc-incremental-snapshot.webp)
 
 截至 Flink CDC 3.6，官方提供了 [MySQL Pipeline Connector](https://nightlies.apache.org/flink/flink-cdc-docs-release-3.6/docs/connectors/pipeline-connectors/mysql/) 和 [Elasticsearch Pipeline Connector](https://nightlies.apache.org/flink/flink-cdc-docs-release-3.6/docs/connectors/pipeline-connectors/elasticsearch/)，可以直接描述 MySQL 到 ES 的 Pipeline。ES Sink 不会自动创建索引，使用前仍要准备索引、mapping 和相关模板。
 
@@ -217,7 +217,7 @@ Debezium 的 MySQL Connector 通常运行在 Kafka Connect 上。首次启动时
 
 工具选型只决定了变更怎么到达下游。数据能否保持正确，还取决于下面这些实现细节。
 
-![MySQL 同步 ES 的一致性保障](https://oss.javaguide.cn/github/javaguide/database/es/mysql-es-consistency-guardrails.webp)
+![MySQL 同步 ES 的一致性保障](/assets/images/oss.javaguide.cn/github/javaguide/database/es/mysql-es-consistency-guardrails.webp)
 
 ### 1. 把 MySQL 主键作为 ES 文档 ID
 

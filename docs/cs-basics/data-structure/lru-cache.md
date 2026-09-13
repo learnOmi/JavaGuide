@@ -23,7 +23,7 @@ LRU 是 Least Recently Used 的缩写，意思是最近最少使用。当缓存�
 5. Java `LinkedHashMap` 如何实现 LRU？
 6. 真实工程里的 LRU 还要考虑什么？
 
-![LRU 缓存通过哈希表和双向链表维护最近访问顺序](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/lru-cache.png)
+![LRU 缓存通过哈希表和双向链表维护最近访问顺序](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/lru-cache.png)
 
 ## 什么是 LRU 缓存？
 

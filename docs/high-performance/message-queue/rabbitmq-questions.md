@@ -37,7 +37,7 @@ RabbitMQ 整体上是一个生产者与消费者模型，主要负责接收、�
 
 RabbitMQ 的整体模型架构如下：
 
-![RabbitMQ 4.0 核心架构与消息生命周期流转图](https://oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
+![RabbitMQ 4.0 核心架构与消息生命周期流转图](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
 
 下面看几个主要对象。
 
@@ -86,7 +86,7 @@ RabbitMQ 中通过 **Binding(绑定)** 将 **Exchange(交换器)** 与 **Queue(�
 
 RabbitMQ 常用的 Exchange Type 有 **fanout**、**direct**、**topic**、**headers** 这四种（AMQP 规范里还提到两种 Exchange Type，分别为 system 与自定义，这里不予以描述）。
 
-![RabbitMQ Exchange 四种类型对比](https://oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-exchange-types.png)
+![RabbitMQ Exchange 四种类型对比](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-exchange-types.png)
 
 | 类型    | 路由规则                                           | 常见场景                                     |
 | ------- | -------------------------------------------------- | -------------------------------------------- |
@@ -183,7 +183,7 @@ Classic Queue 可以通过 `x-max-priority` 参数声明优先级队列，Quorum
 
 ## 如何保证消息的可靠性？
 
-![RabbitMQ 4.0 消息可靠性与队列架构全景图](https://oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-message-reliability-and-queue-architecture-overview.png)
+![RabbitMQ 4.0 消息可靠性与队列架构全景图](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-message-reliability-and-queue-architecture-overview.png)
 
 消息可能在三个环节出问题：生产者到 Broker、Broker 存储期间、Broker 到消费者。
 

@@ -85,15 +85,15 @@ head:
 
 **1.个人介绍没太多实用的信息。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/format,png.png)
 
 技术博客、GitHub 以及在校获奖经历的话，能写就尽量写在这里。 你可以参考下面 👇 的模板进行修改：
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224235808.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224235808.png)
 
 **2.项目经历过于简单，完全没有质量可言**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224240305.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224240305.png)
 
 每一个项目经历真的就一两句话可以描述了么？还是自己不想写？还是说不是自己做的，不敢多写。
 
@@ -108,11 +108,11 @@ head:
 
 **3.计算机二级这个证书对于计算机专业完全不用写了，没有含金量的。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224247261.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224247261.png)
 
 **4.技能介绍问题太大。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/93da1096fb02e19071ba13b4f6a7471c.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/interview-preparation/93da1096fb02e19071ba13b4f6a7471c.png)
 
 - 技术名词最好规范大小写比较好，比如 java->Java ，spring boot -> Spring Boot 。这个虽然有些面试官不会介意，但是很多面试官都会在意这个细节的。
 - 技能介绍太杂，没有亮点。不需要全才，某个领域做得好就行了！
@@ -143,7 +143,7 @@ Java 后端面试复习的重点请看这篇文章：[Java 面试重点总结(�
 
 八股文资料首推我的 [《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) (配合 JavaGuide 使用，会根据每一年的面试情况对内容进行更新完善)和 [JavaGuide](https://javaguide.cn/) 。里面不仅仅是原创八股文，还有很多对实际开发有帮助的干货。除了我的资料之外，你还可以去网上找一些其他的优质的文章、视频来看。
 
-![《Java 面试指北》内容概览](https://oss.javaguide.cn/javamianshizhibei/javamianshizhibei-content-overview.png)
+![《Java 面试指北》内容概览](/assets/images/oss.javaguide.cn/javamianshizhibei/javamianshizhibei-content-overview.png)
 
 ## 提前准备手撕算法
 
@@ -155,7 +155,7 @@ Java 后端面试复习的重点请看这篇文章：[Java 面试重点总结(�
 
 关于如何准备算法面试[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的面试准备篇有详细介绍到。
 
-![《Java 面试指北》面试准备篇](https://oss.javaguide.cn/javamianshizhibei/preparation-for-interview.png)
+![《Java 面试指北》面试准备篇](/assets/images/oss.javaguide.cn/javamianshizhibei/preparation-for-interview.png)
 
 ## 提前准备自我介绍
 

@@ -33,9 +33,9 @@ Agent 接到任务后，需要读取上下文、决定下一步动作、调用�
 - 什么时候用纯 Agent，什么时候用 Workflow 或 Agentic Workflow？
 - Multi-Agent 协作的主要问题是什么？为什么生产里不能盲目上多 Agent？
 
-![AI Agent 核心架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
+![AI Agent 核心架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
 
-![Agent Loop 工作流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
+![Agent Loop 工作流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
 
 ## Agent Memory
 
@@ -54,7 +54,7 @@ Memory 题会追到信息从哪里来、保存多久、什么时候读取，以�
 - 如何避免长期记忆污染上下文？
 - 面试里怎么讲“有记忆”不是简单保存聊天记录？
 
-![Agent 记忆分类全景图](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
+![Agent 记忆分类全景图](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-memory-taxonomy.svg)
 
 ## Prompt 与 Context Engineering
 
@@ -73,7 +73,7 @@ Prompt 题关注指令如何表达，Context 题还会涉及历史状态、工�
 - 静态规则、动态信息、工具结果、记忆应该如何进入上下文？
 - 长任务上下文溢出时，Compaction、结构化笔记、Sub-agent 分别怎么用？
 
-![Prompt engineering vs. context engineering](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-prompt-engineering.png)
+![Prompt engineering vs. context engineering](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-prompt-engineering.png)
 
 ## MCP 与 Agent Skills
 
@@ -109,7 +109,7 @@ Harness Engineering 把注意力放到模型外部的执行环境，包括任务
 - Agent 工程里为什么需要评测器、验证器和任务状态管理？
 - 一线团队做 Agent 工程化时，共同遇到的难点是什么？
 
-![Harness 和 Prompt/Context Engineering 的关系](https://oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
+![Harness 和 Prompt/Context Engineering 的关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/harness/harness-engineering-layers-arch.png)
 
 ## Workflow、Graph 与 Loop
 

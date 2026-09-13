@@ -22,7 +22,7 @@ head:
 
 ## 程序、进程和线程分别是什么？
 
-![程序、进程和线程的关系](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
+![程序、进程和线程的关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/relationship-between-program-process-and-thread.png)
 
 程序是存放在磁盘上的一组指令和数据，比如一个可执行文件、一个 JAR 包。它还没有真正运行，只是静态文件。
 
@@ -34,7 +34,7 @@ head:
 
 判断一个概念更偏进程还是更偏线程，也可以先问：它描述的是资源边界，还是一条执行路径？地址空间、打开文件表、权限信息更偏进程；栈、寄存器、程序计数器更偏线程。
 
-![用微信工厂类比进程和线程的区别](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/wechat-factory-process-thread.png)
+![用微信工厂类比进程和线程的区别](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/wechat-factory-process-thread.png)
 
 不过这句话只是学习时的抓手，不能当成所有系统的实现细节。比如 Linux 内核内部用 `task_struct` 描述调度实体，进程和线程更像是共享资源程度不同的任务；Windows 文档则明确把线程说成操作系统分配处理器时间的基本单位。不同系统名字不完全一样，但抽象层面的关系大致相通。
 
@@ -62,7 +62,7 @@ head:
 - **阻塞状态（Blocked/Waiting）**：正在等某个事件，比如 I/O 完成、锁释放、定时器到期。
 - **终止状态（Terminated/Exit）**：进程结束，操作系统回收相关资源。
 
-![进程状态图转换图](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/state-transition-of-process.png)
+![进程状态图转换图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/state-transition-of-process.png)
 
 状态转换的关键不在名词，而在触发原因。就绪态拿到 CPU 会变成运行态；运行中的时间片用完，可能回到就绪态；运行中发起阻塞 I/O，会进入阻塞态；阻塞等待的事件完成后，先回到就绪态，等待下一次被调度。
 
@@ -86,7 +86,7 @@ Linux 的实现有一点特别：它把进程和线程都看成 task，`task_str
 
 ## Linux 里 fork、exec、wait 分别做什么？
 
-![fork、exec、wait 的调用链路](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/fork-exec-wait-call-chain.png)
+![fork、exec、wait 的调用链路](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/fork-exec-wait-call-chain.png)
 
 在 Unix/Linux 编程里，进程创建常绕不开 `fork()`、`exec()`、`wait()` 这三个动作。
 
@@ -104,7 +104,7 @@ Shell 启动外部命令时，常见链路就是：Shell 调 `fork()` 创建子�
 
 ## 线程共享什么，又私有什么？
 
-![线程共享资源和私有执行现场](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/thread-shared-and-private-content.png)
+![线程共享资源和私有执行现场](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/thread-shared-and-private-content.png)
 
 从操作系统角度看，同一进程内的线程共享进程的大部分资源，例如：
 
@@ -154,7 +154,7 @@ TCB（Thread Control Block，线程控制块）可以理解为线程级别的控
 
 常见线程模型有三类：
 
-![常见的三种线程模型](https://oss.javaguide.cn/github/javaguide/java/new-features/process-and-thread-three-thread-models.png)
+![常见的三种线程模型](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/process-and-thread-three-thread-models.png)
 
 | 模型   | 含义                           | 优点                       | 主要问题                                   |
 | ------ | ------------------------------ | -------------------------- | ------------------------------------------ |
@@ -166,7 +166,7 @@ Linux 的 POSIX 线程和 Windows 系统线程基本属于一对一模型。Linu
 
 ## 线程上下文切换和进程上下文切换有什么不同？
 
-![线程上下文切换和进程上下文切换成本对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/context-switch-cost-comparison.png)
+![线程上下文切换和进程上下文切换成本对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/context-switch-cost-comparison.png)
 
 上下文切换指 CPU 从一个执行实体切到另一个执行实体。操作系统需要保存当前实体的寄存器、程序计数器、栈指针等现场，再恢复下一个实体的现场。
 
@@ -188,7 +188,7 @@ Java 21 引入的虚拟线程就是一个典型例子。它仍然是 `java.lang.
 
 虚拟线程、平台线程和系统内核线程的关系：
 
-![虚拟线程、平台线程和系统内核线程的关系](https://oss.javaguide.cn/github/javaguide/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
+![虚拟线程、平台线程和系统内核线程的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
 
 还要注意 pinning。以 Java 21 为例，虚拟线程在 `synchronized` 块/方法、native 方法或 foreign function 中执行阻塞操作时，可能无法从承载它的平台线程上卸载，结果就是平台线程也被一起占住，不能去运行其他虚拟线程。少量、短时间的 pinning 不会让程序出错，但频繁、长时间的 pinning 会影响扩展性。后续 JDK 对 `synchronized` 相关的 pinning 做过改进，实际判断时要以当前使用的 JDK 版本为准；native/foreign 调用这类边界仍然需要额外留意。
 

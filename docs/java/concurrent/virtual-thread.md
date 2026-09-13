@@ -37,7 +37,7 @@ head:
 
 在 Java 里，虚拟线程、平台线程和操作系统线程大致是这样的关系：
 
-![虚拟线程、平台线程和系统内核线程的关系](https://oss.javaguide.cn/github/javaguide/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
+![虚拟线程、平台线程和系统内核线程的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
 
 在 Windows、Linux 等主流操作系统中，HotSpot JVM 的平台线程通常采用一对一线程模型，也就是一个平台线程对应一个操作系统线程。虚拟线程引入后，JDK 在平台线程之上又加了一层调度：
 

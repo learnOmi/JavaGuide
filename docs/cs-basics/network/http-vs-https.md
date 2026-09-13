@@ -29,7 +29,7 @@ HTTP 协议，全称超文本传输协议（Hypertext Transfer Protocol）。顾
 
 并且，HTTP 是一个无状态（stateless）协议，也就是说服务器不维护任何有关客户端过去所发请求的消息。这其实是一种懒政，有状态协议会更加复杂，需要维护状态（历史信息），而且如果客户或服务器失效，会产生状态的不一致，解决这种不一致的代价更高。
 
-![HTTP：超文本传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
+![HTTP：超文本传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
 
 ### HTTP 协议通信过程
 
@@ -149,7 +149,7 @@ SSL/TLS 介绍到这里，了解信息安全的朋友又会想到一个安全隐
 
 对于数字签名，我这里讲的比较简单，如果你没有搞清楚的话，强烈推荐你看看[数字签名及数字证书原理](https://www.bilibili.com/video/BV18N411X7ty/)这个视频，这是我看过最清晰的讲解。
 
-![数字签名及数字证书原理视频讲解截图](https://oss.javaguide.cn/github/javaguide/image-20220321121814946.png)
+![数字签名及数字证书原理视频讲解截图](/assets/images/oss.javaguide.cn/github/javaguide/image-20220321121814946.png)
 
 ## 总结
 

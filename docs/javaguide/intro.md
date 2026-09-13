@@ -1,7 +1,8 @@
 ---
 title: 项目介绍
 description: JavaGuide项目介绍，一个涵盖Java核心知识体系的学习与面试指南，助力Java开发者成长。
-category: 走近项目
+category:
+  - 走近项目
 icon: "mdi:information-outline"
 ---
 
@@ -28,7 +29,7 @@ icon: "mdi:information-outline"
 
 下面是星球提供的部分服务（点击下方图片即可获取知识星球的详细介绍）：
 
-[![星球服务](https://oss.javaguide.cn/xingqiu/xingqiufuwu.png)](../about-the-author/zhishixingqiu-two-years.md)
+[![星球服务](/assets/images/oss.javaguide.cn/xingqiu/xingqiufuwu.png)](../about-the-author/zhishixingqiu-two-years.md)
 
 ## 项目说明
 

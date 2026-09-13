@@ -14,11 +14,11 @@ Java 11 于 2018 年 9 月 25 日正式发布，这是很重要的一个版本�
 
 下面这张图是 Oracle 官方给出的 Oracle JDK 支持的时间线。
 
-![Oracle 官方给出的 Oracle JDK 支持的时间线](https://oss.javaguide.cn/github/javaguide/java/new-features/4c1611fad59449edbbd6e233690e9fa7.png)
+![Oracle 官方给出的 Oracle JDK 支持的时间线](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/4c1611fad59449edbbd6e233690e9fa7.png)
 
 下图是从 JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间：
 
-![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 这篇文章会挑选其中较为重要的一些新特性进行详细介绍：
 

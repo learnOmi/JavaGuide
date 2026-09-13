@@ -50,7 +50,7 @@ AI 可观测性里经常同时出现 Metrics、Logs、Trace、Evaluation 和 Aud
 | Evaluation | 输出质量是否合格？             | 正确性、忠实度、工具选择、任务完成度、安全性     |
 | Audit      | 谁在什么权限下执行了什么操作？ | 用户身份、审批记录、权限决策、外部写操作         |
 
-![AI 可观测信号各自解决的问题](https://oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-signals-overview.webp)
+![AI 可观测信号各自解决的问题](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-signals-overview.webp)
 
 它们之间的配合关系可以用一句话说明：**指标发现异常，Trace 定位过程，评测判断质量，审计追踪责任。**
 
@@ -84,7 +84,7 @@ spanId：标识调用链中的某个操作
 attempt：标识同一步骤的第几次尝试
 ```
 
-![Session、Run、Trace、Span 和 Attempt 的层级关系](https://oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-id-hierarchy.webp)
+![Session、Run、Trace、Span 和 Attempt 的层级关系](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-id-hierarchy.webp)
 
 重试也要单独处理。每次尝试都新建 Span，并用 `attempt` 标明次数。否则，第一次超时和第二次成功会混在同一条记录里，后面很难还原真实执行过程。
 
@@ -112,7 +112,7 @@ agent.run
 └── ai.output.validate
 ```
 
-![一次 Agent 请求的 Span 拆分示意图](https://oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-agent-span-trace.webp)
+![一次 Agent 请求的 Span 拆分示意图](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-agent-span-trace.webp)
 
 这里并没有为 Prompt 模板渲染、字符串拼接之类的普通方法单独建 Span。通常满足下面任意一个条件，才值得独立记录：
 
@@ -359,7 +359,7 @@ Trace 可以证明应用发起过哪些调用，不能替代退款系统的业�
 
 单线程同步代码里，Trace 上下文通常能够自动沿调用栈传递。一旦切换线程、进程或消息队列，就需要明确处理传播问题。
 
-![Trace 上下文跨线程、进程和消息边界的传播方式](https://oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-context-propagation.webp)
+![Trace 上下文跨线程、进程和消息边界的传播方式](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-context-propagation.webp)
 
 ### 跨服务如何传播？
 
@@ -455,7 +455,7 @@ Spring AI 默认不导出 Prompt、Completion、工具参数、工具结果和�
 
 尾部采样需要 Collector 暂存 Trace，会增加内存和等待成本，还要考虑分布式 Collector 如何让同一 Trace 到达同一个决策节点。OpenTelemetry Collector 的 [Tail Sampling Processor](https://explorer.opentelemetry.io/collector/components/contrib-tailsamplingprocessor?type=processor)目前对 Trace 标记为 Beta，生产使用前要压测容量和丢弃行为。
 
-![Trace 头部采样和尾部采样的区别](https://oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-head-tail-sampling.webp)
+![Trace 头部采样和尾部采样的区别](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/ai-observability-head-tail-sampling.webp)
 
 ### 比较实用的组合策略是什么？
 

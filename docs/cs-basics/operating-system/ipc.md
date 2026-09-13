@@ -20,11 +20,11 @@ head:
 
 不要想得太复杂，我更习惯把 IPC 看成三件事：**怎么传数据、怎么同步控制流、怎么做命名和权限检查**。只记“管道、消息队列、共享内存”这些名字，很容易背完就忘。
 
-![进程地址空间隔离导致进程间通信需要借助内核提供的 IPC 机制](https://oss.javaguide.cn/github/javaguide/java/new-features/ipc-why-ipc.png)
+![进程地址空间隔离导致进程间通信需要借助内核提供的 IPC 机制](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/ipc-why-ipc.png)
 
 ## IPC 到底在解决什么？
 
-![IPC 需要同时解决数据传递、同步控制、命名寻址和权限检查等问题](https://oss.javaguide.cn/github/javaguide/java/new-features/what-problem-does-ipc-solve.png)
+![IPC 需要同时解决数据传递、同步控制、命名寻址和权限检查等问题](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/what-problem-does-ipc-solve.png)
 
 **IPC 先解决数据怎么过去。** 管道和字节流 Socket 传连续字节，消息边界由应用约定；消息队列、数据报 Socket、Binder 事务传一条条消息，天然有边界；共享内存让多个进程映射同一块物理内存，映射完成后读写共享区域不需要每次陷入内核。
 
@@ -38,7 +38,7 @@ head:
 
 Linux 里调用 `pipe()` 会得到两个文件描述符：一个读端，一个写端。父进程创建管道后再 `fork()`，子进程会继承这些文件描述符，于是父子进程就能靠同一条管道传数据。匿名管道没有名字，通常用于有亲缘关系的进程之间。
 
-![管道通过内核缓冲区在父进程和子进程之间传递单向字节流](https://oss.javaguide.cn/github/javaguide/java/new-features/ipc-pipe-flow.png)
+![管道通过内核缓冲区在父进程和子进程之间传递单向字节流](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/ipc-pipe-flow.png)
 
 管道是单向字节流。POSIX 只要求它单向，双向通信通常建两条管道；它不理解消息边界，写端写了 3 次，读端不一定也读 3 次；缓冲区在内核里，写满后阻塞写会睡眠，非阻塞写可能返回 `EAGAIN`；它也不是普通文件，不能用 `lseek()` 随机定位。
 
@@ -64,7 +64,7 @@ Linux 上还有一个容易被问到的数字：`PIPE_BUF` 是 4096 字节。对
 
 Linux 上常见两类接口：System V 共享内存用 `shmget()`、`shmat()`、`shmdt()`、`shmctl()`；POSIX 共享内存用 `shm_open()` 创建对象，`ftruncate()` 设置大小，再用 `mmap()` 映射到进程地址空间。
 
-![共享内存让多个进程映射同一块物理内存，但仍需要信号量、futex 等同步机制配合](https://oss.javaguide.cn/github/javaguide/java/new-features/ipc-shared-memory.png)
+![共享内存让多个进程映射同一块物理内存，但仍需要信号量、futex 等同步机制配合](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/ipc-shared-memory.png)
 
 共享内存快在数据路径短。管道、消息队列、Socket 这类方式通常要把数据先交给内核，再由内核交给另一个进程；共享内存完成映射后，进程读写的是同一片物理页，数据本身不用每次都在用户态和内核态之间搬来搬去。日志采集、音视频处理、数据库缓存这类本机大块数据交换场景，才比较适合把它拿出来用。
 
@@ -94,7 +94,7 @@ Unix Domain Socket 的接口接近网络 Socket，支持无亲缘关系进程通
 
 ## Android Binder：把 IPC 做成系统服务调用
 
-![Android Binder 通过 AIDL、Parcel、Binder 驱动和 Service Manager 将 IPC 封装成系统服务调用](https://oss.javaguide.cn/github/javaguide/java/new-features/android-binder-turning-ipc-into-system-service-calls.png)
+![Android Binder 通过 AIDL、Parcel、Binder 驱动和 Service Manager 将 IPC 封装成系统服务调用](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/android-binder-turning-ipc-into-system-service-calls.png)
 
 Android 里最典型的 IPC 是 Binder。应用调用系统服务、不同进程里的 Service 交互、AIDL 生成的远程接口，底层都离不开它。
 
@@ -128,11 +128,11 @@ Mach 的代表设计是 port。port 可以理解成受内核保护的消息队�
 | TCP/UDP Socket     | 字节流或数据报         | 取决于协议       | 取决于协议和实现   | 是               | 跨机器通信             |
 | Binder             | 事务、对象引用、fd     | 是               | 不适合直接传大对象 | 否，Android 本机 | Android 系统服务调用   |
 
-![常见 IPC 方式在数据形态、消息边界、大数据传输和跨机器能力上的横向对比](https://oss.javaguide.cn/github/javaguide/java/new-features/ipc-ipc-comparison.png)
+![常见 IPC 方式在数据形态、消息边界、大数据传输和跨机器能力上的横向对比](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/ipc-ipc-comparison.png)
 
 父子进程之间传少量字节流，管道够用；无亲缘关系进程需要双向请求响应，Unix Domain Socket 更顺手；小型结构化事件可以用消息队列；大块数据优先考虑共享内存加同步通知；跨机器通信交给 TCP/UDP 或更上层的 RPC；Android 应用跨进程调用则通常走 Binder。
 
-![根据数据量、消息边界、跨机器和进程亲缘关系选择合适的 IPC 方式](https://oss.javaguide.cn/github/javaguide/java/new-features/ipc-ipc-selection.png)
+![根据数据量、消息边界、跨机器和进程亲缘关系选择合适的 IPC 方式](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/ipc-ipc-selection.png)
 
 ## 面试里怎么答 IPC？
 

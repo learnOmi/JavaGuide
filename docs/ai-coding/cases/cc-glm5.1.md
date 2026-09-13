@@ -39,23 +39,23 @@ npm i -g @anthropic-ai/claude-code@latest
 
 点击加号添加模型：
 
-![点击添加模型](https://oss.javaguide.cn/ai/coding/glm5.1-cc/add-model-entry.png)
+![点击添加模型](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/add-model-entry.png)
 
 选择对应的模型：
 
-![选择模型](https://oss.javaguide.cn/ai/coding/glm5.1-cc/select-model.png)
+![选择模型](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/select-model.png)
 
 配置参数：
 
-![配置参数](https://oss.javaguide.cn/ai/coding/glm5.1-cc/config-params.png)
+![配置参数](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/config-params.png)
 
 Claude Code 内部模型环境变量与目标模型对应关系的 JSON 配置：
 
-![Claude Code 内部模型环境变量与模型对应关系 JSON 配置](https://oss.javaguide.cn/ai/coding/glm5.1-cc/model-env-json-config.png)
+![Claude Code 内部模型环境变量与模型对应关系 JSON 配置](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/model-env-json-config.png)
 
 如果你更偏向页面开发，推荐通过 VSCode + Claude Code for VS Code 方式进行交互和编码验收。完成插件安装之后，可以直接在 IDE 中与模型对话和代码审查，相对于 CLI 界面会更直观一些：
 
-![VSCode + Claude Code for VS Code](https://oss.javaguide.cn/ai/coding/glm5.1-cc/vscode-claude-code.png)
+![VSCode + Claude Code for VS Code](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/vscode-claude-code.png)
 
 ## 场景一：从零搭建 JVM 智能诊断 Agent
 
@@ -91,23 +91,23 @@ JVM 线上诊断一直以来都是 Java 开发最棘手的问题。在传统开�
 
 AI 收到需求后，没有立刻开始写代码，而是先根据空项目整理出一份分阶段技术方案。它适合用来生成待评审的路径，但方案是否安全、是否符合现有运维体系，仍要由开发和运维人员确认。
 
-![AI 自主完成技术方案规划](https://oss.javaguide.cn/ai/coding/glm5.1-cc/ai-tech-plan.png)
+![AI 自主完成技术方案规划](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/ai-tech-plan.png)
 
 AI 结合需求，针对 Agent 拆解出技术选型和 Arthas 集成方案的检索。从检索关键字可以看出，它在方案选取上优先考虑成熟稳定的解决方案：
 
-![AI 检索 Agent 技术选型和 Arthas 集成方案](https://oss.javaguide.cn/ai/coding/glm5.1-cc/agent-arthas-integration-research.png)
+![AI 检索 Agent 技术选型和 Arthas 集成方案](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/agent-arthas-integration-research.png)
 
 AI 检索 Arthas 官方文档后，输出了下面这份系统架构设计图。从上到下分三层：用户层输入服务名和故障现象，Agent 层由 Skill 引擎、Arthas HTTP Client 和 AI 分析引擎协同工作，最底层通过 Arthas HTTP API 对接目标服务实例。这张图覆盖了主要业务模块，但没有画出认证、审批、命令策略和审计等生产控制面，后文会单独补充：
 
-![AI 输出的系统架构设计图](https://oss.javaguide.cn/ai/coding/glm5.1-cc/system-architecture-design.png)
+![AI 输出的系统架构设计图](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/system-architecture-design.png)
 
 AI 给出了架构图之后，还进一步拆解了 6 个核心组件的职责分工——从 AI Agent Server 的流程编排，到 Arthas HTTP Client 的会话管理，到 Skill 引擎的诊断步骤链定义，再到 AI 分析引擎的报告生成，每个组件的边界和协作关系都交代得比较清楚：
 
-![AI 输出的核心角色分工表](https://oss.javaguide.cn/ai/coding/glm5.1-cc/core-component-roles.png)
+![AI 输出的核心角色分工表](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/core-component-roles.png)
 
 最后看数据流设计。AI 结合一个常见的 RT 超时场景，给出了从 Skill 匹配、诊断步骤执行到报告输出的链路。这里采用的 `init_session → async_exec → pull_results → interrupt_job → close_session` 会话流程与 [Arthas HTTP API](https://arthas.aliyun.com/doc/http-api.html) 的异步作业模型一致，可以管理持续输出的异步命令。`watch`、`trace` 等命令会增强目标类，不能因为“不修改业务数据”就当作普通只读查询。评审重点不应停留在“这个 API 是否由 AI 编造”，而应继续检查命令分级、会话清理、超时和安全控制：
 
-![AI 输出的数据流设计](https://oss.javaguide.cn/ai/coding/glm5.1-cc/data-flow-design.png)
+![AI 输出的数据流设计](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/data-flow-design.png)
 
 Arthas HTTP API 可以直接接收诊断命令，官方也提供了[认证配置](https://arthas.aliyun.com/doc/auth.html)。因此，这个 Agent 在进入生产环境前至少需要补齐以下控制：
 
@@ -120,7 +120,7 @@ Arthas HTTP API 可以直接接收诊断命令，官方也提供了[认证配置
 
 扩展方向也应受同一边界约束。比如“告警联动”可以自动创建诊断任务，但不应绕过审批自动执行任意命令；“自动修复补丁”只能生成候选 Diff，不能直接修改生产实例。
 
-![AI 给出的后续扩展建议](https://oss.javaguide.cn/ai/coding/glm5.1-cc/extension-suggestions.png)
+![AI 给出的后续扩展建议](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/extension-suggestions.png)
 
 ### 编码交付与工程结构
 
@@ -132,11 +132,11 @@ Arthas HTTP API 可以直接接收诊断命令，官方也提供了[认证配置
 
 AI 收到指令后，开始自主编码。按照之前的架构设计，逐模块推进——从父 POM 和 Maven 多模块骨架搭建，到通用工具类、数据模型、数据访问层、Arthas 客户端封装、Skill 引擎、AI 分析引擎、业务逻辑层、Web 控制器，直到启动模块和部署配置，11 个子步骤全部完成：
 
-![AI 自主编码过程](https://oss.javaguide.cn/ai/coding/glm5.1-cc/ai-coding-process.png)
+![AI 自主编码过程](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/ai-coding-process.png)
 
 片刻之后，AI 生成了 9 个模块、46 个文件的候选实现，覆盖通用工具类、7 个诊断 Skill、Arthas HTTP API 客户端和 Spring AI Alibaba 分析器。文件数量只能说明交付范围，不能说明安全性和正确性：
 
-![AI 完成编码后输出的交付清单](https://oss.javaguide.cn/ai/coding/glm5.1-cc/delivery-checklist.png)
+![AI 完成编码后输出的交付清单](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/delivery-checklist.png)
 
 先看整体模块结构，AI 按照 Java 多模块的标准规范完成了工程划分，从上到下严格遵循 common→model→dal→client→skill→ai→service→web→bootstrap 的依赖层级，命名规范统一。
 
@@ -240,7 +240,7 @@ private void executeDiagnosis(DiagnosisRecord record, DiagnosisRequest request) 
 
 只给了一个文档链接和一句话，AI 就自己去读官方文档、理解集成步骤、完成了页面开发。这也是使用 AI 辅助编程的一个实用技巧：当你只需要集成某个现成组件时，直接给出文档链接往往比详细描述需求更高效。
 
-![AI 完成 Agent Chat UI 页面集成](https://oss.javaguide.cn/ai/coding/glm5.1-cc/agent-chat-ui-integration.png)
+![AI 完成 Agent Chat UI 页面集成](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/agent-chat-ui-integration.png)
 
 到这里，本地演示所需的主要链路已经生成。它还不是可以直接部署到生产的诊断平台；除了功能测试，还要补齐前述安全控制、故障注入和负载保护。为了验证基本流程，笔者在本地起了一个 CPU 飙升的测试接口：
 
@@ -258,7 +258,7 @@ public class TestController {
 
 启动 Agent 服务，访问 `http://localhost:{应用端口}/chatui/index.html`，在聊天框输入：`order-service 程序CPU飙升,请协助排查`。在这个本地受控样例中，Agent 先通过 Dashboard 获取概览，再根据线程栈定位代码，并用 `jad` 输出反编译结果，最后生成诊断报告。报告是待复核结论，不能仅凭模型输出直接处置线上故障：
 
-![Agent 诊断效果演示](https://oss.javaguide.cn/ai/coding/glm5.1-cc/agent-diagnosis-demo.png)
+![Agent 诊断效果演示](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/agent-diagnosis-demo.png)
 
 ## 场景二：百万级数据量下的慢查询治理
 
@@ -325,7 +325,7 @@ curl -X POST http://localhost:8080/api/orders/search \
 
 `LIKE '%蓝牙%'`的全表扫描导致接口耗时近 18 秒，当前业务接口的实现性能完全无法满足线上要求：
 
-![搜索接口耗时 18 秒的调测结果](https://oss.javaguide.cn/ai/coding/glm5.1-cc/search-api-18s-result.png)
+![搜索接口耗时 18 秒的调测结果](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/search-api-18s-result.png)
 
 ### 分析与优化方案设计
 
@@ -337,11 +337,11 @@ curl -X POST http://localhost:8080/api/orders/search \
 
 AI 定位到目标业务代码，结合 SQL 和表结构，从索引设计维度给出了系统性的解决方案：
 
-![AI 给出的慢查询解决方案](https://oss.javaguide.cn/ai/coding/glm5.1-cc/slow-query-solution.png)
+![AI 给出的慢查询解决方案](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/slow-query-solution.png)
 
 同时给出了分阶段优化建议和预期效果：
 
-![AI 给出的分阶段优化建议](https://oss.javaguide.cn/ai/coding/glm5.1-cc/phased-optimization-suggestions.png)
+![AI 给出的分阶段优化建议](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/phased-optimization-suggestions.png)
 
 确认方向没问题后，笔者给出最终优化指令：
 
@@ -375,11 +375,11 @@ ALTER TABLE `orders` ADD INDEX `idx_status_category_amount` (`status`, `category
 
 下面是 AI 输出的索引优化方案。复合索引是否有效取决于最左前缀、过滤选择性、排序方式和优化器选择；全文索引也会增加写入与存储成本。执行 DDL 前应使用真实 SQL 和数据分布运行 `EXPLAIN ANALYZE`，并删除功能重叠或收益不足的索引。可参考 [MySQL 多列索引](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)与 [ngram 全文索引](https://dev.mysql.com/doc/refman/8.4/en/fulltext-search-ngram.html)文档：
 
-![AI 输出的索引优化 SQL 脚本](https://oss.javaguide.cn/ai/coding/glm5.1-cc/index-optimization-sql.png)
+![AI 输出的索引优化 SQL 脚本](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/index-optimization-sql.png)
 
 从代码 diff 可以看到，AI 在既有代码中将`LIKE`模糊查询替换为全文检索。这不是透明的性能替换：分词、停用词、短词、子串匹配和默认排序都可能变化。上线前要用真实搜索样本验收中文分词、短词、特殊字符和排序结果，并为需要保留的旧语义设计兼容路径：
 
-![AI 在既有代码中完成增量优化](https://oss.javaguide.cn/ai/coding/glm5.1-cc/incremental-code-optimization.png)
+![AI 在既有代码中完成增量优化](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/incremental-code-optimization.png)
 
 对于深分页的问题，AI 结合当前百万级数据量给出了具体的分页阈值——当 offset 超过 1000 时自动切换为延迟关联查询（Deferred Join），浅分页走普通查询，深分页走覆盖索引子查询先定位主键再回表：
 
@@ -399,17 +399,17 @@ if (isDeepPage) {
 
 `1000` 只是这次生成的初始阈值，不能因为数据量是百万级就认定它合理。行宽、过滤选择性、索引覆盖、排序方式和接口 SLO 都会影响拐点；应分别压测不同 offset，观察扫描行数和 p95/p99，再确定是否切换延迟关联。若产品允许，基于稳定排序键的游标分页通常更值得优先评估。
 
-![AI 针对深分页场景基于阈值自动切换查询策略的代码实现](https://oss.javaguide.cn/ai/coding/glm5.1-cc/deep-pagination-threshold-code.png)
+![AI 针对深分页场景基于阈值自动切换查询策略的代码实现](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/deep-pagination-threshold-code.png)
 
 全部优化完成后，AI 输出了最终的优化效果总结，涵盖各接口的优化前后对比：
 
-![AI 输出的最终优化效果总结](https://oss.javaguide.cn/ai/coding/glm5.1-cc/optimization-summary.png)
+![AI 输出的最终优化效果总结](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/optimization-summary.png)
 
 ### 优化效果验证
 
 完成改造后再次请求接口，这张截图记录到一次预热后的耗时低于 300ms；与原先的 18375ms 相比，这一次请求约快 60 倍。单个前后截图不能证明“稳定低于 300ms”：要形成可复现结论，还需说明硬件、MySQL 版本与配置、数据分布、缓存冷热、并发量和样本数，并报告 p50/p95/p99 与错误率。
 
-![优化后接口耗时降至 300ms 以内](https://oss.javaguide.cn/ai/coding/glm5.1-cc/optimized-api-300ms.png)
+![优化后接口耗时降至 300ms 以内](/assets/images/oss.javaguide.cn/ai/coding/glm5.1-cc/optimized-api-300ms.png)
 
 ## 实战总结
 

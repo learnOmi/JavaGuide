@@ -222,7 +222,7 @@ OpenAI、Anthropic 和 Gemini 都已经提供原生结构化输出能力，不�
 | 典型用途             | 简单 JSON 输出 | 定义数据契约和校验规则             | 分类、抽取、函数参数生成、Agent 中间结果 |
 | 仍需服务端校验       | 需要           | 需要                               | 仍然需要                                 |
 
-![生成阶段三层约束：JSON Mode 管语法，JSON Schema 管契约，Structured Outputs 把契约前移到模型生成阶段](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
+![生成阶段三层约束：JSON Mode 管语法，JSON Schema 管契约，Structured Outputs 把契约前移到模型生成阶段](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-three-layer-constraint.png)
 
 JSON Mode 约束语法，JSON Schema 描述契约，Structured Outputs 在生成阶段应用契约。服务端仍要校验拒答、截断、权限和业务状态。
 
@@ -291,7 +291,7 @@ Function Calling 这个名字很容易误导新人。很多人以为“模型调
 
 一个典型工具调用链路如下：
 
-![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
+![Function Calling 完整调用链路：模型只生成调用意图，真正执行工具的是业务侧](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-function-calling-pipeline.png)
 
 拆成工程步骤就是：
 
@@ -668,7 +668,7 @@ Schema 只能知道这是一个字符串。它不知道这个订单是不是当�
 | 高风险   | 退款、发券、改地址、发短信   | 权限校验、二次确认、审计       |
 | 极高风险 | 删除数据、执行 SQL、批量操作 | 默认禁止，走人工审批或专用后台 |
 
-![工具调用安全风险分层：按风险等级匹配不同的控制策略](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
+![工具调用安全风险分层：按风险等级匹配不同的控制策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
 
 ### 3. 敏感操作二次确认
 

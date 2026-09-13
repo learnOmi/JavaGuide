@@ -130,7 +130,7 @@ QUEUED
 
 Redis 官网相关介绍 [https://redis.io/topics/transactions](https://redis.io/topics/transactions) 如下：
 
-![Redis 事务](https://oss.javaguide.cn/github/javaguide/database/redis/redis-transactions.png)
+![Redis 事务](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-transactions.png)
 
 ### Redis 事务支持原子性吗？
 
@@ -145,7 +145,7 @@ Redis 事务在运行错误的情况下，除了执行过程中出现错误的�
 
 Redis 官网也解释了自己为啥不支持回滚。简单来说就是 Redis 开发者们觉得没必要支持回滚，这样更简单便捷并且性能更好。Redis 开发者觉得即使命令执行错误也应该在开发过程中就被发现而不是生产过程中。
 
-![Redis 为什么不支持回滚](https://oss.javaguide.cn/github/javaguide/database/redis/redis-rollback.png)
+![Redis 为什么不支持回滚](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-rollback.png)
 
 **相关 issue**：
 
@@ -248,7 +248,7 @@ Redis 中有一些原生支持批量操作的命令，比如：
 
 > 事务可以看作是一个原子操作，但其实并不满足原子性。当我们提到 Redis 中的原子操作时，主要指的是这个操作（比如事务、Lua 脚本）不会被其他操作（比如其他事务、Lua 脚本）打扰，并不能完全保证这个操作中的所有写命令要么都执行要么都不执行。这主要也是因为 Redis 是不支持回滚操作。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/redis-pipeline-vs-transaction.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-pipeline-vs-transaction.png)
 
 另外，pipeline 不适用于执行顺序有依赖关系的一批命令。就比如说，你需要将前一个命令的结果给后续的命令使用，pipeline 就没办法满足你的需求了。对于这种需求，我们可以使用 **Lua 脚本**。
 
@@ -285,7 +285,7 @@ Lua 脚本同样支持批量操作多条命令。一段 Lua 脚本可以视作�
 - String 类型的 value 超过 1MB
 - 复合类型（List、Hash、Set、Sorted Set 等）的 value 包含的元素超过 5000 个（不过，对于复合类型的 value 来说，不一定包含的元素越多，占用的内存就越多）。
 
-![bigkey 判定标准](https://oss.javaguide.cn/github/javaguide/database/redis/bigkey-criterion.png)
+![bigkey 判定标准](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/bigkey-criterion.png)
 
 #### bigkey 是怎么产生的？有什么危害？
 
@@ -370,7 +370,7 @@ Biggest string found '"ballcat:oauth:refresh_auth:f6cdb384-9a9d-4f2f-af01-dc3f28
 
 这里以阿里云 Redis 为例说明，它支持 bigkey 实时分析、发现，文档地址：<https://www.alibabacloud.com/help/zh/apsaradb-for-redis/latest/use-the-real-time-key-statistics-feature>。
 
-![阿里云Key分析](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
+![阿里云Key分析](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
 
 #### 如何处理 bigkey？
 
@@ -457,7 +457,7 @@ OK
 
 京东零售的 [hotkey](https://gitee.com/jd-platform-opensource/hotkey) 这个项目不光支持 hotkey 的发现，还支持 hotkey 的处理。
 
-![京东零售开源的 hotkey](https://oss.javaguide.cn/github/javaguide/database/redis/jd-hotkey.png)
+![京东零售开源的 hotkey](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/jd-hotkey.png)
 
 **4、根据业务情况提前预估。**
 
@@ -473,7 +473,7 @@ OK
 
 这里以阿里云 Redis 为例说明，它支持 hotkey 实时分析、发现，文档地址：<https://www.alibabacloud.com/help/zh/apsaradb-for-redis/latest/use-the-real-time-key-statistics-feature>。
 
-![阿里云Key分析](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
+![阿里云Key分析](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
 
 #### 如何解决 hotkey？
 
@@ -487,7 +487,7 @@ hotkey 的常见处理以及优化办法如下（这些方法可以配合起来�
 
 这里以阿里云 Redis 为例说明，它支持通过代理查询缓存功能（Proxy Query Cache）优化热点 Key 问题。
 
-![通过阿里云的Proxy Query Cache优化热点Key问题](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-hotkey-proxy-query-cache.png)
+![通过阿里云的Proxy Query Cache优化热点Key问题](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/aliyun-hotkey-proxy-query-cache.png)
 
 ### 慢查询命令
 
@@ -606,7 +606,7 @@ OK
 
 缓存穿透说简单点就是大量请求的 key 是不合理的，**根本不存在于缓存中，也不存在于数据库中**。这就导致这些请求直接到了数据库上，根本没有经过缓存这一层，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了。
 
-![缓存穿透](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration.png)
+![缓存穿透](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration.png)
 
 举个例子：某个黑客故意制造一些非法的 key 发起大量请求，导致大量请求落到数据库，结果数据库上也没有查到对应的数据。也就是说这些请求最终都落到了数据库上，对数据库造成了巨大的压力。
 
@@ -647,17 +647,17 @@ public Object getObjectInclNullById(Integer id) {
 
 布隆过滤器是一个非常神奇的数据结构，通过它我们可以非常方便地判断一个给定数据是否存在于海量数据中。我们可以把它看作由二进制向量（或者说位数组）和一系列随机映射函数（哈希函数）两部分组成的数据结构。相比于我们平时常用的 List、Map、Set 等数据结构，它占用空间更少并且效率更高，但是缺点是其返回的结果是概率性的，而不是非常准确的。理论情况下添加到集合中的元素越多，误报的可能性就越大。并且，存放在布隆过滤器的数据不容易删除。
 
-![Bloom Filter 的简单原理示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
+![Bloom Filter 的简单原理示意图](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
 
 Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数组中的每个元素都只占用 1 bit ，并且每个元素只能是 0 或者 1（代表 false 或者 true），这也是 Bloom Filter 节省内存的核心所在。这样来算的话，申请一个 100w 个元素的位数组只占用 1000000Bit / 8 = 125000 Byte = 125000/1024 KB ≈ 122KB 的空间。
 
-![位数组](https://oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-bit-table.png)
+![位数组](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-bit-table.png)
 
 具体是这样做的：把所有可能存在的请求的值都存放在布隆过滤器中，当用户请求过来，先判断用户发来的请求的值是否存在于布隆过滤器中。不存在的话，直接返回请求参数错误信息给客户端，存在的话才会走下面的流程。
 
 加入布隆过滤器之后的缓存处理流程图如下：
 
-![加入布隆过滤器之后的缓存处理流程图](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration-bloom-filter.png)
+![加入布隆过滤器之后的缓存处理流程图](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration-bloom-filter.png)
 
 更多关于布隆过滤器的详细介绍可以看看我的这篇原创：[不了解布隆过滤器？一文给你整的明明白白！](https://javaguide.cn/cs-basics/data-structure/bloom-filter.html)，强烈推荐。
 
@@ -675,7 +675,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 缓存击穿中，请求的 key 对应的是 **热点数据**，该数据 **存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）**。这就可能会导致瞬时大量的请求直接打到了数据库上，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了。
 
-![缓存击穿](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-breakdown.png)
+![缓存击穿](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-cache-breakdown.png)
 
 举个例子：秒杀进行过程中，缓存中的某个秒杀商品的数据突然过期，这就导致瞬时大量对该商品的请求直接落到数据库上，对数据库造成了巨大的压力。
 
@@ -701,7 +701,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 另外，缓存服务宕机也会导致缓存雪崩现象，导致所有的请求都落到了数据库上。
 
-![缓存雪崩](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-avalanche.png)
+![缓存雪崩](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-cache-avalanche.png)
 
 举个例子：缓存中的大量数据在同一时间过期，这个时候突然有大量的请求需要访问这些过期的数据。这就导致大量的请求直接落到数据库上，对数据库造成了巨大的压力。
 
@@ -745,9 +745,9 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 图解如下：
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/cache-aside-write.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/cache-aside-write.png)
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/cache-aside-read.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/cache-aside-read.png)
 
 如果更新数据库成功，而删除缓存这一步失败的情况的话，简单说有两个解决方案：
 

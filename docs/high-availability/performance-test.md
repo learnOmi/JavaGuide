@@ -98,7 +98,7 @@ head:
 
 做压测时，指标不能孤立看。RT、吞吐量和并发数放在一起，才能判断系统是在正常处理请求，还是已经开始排队。
 
-![QPS、并发数与 RT 的关系](https://oss.javaguide.cn/github/javaguide/high-availability/performance-test-metrics-relation.png)
+![QPS、并发数与 RT 的关系](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/performance-test-metrics-relation.png)
 
 ### 响应时间
 
@@ -148,7 +148,7 @@ head:
 
 这个公式只能用在线性响应区间。并发继续上去后，CPU 调度、锁争用（Lock Contention）和排队时间会一起放大，RT 往往非线性上升，吞吐量到达拐点后进入平台期甚至下降。图里的“曲棍球棒曲线”（Hockey Stick Curve）就是在说明这个现象：拐点之后 QPS 不升反降，系统已经进入非线性区。
 
-![QPS 与并发数的曲棍球棒曲线](https://oss.javaguide.cn/github/javaguide/high-availability/performance-test-hockey-stick-curve.png)
+![QPS 与并发数的曲棍球棒曲线](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/performance-test-hockey-stick-curve.png)
 
 所以，生产容量不能只靠公式推算，还要通过全链路压测验证真实极限。
 
@@ -185,7 +185,7 @@ head:
 | **稳定性测试（Soak/Endurance）** | 验证长时间运行稳定性         | 以接近真实负载持续运行较长时间           |
 | **峰值测试（Spike Test）**       | 验证突增流量承受能力         | 短时间快速升压，再快速回落，观察恢复情况 |
 
-![性能测试分类：压力水位怎么区分](https://oss.javaguide.cn/github/javaguide/high-availability/performance-test-type-boundaries.webp)
+![性能测试分类：压力水位怎么区分](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/performance-test-type-boundaries.webp)
 
 这几类测试主要差在加压加到哪里：负载测试看目标流量能不能扛住；容量测试继续往上压，找拐点；压力测试越过预期负载，看系统怎么失败、怎么恢复。
 
@@ -217,7 +217,7 @@ head:
 
 单接口压测只能告诉你某个接口在当前脚本下能跑到多少吞吐。复杂系统出问题时，瓶颈经常不在入口接口本身：网关鉴权没问题，库存服务开始排队；订单接口还能返回，MQ 已经堆积；应用 CPU 不高，数据库连接池先被打满。一次下单可能经过网关、鉴权、商品、库存、订单、支付、消息队列、缓存和数据库，任何一个环节先到瓶颈，最终都会反映到用户请求上。
 
-![全链路压测：先把护栏搭好](https://oss.javaguide.cn/github/javaguide/high-availability/full-link-performance-test-guardrails.webp)
+![全链路压测：先把护栏搭好](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/full-link-performance-test-guardrails.webp)
 
 做全链路压测时，流量从系统入口进来，沿着真实业务链路往后走，每个服务、组件和基础设施都会被带上压力。这种方式比单接口压测更接近线上流量，也更容易误伤真实数据和服务，所以先把几件事准备好：
 

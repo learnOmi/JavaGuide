@@ -59,7 +59,7 @@ Claude Code Multi-Agent 盯着的，正是这类**上下文和任务拆分问题
 
 这个思路和上下文工程里常说的“隔离支线过程”是一回事：主会话保留判断、计划和最终决策，把搜索、验证、审查这些容易膨胀的过程交给独立 worker。
 
-![Sub-agent 拆分任务，隔离上下文](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation%20.png)
+![Sub-agent 拆分任务，隔离上下文](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/sub-agent-task-splitting-context-isolation .png)
 
 先放一张我自己整理的表。看 Claude Code 里的多 Agent，可以先按几类问题来区分：
 
@@ -78,7 +78,7 @@ Claude Code Multi-Agent 盯着的，正是这类**上下文和任务拆分问题
 - `/subtask` 在当前会话内复制上下文做支线任务；`/fork` 创建独立后台 Session。
 - Agent Teams 则让几个独立实例一起做项目，可以发消息、领任务、最后再汇总。
 
-![Subagents 和 Agent Teams 对比](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-subagents-vs-agent-teams.png)
+![Subagents 和 Agent Teams 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-subagents-vs-agent-teams.png)
 
 这里还有个细节：Subagent 不一定要你手动点名。官方文档里说，Claude 会根据 Subagent 的 `description` 判断什么时候委派；内置的 Explore、Plan、general-purpose 等 Subagent，也会在合适任务里自动用上。
 
@@ -104,11 +104,11 @@ Subagent 是 Claude Code 里最常用、也最不容易用过头的一种委派�
 
 这块我觉得挺香：主会话不用跟着一起外耗。
 
-![Claude Code Explore Subagent：支线搜索在后台执行](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-explore-subagent-demo.png)
+![Claude Code Explore Subagent：支线搜索在后台执行](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-explore-subagent-demo.png)
 
 上图里，主会话只是把登录、鉴权、权限校验相关搜索交给 Explore subagent。搜索过程在后台跑，主线继续保持干净，等子代理结束后再拿整理后的文件列表、调用链和后续关注点。
 
-![Claude Code Sub-Agent：让主对话保持干净](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
+![Claude Code Sub-Agent：让主对话保持干净](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
 
 什么时候需要自定义 Subagent？
 
@@ -194,7 +194,7 @@ Subagent 文件就是 Markdown + YAML frontmatter，里面可以配置名称、�
 
 这时 `/subtask` 比普通 Subagent 更合适。每个 child 都能拿到父会话刚刚建立好的上下文，不用重新读一遍项目。
 
-![Claude Code Fork：基于当前上下文启动后台分支](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-fork-subagent-demo.png)
+![Claude Code Fork：基于当前上下文启动后台分支](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-fork-subagent-demo.png)
 
 上图记录的是旧版 `/fork` 行为。按 v2.1.212 之后的命名，启用 Agent View 时，当前会话内做这种上下文分支应使用 `/subtask`；现在的 `/fork` 会复制整个对话到独立后台 Session，可单独查看、恢复和继续。关闭 Agent View 后，`/subtask` 不可用，`/fork` 仍保持旧的 forked subagent 行为。
 
@@ -218,7 +218,7 @@ Subagent 文件就是 Markdown + YAML frontmatter，里面可以配置名称、�
 
 如果后台任务开多了，管理成本会立刻上来。当前会话里的 `/subtask` 和其他后台 Subagent 用 `/tasks` 查看、接管或停止；`/fork` 创建的独立后台 Session 则用 `claude agents` 打开 Agent View 统一管理。两者都在后台运行，但不是同一层任务。
 
-![Claude Code Agent View](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
+![Claude Code Agent View](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
 
 但后台不等于免费。后台 Agent 仍然会消耗 token、占用上下文和任务状态。开太多以后，主会话虽然没被卡住，人反而要开始管理一堆任务。
 
@@ -285,7 +285,7 @@ Agent Teams 不是让几个 teammate 在一个大聊天框里刷消息。它主�
 
 prompt 怎么写也会跟着变。用 Subagent 时，任务最好一次讲清楚；用 Agent Teams 时，lead 可以先把大任务拆到 shared task list 里，teammate 再围绕任务列表和消息往前推。
 
-![Claude Code Agent Teams：多个 teammate 围绕完整分析链路协作审查](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-agent-teams-agentinvest-review.png)
+![Claude Code Agent Teams：多个 teammate 围绕完整分析链路协作审查](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-agent-teams-agentinvest-review.png)
 
 上图是一个更接近真实项目的例子：team lead 先把 AgentInvest 的完整分析链路拆成后端 SSE、Agent 编排、前端渲染、测试与韧性风险四条线，再 spawn 4 个 teammate 分别认领。这里的重点不是多开几个搜索任务，而是 teammate 围绕同一份 shared task list 分工推进，最后由 lead 汇总跨模块问题。
 
@@ -339,7 +339,7 @@ Subagent 也可以配置自己的工具范围和 hooks。
 
 这类设计和工具调用安全分层是同一个方向：低风险操作可以放宽，高风险操作要确认，涉及文件删除、提交、部署、数据库写入时，不能只靠一句 prompt 约束。
 
-![工具调用安全风险分层：按风险等级匹配不同的控制策略](https://oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
+![工具调用安全风险分层：按风险等级匹配不同的控制策略](/assets/images/oss.javaguide.cn/github/javaguide/ai/llm/structured-output-function-calling-tool-call-security.png)
 
 **成本主要花在多个独立上下文上**
 
@@ -398,7 +398,7 @@ Agent Teams 我会更谨慎一点。它适合那种单靠“查完回来汇报�
 
 如果多个 Agent 都要改代码，最好先把工作区隔开。比较稳的做法是一个 Agent 一个 Git Worktree，一个分支只承载一个清晰任务，最后再由人或 lead 做合并和验收。
 
-![Claude Code Git Worktree](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
+![Claude Code Git Worktree](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
 
 **先拆清任务，再增加 Agent**
 
@@ -406,7 +406,7 @@ Agent Teams 我会更谨慎一点。它适合那种单靠“查完回来汇报�
 
 更具体一点，可以先跑成串行流水线：Plan 只读方案，Code 做单个任务，Test 补验证，Review 只看 diff。等这套流程稳定后，再把其中能独立执行的环节拆给不同 Agent。
 
-![Multi-Agent 三代理协作流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
+![Multi-Agent 三代理协作流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-multi-agent-pipeline.png)
 
 ## 总结
 

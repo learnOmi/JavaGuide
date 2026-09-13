@@ -35,7 +35,7 @@ IP 欺骗、SYN Flood、DDoS、ARP 欺骗、DNS 劫持这些攻击，表面上�
 
 **IP 头部格式**：
 
-![IP 数据包头部字段格式](https://oss.javaguide.cn/p3-juejin/843fd07074874ee0b695eca659411b42~tplv-k3u1fbpfcp-zoom-1.png)
+![IP 数据包头部字段格式](/assets/images/oss.javaguide.cn/p3-juejin/843fd07074874ee0b695eca659411b42~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### IP 欺骗技术是什么？
 
@@ -47,7 +47,7 @@ IP 欺骗技术就是伪造某台主机的 IP 地址的技术。通过 IP 地址
 
 如果伪造的 RST 通过校验，服务器会关闭对应连接，合法用户后续发送的数据也无法再沿用这条连接，只能重新建立连接。正因为攻击者还需要获得或猜中连接参数，这类攻击并不是伪造大量源 IP 后发送任意 RST 就一定成功。
 
-![攻击者伪造源 IP 发送 RST 数据段中断合法连接](https://oss.javaguide.cn/p3-juejin/7547a145adf9404aa3a05f01f5ca2e32~tplv-k3u1fbpfcp-zoom-1.png)
+![攻击者伪造源 IP 发送 RST 数据段中断合法连接](/assets/images/oss.javaguide.cn/p3-juejin/7547a145adf9404aa3a05f01f5ca2e32~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### 如何缓解 IP 欺骗？
 
@@ -62,13 +62,13 @@ SYN Flood 是互联网上最原始、最经典的 DDoS（Distributed Denial of S
 SYN Flood 利用了 TCP 协议的三次握手机制，攻击者通常利用工具或者控制僵尸主机向服务器发送海量的变源 IP 地址或变源端口的 TCP SYN 报文，服务器响应了这些报文后就会生成大量的半连接，当系统资源被耗尽后，服务器将无法提供正常的服务。
 增加服务器性能、提供更多的连接能力对于 SYN Flood 的海量报文来说杯水车薪。防御 SYN Flood 的关键在于判断哪些连接请求来自于真实源，屏蔽非真实源的请求以保障正常的业务请求能得到服务。
 
-![SYN Flood 攻击通过大量半连接耗尽服务器资源](https://oss.javaguide.cn/p3-juejin/2b3d2d4dc8f24890b5957df1c7d6feb8~tplv-k3u1fbpfcp-zoom-1.png)
+![SYN Flood 攻击通过大量半连接耗尽服务器资源](/assets/images/oss.javaguide.cn/p3-juejin/2b3d2d4dc8f24890b5957df1c7d6feb8~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### TCP SYN Flood 攻击原理是什么？
 
 **TCP SYN Flood** 攻击利用的是 **TCP** 的三次握手（**SYN -> SYN/ACK -> ACK**），假设连接发起方是 A，连接接受方是 B，即 B 在某个端口（**Port**）上监听 A 发出的连接请求，过程如下图所示，左边是 A，右边是 B。
 
-![TCP 三次握手建立连接的正常流程](https://oss.javaguide.cn/p3-juejin/a39355a1ea404323a11ca6644e009183~tplv-k3u1fbpfcp-zoom-1.png)
+![TCP 三次握手建立连接的正常流程](/assets/images/oss.javaguide.cn/p3-juejin/a39355a1ea404323a11ca6644e009183~tplv-k3u1fbpfcp-zoom-1.png)
 
 A 首先发送 **SYN**（Synchronization）消息给 B，要求 B 做好接收数据的准备；B 收到后反馈 **SYN-ACK**（Synchronization-Acknowledgement）消息给 A，这个消息的目的有两个：
 
@@ -85,7 +85,7 @@ A 首先发送 **SYN**（Synchronization）消息给 B，要求 B 做好接收�
 
 假设 B 通过某 **TCP** 端口提供服务，B 在收到 A 的 **SYN** 消息时，积极的反馈了 **SYN-ACK** 消息，使连接进入**半开状态**，因为 B 不确定自己发给 A 的 **SYN-ACK** 消息或 A 反馈的 ACK 消息是否会丢在半路，所以会给每个待完成的半开连接都设一个**Timer**，如果超过时间还没有收到 A 的 **ACK** 消息，则重新发送一次 **SYN-ACK** 消息给 A，直到重试超过一定次数时才会放弃。
 
-![SYN Flood 中大量半开连接占用服务器资源](https://oss.javaguide.cn/p3-juejin/7ff1daddcec44d61994f254e664987b4~tplv-k3u1fbpfcp-zoom-1.png)
+![SYN Flood 中大量半开连接占用服务器资源](/assets/images/oss.javaguide.cn/p3-juejin/7ff1daddcec44d61994f254e664987b4~tplv-k3u1fbpfcp-zoom-1.png)
 
 B 为帮助 A 能顺利连接，需要**分配内核资源**维护半开连接，那么当 B 面临海量的连接 A 时，如上图所示，**SYN Flood** 攻击就形成了。攻击方 A 可以控制肉鸡向 B 发送大量 SYN 消息但不响应 ACK 消息，或者干脆伪造 SYN 消息中的 **Source IP**，使 B 反馈的 **SYN-ACK** 消息石沉大海，导致 B 被大量注定不能完成的半开连接占据，直到资源耗尽，停止响应正常的连接请求。
 
@@ -132,7 +132,7 @@ B 为帮助 A 能顺利连接，需要**分配内核资源**维护半开连接�
 
 由于目标服务器利用资源检查并响应每个接收到的 **UDP** 数据包的结果，当接收到大量 **UDP** 数据包时，目标的资源可能会迅速耗尽，导致对正常流量的拒绝服务。
 
-![UDP Flood 通过大量 UDP 数据包消耗服务器资源](https://oss.javaguide.cn/p3-juejin/23dbbc8243a84ed181e088e38bffb37a~tplv-k3u1fbpfcp-zoom-1.png)
+![UDP Flood 通过大量 UDP 数据包消耗服务器资源](/assets/images/oss.javaguide.cn/p3-juejin/23dbbc8243a84ed181e088e38bffb37a~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### 如何缓解 UDP Flood？
 
@@ -144,7 +144,7 @@ B 为帮助 A 能顺利连接，需要**分配内核资源**维护半开连接�
 
 HTTP Flood 是一种大规模的 DDoS（Distributed Denial of Service，分布式拒绝服务）攻击，旨在利用 HTTP 请求使目标服务器不堪重负。目标因请求而达到饱和，且无法响应正常流量后，将出现拒绝服务，拒绝来自实际用户的其他请求。
 
-![HTTP Flood 通过大量应用层请求压垮目标服务器](https://oss.javaguide.cn/p3-juejin/aa64869551d94c8d89fa80eaf4395bfa~tplv-k3u1fbpfcp-zoom-1.png)
+![HTTP Flood 通过大量应用层请求压垮目标服务器](/assets/images/oss.javaguide.cn/p3-juejin/aa64869551d94c8d89fa80eaf4395bfa~tplv-k3u1fbpfcp-zoom-1.png)
 
 ### HTTP Flood 的攻击原理是什么？
 
@@ -171,7 +171,7 @@ HTTP 洪水攻击有两种：
 
 ### DNS Flood 的攻击原理是什么？
 
-![DNS Flood 使用大量 DNS 查询淹没 DNS 服务器](https://oss.javaguide.cn/p3-juejin/97ea11a212924900b10d159226783887~tplv-k3u1fbpfcp-zoom-1.png)
+![DNS Flood 使用大量 DNS 查询淹没 DNS 服务器](/assets/images/oss.javaguide.cn/p3-juejin/97ea11a212924900b10d159226783887~tplv-k3u1fbpfcp-zoom-1.png)
 
 域名系统的功能是将易于记忆的名称（例如 example.com）转换成难以记住的网站服务器地址（例如 192.168.0.1），因此成功攻击 DNS 基础设施将导致大多数人无法使用互联网。DNS Flood 攻击是一种相对较新的基于 DNS 的攻击，这种攻击是在高带宽[物联网（IoT）](https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot/)[僵尸网络](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/)（如 [Mirai](https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/)）兴起后激增的。DNS Flood 攻击使用 IP 摄像头、DVR 盒和其他 IoT 设备的高带宽连接直接淹没主要提供商的 DNS 服务器。来自 IoT 设备的大量请求淹没 DNS 提供商的服务，阻止合法用户访问提供商的 DNS 服务器。
 
@@ -224,13 +224,13 @@ nc 127.0.0.1 8000
 
 该命令会尝试与上面的服务建立连接，在其中一个窗口输入一些字符，就会通过 TCP 连接发送给另一个窗口并打印出来。
 
-![使用 nc 建立本地 TCP 连接并传输数据](https://oss.javaguide.cn/p3-juejin/df0508cbf26446708cf98f8ad514dbea~tplv-k3u1fbpfcp-zoom-1.gif)
+![使用 nc 建立本地 TCP 连接并传输数据](/assets/images/oss.javaguide.cn/p3-juejin/df0508cbf26446708cf98f8ad514dbea~tplv-k3u1fbpfcp-zoom-1.gif)
 
 > 嗅探流量
 
 编写一个攻击程序，使用 Python 网络库 `scapy` 来读取两个终端窗口之间交换的数据，并将其打印到终端上。代码比较长，下面为一部份，完整代码后台回复 TCP 攻击，代码的核心是调用 `scapy` 的嗅探方法：
 
-![使用 Scapy 嗅探本地 TCP 连接数据包的代码](https://oss.javaguide.cn/p3-juejin/27feb834aa9d4b629fd938611ac9972e~tplv-k3u1fbpfcp-zoom-1.png)
+![使用 Scapy 嗅探本地 TCP 连接数据包的代码](/assets/images/oss.javaguide.cn/p3-juejin/27feb834aa9d4b629fd938611ac9972e~tplv-k3u1fbpfcp-zoom-1.png)
 
 这段代码告诉 `scapy` 在 `lo0` 网络接口上嗅探数据包，并记录所有 TCP 连接的详细信息。
 
@@ -266,7 +266,7 @@ nc 127.0.0.1 8000
 
 中间人攻击英文名叫 Man-in-the-Middle Attack，简称「MITM 攻击」。指攻击者与通讯的两端分别创建独立的联系，并交换其所收到的数据，使通讯的两端认为他们正在通过一个私密的连接与对方直接对话，但事实上整个会话都被攻击者完全控制。我们画一张图：
 
-![中间人攻击拦截并篡改通信双方消息](https://oss.javaguide.cn/p3-juejin/d69b74e63981472b852797f2fa08976f~tplv-k3u1fbpfcp-zoom-1.png)
+![中间人攻击拦截并篡改通信双方消息](/assets/images/oss.javaguide.cn/p3-juejin/d69b74e63981472b852797f2fa08976f~tplv-k3u1fbpfcp-zoom-1.png)
 
 从这张图可以看到，中间人其实就是攻击者。通过这种原理，有很多实现的用途，比如说，你在手机上浏览不健康网站的时候，手机就会提示你，此网站可能含有病毒，是否继续访问还是做其他的操作等等。
 
@@ -306,7 +306,7 @@ nc 127.0.0.1 8000
 
 同样举个例子。Sum 和 Mike 两个人签合同。Sum 使用签名算法和自己的私钥对合同生成数字签名，再把合同、签名和用于验证的公钥交给 Mike。
 
-![数字签名生成与公钥验签示意图](https://oss.javaguide.cn/p3-juejin/e4b7d6fca78b45c8840c12411b717f2f~tplv-k3u1fbpfcp-zoom-1.png)
+![数字签名生成与公钥验签示意图](/assets/images/oss.javaguide.cn/p3-juejin/e4b7d6fca78b45c8840c12411b717f2f~tplv-k3u1fbpfcp-zoom-1.png)
 
 Mike 收到后，使用 Sum 的公钥验证签名。验证成功说明签名与该公钥以及当前合同内容相匹配，可以检测合同是否被篡改，并确认签名由持有 Sum 私钥的一方生成。
 
@@ -322,7 +322,7 @@ Mike 如果修改合同内容，原签名将无法通过验证；没有 Sum 的�
 
 对称加密，顾名思义，加密方与解密方使用同一钥匙（秘钥）。具体一些就是，发送方通过使用相应的加密算法和秘钥，对将要发送的信息进行加密；对于接收方而言，使用解密算法和相同的秘钥解锁信息，从而有能力阅读信息。
 
-![对称加密中通信双方使用同一密钥加解密](https://oss.javaguide.cn/p3-juejin/ef81cb5e2f0a4d3d9ac5a44ecf97e3cc~tplv-k3u1fbpfcp-zoom-1.png)
+![对称加密中通信双方使用同一密钥加解密](/assets/images/oss.javaguide.cn/p3-juejin/ef81cb5e2f0a4d3d9ac5a44ecf97e3cc~tplv-k3u1fbpfcp-zoom-1.png)
 
 #### 常见的对称加密算法有哪些？
 
@@ -330,7 +330,7 @@ Mike 如果修改合同内容，原签名将无法通过验证；没有 Sum 的�
 
 DES 使用的密钥表面上是 64 位的，然而只有其中的 56 位被实际用于算法，其余 8 位可以被用于奇偶校验，并在算法中被丢弃。因此，**DES** 的有效密钥长度为 56 位，通常称 **DES** 的密钥长度为 56 位。假设秘钥为 56 位，采用暴力破 Jie 的方式，其秘钥个数为 2 的 56 次方，那么每纳秒执行一次解密所需要的时间差不多 1 年的样子。当然，没人这么干。**DES** 现在已经不是一种安全的加密方法，主要因为它使用的 56 位密钥过短。
 
-![DES 对称加密算法示意图](https://oss.javaguide.cn/p3-juejin/9eb3a2bf6cf14132a890bc3447480eeb~tplv-k3u1fbpfcp-zoom-1.jpeg)
+![DES 对称加密算法示意图](/assets/images/oss.javaguide.cn/p3-juejin/9eb3a2bf6cf14132a890bc3447480eeb~tplv-k3u1fbpfcp-zoom-1.jpeg)
 
 **IDEA**
 
@@ -346,13 +346,13 @@ DES 使用的密钥表面上是 64 位的，然而只有其中的 56 位被实�
 
 **总结**：
 
-![常见对称加密算法对比总结](https://oss.javaguide.cn/p3-juejin/578961e3175540e081e1432c409b075a~tplv-k3u1fbpfcp-zoom-1.png)
+![常见对称加密算法对比总结](/assets/images/oss.javaguide.cn/p3-juejin/578961e3175540e081e1432c409b075a~tplv-k3u1fbpfcp-zoom-1.png)
 
 #### 常见的非对称加密算法有哪些？
 
 在对称加密中，发送方与接收方使用相同的秘钥。那么在非对称加密中则是发送方与接收方使用的不同的秘钥。其主要解决的问题是防止在秘钥协商的过程中发生泄漏。比如在对称加密中，小蓝将需要发送的消息加密，然后告诉你密码是 123balala,ok,对于其他人而言，很容易就能劫持到密码是 123balala。那么在非对称的情况下，小蓝告诉所有人密码是 123balala,对于中间人而言，拿到也没用，因为没有私钥。所以，非对称密钥其实主要解决了密钥分发的难题。如下图
 
-![非对称加密使用公钥和私钥完成加解密](https://oss.javaguide.cn/p3-juejin/153cf04a0ecc43c38003f3a1ab198cc0~tplv-k3u1fbpfcp-zoom-1.png)
+![非对称加密使用公钥和私钥完成加解密](/assets/images/oss.javaguide.cn/p3-juejin/153cf04a0ecc43c38003f3a1ab198cc0~tplv-k3u1fbpfcp-zoom-1.png)
 
 其实我们经常都在使用非对称加密，比如使用多台服务器搭建大数据平台 Hadoop，为了方便多台机器设置免密登录，是不是就会涉及到秘钥分发。再比如搭建 Docker 集群也会使用相关非对称加密算法。
 
@@ -364,7 +364,7 @@ DES 使用的密钥表面上是 64 位的，然而只有其中的 56 位被实�
 
 总结：
 
-![常见非对称加密算法对比总结](https://oss.javaguide.cn/p3-juejin/28b96fb797904d4b818ee237cdc7614c~tplv-k3u1fbpfcp-zoom-1.png)
+![常见非对称加密算法对比总结](/assets/images/oss.javaguide.cn/p3-juejin/28b96fb797904d4b818ee237cdc7614c~tplv-k3u1fbpfcp-zoom-1.png)
 
 #### 常见的散列算法有哪些？
 
@@ -384,7 +384,7 @@ MD5 可以生成 128 位消息摘要，但已经不具备可靠的抗碰撞能�
 
 **总结**：
 
-![常见散列算法对比总结](https://oss.javaguide.cn/p3-juejin/79c3c2f72d2f44c7abf2d73a49024495~tplv-k3u1fbpfcp-zoom-1.png)
+![常见散列算法对比总结](/assets/images/oss.javaguide.cn/p3-juejin/79c3c2f72d2f44c7abf2d73a49024495~tplv-k3u1fbpfcp-zoom-1.png)
 
 对称加密、非对称密码和散列算法解决的问题不同：对称加密用于保护大量数据，非对称密码可用于密钥协商、加密或数字签名，散列算法用于生成摘要。具体方案还要根据保密性、完整性、身份认证和密码存储等目标选择，不能只按“是否可逆”判断。
 
@@ -396,7 +396,7 @@ MD5 可以生成 128 位消息摘要，但已经不具备可靠的抗碰撞能�
 
 证书之所以会有信用，是因为证书的签发方拥有信用。所以如果 Sum 想让 Mike 承认自己的公钥，Sum 不会直接将公钥给 Mike，而是提供由第三方机构签发的含有公钥的证书。如果 Mike 也信任这个机构，法律都认可，那信任关系成立。
 
-![第三方机构签发证书并完成验签的过程](https://oss.javaguide.cn/p3-juejin/b1a3dbf87e3e41ff894f39512a10f66d~tplv-k3u1fbpfcp-zoom-1.png)
+![第三方机构签发证书并完成验签的过程](/assets/images/oss.javaguide.cn/p3-juejin/b1a3dbf87e3e41ff894f39512a10f66d~tplv-k3u1fbpfcp-zoom-1.png)
 
 如上图所示，Sum 将证书申请提交给证书机构。机构核验申请信息后，使用自己的私钥对证书待签名部分生成数字签名。Mike 拿到证书后，使用签发机构的公钥验证签名；验签通过，说明证书内容未被篡改，并且签名由持有该机构私钥的一方生成。
 
@@ -404,7 +404,7 @@ MD5 可以生成 128 位消息摘要，但已经不具备可靠的抗碰撞能�
 
 实际 PKI 通常采用根 CA、中间 CA 和终端证书组成的分层结构，便于隔离根私钥、委派签发权限和限制证书用途。链条更长本身并不会自动消除信任风险。
 
-![根证书到终端证书的信任链](https://oss.javaguide.cn/p3-juejin/1481f0409da94ba6bb0fee69bf0996f8~tplv-k3u1fbpfcp-zoom-1.png)
+![根证书到终端证书的信任链](/assets/images/oss.javaguide.cn/p3-juejin/1481f0409da94ba6bb0fee69bf0996f8~tplv-k3u1fbpfcp-zoom-1.png)
 
 上图中，由信誉最好的根证书机构提供根证书，然后根证书机构去签发二级机构的证书；二级机构去签发三级机构的证书；最后有由三级机构去签发 Sum 证书。
 
@@ -420,7 +420,7 @@ MD5 可以生成 128 位消息摘要，但已经不具备可靠的抗碰撞能�
 
 既然知道了中间人攻击的原理也知道了他的危险，现在我们看看如何避免。相信我们都遇到过下面这种状况：
 
-![浏览器提示证书不受信任的安全警告](https://oss.javaguide.cn/p3-juejin/0dde4b76be6240699312d822a3fe1ed3~tplv-k3u1fbpfcp-zoom-1.png)
+![浏览器提示证书不受信任的安全警告](/assets/images/oss.javaguide.cn/p3-juejin/0dde4b76be6240699312d822a3fe1ed3~tplv-k3u1fbpfcp-zoom-1.png)
 
 浏览器证书告警表示证书验证没有通过。原因可能是证书过期、域名不匹配、证书链不受信、本机时间错误或服务器配置错误，也可能是中间人攻击；仅凭告警界面无法确定具体原因，用户不应绕过告警继续访问。
 

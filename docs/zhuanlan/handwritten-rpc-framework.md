@@ -34,7 +34,7 @@ head:
 
 ## 一次 RPC 调用经过了什么
 
-![Guide RPC Framework 整体架构](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/guide-rpc-framework-architecture.webp)
+![Guide RPC Framework 整体架构](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/rpc/guide-rpc-framework-architecture.webp)
 
 以 `@RpcReference` 注入的服务接口为例，一次调用会经过这些环节：
 

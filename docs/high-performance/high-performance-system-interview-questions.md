@@ -37,7 +37,7 @@ head:
 
 CDN 把可缓存的内容放到离用户更近的边缘节点，减少跨地域传输和源站压力；负载均衡把进入系统的请求分配到多个服务实例。一个处理内容分发，一个处理请求调度，经常在系统设计题的入口层一起出现。
 
-![CDN 简易示意图](https://oss.javaguide.cn/github/javaguide/high-performance/cdn/cdn-101.png)
+![CDN 简易示意图](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/cdn/cdn-101.png)
 
 相关内容：
 
@@ -60,7 +60,7 @@ CDN 把可缓存的内容放到离用户更近的边缘节点，减少跨地域�
 
 数据库变慢后，可以先看慢 SQL、执行计划、索引命中、锁等待、连接池和磁盘 I/O。单条查询还有优化空间时，直接分库分表只会把查询、事务和运维问题一起放大。读写分离和数据分片适合解决容量与吞吐问题，不能代替 SQL 和索引优化。
 
-![读写分离架构](https://oss.javaguide.cn/github/javaguide/high-performance/read-and-write-separation-and-library-subtable/read-and-write-separation.png)
+![读写分离架构](/assets/images/oss.javaguide.cn/github/javaguide/high-performance/read-and-write-separation-and-library-subtable/read-and-write-separation.png)
 
 相关内容：
 
@@ -87,7 +87,7 @@ CDN 把可缓存的内容放到离用户更近的边缘节点，减少跨地域�
 
 消息队列可以把非实时任务移出同步调用链，并在流量突增时暂存请求。引入 MQ 后，调用关系变成异步，生产者确认、Broker 持久化、消费者处理和重试策略都会影响最终结果。
 
-![消息队列削峰](https://oss.javaguide.cn/github/javaguide/%E5%89%8A%E5%B3%B0-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.png)
+![消息队列削峰](/assets/images/oss.javaguide.cn/github/javaguide/削峰-消息队列.png)
 
 相关内容：
 

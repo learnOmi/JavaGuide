@@ -17,7 +17,7 @@ head:
 - **HTTP Keep-Alive** 是应用层的机制，解决的问题是：一个 TCP 连接能不能被多个 HTTP 请求复用，别每次请求都重新握手。
 - **TCP Keepalive** 是传输层的机制，解决的问题是：一条 TCP 连接长时间没有数据往来，怎么判断对端还在不在，要不要把连接占用的资源回收掉。
 
-![TCP/IP 四层模型中 HTTP 与 TCP 所在层次](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![TCP/IP 四层模型中 HTTP 与 TCP 所在层次](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
 
 一个管“连接要不要复用”，一个管“连接还活不活着”。协议层不同，目的也不同，只是名字撞了。
 
@@ -27,7 +27,7 @@ head:
 
 先说问题。HTTP 1.0 的默认行为是：每个 TCP 连接只服务一次 HTTP 请求和响应。服务器发完响应，马上发起关闭连接的请求，客户端跟着关，TCP 连接就双向断开了。
 
-![HTTP：超文本传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
+![HTTP：超文本传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
 
 你打开一个网页，HTML、CSS、JS、图片可能有几十个资源要加载。如果每个资源都独立建连接再销毁，光三次握手和四次挥手的开销就不小，TCP 连接的利用率很低。
 
@@ -43,7 +43,7 @@ Connection: Keep-Alive
 
 **在不同 HTTP 版本里，Keep-Alive 的默认行为不一样：**
 
-![不同 HTTP 版本里，Keep-Alive 的默认行为不一样](https://oss.javaguide.cn/github/javaguide/cs-basics/network/different-http-versions-have-different-default-keep-alive-behaviors.png)
+![不同 HTTP 版本里，Keep-Alive 的默认行为不一样](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/different-http-versions-have-different-default-keep-alive-behaviors.png)
 
 - **HTTP 1.0**：默认是短连接。要用长连接，请求头里得显式带上 `Connection: Keep-Alive`，而且服务器也要在响应头里带上这个字段才算生效。
 - **HTTP 1.1**：默认就是长连接，不需要额外声明。如果希望请求结束后关闭连接，需要显式指定： `Connection: close`。这也是为什么 HTTP/1.1 相比 HTTP/1.0 能明显减少 TCP 建连和挥手开销。
@@ -81,7 +81,7 @@ TCP Keepalive 要解决的问题完全不一样：它不关心连接上跑不跑
 
 TCP Keepalive 就是用来发现这种情况的。它的工作流程如下：
 
-![TCP Keepalive 工作原理](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-working-principle.png)
+![TCP Keepalive 工作原理](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-working-principle.png)
 
 1. 一条 TCP 连接上如果一段时间没有任何数据往来（默认 **7200 秒，也就是 2 小时**），内核会自动给对端发一个**探测报文（Probe）**。
 2. 如果对端正常在线，会回复一个 ACK，然后计时器重置，再等 2 小时。
@@ -98,7 +98,7 @@ TCP Keepalive 就是用来发现这种情况的。它的工作流程如下：
 
 macOS 属于 BSD 系网络栈风格，没有 `net.ipv4.*`，对应的是：`net.inet.tcp.*`。
 
-![Mac 下查看 TCP Keepalive 参数](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-parameters.jpg)
+![Mac 下查看 TCP Keepalive 参数](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-parameters.jpg)
 
 按默认值算，从连接开始空闲到最终被判死，最长要等 **7200 + 75 × 9 = 7875 秒**，差不多 2 小时 11 分钟。
 
@@ -120,7 +120,7 @@ sysctl net.ipv4.tcp_keepalive_probes
 
 内核发出探测报文后，根据对端的实际状态，会走向不同的结果：
 
-![TCP Keepalive 探测机制](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-detection-mechanism.png)
+![TCP Keepalive 探测机制](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-keepalive-vs-http-keepalive-tcp-keepalive-detection-mechanism.png)
 
 **1. 对端正常在线**
 

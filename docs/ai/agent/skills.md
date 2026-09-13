@@ -26,11 +26,11 @@ Skill 本身不提供工具能力。它解决的是“这类任务该按什么�
 
 “先确认字段含义，再找异常值，最后给业务结论，不要只堆统计指标”则属于 **Skill**。它描述处理顺序和约束，不替代前面的请求、调用方式或外部连接。
 
-![ Skill 和 Prompt、MCP、Function Calling 对比](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
+![ Skill 和 Prompt、MCP、Function Calling 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
 
 放在一个真实链路里，大概是这样：
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 
 1. 用户提出任务（Prompt）
 2. 宿主把可用 Skills 的简短描述放进上下文（Skill 元数据）
@@ -200,7 +200,7 @@ description: 生成提交消息。
 
 因此，正文只保留任务执行时需要的默认方案、项目约定、输入输出和失败处理。规则藏在大段科普里，Agent 需要时反而更难找到。
 
-![上下文为什么会失效](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
+![上下文为什么会失效](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
 
 筛正文时可以依次确认：
 
@@ -248,7 +248,7 @@ users 表使用软删除。所有正式查询都必须加 `WHERE deleted_at IS N
 
 主文件过长时，把只在特定步骤才用到的内容拆到单独文件。Anthropic 建议将 `SKILL.md` 正文尽量控制在 500 行以内，通过渐进式披露按需读取细节。
 
-![SKILL.md 正文最好控制在 500 行以内](https://oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
+![SKILL.md 正文最好控制在 500 行以内](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
 
 例如，Code Review Skill 的主文件只需指出何时读取 SOLID 检查项：
 
@@ -264,9 +264,9 @@ users 表使用软删除。所有正式查询都必须加 `WHERE deleted_at IS N
 - [sanyuan-skills](https://github.com/sanyuan0704/sanyuan-skills)：Code Review Expert 把更细的检查项拆进 `references/`，主文件只保留触发和加载说明，适合作为渐进式披露的例子。
 - [Anthropic 官方 Skills 仓库](https://github.com/anthropics/skills)：目录结构和写法可以作为基准参考。
 
-![查找自己需要和热门的 Skills](https://oss.javaguide.cn/github/javaguide/ai/skills/skillssh.png)
+![查找自己需要和热门的 Skills](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skillssh.png)
 
-![Superpowers 内置的 skills](https://oss.javaguide.cn/github/javaguide/ai/skills/superpowers-skills.png)
+![Superpowers 内置的 skills](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/superpowers-skills.png)
 
 在 Claude Code 这类工具中，可以用 `/skill-name` 主动调用，也可以让模型根据任务选择；触发后再读取流程、约束、脚本和参考文件。
 
@@ -334,7 +334,7 @@ python scripts/migrate.py --verify --backup
 
 ## ⭐️延迟加载与渐进式披露
 
-![Skill 渐进式披露](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
+![Skill 渐进式披露](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
 
 ### 为什么不能把所有 Skill 一次性全塞进去？
 
@@ -350,13 +350,13 @@ Agent 的上下文窗口是有限的，至少现在还是这样。
 
 更好的方式是渐进式披露：**先给模型一份轻量目录，真正用到哪块，再去加载哪块。**
 
-![渐进式披露](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure.svg)
+![渐进式披露](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure.svg)
 
 就像查书一样。你不会先把整本书背下来，而是先看目录，确定章节，再翻到具体那一页。
 
 一般可以分成三层：
 
-![渐进式披露（三层模型）](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
+![渐进式披露（三层模型）](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
 
 **1. 广告层：先让模型知道有这个 Skill**
 
@@ -442,7 +442,7 @@ Agent 很可能会跳过一些步骤，例如检查输出质量、跑测试代�
 1. 每一步按什么顺序走
 2. 哪些地方必须停下来验证
 
-![Skill 工作流设计](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-workflow-design.webp)
+![Skill 工作流设计](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-workflow-design.webp)
 
 图示：复杂 Skill 要把任务分类、条件分支、验证节点和失败兜底写进流程里。
 
@@ -588,7 +588,7 @@ workflows/
 
 ## Skill 路由怎么做？
 
-![Skill 路由流程](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-routing-flow.webp)
+![Skill 路由流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-routing-flow.webp)
 
 用户提交“频繁 Full GC”时，路由器应选择 JVM 诊断 Skill，并排除数据库排查和文档处理 Skill。路由完成后，要得到可直接加载的 Skill 集合。
 
@@ -604,7 +604,7 @@ Skill 只有三五个时，模型读取 `description` 通常足以完成选择�
 
 对“频繁 Full GC”这类请求，粗召回可能得到 `jvm-metrics-analyzer`、链路追踪和 K8s 事件查看三个候选；精排检查“Full GC”“堆栈”等示例后，JVM 诊断 Skill 排在首位。若请求只写“帮我处理一下”，没有足够的语义线索，路由器应保留默认流程，而不是猜测用户要做数据库迁移或生产操作。
 
-![Skill 路由流程](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-router.svg)
+![Skill 路由流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-router.svg)
 
 新 Skill 没有历史 Query 时，`description` 过于抽象会拉低召回质量。[Agent Skills 规范](https://agentskills.io/specification)没有规定通用的 `triggers` frontmatter 字段，各宿主也不保证读取自定义字段。自行维护调度器时，把典型 Query 放进独立的路由索引：
 
@@ -638,7 +638,7 @@ examples:
 
 README 记录项目背景、安装和功能，读者可以自行判断下一步。Agent 执行任务时需要的是可操作的边界：何时使用、按什么顺序执行、哪些情况停止以及失败后如何处理。
 
-![SKILL.md 正文最好控制在 500 行以内](https://oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
+![SKILL.md 正文最好控制在 500 行以内](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
 
 ### 想把一个 Skill 写得太全
 

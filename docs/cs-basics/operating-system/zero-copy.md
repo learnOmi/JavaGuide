@@ -41,7 +41,7 @@ while ((n = read(file_fd, buf, BUF_SIZE)) > 0)
 
 看着只有两行，底层却折腾得不轻。一次完整的“读磁盘 + 发网络”，CPU 和 DMA 一共要搬四趟数据，用户态和内核态之间还要来回切四次。
 
-![传统 read/write 的数据拷贝路径：磁盘到内核缓冲区、内核到用户缓冲区、用户到 Socket 缓冲区、Socket 到网卡](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-traditional-read-write.png)
+![传统 read/write 的数据拷贝路径：磁盘到内核缓冲区、内核到用户缓冲区、用户到 Socket 缓冲区、Socket 到网卡](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-traditional-read-write.png)
 
 把这两行拆开看，read 这一半发生了什么：
 
@@ -91,7 +91,7 @@ void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 4. 应用调用 `write`，CPU 把这份数据从内核 Page Cache 拷进 socket 缓冲区（CPU 拷贝）——因为共享物理内存，省掉了传统方式里“内核到用户、再回内核”那次多余的 CPU 拷贝。
 5. DMA 把 socket 缓冲区的数据发往网卡（DMA 拷贝），`write` 返回。
 
-![mmap + write 的数据拷贝路径：Page Cache 与 mmap 映射区共享物理内存，再复制到 Socket 缓冲区](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-mmap-write.png)
+![mmap + write 的数据拷贝路径：Page Cache 与 mmap 映射区共享物理内存，再复制到 Socket 缓冲区](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-mmap-write.png)
 
 算账（缓存未命中、走完整路径时）：大致 **2 次 DMA + 1 次 CPU 拷贝**；切换上 `mmap` 一次、`write` 一次，外加首次访问的缺页处理。和传统方式比，mmap 干掉的是“内核到用户”那次 CPU 拷贝。
 
@@ -140,7 +140,7 @@ Linux 2.4 给 sendfile 做了升级，关键是引入了 SG-DMA（scatter/gather
 3. CPU 不再拷贝数据本身，只把这份数据在内核缓冲区里的**描述信息**（内存地址 + 偏移量长度）写进 socket 缓冲区。
 4. SG-DMA 根据这些描述信息，直接把数据从内核读缓冲区搬到网卡（DMA 拷贝），**切回用户态**（第 2 次模式切换），sendfile 返回。
 
-![sendfile + SG-DMA 的数据拷贝路径：Socket 缓冲区只保存描述信息，网卡通过 SG-DMA 直接读取内核缓冲区](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-sendfile-sg-dma.png)
+![sendfile + SG-DMA 的数据拷贝路径：Socket 缓冲区只保存描述信息，网卡通过 SG-DMA 直接读取内核缓冲区](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-sendfile-sg-dma.png)
 
 算账：**2 次模式切换，2 次数据拷贝，且两次都是 DMA 拷贝，payload 的 CPU 拷贝为 0**。
 
@@ -166,7 +166,7 @@ splice(file_fd, NULL, pipe_w, NULL, len, SPLICE_F_MOVE);   // 文件 → 管道�
 splice(pipe_r, NULL, socket_fd, NULL, len, SPLICE_F_MOVE); // 管道读端 → socket
 ```
 
-![splice 的数据转发路径：文件页先挂到管道缓冲区，再从管道转发到 Socket](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-splice-flow.png)
+![splice 的数据转发路径：文件页先挂到管道缓冲区，再从管道转发到 Socket](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-splice-flow.png)
 
 第一次把 Page Cache 里的页挂到管道缓冲区上，第二次把这些页指针当作网络包的分片发往 socket。数据全程不进用户空间，CPU 不搬运 payload。但要看清楚：这是**两次 `splice` 调用**，进出内核态各算一次，合计大约 4 次模式切换，并不是有些文章说的“和 sendfile 一样只有一次系统调用、两次切换”。实际工程里两个 fd 还得设非阻塞、配合 epoll，并处理短传输和 `EAGAIN`。
 
@@ -188,7 +188,7 @@ splice 和前面几位的区别可以这么理解：
 | sendfile                   | 0 或 1（取决于发送路径） | 通常 2   | 2                                      | sendfile               |
 | splice（文件→管道→socket） | 通常可避免               | 通常 2   | 4                                      | splice 两次            |
 
-![传统 read/write、mmap + write、sendfile + SG-DMA 和 splice 的拷贝次数与模式切换对比](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-four-ways-comparison.png)
+![传统 read/write、mmap + write、sendfile + SG-DMA 和 splice 的拷贝次数与模式切换对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/zero-copy-four-ways-comparison.png)
 
 （mmap 那行的拷贝/切换次数随 Page Cache 命中与缺页时机浮动，不宜钉成固定值；sendfile 在网卡支持 SG-DMA 时，CPU payload 拷贝降到 0。）
 

@@ -13,8 +13,14 @@ export const API_PREFIX = "/__edit/api";
 /** 健康检查路由（客户端据此决定是否显示编辑入口） */
 export const HEALTH_ROUTE = "/health";
 
-/** 文件读写路由（GET 读取 / PUT 写回） */
+/** 文件读写路由（GET 读取 / PUT 写回 / DELETE 移入回收站） */
 export const FILE_ROUTE = "/file";
+
+/** 新建页面路由（POST：按模板创建 .md） */
+export const PAGE_ROUTE = "/page";
+
+/** 目录树路由（GET：新建页选择器的数据源） */
+export const DIRS_ROUTE = "/dirs";
 
 /** 单个 Markdown 文件大小上限：2MB */
 export const MAX_MD_BYTES = 2 * 1024 * 1024;
@@ -34,3 +40,15 @@ export const FORBIDDEN_SEGMENTS: readonly string[] = [
   "node_modules",
   ".edit-trash",
 ];
+
+/** 回收站根目录：删除的文件移入此处（按时间戳分目录），非硬删除 */
+export const EDIT_TRASH_DIR = path.join(DOCS_ROOT, ".vuepress", ".edit-trash");
+
+/** 新建页 slug 白名单：小写字母/数字开头，仅含小写字母、数字、连字符 */
+export const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
+
+/** 新建页 slug 最大长度（含扩展名前的完整文件名） */
+export const MAX_SLUG_LENGTH = 80;
+
+/** 目录树的最大遍历深度（防止超深层级拖垮请求） */
+export const DIRS_MAX_DEPTH = 8;

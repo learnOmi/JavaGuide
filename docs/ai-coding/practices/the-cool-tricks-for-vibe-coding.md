@@ -15,7 +15,7 @@ head:
 
 你好，我是小 G。上个周末，我通过文字消息分享了一些 Vibe Coding 的小技巧。这篇文章把当时没展开的内容补完整，也顺便整理一下这几年实际用 AI 编程时踩过的坑。
 
-![ Vibe Coding 技巧分享读者评论](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/vibe-coding-practices-comments.png)
+![ Vibe Coding 技巧分享读者评论](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/vibe-coding-practices-comments.png)
 
 正文开始之前，想问问大家：你还记得自己第一次 Vibe Coding 的感觉吗？
 
@@ -89,7 +89,7 @@ git worktree add ../project-refactor-user -b feat/refactor-user
 
 一个 Agent 一个目录、一个分支、一个任务。这样它们即使乱改，也只会乱在自己的工作区里。
 
-![Claude Code Git Worktree](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
+![Claude Code Git Worktree](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-git-worktree.png)
 
 ## 开工前先把范围写窄
 
@@ -126,7 +126,7 @@ git worktree add ../project-refactor-user -b feat/refactor-user
 
 这份东西不用写得像方案评审文档。
 
-![Spec Coding 四步流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
+![Spec Coding 四步流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
 
 小任务写清楚目标、约束和验收就够了；中等任务再补接口格式、错误码、表结构；大一点的需求，再拆成 `requirements.md`、`design.md`、`tasks.md`。没必要一上来就把流程拉满，不然你会先被文档劝退。
 
@@ -159,7 +159,7 @@ git worktree add ../project-refactor-user -b feat/refactor-user
 
 判断标准很简单：这行删掉后，Claude 会不会更容易犯错？
 
-![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
 
 每次 AI 犯了重复错误，也别只在聊天里训它一句。
 
@@ -177,7 +177,7 @@ Skill 更适合放遇到某类任务时应该怎么做。比如做代码审查�
 
 简单说，Skill 就是一份能被 Agent 按需加载的任务说明。它不是插件，也不是 MCP 工具本身，而是把某类任务的流程、约束、检查项和踩坑经验写进 `SKILL.md`。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
 
 比如这些事情，就很适合沉淀成 Skill：
 
@@ -197,7 +197,7 @@ README 是给人看的，可以讲背景、原理和安装说明；Skill 是给 
 
 Anthropic 的建议是，`SKILL.md` 正文最好控制在 500 行以内；如果超过这个长度，就把细节拆到单独文件里，通过渐进式披露的方式让 Agent 按需读取。
 
-![SKILL.md 正文最好控制在 500 行以内](https://oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
+![SKILL.md 正文最好控制在 500 行以内](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
 
 现成 Skill 也可以直接用，比如 Superpowers 把 TDD、Code Review、Spec-Driven、Git Worktree、子 Agent 协作这些流程封装好了。
 
@@ -228,7 +228,7 @@ Anthropic 的建议是，`SKILL.md` 正文最好控制在 500 行以内；如果
 
 代码审计也可以这么干。先让便宜模型扫一遍项目，把疑似问题列出来；再让强模型复核这些问题到底成不成立。直接让高价模型全量扫，当然也不是不行，就是钱烧得快，收益未必成比例。
 
-![DeepSeek V4 Benchmark 数据](https://oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-benchmark.png)
+![DeepSeek V4 Benchmark 数据](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/deepseek-v4/v4-benchmark.png)
 
 ## 别听它说修好了，看证据
 
@@ -277,7 +277,7 @@ pnpm lint
 
 小 G 之前写过一篇 [Context Engineering](https://javaguide.cn/ai/agent/context-engineering.html)，里面有个观点放到 Vibe Coding 里也很适用：**上下文窗口大不等于效果好——窗口能装更多东西，但模型能不能稳定找到重点，是另一回事。**
 
-![上下文为什么会失效](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
+![上下文为什么会失效](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
 
 一个会话里先写登录，再改支付，再重构缓存，最后又问为什么测试挂了，模型迟早把旧约束、失败尝试和废弃方案混在一起。你以为自己给了它完整历史，它拿到的可能是一堆噪声。
 
@@ -358,9 +358,9 @@ git commit -m "[review] fix tenant permission check"
 
 等流程跑顺以后，也比较熟练之后，再考虑 **worktree 并行、[Agent View](https://javaguide.cn/ai-coding/practices/claudecode-agentview.html)** 这类玩法。
 
-![多 Agent 并行会话](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/multi-agent-parallel-sessions.png)
+![多 Agent 并行会话](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/multi-agent-parallel-sessions.png)
 
-![Claude Code Agent View](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
+![Claude Code Agent View](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
 
 并行最怕的不是 Git 冲突，那种至少能看到。真正麻烦的是不冲突——两个 Agent 同时改同一个公共 DTO，一个为了导出加字段，一个为了查询删字段，合并时看起来没问题，但接口语义、序列化结果、前端依赖可能已经变了。
 
@@ -372,7 +372,7 @@ git commit -m "[review] fix tenant permission check"
 
 以 Claude Code 为例，subagent 可以理解成一个“专门干某类活的小助手”。它有自己的上下文、系统提示词和工具权限，适合处理边界比较清楚的任务，比如代码审查、测试补齐、日志分析、文档整理。官方文档里也提到，subagent 可以在独立上下文中运行，减少主会话的上下文压力，并且可以为不同任务配置不同的工具访问权限。
 
-![Claude Code Sub-Agent：让主对话保持干净](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
+![Claude Code Sub-Agent：让主对话保持干净](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode-sub-agent.png)
 
 它和前面说的多 Agent 并行不是一回事。多 Agent 更偏协作方式，subagent 更偏任务委派。比如主会话正在实现订单导出功能，你可以把“检查这次 diff 有没有权限绕过风险”交给 Review subagent，把“根据当前代码补单元测试”交给 Test subagent。它们各自做完后，把结论返回给主会话。
 
@@ -402,7 +402,7 @@ rm -rf /tmp/build
 
 下面这张图展示了整个过程，图源 Claude Code 官方文档对 Hooks 的介绍。
 
-![Claude Code PreToolUse Hook](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
+![Claude Code PreToolUse Hook](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
 
 更稳的做法，是把这些规则固化到工程里：
 

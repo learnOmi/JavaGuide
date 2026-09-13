@@ -29,7 +29,7 @@ head:
 1. **等数据就绪**：数据还在网卡、还在路上，内核要等它到达并拷进内核缓冲区。这一步往往很慢。
 2. **拷数据**：数据到了内核缓冲区，再从内核态拷到用户态的应用缓冲区。这一步很快。
 
-![网络读取中的两个阶段：先等待网卡数据进入内核缓冲区，再通过 copy_to_user 拷贝到用户缓冲区](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-io-two-phases.png)
+![网络读取中的两个阶段：先等待网卡数据进入内核缓冲区，再通过 copy_to_user 拷贝到用户缓冲区](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-io-two-phases.png)
 
 一个连接一个线程的阻塞模型，问题出在第一阶段：线程调用 `recv` 后就卡死在那儿，专门为这一个连接等数据，等的时候什么也干不了。
 
@@ -51,7 +51,7 @@ UNP 把 Unix 下的 I/O 归成五种模型，搞清楚多路复用站在哪一�
 - **信号驱动 I/O**：注册 `SIGIO`，数据就绪时内核发信号通知你，平时线程该干嘛干嘛。用得不多。
 - **异步 I/O**：提交请求后立即返回，I/O 完成后再通知应用。这里描述的是语义模型，具体实现取决于平台和 API；例如 Linux glibc 的 POSIX `aio_read` 主要由用户态工作线程实现，不能直接等同于内核原生异步 I/O。
 
-![五种 I/O 模型对比：阻塞 I/O、非阻塞 I/O、I/O 多路复用、信号驱动 I/O 和异步 I/O](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-five-io-models.png)
+![五种 I/O 模型对比：阻塞 I/O、非阻塞 I/O、I/O 多路复用、信号驱动 I/O 和异步 I/O](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-five-io-models.png)
 
 关键区别在于谁来完成“把数据从内核缓冲区搬到用户缓冲区”这个动作：前四种模型里，最终都得由应用自己调 `read`/`recv` 来完成这次复制，调用返回后才能用数据，所以都算**同步**（至于这次调用会不会真的睡，要看 fd 是否非阻塞以及当时数据在不在）；只有异步 I/O 把等待和复制全交给内核，完成后再通知你。多路复用的价值不在于让单次读取变快，而在于让一个线程把“等”这件事一次性摊到多个连接上。
 
@@ -220,7 +220,7 @@ while (1) {
 - **一棵红黑树（rbr）**：存所有通过 `epoll_ctl` 注册进来的 fd（每个 fd 对应一个 `epitem` 节点）。增删改是 O（log N） 的树操作。fd 只在这里登记一次，之后一直待着，不像 select/poll 每次调用都要把全量列表搬进内核。
 - **一条就绪链表（rdllist）**：一个双向链表，专门存“已经就绪”的 fd。
 
-![epoll 内部架构：epoll_ctl 维护 interest list，fd 就绪后通过回调进入 ready list，epoll_wait 返回就绪事件](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-epoll-architecture.png)
+![epoll 内部架构：epoll_ctl 维护 interest list，fd 就绪后通过回调进入 ready list，epoll_wait 返回就绪事件](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-epoll-architecture.png)
 
 关键在于回调机制。`epoll_ctl` 注册 fd 时，内核会给这个 fd 挂一个回调函数。当网卡来数据、某个 fd 变得可读时，这个回调被触发，把对应的就绪对象挂进就绪链表，并唤醒阻塞在 `epoll_wait` 上的线程。于是 `epoll_wait` 要做的只是看一眼就绪链表空不空——有就把里面的事件拷给用户态，没有就睡觉等回调来唤醒。（补一句：红黑树、就绪链表都是当前内核的实现方式，`epoll` 对用户态承诺的只是“注册集合 + 就绪列表”这层抽象语义，别把树结构当成稳定的 ABI。）
 
@@ -243,7 +243,7 @@ epoll 支持两种触发模式，这是它比 select/poll 多出来的一个能�
 - LT 模式：`epoll_wait` 通知你可读。你只读了 1 KB，缓冲区里还剩 1 KB。下次 `epoll_wait` 还会继续通知你“这儿有数据没读完”，直到你把 2 KB 读干净。
 - ET 模式：`epoll_wait` 通知你一次。你只读了 1 KB 就走了，那剩下的 1 KB——除非对端又写了新数据、状态再次发生变化，`epoll_wait` 不会主动再为它通知你。这 1 KB 可能就长期躺在缓冲区里，连接迟迟得不到处理。
 
-![水平触发和边缘触发对比：LT 在数据未读完时会持续通知，ET 只在状态变化时通知一次](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-lt-vs-et.png)
+![水平触发和边缘触发对比：LT 在数据未读完时会持续通知，ET 只在状态变化时通知一次](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-lt-vs-et.png)
 
 所以用 ET 必须遵守两条铁律：**fd 设为非阻塞**，并且**循环 `read` 直到返回 `EAGAIN`（或 `EWOULDBLOCK`）**，确保一次把数据彻底读空。典型的 ET 读法是这样：
 
@@ -286,7 +286,7 @@ ET 的好处是减少 `epoll_wait` 的唤醒次数，适合追求极致吞吐、
 | 查找就绪 fd 的开销 | 扫描到 `nfds - 1`，通常记作 O(N)                                             | 遍历整个数组，O(N)                                                  | 等待阶段不扫描完整监听集合，返回成本主要与就绪事件数有关                     |
 | 触发模式           | 仅 LT                                                                        | 仅 LT                                                               | 默认 LT，也支持 ET（`EPOLLET`）                                              |
 
-![select、poll 和 epoll 对比：数据结构、fd 限制、每次等待传参、查找就绪 fd 的开销和触发模式](https://oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-select-poll-epoll.png)
+![select、poll 和 epoll 对比：数据结构、fd 限制、每次等待传参、查找就绪 fd 的开销和触发模式](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/operating-system/io-multiplexing-select-poll-epoll.png)
 
 ## epoll 不是银弹
 
@@ -306,7 +306,7 @@ ET 的好处是减少 `epoll_wait` 的唤醒次数，适合追求极致吞吐、
 
 **Redis** 是单线程事件循环 + I/O 多路复用的典型。它没有为每个客户端开线程，而是用一个线程通过多路复用同时监听大量 socket，谁就绪了就调对应的事件处理器。Redis 自己封装了一层（`ae.c`），在不同平台上分别选 epoll、kqueue 或 select。这也是它单线程还能扛住高并发的关键之一，省掉了多线程的上下文切换和锁竞争。
 
-![文件事件处理器（file event handler）](https://oss.javaguide.cn/github/javaguide/database/redis/redis-event-handler.png)
+![文件事件处理器（file event handler）](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-event-handler.png)
 
 补充一个常被误解的点：Redis 6.0 引入了多线程，但加的只是网络 I/O 读写和协议解析这部分，命令的实际执行仍然是单线程。多路复用这套事件循环的内核没变，多线程只是把“读 socket、解析请求”这种耗时的活儿分摊到几个线程上，避免它成为单线程的瓶颈。
 
@@ -316,7 +316,7 @@ ET 的好处是减少 `epoll_wait` 的唤醒次数，适合追求极致吞吐、
 
 **Java NIO** 里的 `Selector` 就是多路复用的 Java 封装。在 Linux 上，`Selector` 底层走的就是 epoll（对应 `EPollSelectorImpl`）；换到别的系统会换成对应实现，这层切换对上层代码透明。
 
-![Selector 选择器工作示意图](https://oss.javaguide.cn/github/javaguide/java/nio/selector-channel-selectionkey.png)
+![Selector 选择器工作示意图](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/selector-channel-selectionkey.png)
 
 Netty 在标准 NIO 之外还额外提供了一套原生 epoll 传输（`EpollEventLoop`），直接对接 epoll、绕开 JDK 那层封装，在 Linux 上能榨出更高的性能。这里要留意版本差异：Netty 4.0 的原生 epoll transport 曾主打边缘触发；到了 Netty 4.2，`EpollMode` 已被标记废弃，并注明 transport 始终使用水平触发。中间 4.1 各小版本的行为以所用版本的源码和 API 为准。
 

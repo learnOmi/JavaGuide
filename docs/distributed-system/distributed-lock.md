@@ -28,7 +28,7 @@ head:
 
 这里的限购校验和库存扣减是两个不同的约束：限购主要解决同一用户重复购买的问题，库存扣减主要解决多个用户竞争同一份库存的问题。
 
-![共享资源未互斥访问导致出现问题](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/oversold-without-locking.png)
+![共享资源未互斥访问导致出现问题](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/oversold-without-locking.png)
 
 锁的思路是把某段临界区串行化：同一时刻只允许一个执行单元进入这段逻辑。它能降低并发冲突，但也会牺牲吞吐；如果能用数据库原子更新、唯一约束、乐观锁、CAS 或消息串行化解决，就不一定要上分布式锁。
 
@@ -42,7 +42,7 @@ head:
 
 下面是我对本地锁画的一张示意图。
 
-![本地锁](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/jvm-local-lock.png)
+![本地锁](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/jvm-local-lock.png)
 
 从图中可以看出，这些线程访问共享资源是互斥的，同一时刻只有一个线程可以获取到本地锁访问共享资源。
 
@@ -54,7 +54,7 @@ head:
 
 下面是我对分布式锁画的一张示意图。
 
-![分布式锁](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/distributed-lock.png)
+![分布式锁](/assets/images/oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/distributed-lock.png)
 
 从图中可以看出，这些独立的进程中的线程访问共享资源是互斥的，同一时刻只有一个线程可以获取到分布式锁访问共享资源。
 

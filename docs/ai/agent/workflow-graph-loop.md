@@ -31,7 +31,7 @@ Workflow 描述任务怎样完成，Graph 用 Node、Edge 和 State 表达执行
 
 ## 传统工作流和 AI 工作流有什么区别？
 
-![传统 Workflow 与 AI Workflow 对比](https://oss.javaguide.cn/github/javaguide/ai/workflow/traditional-vs-ai-workflow.svg)
+![传统 Workflow 与 AI Workflow 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/traditional-vs-ai-workflow.svg)
 
 上图可以直观看到两类工作流的差异：传统 Workflow 更偏向“固定步骤 + 明确分支”的过程编排；AI Workflow 则更依赖运行时的状态（State）来动态决定下一步，并通过循环（Loop）把“生成—评估—修正”变成可收敛的过程。
 
@@ -104,7 +104,7 @@ AI 工作流与传统工作流的关键差异在于：路径选择依赖于运�
 
 > 需要区分本文的 Loop 与 Agent 基础篇中的 **Agent Loop**。Agent Loop 是 Agent 的顶层运行引擎——整个 Agent 在一个 while 循环中反复执行“推理 → 行动 → 观察”直到任务完成。而本文的 Loop 是 Graph 内部的控制模式——特定节点子集通过回边形成的迭代修正循环。两者的关系是：Agent Loop 是外层循环，Graph Loop 可以嵌套在其中的某个节点或子图内。
 
-![Loop 概览：循环机制示意](https://oss.javaguide.cn/github/javaguide/ai/workflow/loop-mechanism.svg)
+![Loop 概览：循环机制示意](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/loop-mechanism.svg)
 
 很多人第一次接触 AI 工作流时，会把 `Loop` 理解成“多跑几次”。这不算错，但还不够准确。更准确地说：**Loop 是图结构上的一种控制模式**。当某条边根据当前状态把控制流送回到先前节点时，就形成了 Loop，正如上图所示，重点在判断是否达标，在循环的内部 LLM 会根据提示词的要求对结果进行“评分”，如果满足就会输出，否则“打回重写”。
 
@@ -129,7 +129,7 @@ AI 场景里，条件驱动循环更常见，因为迭代次数取决于内容�
 
 ## Workflow、Graph 和 Loop 有什么关系？
 
-![Workflow、Graph、Loop 三者关系概览](https://oss.javaguide.cn/github/javaguide/ai/workflow/workflow-graph-loop-relation.svg)
+![Workflow、Graph、Loop 三者关系概览](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/workflow-graph-loop-relation.svg)
 
 可以用一句话收束三者的层次关系：**Workflow 是目标与过程，Graph 是结构与载体，Loop 是图上的控制模式。**
 
@@ -344,7 +344,7 @@ public static CompiledGraph buildWorkflow(ChatModel chatModel) throws GraphState
 
 ## 工作流抽象能力
 
-![高抽象与低抽象工作流对比](https://oss.javaguide.cn/github/javaguide/ai/workflow/abstraction-comparison.svg)
+![高抽象与低抽象工作流对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/abstraction-comparison.svg)
 
 上图可以看到高抽象工作流将四个判断节点抽象成一个判断节点：评估是否达标。如果使用低抽象，那么当我们需要减少/添加新的判断节点时，需要花费时间去阅读源码寻找对应的节点。好的工作流关键看 Node、Edge、State 的抽象能否经得起复用与扩展，和步骤多少关系不大。
 
@@ -361,7 +361,7 @@ public static CompiledGraph buildWorkflow(ChatModel chatModel) throws GraphState
 - `ReviseNode`：负责根据反馈修正内容。
 - `ExitNode`：负责在满足条件时输出最终结果。
 
-![Graph 核心元素：Node、Edge、State](https://oss.javaguide.cn/github/javaguide/ai/workflow/graph-core-elements.svg)
+![Graph 核心元素：Node、Edge、State](/assets/images/oss.javaguide.cn/github/javaguide/ai/workflow/graph-core-elements.svg)
 
 ## 工作流落地的时候有没有遇到什么坑？
 

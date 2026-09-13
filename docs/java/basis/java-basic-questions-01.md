@@ -48,13 +48,13 @@ Java 虚拟机（Java Virtual Machine, JVM）是运行 Java 字节码的虚拟�
 
 如下图所示，不同编程语言（Java、Groovy、Kotlin、JRuby、Clojure ...）通过各自的编译器编译成 `.class` 文件，并最终通过 JVM 在不同平台（Windows、Mac、Linux）上运行。
 
-![运行在 Java 虚拟机之上的编程语言](https://oss.javaguide.cn/github/javaguide/java/basis/java-virtual-machine-program-language-os.png)
+![运行在 Java 虚拟机之上的编程语言](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/java-virtual-machine-program-language-os.png)
 
 **JVM 并不是只有一种！只要满足 JVM 规范，每个公司、组织或者个人都可以开发自己的专属 JVM。** 也就是说我们平时接触到的 HotSpot VM 仅仅是是 JVM 规范的一种实现而已。
 
 除了我们平时最常用的 HotSpot VM 外，还有 J9 VM、Zing VM、JRockit VM 等 JVM。维基百科上就有常见 JVM 的对比：[Comparison of Java virtual machines](https://en.wikipedia.org/wiki/Comparison_of_Java_virtual_machines)，感兴趣的可以去看看。并且，你可以在 [Java SE Specifications](https://docs.oracle.com/javase/specs/index.html) 上找到各个版本的 JDK 对应的 JVM 规范。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/JavaSeSpecifications.jpg)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/JavaSeSpecifications.jpg)
 
 #### JDK 和 JRE
 
@@ -71,7 +71,7 @@ JRE 是运行已编译 Java 程序所需的环境，主要包含以下两个部�
 
 下图清晰展示了 JDK、JRE 和 JVM 的关系。
 
-![jdk-include-jre](https://oss.javaguide.cn/github/javaguide/java/basis/jdk-include-jre.png)
+![jdk-include-jre](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/jdk-include-jre.png)
 
 不过，从 JDK 9 开始，就不需要区分 JDK 和 JRE 的关系了，取而代之的是模块系统（JDK 被重新组织成 94 个模块）+ [jlink](http://openjdk.java.net/jeps/282) 工具（随 Java 9 一起发布的新命令行工具，用于生成自定义 Java 运行时映像，该映像仅包含给定应用程序所需的模块）。并且，从 JDK 11 开始，Oracle 不再提供单独的 JRE 下载。
 
@@ -89,7 +89,7 @@ JRE 是运行已编译 Java 程序所需的环境，主要包含以下两个部�
 
 **Java 程序从源代码到运行的过程如下图所示**：
 
-![Java程序转变为机器代码的过程](https://oss.javaguide.cn/github/javaguide/java/basis/java-code-to-machine-code.png)
+![Java程序转变为机器代码的过程](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/java-code-to-machine-code.png)
 
 我们需要格外注意的是 `.class->机器码` 这一步。以 HotSpot 为例，JVM 加载字节码后可以先解释执行，并识别经常调用的方法和代码块（即热点代码），再由 **JIT（Just in Time Compilation）** 编译器将热点字节码编译为机器码。在当前 JVM 进程后续执行这些代码时，可以直接使用已编译的机器码。这也解释了我们为什么经常会说 **Java 是编译与解释共存的语言**。不过，JVM 规范并不要求具体实现必须包含解释器或 JIT 编译器。
 
@@ -98,17 +98,17 @@ JRE 是运行已编译 Java 程序所需的环境，主要包含以下两个部�
 > - [基本功 | Java 即时编译器原理解析及实践 - 美团技术团队](https://mp.weixin.qq.com/s/7PH8o1tbjLsM4-nOnjbwLw)
 > - [基于静态编译构建微服务应用 - 阿里巴巴中间件](https://mp.weixin.qq.com/s/4haTyXUmh8m-dBQaEzwDJw)
 
-![Java程序转变为机器代码的过程](https://oss.javaguide.cn/github/javaguide/java/basis/java-code-to-machine-code-with-jit.png)
+![Java程序转变为机器代码的过程](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/java-code-to-machine-code-with-jit.png)
 
 > HotSpot 采用了惰性评估(Lazy Evaluation)的做法，根据二八定律，消耗大部分系统资源的只有那一小部分的代码（热点代码），而这也就是 JIT 所需要编译的部分。JVM 会根据代码每次被执行的情况收集信息并相应地做出一些优化，因此执行的次数越多，它的速度就越快。
 
 JDK、JRE、JVM、JIT 这四者的关系如下图所示。
 
-![JDK、JRE、JVM、JIT 这四者的关系](https://oss.javaguide.cn/github/javaguide/java/basis/jdk-jre-jvm-jit.png)
+![JDK、JRE、JVM、JIT 这四者的关系](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/jdk-jre-jvm-jit.png)
 
 下面这张图是 JVM 的大致结构模型。
 
-![JVM 的大致结构模型](https://oss.javaguide.cn/github/javaguide/java/basis/jvm-rough-structure-model.png)
+![JVM 的大致结构模型](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/jvm-rough-structure-model.png)
 
 ### ⭐️ 为什么说 Java 语言“编译与解释并存”？
 
@@ -119,7 +119,7 @@ JDK、JRE、JVM、JIT 这四者的关系如下图所示。
 - **编译型**：[编译型语言](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E8%AA%9E%E8%A8%80) 会通过[编译器](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%AD%AF%E5%99%A8)将源代码一次性翻译成可被该平台执行的机器码。一般情况下，编译语言的执行速度比较快，开发效率比较低。常见的编译性语言有 C、C++、Go、Rust 等等。
 - **解释型**：[解释型语言](https://zh.wikipedia.org/wiki/%E7%9B%B4%E8%AD%AF%E8%AA%9E%E8%A8%80)会通过[解释器](https://zh.wikipedia.org/wiki/直譯器)一句一句的将代码解释（interpret）为机器代码后再执行。解释型语言开发效率比较快，执行速度比较慢。常见的解释性语言有 Python、JavaScript、PHP 等等。
 
-![编译型语言和解释型语言](https://oss.javaguide.cn/github/javaguide/java/basis/compiled-and-interpreted-languages.png)
+![编译型语言和解释型语言](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/compiled-and-interpreted-languages.png)
 
 根据维基百科介绍：
 
@@ -147,7 +147,7 @@ JDK 9 曾通过 JEP 295 引入实验性的 AOT（Ahead of Time Compilation）工
 | **动态特性**     | 支持运行时加载、反射和字节码生成         | 闭世界分析工具通常需要元数据或构建期处理           |
 | **常见场景**     | 长时间运行、重视持续吞吐量的服务         | CLI、Serverless、弹性扩缩容和冷启动敏感的服务      |
 
-<img src="https://oss.javaguide.cn/github/javaguide/java/basis/jit-vs-aot.png" alt="JIT vs AOT" style="zoom: 25%;" />
+<img src="/assets/images/oss.javaguide.cn/github/javaguide/java/basis/jit-vs-aot.png" alt="JIT vs AOT" style="zoom: 25%;" />
 
 AOT 的优势主要体现在启动速度和运行时内存占用，比较适合冷启动频繁、实例生命周期较短或者需要快速扩容的应用。JIT 则能根据程序运行时收集到的信息优化热点代码，长时间运行的服务通常更容易发挥这方面的优势。二者的吞吐量和延迟表现不能只由编译方式直接下结论，还需要结合具体工具链和实际负载测试。
 
@@ -206,7 +206,7 @@ AOT 把一部分运行时工作和信息搬到了构建阶段，同时增加了�
 >
 > 基于以上这些原因，OpenJDK 还是有存在的必要的！
 
-![oracle jdk release cadence](https://oss.javaguide.cn/github/javaguide/java/basis/oracle-jdk-release-cadence.jpg)
+![oracle jdk release cadence](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/oracle-jdk-release-cadence.jpg)
 
 **Oracle JDK 和 OpenJDK 如何选择？**
 
@@ -243,7 +243,7 @@ Java 中的注释有三种：
 
 用的比较多的还是单行注释和文档注释，多行注释在实际开发中使用的相对较少。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/image-20220714112336911.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/image-20220714112336911.png)
 
 在我们编写代码的时候，如果代码量比较少，我们自己或者团队其他成员还可以很轻易地看懂代码，但是当项目结构一旦复杂起来，我们就需要用到注释了。注释并不会执行（编译器在编译代码之前会把代码中的所有注释抹掉，字节码中不保留注释），是我们程序员写给自己看的，注释是你的代码说明书，能够帮助看代码的人快速地理清代码之间的逻辑关系。因此，在写程序的时候随手加上注释是一个非常好的习惯。
 
@@ -749,7 +749,7 @@ System.out.println(i1==i2);
 
 记住：**所有整型包装类对象之间值的比较，全部使用 equals 方法比较**。
 
-![](https://oss.javaguide.cn/github/javaguide/up-1ae0425ce8646adfb768b5374951eeb820d.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/up-1ae0425ce8646adfb768b5374951eeb820d.png)
 
 ### 自动装箱与拆箱了解吗？原理是什么？
 
@@ -919,7 +919,7 @@ System.out.println(l + 1 == Long.MIN_VALUE); // true
 
 ### ⭐️ 成员变量与局部变量的区别？
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/java-basis-variables-member-variable-vs-local-variable.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/java-basis-variables-member-variable-vs-local-variable.png)
 
 - **语法形式**：从语法形式上看，成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；成员变量可以被 `public`,`private`,`static` 等修饰符所修饰，而局部变量不能被访问控制修饰符及 `static` 所修饰；但是，成员变量和局部变量都能被 `final` 所修饰。
 - **存储方式**：如果成员变量使用 `static` 修饰，那么它属于类；如果没有使用 `static` 修饰，那么它属于实例。实例字段是对象状态的一部分，方法参数和局部变量则保存在当前栈帧的局部变量表中。JIT 优化可能消除部分实际存储。
@@ -970,7 +970,7 @@ public class VariableExample {
 
 静态变量也就是被 `static` 关键字修饰的变量。它可以被类的所有实例共享，无论一个类创建了多少个对象，它们都共享同一份静态变量。也就是说，静态变量只会被分配一次内存，即使创建多个对象，这样可以节省内存。
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/java-basis-variables-static-variable.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/basis/java-basis-variables-static-variable.png)
 
 静态变量是通过类名来访问的，例如 `StaticVariableExample.staticVar`（如果被 `private` 关键字修饰就无法这样访问了）。
 

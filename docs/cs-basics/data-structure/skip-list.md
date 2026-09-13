@@ -22,7 +22,7 @@ Redis 的有序集合 ZSet 底层就使用了跳表和哈希表的组合，所�
 4. 跳表和红黑树应该怎么对比？
 5. Redis ZSet 为什么会用到跳表？
 
-![跳表在有序链表上建立多级索引以加速查找](https://oss.javaguide.cn/github/javaguide/cs-basics/data-structure/skip-list.png)
+![跳表在有序链表上建立多级索引以加速查找](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/data-structure/skip-list.png)
 
 ## 什么是跳表？
 

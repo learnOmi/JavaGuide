@@ -31,7 +31,7 @@ head:
 
 把这些问题讲清楚了，`PreMasterSecret`、`Server Key Exchange`、前向安全、TLS 1.3 为什么移除静态 RSA，后面都能顺着理解。
 
-![RSA 与 ECDHE 密钥交换：核心差异](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-rsa-and-ecdhe-key-exchange-core-differences.png)
+![RSA 与 ECDHE 密钥交换：核心差异](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-rsa-and-ecdhe-key-exchange-core-differences.png)
 
 ## TLS 握手的两个核心问题
 
@@ -105,7 +105,7 @@ PreMasterSecret
 
 服务器私钥一旦泄漏，代价太大。
 
-![静态 RSA 缺少前向安全：完整抓包 + 私钥泄漏可回溯历史流量](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-static-rsa-lacks-forward-secrecy.png)
+![静态 RSA 缺少前向安全：完整抓包 + 私钥泄漏可回溯历史流量](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-static-rsa-lacks-forward-secrecy.png)
 
 ### 另一个历史包袱：填充预言机攻击
 
@@ -222,7 +222,7 @@ Server Random
 
 这也是很多人看到密码套件名字后最容易误会的地方。
 
-![TLS 1.2 使用 ECDHE RSA 完成握手和密钥协商](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-ecdhe-rsa-handshake-process.png)
+![TLS 1.2 使用 ECDHE RSA 完成握手和密钥协商](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-ecdhe-rsa-handshake-process.png)
 
 ### 密码套件名怎么读
 
@@ -265,7 +265,7 @@ TLS_AES_128_GCM_SHA256
 
 所以，看到 TLS 1.3 的 `TLS_AES_128_GCM_SHA256`，不要误以为它“没有密钥交换”。密钥交换还在，只是不用 TLS 1.2 那套命名方式写出来了。
 
-![密码套件名拆解](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-cipher-suite-name-decomposition.png)
+![密码套件名拆解](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-cipher-suite-name-decomposition.png)
 
 ## 前向安全与性能代价
 
@@ -283,7 +283,7 @@ RSA 密钥交换里，服务器私钥可以直接打开客户端发来的 `PreMa
 
 这个角色变化，决定了两者在历史流量保护上的差异。
 
-![ECDHE 前向安全原理：长期密钥 vs 临时密钥](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-ecdhe-forward-secrecy-principle-long-term-key-vs-ephemeral-key.png)
+![ECDHE 前向安全原理：长期密钥 vs 临时密钥](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-ecdhe-forward-secrecy-principle-long-term-key-vs-ephemeral-key.png)
 
 不过，前向安全不是免死金牌。
 
@@ -345,7 +345,7 @@ TLS 1.3 则把密钥交换参数提前放进 `ClientHello` 的 `key_share`。服
 
 所以生产环境里，客户端和服务端对常见密钥协商组的支持要尽量对齐，比如 `X25519`、`secp256r1` 这类常见选择。否则 TLS 1.3 的 1 RTT 优势可能打折。
 
-![TLS 1.2 vs TLS 1.3 握手 RTT 对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-vs-tls-1-3-handshake-rtt-comparison.png)
+![TLS 1.2 vs TLS 1.3 握手 RTT 对比](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-tls-1-2-vs-tls-1-3-handshake-rtt-comparison.png)
 
 至于后量子混合密钥交换、0-RTT、PSK-only、mTLS，这些都属于另一条线，本文不展开。
 
@@ -364,7 +364,7 @@ TLS 1.3 则把密钥交换参数提前放进 `ClientHello` 的 `key_share`。服
 | 典型问题           | 长期私钥价值过高，存在 PKCS#1 v1.5 填充预言机历史包袱   | 握手有额外计算成本，参数校验和临时密钥管理依赖实现质量 |
 | TLS 1.3 情况       | 静态 RSA 密钥交换已移除                                 | 临时密钥协商成为主线                                   |
 
-![RSA vs ECDHE 对比速查](https://oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-rsa-vs-ecdhe-quick-reference.png)
+![RSA vs ECDHE 对比速查](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/https-rsa-ecdhe-rsa-vs-ecdhe-quick-reference.png)
 
 ### 常见误读：ECDHE_RSA 不是两种算法都加密
 

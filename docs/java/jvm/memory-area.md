@@ -32,11 +32,11 @@ JDK 1.8 和之前的版本略有不同，我们这里以 JDK 1.7 和 JDK 1.8 这
 
 **JDK 1.7**：
 
-![Java 运行时数据区域（JDK1.7）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.7.png)
+![Java 运行时数据区域（JDK1.7）](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.7.png)
 
 **JDK 1.8**：
 
-![Java 运行时数据区域（JDK1.8 ）](https://oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
+![Java 运行时数据区域（JDK1.8 ）](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/java-runtime-data-areas-jdk1.8.png)
 
 **线程私有的：**
 
@@ -150,17 +150,17 @@ graph LR
 
 栈由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法返回地址。和数据结构上的栈类似，两者都是先进后出的数据结构，只支持出栈和入栈两种操作。
 
-![Java 虚拟机栈](https://oss.javaguide.cn/github/javaguide/java/jvm/stack-area.png)
+![Java 虚拟机栈](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/stack-area.png)
 
 **局部变量表** 主要存放了编译期可知的各种数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。
 
-![局部变量表](https://oss.javaguide.cn/github/javaguide/java/jvm/local-variables-table.png)
+![局部变量表](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/local-variables-table.png)
 
 **操作数栈** 主要作为方法调用的中转站使用，用于存放方法执行过程中产生的中间计算结果。另外，计算过程中产生的临时变量也会放在操作数栈中。
 
 **动态链接**是栈帧的一项功能。每个栈帧都持有指向当前方法所属类型的运行时常量池的引用，用于把方法代码中的方法符号引用转换为具体的方法引用，并把变量访问转换为对应运行时存储结构中的偏移；解析尚未确定的符号时还可能触发类加载。需要根据接收者实际类型选择虚方法实现的过程属于方法调用指令的动态分派，不能简单等同于这里的动态链接。
 
-![](https://oss.javaguide.cn/github/javaguide/jvmimage-20220331175738692.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/jvmimage-20220331175738692.png)
 
 栈空间虽然不是无限的，但一般正常调用的情况下是不会出现问题的。不过，如果函数调用陷入无限递归的话，就会导致栈中被压入太多栈帧而占用太多空间，导致栈空间过深。那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 `StackOverflowError` 错误。
 
@@ -178,7 +178,7 @@ graph LR
 - **`StackOverflowError`：** 当线程执行所需的栈空间超过 JVM 允许的大小时，抛出 `StackOverflowError` 错误。
 - **`OutOfMemoryError`：** 如果栈的内存大小可以动态扩展， 那么当虚拟机在动态扩展栈时无法申请到足够的内存空间，则抛出 `OutOfMemoryError` 异常。
 
-![](https://oss.javaguide.cn/github/javaguide/java/jvm/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%8B%E7%AC%AC%E4%B8%89%E7%89%88%E7%9A%84%E7%AC%AC2%E7%AB%A0-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/《深入理解虚拟机》第三版的第2章-虚拟机栈.png)
 
 ### 本地方法栈
 
@@ -272,7 +272,7 @@ Java 堆是垃圾收集器管理的主要区域，因此也被称作 **GC 堆（
 
 下图所示的 Eden 区、两个 Survivor 区 S0 和 S1 都属于新生代，中间一层属于老年代，最下面一层属于永久代。
 
-![堆内存结构](https://oss.javaguide.cn/github/javaguide/java/jvm/hotspot-heap-structure.png)
+![堆内存结构](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/hotspot-heap-structure.png)
 
 **JDK 8 版本之后 PermGen（永久代） 已被 Metaspace（元空间） 取代，元空间使用的是本地内存。**（我会在方法区这部分内容详细介绍到）。
 
@@ -292,7 +292,7 @@ MaxTenuringThreshold of 20 is invalid; must be between 0 and 15
 
 这个年龄信息就是在标记字段中存放的（标记字段还存放了对象自身的其他信息比如哈希码、锁状态信息等等）。下面旧版 HotSpot 源码中的 `markOop.hpp` 展示了当时标记字（Mark Word）的结构；现代 JDK 的对应实现和对象头布局已经发生变化：
 
-![标记字段结构](https://oss.javaguide.cn/github/javaguide/java/jvm/hotspot-markOop.hpp..png)
+![标记字段结构](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/hotspot-markOop.hpp..png)
 
 可以看到对象年龄占用的大小确实是 4 位。
 
@@ -374,17 +374,17 @@ graph LR
 - **字符串常量池（String Pool）**：同样自 JDK 7 起，字符串常量池也**移至 Java 堆中**。
 - **即时编译器编译后的代码缓存（JIT Code Cache）**：JIT 编译器将热点方法的字节码编译成的本地机器码，存放在一个**独立的、名为“Code Cache”的内存区域**，而不是方法区本身。这样做是为了实现更高效的执行和内存管理。
 
-![method-area-jdk1.7](https://oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.7.png)
+![method-area-jdk1.7](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.7.png)
 
 **方法区和永久代以及元空间是什么关系呢？** 方法区和永久代以及元空间的关系很像 Java 中接口和类的关系，类实现了接口，这里的类就可以看作是永久代和元空间，接口可以看作是方法区，也就是说永久代以及元空间是 HotSpot 虚拟机对虚拟机规范中方法区的两种实现方式。并且，永久代是 JDK 1.8 之前的方法区实现，JDK 1.8 及以后方法区的实现变成了元空间。
 
-![HotSpot 虚拟机方法区的两种实现](https://oss.javaguide.cn/github/javaguide/java/jvm/method-area-implementation.png)
+![HotSpot 虚拟机方法区的两种实现](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/method-area-implementation.png)
 
 **为什么要将永久代 (PermGen) 替换为元空间 (MetaSpace) 呢?**
 
 下图来自《深入理解 Java 虚拟机》第 3 版 2.2.5
 
-![](https://oss.javaguide.cn/github/javaguide/java/jvm/20210425134508117.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/20210425134508117.png)
 
 1、永久代的容量受 `-XX:MaxPermSize` 上限约束，这个上限可以配置；元空间改用本地内存，并可通过 `-XX:MaxMetaspaceSize` 限制。两者都可能溢出，实际风险取决于配置和类元数据的增长情况。
 
@@ -457,7 +457,7 @@ Class 文件中除了有类的版本、字段、方法、接口等描述信息�
 
 《深入理解 Java 虚拟机》7.34 节第三版对符号引用和直接引用的解释如下：
 
-![符号引用和直接引用](https://oss.javaguide.cn/github/javaguide/java/jvm/symbol-reference-and-direct-reference.png)
+![符号引用和直接引用](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/symbol-reference-and-direct-reference.png)
 
 常量池表会在类加载后存放到方法区的运行时常量池中。
 
@@ -516,9 +516,9 @@ HotSpot 虚拟机中字符串常量池的实现可以在 `src/hotspot/share/clas
 
 JDK1.7 之前，字符串常量池存放在永久代。JDK1.7 将字符串常量池和类静态变量移到了 Java 堆中。
 
-![method-area-jdk1.6](https://oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.6.png)
+![method-area-jdk1.6](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.6.png)
 
-![method-area-jdk1.7](https://oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.7.png)
+![method-area-jdk1.7](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/method-area-jdk1.7.png)
 
 **JDK 1.7 为什么要将字符串常量池移动到堆中？**
 
@@ -686,13 +686,13 @@ graph TD
 
 如果使用句柄的话，那么 Java 堆中将会划分出一块内存来作为句柄池，reference 中存储的就是对象的句柄地址，而句柄中包含了对象实例数据与对象类型数据各自的具体地址信息。
 
-![对象的访问定位-使用句柄](https://oss.javaguide.cn/github/javaguide/java/jvm/access-location-of-object-handle.png)
+![对象的访问定位-使用句柄](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/access-location-of-object-handle.png)
 
 #### 直接指针
 
 如果使用直接指针访问，reference 中存储的直接就是对象的地址。
 
-![对象的访问定位-直接指针](https://oss.javaguide.cn/github/javaguide/java/jvm/access-location-of-object-handle-direct-pointer.png)
+![对象的访问定位-直接指针](/assets/images/oss.javaguide.cn/github/javaguide/java/jvm/access-location-of-object-handle-direct-pointer.png)
 
 这两种对象访问方式各有优势。使用句柄来访问的最大好处是 reference 中存储的是稳定的句柄地址，在对象被移动时只会改变句柄中的实例数据指针，而 reference 本身不需要修改。使用直接指针访问方式最大的好处就是速度快，它节省了一次指针定位的时间开销。
 

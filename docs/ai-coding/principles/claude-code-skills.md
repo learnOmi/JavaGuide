@@ -53,7 +53,7 @@ Skill 适合放有明确触发场景的流程。它们需要被复用，但不�
 
 你可以把 Skill 理解成一份按需打开的操作手册：平时只让 Claude 知道有这项能力，真用到的时候，再把完整说明拿出来。
 
-![Skill 和 Prompt、MCP、Function Calling 对比](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
+![Skill 和 Prompt、MCP、Function Calling 对比](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-prompt-function-calling-mcp-comparison.webp)
 
 `CLAUDE.md` 则反过来。官方建议把它留给每轮都要知道的内容，比如构建命令、项目约定、目录结构，以及必须一直遵守的规则。
 
@@ -83,7 +83,7 @@ Plugin 负责分发。一个 Plugin 可以带 Skills、Agents、Hooks 和 MCP Se
 
 如果项目里同时有 `CLAUDE.md`、`AGENTS.md`、局部规则、SPEC 和 Skills，也可以按这个思路拆：常驻规则放在规则文件里，可复用流程交给 Skill，本次任务的验收标准放到 SPEC。
 
-![CLAUDE.md 与其他规则文件怎么分工](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
+![CLAUDE.md 与其他规则文件怎么分工](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
 
 适合变成 Skill 的内容，通常有几个特点：经常复用，有明确触发场景，步骤比较固定，内容比较长，不适合常驻上下文，最好还能配 supporting files 或脚本（例如 `scripts/`、`references/`、`templates/`）。
 
@@ -213,7 +213,7 @@ Claude Code 会从多个来源加载 Skills。常见位置包括：
 
 用户级 Skills 放在 `~/.claude/skills/`，所有项目都能用。项目级 Skills 放在项目的 `.claude/skills/`，适合和团队共享。
 
-![项目里的 .claude/skills 目录示例](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-project-skills-folder.png)
+![项目里的 .claude/skills 目录示例](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-project-skills-folder.png)
 
 从源码看，Skills 目录采用的是：
 
@@ -236,7 +236,7 @@ Claude Code 的 Skill 来源大致可以分几类：
 
 Claude Code 包含一些 bundled skills，比如 `/code-review`、`/batch`、`/debug`、`/loop` 和 `/claude-api`。它们和普通内置命令不一样，属于 prompt-based skill。
 
-![Claude Code 官方文档中的 Bundled skills 说明](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-bundled-skills-docs.png)
+![Claude Code 官方文档中的 Bundled skills 说明](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-bundled-skills-docs.png)
 
 嵌套 `.claude/skills` 目录也要留意。
 
@@ -268,7 +268,7 @@ Claude Code 主要通过 Skill 的名称、描述、`when_to_use` 等 frontmatte
 
 这也是 Skills 比长 `CLAUDE.md` 更省上下文的主要原因。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 
 Skill 被调用后，Claude Code 会先拿到 Markdown body，然后依次做几件事：
 
@@ -304,11 +304,11 @@ Run this helper:
 
 这就是渐进式披露：先让模型知道“有这个能力”，命中后再读正文，正文里只放流程骨架，真正长的材料继续放到 supporting files。
 
-![渐进式披露（三层模型）](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
+![渐进式披露（三层模型）](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
 
 所以 `SKILL.md` 不适合写成超长 README。正文里优先写什么时候用、按什么顺序做、哪些情况别做、失败怎么兜底；长清单、模板和脚本说明放到 `references/`、`templates/`、`scripts/` 里。
 
-![SKILL.md 正文最好控制在 500 行以内](https://oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
+![SKILL.md 正文最好控制在 500 行以内](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/keep-skill-md-content-under-500-lines-for-best-performance.png)
 
 `CLAUDE.md` 和 Skill 的区别，也可以回到加载策略上理解：
 

@@ -26,13 +26,13 @@ head:
 
 **超文本传输协议（HTTP，HyperText Transfer Protocol）** 是一种用于传输超文本和多媒体内容的应用层协议，最常见的使用场景就是 Web 浏览器与 Web 服务器之间的通信。
 
-![HTTP：超文本传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
+![HTTP：超文本传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-overview.png)
 
 当我们在浏览器里访问一个网页时，浏览器会向服务器发送 HTTP 请求，服务器处理后返回 HTTP 响应。页面中的 HTML、CSS、JavaScript、图片、视频等资源，很多都是通过 HTTP 加载的。
 
 HTTP 使用客户端-服务器模型，客户端发送 HTTP Request（请求），服务器返回 HTTP Response（响应），整个过程如下图所示。
 
-![HTTP 协议](https://oss.javaguide.cn/github/javaguide/450px-HTTP-Header.png)
+![HTTP 协议](/assets/images/oss.javaguide.cn/github/javaguide/450px-HTTP-Header.png)
 
 需要注意的是，HTTP 是应用层协议，它本身不直接负责可靠传输。不同版本的 HTTP 底层依赖也不完全一样：
 
@@ -54,7 +54,7 @@ HTTP/3 基于 QUIC，QUIC 在 UDP 之上实现多路复用和可靠传输。不�
 
 **WebSocket** 是一种基于 TCP 连接的全双工通信协议，客户端和服务器可以在同一条连接上同时发送和接收数据。
 
-![WebSocket：全双工通信协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/websocket-overview.png)
+![WebSocket：全双工通信协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/websocket-overview.png)
 
 它的典型特点是：**连接建立后，服务端也可以主动向客户端推送消息**。这正好弥补了传统 HTTP 请求-响应模型在实时通信场景下的不足。
 
@@ -62,7 +62,7 @@ WebSocket 协议在 2008 年诞生，2011 年成为国际标准，现代主流�
 
 WebSocket 本质上仍然是应用层协议。它通常先通过一次 HTTP 请求发起协议升级，升级成功后，客户端和服务端之间会建立一条持久连接，后续就可以进行双向数据传输。
 
-![WebSocket 示意图](https://oss.javaguide.cn/github/javaguide/system-design/web-real-time-message-push/1460000042192394.png)
+![WebSocket 示意图](/assets/images/oss.javaguide.cn/github/javaguide/system-design/web-real-time-message-push/1460000042192394.png)
 
 WebSocket 的常见应用场景包括：
 
@@ -87,7 +87,7 @@ WebSocket 的工作过程可以简单分为下面几步：
 
 **简单邮件传输协议（SMTP，Simple Mail Transfer Protocol）** 是一种基于 TCP 的应用层协议，主要用于**发送和转发电子邮件**。
 
-![SMTP：简单邮件传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/smtp-overview.png)
+![SMTP：简单邮件传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/smtp-overview.png)
 
 这里要注意一个容易混淆的点：
 
@@ -95,7 +95,7 @@ WebSocket 的工作过程可以简单分为下面几步：
 
 也就是说，邮件从你的邮箱服务器发送到对方邮箱服务器，这个过程通常还是 SMTP；而用户使用客户端查看邮箱里的邮件，通常使用 POP3 或 IMAP。
 
-![SMTP 协议](https://oss.javaguide.cn/github/javaguide/cs-basics/network/what-is-smtp.png)
+![SMTP 协议](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/what-is-smtp.png)
 
 常见 SMTP 相关端口有 25、465、587，三者用途不完全一样：
 
@@ -139,7 +139,7 @@ WebSocket 的工作过程可以简单分为下面几步：
 
 **POP3 和 IMAP 都是用于接收邮件的协议**，二者也都是基于 TCP 的应用层协议。
 
-![POP3/IMAP：邮件接收协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/pop3-imap-overview.png)
+![POP3/IMAP：邮件接收协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/pop3-imap-overview.png)
 
 需要注意的是：**SMTP 主要负责邮件发送和转发，POP3/IMAP 主要负责用户从邮箱服务器读取邮件。**
 
@@ -159,7 +159,7 @@ IMAP 是更现代、更常用的邮件接收协议。它支持在服务器端管
 
 **FTP（File Transfer Protocol，文件传输协议）** 是一种基于 TCP 的应用层协议，用于在客户端和服务器之间传输文件。
 
-![FTP：文件传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/ftp-overview.png)
+![FTP：文件传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/ftp-overview.png)
 
 FTP 采用客户端-服务器模型。它比较特殊的一点是：FTP 通常会建立两条 TCP 连接。
 
@@ -170,7 +170,7 @@ FTP 采用客户端-服务器模型。它比较特殊的一点是：FTP 通常�
 
 这种将命令和数据分开传输的设计，能够让控制命令和文件数据互不干扰。
 
-![FTP 工作过程](https://oss.javaguide.cn/github/javaguide/cs-basics/network/ftp.png)
+![FTP 工作过程](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/ftp.png)
 
 FTP 有主动模式（PORT）和被动模式（PASV）两种数据连接方式：
 
@@ -192,11 +192,11 @@ FTP 有主动模式（PORT）和被动模式（PASV）两种数据连接方式�
 
 Telnet 最大的问题是：**明文传输**。
 
-![Telnet：远程登录协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/telnet-overview.png)
+![Telnet：远程登录协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/telnet-overview.png)
 
 用户名、密码、命令内容和返回结果都不会加密，攻击者如果能监听网络流量，就可能直接看到敏感信息。
 
-![Telnet：远程登录协议](https://oss.javaguide.cn/github/javaguide/cs-basics/network/Telnet_is_vulnerable_to_eavesdropping-2.png)
+![Telnet：远程登录协议](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/Telnet_is_vulnerable_to_eavesdropping-2.png)
 
 因此，Telnet 现在已经很少用于真正的远程管理。实际生产环境中，通常使用 SSH 替代 Telnet。
 
@@ -204,7 +204,7 @@ Telnet 最大的问题是：**明文传输**。
 
 **SSH（Secure Shell）** 是一种基于 TCP 的安全网络协议，默认端口是 22。它通过加密和认证机制，为远程登录、命令执行和文件传输提供安全保障。
 
-![SSH：安全的网络传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/ssh-overview.png)
+![SSH：安全的网络传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/ssh-overview.png)
 
 SSH 最经典的用途是登录远程服务器：
 
@@ -222,7 +222,7 @@ ssh user@server_ip
 
 SSH 使用客户端-服务器模型。SSH Server 监听客户端连接请求，SSH Client 发起连接。双方会先协商加密算法，并通过密钥交换生成后续通信使用的对称加密密钥。之后的通信内容都会被加密传输。
 
-![SSH：安全的网络传输协议](https://oss.javaguide.cn/github/javaguide/cs-basics/network/ssh-client-server.png)
+![SSH：安全的网络传输协议](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/ssh-client-server.png)
 
 需要注意的是，SSH 的安全性不仅来自加密传输，也来自身份认证机制。常见认证方式包括：
 
@@ -236,7 +236,7 @@ SSH 使用客户端-服务器模型。SSH Server 监听客户端连接请求，S
 
 **RTP（Real-time Transport Protocol，实时传输协议）** 是一种用于传输音频、视频等实时数据的协议。它通常运行在 UDP 之上。在 TCP/IP 分层模型中，UDP 之上就是应用层，所以 RTP 按分层规则被归入应用层。但它承担的职责（序列号、时间戳、同步、质量反馈）更接近传输层功能，RFC 3550 也说它“通常会集成到应用处理中，而不是作为独立层实现”。
 
-![RTP：实时传输协议概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/rtp-overview.png)
+![RTP：实时传输协议概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/rtp-overview.png)
 
 RTP 主要用在语音通话、视频会议、直播等实时场景。它本身不保证可靠传输，也不保证按时到达，而是通过序列号、时间戳等信息帮助接收端进行排序、同步和播放控制。虽然也存在 RTP over TCP 的封装方式（如 RFC 4571），但更多用于穿越防火墙或兼容特定协议栈等特殊场景，实际实时音视频场景中 RTP 仍以 UDP 为主。
 
@@ -253,7 +253,7 @@ RTP 通常会和 RTCP 配合使用：
 
 **DNS（Domain Name System，域名系统）** 用于解决域名和 IP 地址之间的映射问题。
 
-![DNS：域名系统概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/dns-overview.png)
+![DNS：域名系统概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/dns-overview.png)
 
 我们访问网站时，通常输入的是域名，例如：
 

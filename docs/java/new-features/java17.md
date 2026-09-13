@@ -14,7 +14,7 @@ Java 17（JDK 17）于 2021 年 9 月 14 日正式发布，是 Oracle 认定的�
 
 按照 Oracle 2026 年 4 月更新的 Java SE 支持路线图，Oracle JDK 17 的 Premier Support 持续到 2026 年 9 月，Extended Support 持续到 2029 年 9 月。不同 JDK 发行版的免费更新和商业支持周期并不相同，生产环境还要以实际使用的发行版为准。
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/4c1611fad59449edbbd6e233690e9fa7.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/4c1611fad59449edbbd6e233690e9fa7.png)
 
 从 JDK 11 升级到 JDK 17 时，建议重点关注密封类、switch 模式匹配、新的伪随机数 API，以及 JDK 内部 API 强封装带来的兼容性变化。Spring 6.x 和 Spring Boot 3.x 的最低 Java 版本也是 Java 17。
 
@@ -32,7 +32,7 @@ JDK 17 共有 14 个新特性，这篇文章会挑选其中较为重要的一些
 
 下图是从 JDK 8 到 JDK 16 每个版本的更新带来的新特性数量和更新时间：
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
 
 相关阅读：[OpenJDK Java 17 文档](https://openjdk.java.net/projects/jdk/17/)。
 

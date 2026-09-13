@@ -9,7 +9,7 @@ icon: "mdi:language-java"
 
 **[《Head First Java》](https://book.douban.com/subject/2000732/)**
 
-![《Head First Java》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424103035793.png)
+![《Head First Java》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424103035793.png)
 
 《Head First Java》这本书的内容很轻松有趣，可以说是我学习编程初期最喜欢的几本书之一了。同时，这本书也是我的 Java 启蒙书籍。我在学习 Java 的初期多亏了这本书的帮助，自己才算是跨进 Java 语言的大门。
 
@@ -21,7 +21,7 @@ icon: "mdi:language-java"
 
 **[《Java 核心技术卷 1 + 卷 2》](https://book.douban.com/subject/34898994/)**
 
-![《Java 核心技术卷 1》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424101217849.png)
+![《Java 核心技术卷 1》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424101217849.png)
 
 这两本书也非常不错。不过，这两本书的内容很多，全看的话比较费时间。我现在是把这两本书当做工具书来用，就比如我平时写文章的时候，碰到一些 Java 基础方面的问题，经常就翻看这两本来当做参考！
 
@@ -29,23 +29,23 @@ icon: "mdi:language-java"
 
 **[《Java 编程思想》](https://book.douban.com/subject/2130190/)**
 
-![《Java 编程思想》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424103124893.png)
+![《Java 编程思想》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424103124893.png)
 
 另外，这本书的作者去年新出版了[《On Java》](https://book.douban.com/subject/35751619/)，我更推荐这本，内容更新，介绍了 Java 的 3 个长期支持版（Java 8、11、17）。
 
-![](https://oss.javaguide.cn/github/javaguide/books/on-java/6171657600353_.pic_hd.jpg)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/on-java/6171657600353_.pic_hd.jpg)
 
 毕竟，这是市面上目前唯一一本介绍了 Java 的 3 个长期支持版（Java 8、11、17）的技术书籍。
 
 **[《Java 8 实战》](https://book.douban.com/subject/26772632/)**
 
-![《Java 8实战》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424103202625.png)
+![《Java 8实战》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424103202625.png)
 
 Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 比较多。掌握 Java 8 的一些新特性比如 Lambda、Stream API 还是挺有必要的。这块的话，我推荐 **[《Java 8 实战》](https://book.douban.com/subject/26772632/)** 这本书。
 
 **[《Java 编程的逻辑》](https://book.douban.com/subject/30133440/)**
 
-![《Java编程的逻辑》](https://oss.javaguide.cn/github/javaguide/books/image-20230721153650488.png)
+![《Java编程的逻辑》](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20230721153650488.png)
 
 一本非常低调的好书，相比于入门书来说，内容更有深度。适合初学者，同时也适合大家拿来复习 Java 基础知识。
 
@@ -53,7 +53,7 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 **[《Java 并发编程之美》](https://book.douban.com/subject/30351286/)**
 
-![《Java 并发编程之美》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424112413660.png)
+![《Java 并发编程之美》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424112413660.png)
 
 这本书还是非常适合我们用来学习 Java 多线程的，讲解非常通俗易懂，作者从并发编程基础到实战都是信手拈来。
 
@@ -61,13 +61,13 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 **[《实战 Java 高并发程序设计》](https://book.douban.com/subject/30358019/)**
 
-![《实战 Java 高并发程序设计》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424112554830.png)
+![《实战 Java 高并发程序设计》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424112554830.png)
 
 这个是我第二本要推荐的书籍，比较适合作为多线程入门/进阶书籍来看。这本书内容同样是理论结合实战，对于每个知识点的讲解也比较通俗易懂，整体结构也比较清。
 
 **[《深入浅出 Java 多线程》](https://github.com/RedSpider1/concurrent)**
 
-![《深入浅出 Java 多线程》在线阅读](https://oss.javaguide.cn/github/javaguide/books/image-20220424112927759.png)
+![《深入浅出 Java 多线程》在线阅读](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424112927759.png)
 
 这本开源书籍是几位大厂的大佬开源的。这几位作者为了写好《深入浅出 Java 多线程》这本书阅读了大量的 Java 多线程方面的书籍和博客，然后再加上他们的经验总结、Demo 实例、源码解析，最终才形成了这本书。
 
@@ -77,7 +77,7 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 **[《Java 并发实现原理：JDK 源码剖析》](https://book.douban.com/subject/35013531/)**
 
-![《Java 并发实现原理：JDK 源码剖析》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/0b1b046af81f4c94a03e292e66dd6f7d.png)
+![《Java 并发实现原理：JDK 源码剖析》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/0b1b046af81f4c94a03e292e66dd6f7d.png)
 
 这本书主要是对 Java Concurrent 包中一些比较重要的源码进行了讲解，另外，像 JMM、happen-before、CAS 等等比较重要的并发知识这本书也都会一并介绍到。
 
@@ -87,7 +87,7 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 **[《深入理解 Java 虚拟机》](https://book.douban.com/subject/34907497/)**
 
-![《深入理解 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/20210710104655705.png)
+![《深入理解 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/20210710104655705.png)
 
 这本书就一句话形容：**国产书籍中的战斗机，实实在在的优秀！** （真心希望国内能有更多这样的优质书籍出现！加油！💪）
 
@@ -97,13 +97,13 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 类似的书籍还有 **[《实战 Java 虚拟机》](https://book.douban.com/subject/26354292/)**、**[《虚拟机设计与实现:以 JVM 为例》](https://book.douban.com/subject/34935105/)** ，这两本都是非常不错的！
 
-![《实战 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113158144.png)
+![《实战 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113158144.png)
 
-![《虚拟机设计与实现:以 JVM 为例》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113210153.png)
+![《虚拟机设计与实现:以 JVM 为例》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113210153.png)
 
 如果你对实战比较感兴趣，想要自己动手写一个简易的 JVM 的话，可以看看 **[《自己动手写 Java 虚拟机》](https://book.douban.com/subject/26802084/)** 这本书。
 
-![《自己动手写 Java 虚拟机》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113445246.png)
+![《自己动手写 Java 虚拟机》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113445246.png)
 
 书中的代码是基于 Go 语言实现的，搞懂了原理之后，你可以使用 Java 语言模仿着写一个，也算是练练手！ 如果你当前没有能力独立使用 Java 语言模仿着写一个的话，你也可以在网上找到很多基于 Java 语言版本的实现，比如[《zachaxy 的手写 JVM 系列》](https://zachaxy.github.io/tags/JVM/) 。
 
@@ -140,19 +140,19 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 
 **[《Spring 实战》](https://book.douban.com/subject/34949443/)**
 
-![《Spring 实战》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113512453.png)
+![《Spring 实战》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113512453.png)
 
 不建议当做入门书籍读，入门的话可以找点国人的书或者视频看。这本定位就相当于是关于 Spring 的一个概览，只有一些基本概念的介绍和示例，涵盖了 Spring 的各个方面，但都不够深入。就像作者在最后一页写的那样：“学习 Spring，这才刚刚开始”。
 
 **[《Spring 5 高级编程》](https://book.douban.com/subject/30452637/)**
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210328171223638.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210328171223638.png)
 
 对于 Spring5 的新特性介绍的比较详细，也说不上好。另外，感觉全书翻译的有一点蹩脚的味道，还有一点枯燥。全书的内容比较多，我一般拿来当做工具书参考。
 
 **[《Spring Boot 编程思想（核心篇）》](https://book.douban.com/subject/33390560/)**
 
-![《Spring Boot 编程思想（核心篇）》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113546513.png)
+![《Spring Boot 编程思想（核心篇）》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113546513.png)
 
 _稍微有点啰嗦，但是原理介绍的比较清楚。_
 
@@ -160,7 +160,7 @@ SpringBoot 解析，不适合初学者。我是去年入手的，现在就看了
 
 **[《Spring Boot 实战》](https://book.douban.com/subject/26857423/)**
 
-![《Spring Boot 实战》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113614768.png)
+![《Spring Boot 实战》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113614768.png)
 
 比较一般的一本书，可以简单拿来看一下。
 
@@ -170,7 +170,7 @@ MyBatis 国内用的挺多的，我的建议是不需要花太多时间在上面
 
 **[《手写 MyBatis：渐进式源码实践》](https://book.douban.com/subject/36243250/)**
 
-![《手写MyBatis：渐进式源码实践》](https://oss.javaguide.cn/github/javaguide/books/image-20230724123402784.png)
+![《手写MyBatis：渐进式源码实践》](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20230724123402784.png)
 
 我的好朋友小傅哥出版的一本书。这本书以实践为核心，摒弃 MyBatis 源码中繁杂的内容，聚焦于 MyBaits 中的核心逻辑，简化代码实现过程，以渐进式的开发方式，逐步实现 MyBaits 中的核心功能。
 
@@ -178,7 +178,7 @@ MyBatis 国内用的挺多的，我的建议是不需要花太多时间在上面
 
 **[《通用源码阅读指导书――MyBatis 源码详解》](https://book.douban.com/subject/35138963/)**
 
-![《通用源码阅读指导书――MyBatis源码详解》](https://oss.javaguide.cn/github/javaguide/books/image-20230724123416741.png)
+![《通用源码阅读指导书――MyBatis源码详解》](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20230724123416741.png)
 
 这本书通过 MyBatis 开源代码讲解源码阅读的流程和方法！一共对 MyBatis 源码中的 300 多个类进行了详细解析，包括其背景知识、组织方式、逻辑结构、实现细节。
 
@@ -188,7 +188,7 @@ MyBatis 国内用的挺多的，我的建议是不需要花太多时间在上面
 
 **[《Netty 实战》](https://book.douban.com/subject/27038538/)**
 
-![《Netty 实战》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113715369.png)
+![《Netty 实战》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113715369.png)
 
 这本书可以用来入门 Netty ，内容从 BIO 聊到了 NIO、之后才详细介绍为什么有 Netty、Netty 为什么好用以及 Netty 重要的知识点讲解。
 
@@ -196,13 +196,13 @@ MyBatis 国内用的挺多的，我的建议是不需要花太多时间在上面
 
 **[《Netty 进阶之路：跟着案例学 Netty》](https://book.douban.com/subject/30381214/)**
 
-![《Netty 进阶之路：跟着案例学 Netty》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113747345.png)
+![《Netty 进阶之路：跟着案例学 Netty》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113747345.png)
 
 内容都是关于使用 Netty 的实践案例比如内存泄露这些东西。如果你觉得你的 Netty 已经完全入门了，并且你想要对 Netty 掌握的更深的话，推荐你看一下这本书。
 
 **[《跟闪电侠学 Netty：Netty 即时聊天实战与底层原理》](https://book.douban.com/subject/35752082/)**
 
-![](https://oss.javaguide.cn/github/javaguide/open-source-project/image-20220503085034268.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/open-source-project/image-20220503085034268.png)
 
 2022 年 3 月出版的一本书。这本书分为上下两篇，上篇通过一个即时聊天系统的实战案例带你入门 Netty，下篇通过 Netty 源码分析带你搞清 Netty 比较重要的底层原理。
 
@@ -210,7 +210,7 @@ MyBatis 国内用的挺多的，我的建议是不需要花太多时间在上面
 
 **[《Java 性能权威指南》](https://book.douban.com/subject/26740520/)**
 
-![《Java 性能权威指南》-豆瓣](https://oss.javaguide.cn/github/javaguide/books/image-20220424113809644.png)
+![《Java 性能权威指南》-豆瓣](/assets/images/oss.javaguide.cn/github/javaguide/books/image-20220424113809644.png)
 
 _希望能有更多这 Java 性能优化方面的好书！_
 
@@ -224,11 +224,11 @@ O'Reilly 家族书，性能调优的入门书，我个人觉得性能调优是�
 
 目前我觉得能推荐的只有李运华老师的 **[《从零开始学架构》](https://book.douban.com/subject/30335935/)** 和 余春龙老师的 **[《软件架构设计：大型网站技术架构与业务架构融合之道》](https://book.douban.com/subject/30443578/ "《软件架构设计：大型网站技术架构与业务架构融合之道》")** 。
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210412224443177.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210412224443177.png)
 
 《从零开始学架构》这本书对应的有一个极客时间的专栏—《从零开始学架构》，里面的很多内容都是这个专栏里面的，两者买其一就可以了。我看了很小一部分，内容挺全面的，是一本真正在讲如何做架构的书籍。
 
-![](https://oss.javaguide.cn/github/javaguide/books/20210412232441459.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide/books/20210412232441459.png)
 
 事务与锁、分布式（CAP、分布式事务……）、高并发、高可用 《软件架构设计：大型网站技术架构与业务架构融合之道》 这本书都有介绍到。
 
@@ -236,12 +236,12 @@ O'Reilly 家族书，性能调优的入门书，我个人觉得性能调优是�
 
 **《JavaGuide 面试突击版》**
 
-![](https://oss.javaguide.cn/github/javaguide-mianshituji/image-20220830103023493.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide-mianshituji/image-20220830103023493.png)
 
-![](https://oss.javaguide.cn/github/javaguide-mianshituji/image-20220830102925775.png)
+![](/assets/images/oss.javaguide.cn/github/javaguide-mianshituji/image-20220830102925775.png)
 
 [JavaGuide](https://javaguide.cn/) 的面试版本，涵盖了 Java 后端方面的大部分知识点比如 集合、JVM、多线程还有数据库 MySQL 等内容。
 
 公众号后台回复：“**面试突击**” 即可免费获取，无任何套路。
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![JavaGuide 官方公众号](/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)

@@ -37,7 +37,7 @@ head:
 
 ## CLAUDE.md 和其他规则文件有什么区别？
 
-![CLAUDE.md 与其他规则文件怎么分工](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
+![CLAUDE.md 与其他规则文件怎么分工](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
 
 ### CLAUDE.md vs AGENTS.md
 
@@ -46,7 +46,7 @@ head:
 | **谁读** | Claude Code 专属           | 跨工具开放标准，OpenAI Codex、Cursor、Google Jules 等也采用 |
 | **定位** | Claude Code 的项目规则文件 | 跨工具通用的 Agent 指令文件                                 |
 
-![CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![CLAUDE.md 和 AGENTS.md](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
 
 **AGENTS.md** 面向多个编码 Agent，**CLAUDE.md** 是 Claude Code 的专属入口。仓库同时使用两种文件时，可以让它们复用同一份基础指令。
 
@@ -89,7 +89,7 @@ head:
 
 `SPEC.md` 是一些团队在 **Spec Coding** 中使用的文件名，`Specify → Design → Implement → Test` 也是本文采用的一种组织方式。不同工具可能使用 requirements、design、tasks、plan 等文件和阶段，不存在统一强制的四阶段标准。
 
-![Spec Coding 规范驱动编程流水线](https://oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
+![Spec Coding 规范驱动编程流水线](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/spec-coding-pipeline-flow.png)
 
 上图中的 `requirements.md` 是该工作流在 `Specify` 阶段生成的需求文件；其他团队也可能把同类任务规格集中写在 `SPEC.md`，两者不是通用的固定别名。
 
@@ -129,13 +129,13 @@ head:
 
 `CLAUDE.md` 会和系统指令、对话记录、读取的文件共同占用上下文。Anthropic 在官方文档中指出：**随着上下文窗口被填满，Claude 的整体表现会下降。**
 
-![上下文为什么会失效](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
+![上下文为什么会失效](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/why-does-the-following-content-fail.png)
 
 文件越长，留给后续对话和代码的空间越少，真正重要的规则也更容易被其他内容淹没。
 
 Anthropic 建议保持 `CLAUDE.md` 精简不超过 200 行，只保留 Claude 无法轻易从代码中推断的信息。如果内容继续膨胀，可以拆到带 `paths` 的 `.claude/rules/`，或者把不是每次会话都需要的参考内容放到 Skills 里。
 
-![Claude Code 官方文档对 CLAUDE.md 的建议](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudemd-claude-docs.png)
+![Claude Code 官方文档对 CLAUDE.md 的建议](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudemd-claude-docs.png)
 
 检查 `CLAUDE.md` 时，可以逐行问：“删掉这行以后，Claude 是否更容易犯同类错误？”有明确影响的规则留下；看不出行为差异的内容先删除，后面遇到实际问题再补。
 
@@ -202,7 +202,7 @@ Anthropic 建议保持 `CLAUDE.md` 精简不超过 200 行，只保留 Claude �
 
 下图是这个仓库里的 `CLAUDE.md` 示例：
 
-![andrej-karpathy-claudemd](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/andrej-karpathy-claudemd.png)
+![andrej-karpathy-claudemd](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/andrej-karpathy-claudemd.png)
 
 这份文件只处理几个高频问题：编码前检查假设，避免过度抽象，把修改限制在任务范围内，完成后运行测试并对照验收标准。规则数量不多，每条都对应一种可以观察到的行为。
 
@@ -323,7 +323,7 @@ Commands、Structure、Conventions、Testing 这类常见标题已经能准确�
 
 Claude Code 官方文档给出的执行过程如下：
 
-![Claude Code PreToolUse Hook](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
+![Claude Code PreToolUse Hook](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claude-code-runs-rm-rf-tmp-build-what-happens.svg)
 
 能机械检查的要求，优先交给 Linter、Hook 或 CI。比如要阻止 Claude 修改 `.env`，可以让 `PreToolUse` Hook 检查目标路径并拒绝操作；只在 `CLAUDE.md` 中提醒，仍然可能漏掉。
 
@@ -341,7 +341,7 @@ Claude Code 官方文档给出的执行过程如下：
 
 Claude Code 支持在多个位置放置 `CLAUDE.md`，各自的影响范围如下：
 
-![CLAUDE.md 层级与优先级](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
+![CLAUDE.md 层级与优先级](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
 
 | 位置       | 路径                                                                                                                                                  | 用途                                                                         |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -361,7 +361,7 @@ Claude Code 支持在多个位置放置 `CLAUDE.md`，各自的影响范围如�
 
 中小项目通常只需要一份 `CLAUDE.md`。模块增多以后，所有规则继续挤在根目录文件里，会让每个会话都加载一批与当前任务无关的内容。
 
-![CLAUDE.md 组织方式演进](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-scaling-evolution.png)
+![CLAUDE.md 组织方式演进](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-scaling-evolution.png)
 
 ### 项目不大时：只保留一份文件
 
@@ -425,7 +425,7 @@ paths:
 
 比如“所有接口返回 `Result<T>`”应该写进 `CLAUDE.md`；“这个项目的 Redis Stream 测试需要本地先启动 Redis”这种调试发现，让 Auto Memory 记住就够了。Auto Memory 默认开启，可以在 `/memory` 里查看、编辑、关闭；它会为每个项目维护独立的 memory 目录，但它不是团队共享规范，不能替代提交到仓库里的 `CLAUDE.md`。
 
-![CLAUDE.md 维护决策流程](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-maintenance-flow.png)
+![CLAUDE.md 维护决策流程](/assets/images/oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-maintenance-flow.png)
 
 ### 什么时候添加规则？
 

@@ -25,7 +25,7 @@ head:
 
 整站配有 **300+ 张技术配图**，用图解的方式把抽象概念讲清楚，不是干巴巴的文字堆砌。
 
-![计算机基础知识总结内容概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/cs-basics-overview.png)
+![计算机基础知识总结内容概览](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/cs-basics-overview.png)
 
 ## 适合谁看
 
