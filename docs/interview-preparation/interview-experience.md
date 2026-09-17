@@ -17,7 +17,7 @@ head:
 
 ![](/assets/images/oss.javaguide.cn/githubjuejinjihua/thinkimage-20220612185810480.png)
 
-并且，[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)还有专门分享面经和面试题的专题，里面会分享很多优质的面经和面试题。
+并且，[知识星球](/about-the-author/zhishixingqiu-two-years.html)还有专门分享面经和面试题的专题，里面会分享很多优质的面经和面试题。
 
 ![](/assets/images/oss.javaguide.cn/xingqiu/image-20220304120018731.png)
 

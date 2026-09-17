@@ -40,7 +40,7 @@ head:
 
 ![提高系统可用性的三层方法](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/ha-interview-availability-methods.png)
 
-相关内容：[高可用系统设计指南](https://javaguide.cn/high-availability/high-availability-system-design.html)
+相关内容：[高可用系统设计指南](/high-availability/high-availability-system-design.html)
 
 常见面试题：
 
@@ -59,7 +59,7 @@ head:
 
 ![RTO 与 RPO](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
 
-相关内容：[冗余设计详解](https://javaguide.cn/high-availability/redundancy.html)
+相关内容：[冗余设计详解](/high-availability/redundancy.html)
 
 常见面试题：
 
@@ -82,8 +82,8 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 相关内容：
 
-- [服务限流详解](https://javaguide.cn/high-availability/limit-request.html)
-- [降级&熔断详解](https://javaguide.cn/high-availability/fallback-and-circuit-breaker.html)
+- [服务限流详解](/high-availability/limit-request.html)
+- [降级&熔断详解](/high-availability/fallback-and-circuit-breaker.html)
 
 常见面试题：
 
@@ -110,8 +110,8 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 相关内容：
 
-- [超时&重试详解](https://javaguide.cn/high-availability/timeout-and-retry.html)
-- [接口幂等方案总结](https://javaguide.cn/high-availability/idempotency.html)
+- [超时&重试详解](/high-availability/timeout-and-retry.html)
+- [接口幂等方案总结](/high-availability/idempotency.html)
 
 常见面试题：
 
@@ -136,7 +136,7 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 ![性能压测主流程](/assets/images/oss.javaguide.cn/github/javaguide/high-availability/ha-interview-performance-test-flow.png)
 
-相关内容：[性能测试入门](https://javaguide.cn/high-availability/performance-test.html)
+相关内容：[性能测试入门](/high-availability/performance-test.html)
 
 常见面试题：
 

@@ -91,7 +91,7 @@ Claude Code 的认证方式可参考[官方认证文档](https://code.claude.com
 
 CC GUI 支持 **Skill（斜杠命令）**，可以把特定的审查流程整理成可复用说明。比如我配置了一个 `java-coding-standards` Skill，其中包含 Java 与 Spring Boot 的项目审查规则。
 
-这里我们直接以 [AI 智能面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)项目为例，用的时候，直接在对话框输入：
+这里我们直接以 [AI 智能面试平台](/zhuanlan/interview-guide.html)项目为例，用的时候，直接在对话框输入：
 
 ```
 /java-coding-standards 检查一下 @infrastructure 下的代码
@@ -118,7 +118,7 @@ CC GUI 支持 **Skill（斜杠命令）**，可以把特定的审查流程整理
 
 好用的 Vibe Coding Skills 推荐以及 Skills 常见问题解答，可以阅读笔者写的这两篇文章：
 
-1. [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)
+1. [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](/ai-coding/practices/programmer-essential-skills.html)
 2. [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://mp.weixin.qq.com/s/5iaTBH12VTH55jYwo4wmwA)
 
 ## CC GUI 内置功能

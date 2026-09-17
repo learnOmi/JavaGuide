@@ -196,7 +196,7 @@ Stripe Minions 在大型既有代码库中运行。对于缺少模块边界、�
 
 OpenAI 的 `AGENTS.md` 约 100 行，作为入口指向 `docs/` 中的设计文档、架构图、执行计划和质量评级。Agent 先读取任务所需的索引，再按路径加载细节，避免把整套规则放进每次会话。
 
-Agent Skills 也采用了相同的渐进式披露：上下文中常驻名称、描述等元数据，命中场景后再加载详细规则和执行流程。它把 `AGENTS.md` 的目录式做法标准化了。相关阅读可以看这篇：[Agent Skills 详解：是什么？怎么用？和 Prompt、MCP 有什么区别？](https://javaguide.cn/ai/agent/skills.html)。
+Agent Skills 也采用了相同的渐进式披露：上下文中常驻名称、描述等元数据，命中场景后再加载详细规则和执行流程。它把 `AGENTS.md` 的目录式做法标准化了。相关阅读可以看这篇：[Agent Skills 详解：是什么？怎么用？和 Prompt、MCP 有什么区别？](/ai/agent/skills.html)。
 
 #### 架构约束要靠工具执行
 

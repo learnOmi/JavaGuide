@@ -64,7 +64,7 @@ MySQL 成功可以归功于在**生态、功能和运维**这三个层面上的�
 
 **第二，从核心技术功能上看，它非常强大且均衡。**
 
-- **强大的事务支持：** 这是它作为关系型数据库的立身之本。值得一提的是，InnoDB 默认的可重复读（REPEATABLE-READ）隔离级别，通过 MVCC 和 Next-Key Lock 机制，很大程度上避免了幻读问题，这在很多其他数据库中都需要更高的隔离级别才能做到，兼顾了性能和一致性。详细介绍可以阅读笔者写的这篇文章：[MySQL 事务隔离级别详解](https://javaguide.cn/database/mysql/transaction-isolation-level.html)。
+- **强大的事务支持：** 这是它作为关系型数据库的立身之本。值得一提的是，InnoDB 默认的可重复读（REPEATABLE-READ）隔离级别，通过 MVCC 和 Next-Key Lock 机制，很大程度上避免了幻读问题，这在很多其他数据库中都需要更高的隔离级别才能做到，兼顾了性能和一致性。详细介绍可以阅读笔者写的这篇文章：[MySQL 事务隔离级别详解](/database/mysql/transaction-isolation-level.html)。
 - **优秀的性能和可扩展性：** MySQL 本身经过了海量互联网业务的严酷考验，单机性能非常出色。更重要的是，它围绕着水平扩展，形成了一套非常成熟的架构方案，比如主从复制、读写分离、以及通过中间件实现的分库分表。这让它能够支撑从初创公司到大型互联网平台的各种规模的业务。
 
 **第三，从运维和使用角度看，它非常‘亲民’。**
@@ -444,7 +444,7 @@ MySQL 索引相关的问题比较多，也非常重要，更详细的介绍可�
 
 ### MySQL 索引底层数据结构是什么？
 
-在 MySQL 中，MyISAM 引擎和 InnoDB 引擎都是使用 B+Tree 作为索引结构，详细介绍可以参考笔者写的这篇文章：[MySQL 索引详解](https://javaguide.cn/database/mysql/mysql-index.html)。
+在 MySQL 中，MyISAM 引擎和 InnoDB 引擎都是使用 B+Tree 作为索引结构，详细介绍可以参考笔者写的这篇文章：[MySQL 索引详解](/database/mysql/mysql-index.html)。
 
 ### 为什么 InnoDB 没有使用哈希作为索引的数据结构？
 
@@ -555,7 +555,7 @@ MySQL 8.0.13 版本引入了索引跳跃扫描（Index Skip Scan，简称 ISS）
 3. 以 % 开头的 LIKE 查询比如 `LIKE '%abc';`;
 4. 查询条件中使用 OR，且 OR 的前后条件中有一个列没有索引，涉及的索引都不会被使用到;
 5. IN 的取值范围较大时会导致索引失效，走全表扫描(NOT IN 和 IN 的失效场景相同);
-6. 发生[隐式转换](https://javaguide.cn/database/mysql/index-invalidation-caused-by-implicit-conversion.html "隐式转换");
+6. 发生[隐式转换](/database/mysql/index-invalidation-caused-by-implicit-conversion.html "隐式转换");
 
 ## MySQL 查询缓存
 
@@ -595,7 +595,7 @@ MySQL 5.6 开始，查询缓存已默认禁用。MySQL 8.0 开始，已经不再
 
 ## ⭐️MySQL 日志
 
-上诉问题的答案可以在[《Java 面试指北》(付费，点击链接领取优惠卷)](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 中找到。
+上诉问题的答案可以在[《Java 面试指北》(付费，点击链接领取优惠卷)](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 中找到。
 
 ![《Java 面试指北》技术面试题篇](/assets/images/oss.javaguide.cn/javamianshizhibei/technical-interview-questions.png)
 
@@ -964,7 +964,7 @@ MySQL 提供了两个方法来处理 ip 地址
 
 ### 有哪些常见的 SQL 优化手段？
 
-[《Java 面试指北》(付费)](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 有一篇文章详细介绍了常见的 SQL 优化手段，非常全面，清晰易懂！
+[《Java 面试指北》(付费)](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 有一篇文章详细介绍了常见的 SQL 优化手段，非常全面，清晰易懂！
 
 ![常见的 SQL 优化手段](/assets/images/oss.javaguide.cn/javamianshizhibei/javamianshizhibei-sql-optimization.png)
 

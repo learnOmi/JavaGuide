@@ -29,7 +29,7 @@ head:
 
 ### 认真准备技术面试
 
-- **优先梳理核心知识点**：比如计算基础、数据库、Java 基础、Java 集合、并发编程、SpringBoot（这里以 Java 后端方向为例）等。如果时间不够，可以分轻重缓急，有重点地复习。如果你想要系统准备 Java 后端面试但又不知道如何开始的，可以参考 [Java 后端面试通关计划（后端通用）](https://javaguide.cn/interview-preparation/backend-interview-plan.html)。
+- **优先梳理核心知识点**：比如计算基础、数据库、Java 基础、Java 集合、并发编程、SpringBoot（这里以 Java 后端方向为例）等。如果时间不够，可以分轻重缓急，有重点地复习。如果你想要系统准备 Java 后端面试但又不知道如何开始的，可以参考 [Java 后端面试通关计划（后端通用）](/interview-preparation/backend-interview-plan.html)。
 - **精心准备项目经历**：认真思考你简历上最重要的项目（面试以前两个项目为主，尤其是第一个），它们的技术难点、业务逻辑、架构设计，以及可能被面试官深挖的点。把你的思考总结成可能出现的面试问题，并尝试回答。
 
 ### 模拟面试和自测
@@ -37,9 +37,9 @@ head:
 - **约朋友或同学互相提问**：以真实的面试场景来进行演练，并及时对回答进行诊断和反馈。
 - **线上练习**：直接利用 AI 来进行模拟面试即可，免费且高效。把自己的简历投喂给它，让它根据你的简历，尤其是项目经历生成面试问题。
 - **面经**：平时可以多看一些前辈整理的面经，尤其是目标岗位或目标公司的面经，总结高频考点和常见问题。
-- **技术面试题自测**：在 [《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的 「技术面试题自测篇」 ，我总结了 Java 面试中最重要的知识点的最常见的面试题并按照面试提问的方式展现出来。其中，每一个问题都有提示和重要程度说明，非常适合用来自测。
+- **技术面试题自测**：在 [《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的 「技术面试题自测篇」 ，我总结了 Java 面试中最重要的知识点的最常见的面试题并按照面试提问的方式展现出来。其中，每一个问题都有提示和重要程度说明，非常适合用来自测。
 
-[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的 「技术面试题自测篇」概览：
+[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的 「技术面试题自测篇」概览：
 
 ![技术面试题自测篇](/assets/images/oss.javaguide.cn/javamianshizhibei/technical-interview-questions-self-test.png)
 

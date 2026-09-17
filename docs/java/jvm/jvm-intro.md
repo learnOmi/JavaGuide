@@ -271,7 +271,7 @@ MaxMetaspaceSize：限制元空间大小上限
 
 ### 3.4 垃圾回收算法
 
-关于常见垃圾回收算法的详细介绍，建议阅读这篇：[JVM 垃圾回收详解（重点）](https://javaguide.cn/java/jvm/jvm-garbage-collection.html)。
+关于常见垃圾回收算法的详细介绍，建议阅读这篇：[JVM 垃圾回收详解（重点）](/java/jvm/jvm-garbage-collection.html)。
 
 ### 3.5（了解）各种各样的垃圾回收器
 

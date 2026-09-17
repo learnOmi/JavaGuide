@@ -116,11 +116,11 @@ Java 8 算是一个里程碑式的版本，现在一般企业还是用 Java 8 �
 非常重要！非常重要！特别是 Git 和 Docker。
 
 - **IDEA**：熟悉基本操作以及常用快捷。相关资料： [《IntelliJ IDEA 简体中文专题教程》](https://github.com/judasn/IntelliJ-IDEA-Tutorial) 。
-- **Maven**：强烈建议学习常用框架之前可以提前花几天时间学习一下**Maven**的使用。（到处找 Jar 包，下载 Jar 包是真的麻烦费事，使用 Maven 可以为你省很多事情）。相关阅读：[Maven 核心概念总结](https://javaguide.cn/tools/maven/maven-core-concepts.html)。
-- **Git**：基本的 Git 技能也是必备的，试着在学习的过程中将自己的代码托管在 Github 上。相关阅读：[Git 核心概念总结](https://javaguide.cn/tools/git/git-intro.html)。
+- **Maven**：强烈建议学习常用框架之前可以提前花几天时间学习一下**Maven**的使用。（到处找 Jar 包，下载 Jar 包是真的麻烦费事，使用 Maven 可以为你省很多事情）。相关阅读：[Maven 核心概念总结](/tools/maven/maven-core-concepts.html)。
+- **Git**：基本的 Git 技能也是必备的，试着在学习的过程中将自己的代码托管在 Github 上。相关阅读：[Git 核心概念总结](/tools/git/git-intro.html)。
 - **Docker**：学着用 Docker 安装学习中需要用到的软件比如 MySQL ,这样方便很多，可以为你节省不少时间。相关资料：[《Docker - 从入门到实践》](https://yeasy.gitbook.io/docker_practice/) 。
 
-除了这些工具之外，我强烈建议你一定要搞懂 GitHub 的使用。一些使用 GitHub 的小技巧，你可以看[Github 实用小技巧总结](https://javaguide.cn/tools/git/github-tips.html)这篇文章。
+除了这些工具之外，我强烈建议你一定要搞懂 GitHub 的使用。一些使用 GitHub 的小技巧，你可以看[Github 实用小技巧总结](/tools/git/github-tips.html)这篇文章。
 
 ## 常用框架
 
@@ -240,7 +240,7 @@ O'Reilly 家族书，性能调优的入门书，我个人觉得性能调优是�
 
 ![](/assets/images/oss.javaguide.cn/github/javaguide-mianshituji/image-20220830102925775.png)
 
-[JavaGuide](https://javaguide.cn/) 的面试版本，涵盖了 Java 后端方面的大部分知识点比如 集合、JVM、多线程还有数据库 MySQL 等内容。
+[JavaGuide](/) 的面试版本，涵盖了 Java 后端方面的大部分知识点比如 集合、JVM、多线程还有数据库 MySQL 等内容。
 
 公众号后台回复：“**面试突击**” 即可免费获取，无任何套路。
 

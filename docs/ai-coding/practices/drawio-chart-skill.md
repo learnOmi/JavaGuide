@@ -52,7 +52,7 @@ head:
 
 Skill 刚诞生那会，我就把这套流程整理成了一个 Skill：[`drawio-chart`](https://github.com/Snailclimb/AIGuide/tree/main/skills/drawio-chart)。
 
-现在你在 [javaguide.cn](https://javaguide.cn/) 上看到的不少 AI 编程、Spec Coding、Claude Code 相关文章配图，基本都是这套思路做出来的：
+现在你在 [javaguide.cn](/) 上看到的不少 AI 编程、Spec Coding、Claude Code 相关文章配图，基本都是这套思路做出来的：
 
 - 先让 Agent 抽结构、排节点、生成 `.drawio`，再按文章需要导出图片；
 - 需要更强视觉表现时，再搭配 GPT-IMG2 做进一步处理。
@@ -134,7 +134,7 @@ Spec Coding 这类文章也类似。它讲的是一套工作流，不是一个�
 
 ## `drawio-chart` 这个 Skill 做了什么？
 
-我之前在 [《Agent Skills 是什么？和 Prompt、MCP 到底差在哪？》](https://javaguide.cn/ai/agent/skills.html) 里讲过，Skill 更像一份按需加载的任务说明。
+我之前在 [《Agent Skills 是什么？和 Prompt、MCP 到底差在哪？》](/ai/agent/skills.html) 里讲过，Skill 更像一份按需加载的任务说明。
 
 它不负责发明一个新工具，也不等同于 Function Calling 或 MCP。它解决的是：某类任务怎么做、什么时候做、哪些步骤不能漏、需要哪些参考资料。
 

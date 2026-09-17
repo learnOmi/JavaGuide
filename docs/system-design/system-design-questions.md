@@ -9,7 +9,7 @@ head:
       content: 系统设计面试题,场景题,短链系统,秒杀系统,海量数据,限流,缓存,分布式锁,一致性
 ---
 
-**系统设计** 相关的面试题为我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)（点击链接即可查看详细介绍以及加入方法）专属内容，已经整理到了[《后端面试高频系统设计&场景题》](https://javaguide.cn/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中。
+**系统设计** 相关的面试题为我的[知识星球](/about-the-author/zhishixingqiu-two-years.html)（点击链接即可查看详细介绍以及加入方法）专属内容，已经整理到了[《后端面试高频系统设计&场景题》](/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中。
 
 **《后端面试高频系统设计&场景题》** 包含了常见的系统设计案例比如短链系统、秒杀系统以及高频的场景题比如海量数据去重、第三方授权登录。
 
@@ -21,6 +21,6 @@ head:
 
 即使不是准备面试，我也强烈推荐你认真阅读这一系列文章，这对于提升自己系统设计思维和解决实际问题的能力还是非常有帮助的。并且，涉及到的很多案例都可以用到自己的项目上比如抽奖系统设计、第三方授权登录、Redis 实现延时任务的正确方式。
 
-《后端面试高频系统设计&场景题》本身是属于[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)的一部分，后面由于内容篇幅较多，因此被单独提了出来。
+《后端面试高频系统设计&场景题》本身是属于[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html)的一部分，后面由于内容篇幅较多，因此被单独提了出来。
 
 <!-- @include: @planet.snippet.md -->

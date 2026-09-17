@@ -75,7 +75,7 @@ Hook handler 主要有五类：
 
 ## Hooks 到底解决了什么问题
 
-假设 `CLAUDE.md` 里写着“改完代码请运行 Prettier”。这条说明会进入上下文，Claude 通常会照做；任务变长、期间插入新要求后，它也可能漏掉。项目规则还没整理清楚时，可以先看 [CLAUDE.md 最佳实践](https://javaguide.cn/ai-coding/practices/claude-md-best-practices.html)。
+假设 `CLAUDE.md` 里写着“改完代码请运行 Prettier”。这条说明会进入上下文，Claude 通常会照做；任务变长、期间插入新要求后，它也可能漏掉。项目规则还没整理清楚时，可以先看 [CLAUDE.md 最佳实践](/ai-coding/practices/claude-md-best-practices.html)。
 
 “不要修改 `.env`”也有相同问题。自然语言可以说明意图，却无法在每次文件写入前强制检查路径。把规则接到 `PreToolUse` 后，脚本可以读取目标文件并在命中敏感路径时直接阻断；格式化则可以放在 `PostToolUse`，只处理刚修改的文件。
 
@@ -272,7 +272,7 @@ Claude Code 会在每个退出码下检查 stdout。如果去掉开头空白后�
 
 `Stop` 不等于“任务完成”，它只是 Claude 准备结束本轮响应时触发。如果你用 Stop hook 做质量门禁，要防止循环。官方提供了 `stop_hook_active` 字段帮助判断当前是否已经由 Stop hook 继续过；连续阻断达到 8 次后，Claude Code 会忽略 Hook 的阻断并结束本轮响应。
 
-`PreCompact` 可以阻止压缩，`PostCompact` 不能改变已经完成的压缩结果。压缩后重新注入规则，更常见的做法是用 `SessionStart` 搭配 `compact` matcher。上下文压缩和规则补回属于 Context Engineering 的一部分，想继续展开可以看 [上下文工程实战指南](https://javaguide.cn/ai/agent/context-engineering.html)。
+`PreCompact` 可以阻止压缩，`PostCompact` 不能改变已经完成的压缩结果。压缩后重新注入规则，更常见的做法是用 `SessionStart` 搭配 `compact` matcher。上下文压缩和规则补回属于 Context Engineering 的一部分，想继续展开可以看 [上下文工程实战指南](/ai/agent/context-engineering.html)。
 
 ## 三个最小可用示例
 
@@ -447,7 +447,7 @@ Skill 的正文只有在使用时才加载进上下文（渐进式加载），�
 
 ![Skill 渐进式披露](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
 
-如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。
+如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html)。
 
 ![Agent 执行链路](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 

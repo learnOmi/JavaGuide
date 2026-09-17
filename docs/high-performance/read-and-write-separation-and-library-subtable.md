@@ -221,10 +221,10 @@ MySQL 主从同步延时是指从库的数据落后于主库的数据，这种�
 
 如果性能瓶颈主要来自慢 SQL、索引设计或时间字段存储，通常应该先做常规 MySQL 优化，再考虑分库分表：
 
-- MySQL 执行计划分析：[https://javaguide.cn/database/mysql/mysql-query-execution-plan.html](https://javaguide.cn/database/mysql/mysql-query-execution-plan.html)
-- MySQL 索引详解：[https://javaguide.cn/database/mysql/mysql-index.html](https://javaguide.cn/database/mysql/mysql-index.html)
-- MySQL 索引失效场景总结：[https://javaguide.cn/database/mysql/mysql-index-invalidation.html](https://javaguide.cn/database/mysql/mysql-index-invalidation.html)
-- MySQL 时间类型数据存储建议：[https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html](https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html)
+- MySQL 执行计划分析：[https://javaguide.cn/database/mysql/mysql-query-execution-plan.html](/database/mysql/mysql-query-execution-plan.html)
+- MySQL 索引详解：[https://javaguide.cn/database/mysql/mysql-index.html](/database/mysql/mysql-index.html)
+- MySQL 索引失效场景总结：[https://javaguide.cn/database/mysql/mysql-index-invalidation.html](/database/mysql/mysql-index-invalidation.html)
+- MySQL 时间类型数据存储建议：[https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html](/database/mysql/some-thoughts-on-database-storage-time.html)
 
 之前看过一篇文章分析 “[InnoDB 中高度为 3 的 B+ 树最多可以存多少数据](https://juejin.cn/post/7165689453124517896)”，写的挺不错，感兴趣的可以看看。
 
@@ -301,8 +301,8 @@ table_index = slot % table_count
 引入分库分表之后，会给系统带来什么挑战呢？
 
 - **join 操作**：需要区分单库 join 和跨分片 join。单库内有合适索引和执行计划时，join 是关系型数据库的基本能力，不应该一概否定。分库分表后的难点是跨分片 join：数据可能分布在多个库表中，中间件需要广播、路由、合并甚至做笛卡尔组合，性能和实现复杂度都会上升。对于需要跨分片 join 的地方，可以采用多次查询并在业务层组装数据，不过要考虑多次查询的一致性要求。
-- **事务问题**：同一个数据库中的表分布在了不同的数据库中，如果单个操作涉及到多个数据库，那么数据库自带的事务就无法满足我们的要求了。这个时候，我们就需要引入分布式事务了。关于分布式事务常见解决方案总结，网站上也有对应的总结：<https://javaguide.cn/distributed-system/distributed-transaction.html> 。
-- **分布式 ID**：分库之后， 数据遍布在不同服务器上的数据库，数据库的自增主键已经没办法满足生成的主键唯一了。我们如何为不同的数据节点生成全局唯一主键呢？这个时候，我们就需要为我们的系统引入分布式 ID 了。关于分布式 ID 的详细介绍&实现方案总结，可以看我写的这篇文章：[分布式 ID 介绍&实现方案总结](https://javaguide.cn/distributed-system/distributed-id.html)。
+- **事务问题**：同一个数据库中的表分布在了不同的数据库中，如果单个操作涉及到多个数据库，那么数据库自带的事务就无法满足我们的要求了。这个时候，我们就需要引入分布式事务了。关于分布式事务常见解决方案总结，网站上也有对应的总结：[https://javaguide.cn/distributed-system/distributed-transaction.html](/distributed-system/distributed-transaction.html) 。
+- **分布式 ID**：分库之后， 数据遍布在不同服务器上的数据库，数据库的自增主键已经没办法满足生成的主键唯一了。我们如何为不同的数据节点生成全局唯一主键呢？这个时候，我们就需要为我们的系统引入分布式 ID 了。关于分布式 ID 的详细介绍&实现方案总结，可以看我写的这篇文章：[分布式 ID 介绍&实现方案总结](/distributed-system/distributed-id.html)。
 - **全局唯一约束问题**：单库唯一索引只能保证单个分片内唯一。比如手机号、用户名、商家订单号如果没有作为分片键，数据库很难直接保证全局唯一。常见做法是建立全局唯一索引表、使用业务注册中心做预占，或者调整分片键和业务约束设计。
 - **非分片键查询问题**：如果查询条件里没有分片键，中间件无法判断应该访问哪个分片，通常只能把 SQL 广播到多个分片再合并结果。分片数量少时还能接受，分片数量上来以后，读扩散会拖慢核心链路。常见解决方式是补充路由表、冗余索引表，或者把后台检索交给搜索引擎、宽表、报表系统。
 - **跨库聚合和分页查询问题**：分库分表会导致常规聚合查询操作，如 group by，order by 等变得异常复杂。这是因为这些操作需要在多个分片上进行数据汇总和排序，而不是在单个数据库上进行。跨分片分页也很麻烦，比如查询第 1000 页，每个分片都可能需要返回前 N 页候选数据，再由中间件合并排序后截取目标页，分片数量越多，放大倍数越高。大结果集后台查询更适合走搜索引擎、宽表或离线报表系统。

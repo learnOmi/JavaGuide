@@ -538,7 +538,7 @@ Java 8 中，锁粒度更细，更新非空桶时通常使用 `synchronized` 锁
 
 这也就是二义性的由来。
 
-具体可以参考 [ConcurrentHashMap 源码分析](https://javaguide.cn/java/collection/concurrent-hash-map-source-code.html)。
+具体可以参考 [ConcurrentHashMap 源码分析](/java/collection/concurrent-hash-map-source-code.html)。
 
 多线程环境下，存在一个线程操作该 `ConcurrentHashMap` 时，其他的线程将该 `ConcurrentHashMap` 修改的情况，所以无法通过 `containsKey(key)` 来判断否存在这个键值对，也就没办法解决二义性问题了。
 

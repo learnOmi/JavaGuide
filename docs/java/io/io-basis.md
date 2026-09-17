@@ -544,7 +544,7 @@ randomAccessFile.write(new byte[]{'H', 'I', 'J', 'K'});
 
 ![](/assets/images/oss.javaguide.cn/github/javaguide/java/io/20210609164749122.png)
 
-我在[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)中详细介绍了大文件的上传问题。
+我在[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html)中详细介绍了大文件的上传问题。
 
 ![](/assets/images/oss.javaguide.cn/github/javaguide/java/image-20220428104115362.png)
 

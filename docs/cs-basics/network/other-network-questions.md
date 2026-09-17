@@ -47,7 +47,7 @@ head:
 
 ![TCP/IP 四层模型与 OSI 模型的对应关系](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
 
-关于每一层作用的详细介绍，请看 [OSI 和 TCP/IP 网络分层模型详解（基础）](https://javaguide.cn/cs-basics/network/osi-and-tcp-ip-model.html) 这篇文章。
+关于每一层作用的详细介绍，请看 [OSI 和 TCP/IP 网络分层模型详解（基础）](/cs-basics/network/osi-and-tcp-ip-model.html) 这篇文章。
 
 #### 为什么网络要分层？
 
@@ -127,7 +127,7 @@ head:
 6. 浏览器收到 HTTP 响应报文后，解析响应体中的 HTML 代码，渲染网页的结构和样式，同时根据 HTML 中的其他资源的 URL（如图片、CSS、JS 等），再次发起 HTTP 请求，获取这些资源的内容，直到网页完全加载显示。
 7. 浏览器在不需要和服务器通信时，可以主动关闭 TCP 连接，或者等待服务器的关闭请求。
 
-详细介绍可以查看这篇文章：[访问网页的全过程（知识串联）](https://javaguide.cn/cs-basics/network/the-whole-process-of-accessing-web-pages.html)（强烈推荐）。
+详细介绍可以查看这篇文章：[访问网页的全过程（知识串联）](/cs-basics/network/the-whole-process-of-accessing-web-pages.html)（强烈推荐）。
 
 ### ⭐️ HTTP 状态码有哪些？
 
@@ -135,7 +135,7 @@ HTTP 状态码用于描述 HTTP 请求的结果，比如 2xx 就代表请求被�
 
 ![常见 HTTP 状态码](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/http-status-code.png)
 
-关于 HTTP 状态码更详细的总结，可以看我写的这篇文章：[HTTP 常见状态码总结（应用层）](https://javaguide.cn/cs-basics/network/http-status-codes.html)。
+关于 HTTP 状态码更详细的总结，可以看我写的这篇文章：[HTTP 常见状态码总结（应用层）](/cs-basics/network/http-status-codes.html)。
 
 ### HTTP Header 中常见的字段有哪些？
 
@@ -183,7 +183,7 @@ HTTP 状态码用于描述 HTTP 请求的结果，比如 2xx 就代表请求被�
 - **安全性和传输方式**：未使用 TLS 的 HTTP 默认不提供机密性、完整性和对端身份认证。HTTPS 使用 TLS 保护 HTTP；HTTP/1.1 和 HTTP/2 通常使用 TLS over TCP，HTTP/3 使用集成 TLS 1.3 的 QUIC。TLS 握手负责认证对端并建立流量密钥，后续数据由对称 AEAD 算法保护。证书主要用于身份认证，不能笼统地说“证书加密了对称密钥”。
 - **SEO（搜索引擎优化）**：搜索引擎通常会更青睐使用 HTTPS 协议的网站，因为 HTTPS 能够提供更高的安全性和用户隐私保护。使用 HTTPS 协议的网站在搜索结果中可能会被优先显示，从而对 SEO 产生影响。
 
-关于 HTTP 和 HTTPS 更详细的对比总结，可以看我写的这篇文章：[HTTP vs HTTPS（应用层）](https://javaguide.cn/cs-basics/network/http-vs-https.html)。
+关于 HTTP 和 HTTPS 更详细的对比总结，可以看我写的这篇文章：[HTTP vs HTTPS（应用层）](/cs-basics/network/http-vs-https.html)。
 
 ### HTTPS 握手里的 RSA 和 ECDHE，到底差在哪？（应用层）
 
@@ -228,7 +228,7 @@ HTTP 能调服务，RPC 也能调服务。真正的区别在于，你是想把�
 - **带宽**：HTTP/1.0 中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，HTTP/1.1 则在请求头引入了 range 头域，它允许只请求资源的某个部分，即返回码是 206（Partial Content），这样就方便了开发者自由的选择以便于充分利用带宽和连接。
 - **Host 头（Host Header）处理**：HTTP/1.1 引入了 Host 头字段，允许在同一 IP 地址上托管多个域名，从而支持虚拟主机的功能。而 HTTP/1.0 没有 Host 头字段，无法实现虚拟主机。
 
-关于 HTTP/1.0 和 HTTP/1.1 更详细的对比总结，可以看我写的这篇文章：[HTTP/1.0 vs HTTP/1.1（应用层）](https://javaguide.cn/cs-basics/network/http1.0-vs-http1.1.html)。
+关于 HTTP/1.0 和 HTTP/1.1 更详细的对比总结，可以看我写的这篇文章：[HTTP/1.0 vs HTTP/1.1（应用层）](/cs-basics/network/http1.0-vs-http1.1.html)。
 
 ### ⭐️ HTTP/1.1 和 HTTP/2.0 有什么区别？
 
@@ -352,8 +352,8 @@ Session 数据本身存储在服务器端。常见的存储方式有：
 
 JWT 详细介绍可以查看这两篇文章：
 
-- [JWT 基础概念详解](https://javaguide.cn/system-design/security/jwt-intro.html)
-- [JWT 身份认证优缺点分析](https://javaguide.cn/system-design/security/advantages-and-disadvantages-of-jwt.html)
+- [JWT 基础概念详解](/system-design/security/jwt-intro.html)
+- [JWT 身份认证优缺点分析](/system-design/security/advantages-and-disadvantages-of-jwt.html)
 
 总结来说，虽然 HTTP 本身是无状态的，但通过 Cookie + Session、URL 重写或 Token 等机制，我们能够有效地在 Web 应用中跟踪和管理用户状态。其中，**Cookie + Session 是最传统也最广泛使用的方式，而 Token-based 认证则在现代 Web 应用中越来越受欢迎。**
 
@@ -366,7 +366,7 @@ URI 的作用像身份证号一样，URL 的作用更像家庭住址一样。URL
 
 ### Cookie 和 Session 有什么区别？
 
-准确点来说，这个问题属于认证授权的范畴，你可以在 [认证授权基础概念详解](https://javaguide.cn/system-design/security/basis-of-authority-certification.html) 这篇文章中找到详细的答案。
+准确点来说，这个问题属于认证授权的范畴，你可以在 [认证授权基础概念详解](/system-design/security/basis-of-authority-certification.html) 这篇文章中找到详细的答案。
 
 ### ⭐️ GET 和 POST 的区别
 
@@ -397,7 +397,7 @@ WebSocket 协议本质上是应用层的协议，用于弥补 HTTP 协议在持�
 下面是 WebSocket 的常见应用场景：
 
 - 视频弹幕
-- 实时消息推送，详见[Web 实时消息推送详解](https://javaguide.cn/system-design/web-real-time-message-push.html)这篇文章
+- 实时消息推送，详见[Web 实时消息推送详解](/system-design/web-real-time-message-push.html)这篇文章
 - 实时游戏对战
 - 多用户协同编辑
 - 社交聊天
@@ -584,7 +584,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 ### ⭐️ DNS 解析的过程是什么样的？
 
-整个过程的步骤比较多，我单独写了一篇文章详细介绍：[DNS 域名系统详解（应用层）](https://javaguide.cn/cs-basics/network/dns.html)。
+整个过程的步骤比较多，我单独写了一篇文章详细介绍：[DNS 域名系统详解（应用层）](/cs-basics/network/dns.html)。
 
 ### DNS 劫持了解吗？如何应对？
 

@@ -757,7 +757,7 @@ String bb = "ab";
 System.out.println(aa==bb); // true
 ```
 
-更多关于字符串常量池的介绍可以看一下 [Java 内存区域详解](https://javaguide.cn/java/jvm/memory-area.html) 这篇文章。
+更多关于字符串常量池的介绍可以看一下 [Java 内存区域详解](/java/jvm/memory-area.html) 这篇文章。
 
 ### ⭐️ String s1 = new String("abc");这句话创建了几个字符串对象？
 

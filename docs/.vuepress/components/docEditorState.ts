@@ -72,6 +72,8 @@ export interface DocEditorState {
   saveError: string | null;
   /** 是否从会话草稿恢复了未保存内容 */
   draftRestored: boolean;
+  /** 图片上传请求进行中（粘贴图片时用于按钮/状态展示） */
+  uploading: boolean;
 }
 
 const AUTOSAVE_DEFAULT = "on";
@@ -101,6 +103,7 @@ export const editorState: DocEditorState = reactive({
   loadError: null,
   saveError: null,
   draftRestored: false,
+  uploading: false,
 });
 
 /** 获取编辑器共享状态（等价于直接导入 editorState，提供语义化入口） */
@@ -337,4 +340,41 @@ export function showToast(text: string): void {
     toastMessage.text = null;
     toastTimer = null;
   }, TOAST_DURATION_MS);
+}
+
+/* ---------------------------------------------------------------- */
+/* P3：图片上传（粘贴图片 → base64 上传 → 返回 Markdown 引用）        */
+/* ---------------------------------------------------------------- */
+
+/** POST /upload 的请求参数 */
+export interface UploadImageParams {
+  /** 规范化前的原始文件名（服务端再做白名单校验与主干规范化） */
+  filename: string;
+  /** 图片二进制（纯 base64，不含 data URL 前缀） */
+  base64: string;
+}
+
+/** POST /upload 的响应：归档后的站内 URL 与可直接插入的 Markdown 片段 */
+export interface UploadImageResult {
+  url: string;
+  md: string;
+}
+
+/**
+ * 上传一张图片，返回站内 URL 与 Markdown 引用片段。
+ * 上传期间 editorState.uploading 置位，失败恢复并抛出 ApiError。
+ */
+export async function uploadImage(
+  params: UploadImageParams,
+): Promise<UploadImageResult> {
+  editorState.uploading = true;
+  try {
+    return await requestApi<UploadImageResult>(`${API_BASE}/upload`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(params),
+    });
+  } finally {
+    editorState.uploading = false;
+  }
 }

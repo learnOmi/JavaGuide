@@ -164,7 +164,7 @@ ANN 是现代向量检索的主流。它接受一个工程取舍：不保证 100
 
 ## 你的项目使用的什么向量索引算法？
 
-这里以 [《SpringAI 智能面试平台+RAG 知识库》](https://javaguide.cn/zhuanlan/interview-guide.html)项目为例。
+这里以 [《SpringAI 智能面试平台+RAG 知识库》](/zhuanlan/interview-guide.html)项目为例。
 
 项目里用的是 PostgreSQL 的 pgvector 扩展，并配置了 HNSW 索引。
 
@@ -327,7 +327,7 @@ flowchart TB
 
 ## 你为什么选择 PostgreSQL + pgvector？
 
-这里以 [《SpringAI 智能面试平台+RAG 知识库》](https://javaguide.cn/zhuanlan/interview-guide.html)项目为例。这个项目需要同时存结构化数据，比如简历、面试记录，也要存向量数据，也就是文档 Embedding。
+这里以 [《SpringAI 智能面试平台+RAG 知识库》](/zhuanlan/interview-guide.html)项目为例。这个项目需要同时存结构化数据，比如简历、面试记录，也要存向量数据，也就是文档 Embedding。
 
 方案对比如下：
 

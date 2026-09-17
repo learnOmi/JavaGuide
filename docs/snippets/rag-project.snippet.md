@@ -19,7 +19,7 @@
 - Github：<https://github.com/Snailclimb/interview-guide>
 - Gitee：<https://gitee.com/SnailClimb/interview-guide>
 
-项目详细介绍和系统学习教程地址（星球专属，性价比很高）： [《SpringAI 智能面试平台+RAG 知识库》](https://javaguide.cn/zhuanlan/interview-guide.html)。
+项目详细介绍和系统学习教程地址（星球专属，性价比很高）： [《SpringAI 智能面试平台+RAG 知识库》](/zhuanlan/interview-guide.html)。
 
 内容安排如下（已经更完，一共 18w+ 字）
 

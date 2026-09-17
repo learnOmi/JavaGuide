@@ -129,7 +129,7 @@ Gateway 在同机房完成路由、Token 估算和日志写入，耗时相对有
 
 这时需要的未必是一个很重的平台，但模型调用应该有唯一入口。可以先让统一模块维护模型名、密钥、调用日志和错误处理，再逐步接入路由、预算和限流；当多个业务线共用模型、需要按租户计费，或需要管理 Prompt 留存和敏感内容时，再把它演进为完整的 LLM Gateway。
 
-我的 [AI 面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)走的就是这条路。项目没有单独部署网关，也没有引入专门的 LLM Gateway 组件，而是在应用内通过 `LlmProviderRegistry` 统一管理不同 Provider 的配置、默认模型、API Key、`ChatClient` 和 Embedding 模型，再用 `StructuredOutputInvoker` 收口结构化输出的校验、修复、重试和指标。这已经具备了轻量 LLM 网关的核心形态，能够满足当前项目的需求。
+我的 [AI 面试平台](/zhuanlan/interview-guide.html)走的就是这条路。项目没有单独部署网关，也没有引入专门的 LLM Gateway 组件，而是在应用内通过 `LlmProviderRegistry` 统一管理不同 Provider 的配置、默认模型、API Key、`ChatClient` 和 Embedding 模型，再用 `StructuredOutputInvoker` 收口结构化输出的校验、修复、重试和指标。这已经具备了轻量 LLM 网关的核心形态，能够满足当前项目的需求。
 
 不过，它还不是本文后面所说的完整生产级网关：跨 Provider 自动 Fallback、Token 预算、按调用成本归因、网关级多维限流和智能路由等能力，仍要等业务确实需要时再补。这个边界也说明了一件事：LLM Gateway 首先是一组需要集中治理的职责，不一定非要对应一个独立服务或第三方组件。
 
@@ -699,7 +699,7 @@ LLM Gateway 做得好不好，不能只看“接了多少模型”。模型接�
 
 LLM Gateway 让业务服务从供应商协议、模型路由、限流、缓存、Token 预算和审计细节中退出，只保留一次统一的模型调用入口。
 
-但对大多数项目来说，这个入口完全可以是应用内自己写的一个轻量模块，不需要为了“用了 LLM Gateway”而专门引入额外组件。我的 [AI 面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)目前就是这么做的：先用统一的 Provider 注册表和调用封装解决眼前问题，后续再由真实流量和治理需求决定是否补齐路由、预算、Fallback 和成本统计，或者演进为独立网关。
+但对大多数项目来说，这个入口完全可以是应用内自己写的一个轻量模块，不需要为了“用了 LLM Gateway”而专门引入额外组件。我的 [AI 面试平台](/zhuanlan/interview-guide.html)目前就是这么做的：先用统一的 Provider 注册表和调用封装解决眼前问题，后续再由真实流量和治理需求决定是否补齐路由、预算、Fallback 和成本统计，或者演进为独立网关。
 
 第一版先验证三件事：请求是否被正确适配、每次调用是否可以按真实模型和 usage 回放、故障是否按预期兜底。配额、成本治理和缓存应由实际流量推动；分类或学习型路由则要等稳定评测集、线上 Trace 和回滚机制具备后再引入。
 

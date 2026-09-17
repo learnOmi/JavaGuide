@@ -802,7 +802,7 @@ public class GlobalExceptionHandler {
 
 ## Spring 框架中用到了哪些设计模式？
 
-> 关于下面这些设计模式的详细介绍，可以看我写的 [Spring 中的设计模式详解](https://javaguide.cn/system-design/framework/spring/spring-design-patterns-summary.html) 这篇文章。
+> 关于下面这些设计模式的详细介绍，可以看我写的 [Spring 中的设计模式详解](/system-design/framework/spring/spring-design-patterns-summary.html) 这篇文章。
 
 - **工厂设计模式** : Spring 使用工厂模式通过 `BeanFactory`、`ApplicationContext` 创建 bean 对象。
 - **代理设计模式** : Spring AOP 功能的实现。
@@ -973,7 +973,7 @@ SpringBoot 2.6.x 以后，如果你不想重构循环依赖的代码的话，也
 
 ## ⭐️Spring 事务
 
-关于 Spring 事务的详细介绍，可以看我写的 [Spring 事务详解](https://javaguide.cn/system-design/framework/spring/spring-transaction.html) 这篇文章。
+关于 Spring 事务的详细介绍，可以看我写的 [Spring 事务详解](/system-design/framework/spring/spring-transaction.html) 这篇文章。
 
 ### Spring 管理事务的方式有几种？
 

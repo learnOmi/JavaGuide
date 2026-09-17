@@ -234,7 +234,7 @@ Classic Queue 可以通过 `x-max-priority` 参数声明优先级队列，Quorum
 - **手动 Ack**：`basicAck(deliveryTag, multiple)`，确保消费成功后再确认
 - **重试机制**：消费失败时可以 `basicNack` 或 `basicReject`，再根据异常类型决定是否 `requeue`
 - **死信队列**：达到最大重试次数或被拒绝后路由到 DLQ，后续再告警、补偿或人工处理
-- **幂等性保障**：业务层实现，避免重复消费导致的数据不一致。幂等性具体实现方案参考这篇文章：[接口幂等方案总结](https://javaguide.cn/high-availability/idempotency.html)。
+- **幂等性保障**：业务层实现，避免重复消费导致的数据不一致。幂等性具体实现方案参考这篇文章：[接口幂等方案总结](/high-availability/idempotency.html)。
 
 > 注意：Alternate Exchange（备用交换器）也能处理路由失败。配置了备用交换器后，无法路由的消息会被转发过去；如果备用交换器也无法路由，并且消息设置了 mandatory，生产者才会收到 return。
 

@@ -501,7 +501,7 @@ MySQL 可以简单分为 Server 层和存储引擎层这两层。Server 层处�
 - **`OR` 条件导致全表扫描**：只要 `OR` 连接的任意一侧条件没有对应索引，就会触发全表扫描。即使两侧都有索引，若 Index Merge（索引合并）的预期成本过高，依然会被放弃。
 - **`IN` 列表过长引发估算失真**：当 `IN` 列表长度超过系统阈值（默认 200）时，优化器会从精准的深入探测（Index Dive）切换为粗略的统计估算，极易因统计信息陈旧而产生执行成本的误判。
 
-详细介绍：[MySQL索引失效场景总结](https://javaguide.cn/database/mysql/mysql-index-invalidation.html)。
+详细介绍：[MySQL索引失效场景总结](/database/mysql/mysql-index-invalidation.html)。
 
 ### 被频繁更新的字段应该慎重建立索引
 

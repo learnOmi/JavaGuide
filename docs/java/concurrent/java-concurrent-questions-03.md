@@ -990,7 +990,7 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 **为什么是这三个参数？**
 
-我在[Java 线程池详解](https://javaguide.cn/java/concurrent/java-thread-pool-summary.html) 这篇文章中就说过这三个参数是 `ThreadPoolExecutor` 最重要的参数，它们基本决定了线程池对于任务的处理策略。
+我在[Java 线程池详解](/java/concurrent/java-thread-pool-summary.html) 这篇文章中就说过这三个参数是 `ThreadPoolExecutor` 最重要的参数，它们基本决定了线程池对于任务的处理策略。
 
 **如何支持参数动态配置？** 且看 `ThreadPoolExecutor` 提供的下面这些方法。
 
@@ -1004,7 +1004,7 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 ![动态配置线程池参数最终效果](/assets/images/oss.javaguide.cn/github/javaguide/java/concurrent/meituan-dynamically-configuring-thread-pool-parameters.png)
 
-还没看够？我在[《后端面试高频系统设计&场景题》](https://javaguide.cn/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中详细介绍了如何设计一个动态线程池，这也是面试中常问的一道系统设计题。
+还没看够？我在[《后端面试高频系统设计&场景题》](/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中详细介绍了如何设计一个动态线程池，这也是面试中常问的一道系统设计题。
 
 ![《后端面试高频系统设计&场景题》](/assets/images/oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
 
@@ -1046,7 +1046,7 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 重点是要掌握 `CompletableFuture` 的使用以及常见面试题。
 
-除了下面的面试题之外，还推荐你看看我写的这篇文章： [CompletableFuture 详解](https://javaguide.cn/java/concurrent/completablefuture-intro.html)。
+除了下面的面试题之外，还推荐你看看我写的这篇文章： [CompletableFuture 详解](/java/concurrent/completablefuture-intro.html)。
 
 ### Future 接口有什么用？
 
@@ -1206,7 +1206,7 @@ CompletableFuture.runAsync(() -> {
 
 ## AQS
 
-关于 AQS 源码的详细分析，可以看看这一篇文章：[AQS 详解](https://javaguide.cn/java/concurrent/aqs.html)。
+关于 AQS 源码的详细分析，可以看看这一篇文章：[AQS 详解](/java/concurrent/aqs.html)。
 
 ### AQS 是什么？
 
@@ -1582,7 +1582,7 @@ public int await() throws InterruptedException, BrokenBarrierException {
 
 ## 虚拟线程
 
-虚拟线程在 Java 21 正式发布，这是一项重量级的更新。虽然目前面试中问的不多，但还是建议大家去简单了解一下。我写了一篇文章来总结虚拟线程常见的问题：[虚拟线程常见问题总结](https://javaguide.cn/java/concurrent/virtual-thread.html)，包含下面这些问题：
+虚拟线程在 Java 21 正式发布，这是一项重量级的更新。虽然目前面试中问的不多，但还是建议大家去简单了解一下。我写了一篇文章来总结虚拟线程常见的问题：[虚拟线程常见问题总结](/java/concurrent/virtual-thread.html)，包含下面这些问题：
 
 1. 什么是虚拟线程？
 2. 虚拟线程和平台线程有什么关系？

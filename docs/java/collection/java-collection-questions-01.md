@@ -190,7 +190,7 @@ System.out.println(listOfStrings);
 - 尾部插入/删除：只需要修改尾结点的指针即可完成插入/删除操作，因此时间复杂度为 O(1)。
 - 指定位置插入/删除：需要先移动到指定位置，再修改指定节点的指针完成插入/删除，不过由于有头尾指针，可以从较近的指针出发，因此需要遍历平均 n/4 个元素，时间复杂度为 O(n)。
 
-这里简单列举一个例子：假如我们要删除节点 9 的话，需要先遍历链表找到该节点。然后，再执行相应节点指针指向的更改，具体的源码可以参考：[LinkedList 源码分析](https://javaguide.cn/java/collection/linkedlist-source-code.html)。
+这里简单列举一个例子：假如我们要删除节点 9 的话，需要先遍历链表找到该节点。然后，再执行相应节点指针指向的更改，具体的源码可以参考：[LinkedList 源码分析](/java/collection/linkedlist-source-code.html)。
 
 ![unlink 方法逻辑](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/linkedlist-unlink.jpg)
 
@@ -249,7 +249,7 @@ public interface RandomAccess {
 
 ### ⭐️ 说一说 ArrayList 的扩容机制吧
 
-详见笔主的这篇文章: [ArrayList 扩容机制分析](https://javaguide.cn/java/collection/arraylist-source-code.html#arraylist-扩容机制分析)。
+详见笔主的这篇文章: [ArrayList 扩容机制分析](/java/collection/arraylist-source-code.html#arraylist-%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E5%88%86%E6%9E%90)。
 
 ### ⭐️ 集合中的 fail-fast 和 fail-safe 是什么？
 

@@ -8,7 +8,7 @@ head:
       content: CLAUDE.md,Claude Code,AI编程,AI项目规范,Agentic Coding,AI辅助开发,CLAUDE.md最佳实践,.claude/rules
 ---
 
-你好，我是小 G。前几天分享 [Claude Code 使用技巧](https://javaguide.cn/ai-coding/practices/claudecode-tips.html) 时，我简单介绍了 `CLAUDE.md`。有 G 友在评论区问，这个文件能不能单独写一篇。
+你好，我是小 G。前几天分享 [Claude Code 使用技巧](/ai-coding/practices/claudecode-tips.html) 时，我简单介绍了 `CLAUDE.md`。有 G 友在评论区问，这个文件能不能单独写一篇。
 
 很多朋友第一次看到 `CLAUDE.md`，会把它当成另一份 README。README 主要给人介绍项目，`CLAUDE.md` 则给 Claude Code 提供工作指令，例如项目怎么启动、哪些文件不能改、接口返回格式是什么、改完代码要运行哪些检查。
 
@@ -62,7 +62,7 @@ head:
 - 使用 plan mode 处理 `src/billing/` 下的改动
 ```
 
-我的 [一文搞懂 Harness Engineering](https://javaguide.cn/ai/agent/harness-engineering.html) 还介绍过一个例子：OpenAI 的 `AGENTS.md` 大约只有 100 行，主要用于指向 docs/ 目录下更具体的设计文档、架构图、执行计划和质量评级。Agent 先读取入口文件，处理到相关任务时再加载详细资料，避免一开始就把所有内容放进上下文。
+我的 [一文搞懂 Harness Engineering](/ai/agent/harness-engineering.html) 还介绍过一个例子：OpenAI 的 `AGENTS.md` 大约只有 100 行，主要用于指向 docs/ 目录下更具体的设计文档、架构图、执行计划和质量评级。Agent 先读取入口文件，处理到相关任务时再加载详细资料，避免一开始就把所有内容放进上下文。
 
 ### CLAUDE.md vs .claude/rules/
 
@@ -93,7 +93,7 @@ head:
 
 上图中的 `requirements.md` 是该工作流在 `Specify` 阶段生成的需求文件；其他团队也可能把同类任务规格集中写在 `SPEC.md`，两者不是通用的固定别名。
 
-我在[Spec Coding 规范驱动编程实战：从 Vibe Coding 到 AI 代码规范](https://javaguide.cn/ai-coding/practices/spec-coding.html)这篇文章中有详细介绍。
+我在[Spec Coding 规范驱动编程实战：从 Vibe Coding 到 AI 代码规范](/ai-coding/practices/spec-coding.html)这篇文章中有详细介绍。
 
 可以这样区分：**CLAUDE.md 管长期行为规范，Spec 管当次任务约束。**
 
@@ -210,7 +210,7 @@ Anthropic 建议保持 `CLAUDE.md` 精简不超过 200 行，只保留 Claude �
 
 #### 项目级示例：把仓库规矩写成速查卡
 
-我的 [interview-guide](https://javaguide.cn/zhuanlan/interview-guide.html) 使用的是项目级 `CLAUDE.md`。根目录文件保留技术栈、常用命令、分层边界、异常处理、事务规则和禁止清单，详细规范再交给 `.claude/rules/`。
+我的 [interview-guide](/zhuanlan/interview-guide.html) 使用的是项目级 `CLAUDE.md`。根目录文件保留技术栈、常用命令、分层边界、异常处理、事务规则和禁止清单，详细规范再交给 `.claude/rules/`。
 
 精简后的根目录文件可以这样写：
 

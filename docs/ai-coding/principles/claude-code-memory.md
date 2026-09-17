@@ -19,7 +19,7 @@ head:
 
 大概率不是。LLM 每次推理看到的还是本轮输入。Claude Code 能跨会话接上，靠的是模型外面那套文件和加载逻辑：哪些规则常驻，哪些经验先放索引里，哪些内容等任务相关时再读进来。
 
-本文和 [《AI Agent 记忆系统》](https://javaguide.cn/ai/agent/agent-memory.html) 这篇互为补充。那篇讲通用 Agent 记忆：短期记忆、长期记忆和记忆演化机制。放到 Claude Code 里，问题就更具体了：`CLAUDE.md` 到底放什么？Auto Memory 记下来的又是什么？`.claude/rules/` 和第三方的 `claude-mem`、`memsearch` 该怎么分工？
+本文和 [《AI Agent 记忆系统》](/ai/agent/agent-memory.html) 这篇互为补充。那篇讲通用 Agent 记忆：短期记忆、长期记忆和记忆演化机制。放到 Claude Code 里，问题就更具体了：`CLAUDE.md` 到底放什么？Auto Memory 记下来的又是什么？`.claude/rules/` 和第三方的 `claude-mem`、`memsearch` 该怎么分工？
 
 ![AI Agent 记忆系统架构](/assets/images/oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
 
@@ -35,7 +35,7 @@ head:
 
 如果打个工程类比，Context Engineering 有点像给 LLM 做“内存管理”：上下文窗口容量有限，真正要管的是哪些信息常驻、哪些按需读取、哪些过期后淘汰。Token 紧张时，摘要、压缩、检索、优先级取舍，本质上都在处理同一个问题：**别让低价值内容挤掉当前任务真正需要的上下文。**
 
-上下文该怎么组织、什么时候按需加载、什么时候压缩，我在 [《上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？》](https://javaguide.cn/ai/agent/context-engineering.html) 里单独讲过，篇幅问题这里就不重复介绍了。
+上下文该怎么组织、什么时候按需加载、什么时候压缩，我在 [《上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？》](/ai/agent/context-engineering.html) 里单独讲过，篇幅问题这里就不重复介绍了。
 
 回到 Claude Code，长期记忆要先回答这几个问题：
 
@@ -69,7 +69,7 @@ Auto Memory 是第二类。它记录的是 Claude 在项目里遇到的模式，
 
 ### `CLAUDE.md`：放每次都要看的规则
 
-`CLAUDE.md` 的具体写法，我之前在 [《CLAUDE.md 最佳实践：该写什么、不该写什么、项目变大后怎么拆》](https://javaguide.cn/ai-coding/practices/claude-md-best-practices.html) 里已经单独讲过。这篇不重复模板和示例，只看它在 memory 体系里的位置。
+`CLAUDE.md` 的具体写法，我之前在 [《CLAUDE.md 最佳实践：该写什么、不该写什么、项目变大后怎么拆》](/ai-coding/practices/claude-md-best-practices.html) 里已经单独讲过。这篇不重复模板和示例，只看它在 memory 体系里的位置。
 
 官方文档里这些位置分散在不同段落里看，我更建议直接按五层来记：
 

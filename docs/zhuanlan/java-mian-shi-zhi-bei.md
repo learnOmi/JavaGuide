@@ -23,7 +23,7 @@ head:
 
 ## 介绍
 
-**《Java 面试指北》** 是我的[知识星球](../about-the-author/zhishixingqiu-two-years.md)的一个内部小册，和 [JavaGuide 开源版](https://javaguide.cn/) 的内容互补。相比于开源版本来说，《Java 面试指北》添加了下面这些内容（不仅仅是这些内容）：
+**《Java 面试指北》** 是我的[知识星球](../about-the-author/zhishixingqiu-two-years.md)的一个内部小册，和 [JavaGuide 开源版](/) 的内容互补。相比于开源版本来说，《Java 面试指北》添加了下面这些内容（不仅仅是这些内容）：
 
 - 17+ 篇文章手把手教你如何准备面试，50+ 准备面试过程中的常见问题详细解读，让你更高效地准备 Java 面试。
 - 更全面的八股文面试题（系统设计、场景题、常见框架、分布式&微服务、高并发 ……）。
@@ -76,7 +76,7 @@ head:
 - **内容真实、有启发性**： 优先选择那些能反映实际面试场景、考察重点和面试官思路的经验。
 - **提供深度学习资源**： 拒绝“只有问题没有答案”的焦虑。针对面经中的高频/核心难题，我精心关联了高质量的参考资料（通常是我撰写的深度解析文章）或直接提供核心参考答案，助你知其然更知其所以然。
 
-另外，[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)还有专门分享面经和面试题的专题，持续更新优质的面经和面试题。
+另外，[知识星球](/about-the-author/zhishixingqiu-two-years.html)还有专门分享面经和面试题的专题，持续更新优质的面经和面试题。
 
 ![](/assets/images/oss.javaguide.cn/javamianshizhibei/xingqiu-real-interview-experience.png)
 

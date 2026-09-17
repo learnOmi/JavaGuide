@@ -770,7 +770,7 @@ DROP VIEW top_10_user_view;
 
 大多数情况下，索引查询都是比全表扫描要快的。但是如果数据库的数据量不大，那么使用索引也不一定能够带来很大提升。
 
-关于索引的详细介绍，请看我写的 [MySQL 索引详解](https://javaguide.cn/database/mysql/mysql-index.html) 这篇文章。
+关于索引的详细介绍，请看我写的 [MySQL 索引详解](/database/mysql/mysql-index.html) 这篇文章。
 
 #### 创建索引
 
@@ -1212,6 +1212,6 @@ DROP TRIGGER IF EXISTS trigger_insert_user;
 ## 文章推荐
 
 - [后端程序员必备：SQL 高性能优化指南！35+条优化建议立马 GET!](https://mp.weixin.qq.com/s/I-ZT3zGTNBZ6egS7T09jyQ)
-- [后端程序员必备：书写高质量 SQL 的 30 条建议](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247486461&idx=1&sn=60a22279196d084cc398936fe3b37772&chksm=cea24436f9d5cd20a4fa0e907590f3e700d7378b3f608d7b33bb52cfb96f503b7ccb65a1deed&token=1987003517&lang=zh_CN#rd)
+- [后端程序员必备：书写高质量 SQL 的 30 条建议](sql-30-tips.html)
 
 <!-- @include: @article-footer.snippet.md -->

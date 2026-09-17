@@ -38,7 +38,7 @@ head:
 本专栏内容同时收录在开源 AIGuide 项目中：
 
 - **项目地址**：[https://github.com/Snailclimb/AIGuide](https://github.com/Snailclimb/AIGuide)
-- **在线阅读**：[https://javaguide.cn/ai-coding/](https://javaguide.cn/ai-coding/)
+- **在线阅读**：[https://javaguide.cn/ai-coding/](/ai-coding/)
 
 文章会随 API、框架和模型能力变化持续校订，涉及版本、价格和产品能力时请同时核对对应官方文档。
 

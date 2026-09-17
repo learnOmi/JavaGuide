@@ -71,7 +71,7 @@ Skill 可以携带脚本、参考资料和模板，在命中任务后按需加�
 
 ![渐进式披露（三层模型）](/assets/images/oss.javaguide.cn/github/javaguide/ai/skills/skills-progressive-disclosure-three-layer-model.png)
 
-如果想系统了解 Skill 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。这篇文章只讨论怎么选和怎么删，不重复展开技术实现。
+如果想系统了解 Skill 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html)。这篇文章只讨论怎么选和怎么删，不重复展开技术实现。
 
 ## 为什么我很少再用 Superpowers
 
@@ -117,7 +117,7 @@ Superpowers 用一套完整方法覆盖开发过程，[mattpocock/skills](https:
 
 ## 我用 grilling 澄清了一次真实需求
 
-这个案例来自我的开源项目 [《SpringAI 智能面试平台》（2.0 版本已开源）](https://javaguide.cn/zhuanlan/interview-guide.html)。当时我准备把模拟面试和知识库打通，给 `grilling` 的任务也很直接：帮我把这件事想清楚。
+这个案例来自我的开源项目 [《SpringAI 智能面试平台》（2.0 版本已开源）](/zhuanlan/interview-guide.html)。当时我准备把模拟面试和知识库打通，给 `grilling` 的任务也很直接：帮我把这件事想清楚。
 
 现有实现比我预想的更接近“打通”：知识库面试和普通模拟面试都在使用 `InterviewSession`，作答、评估和部分前端页面也已经复用。这次没有必要先改底层，得先确定首期产品范围。
 
@@ -152,7 +152,7 @@ Superpowers 用一套完整方法覆盖开发过程，[mattpocock/skills](https:
 
 同一个地方连续翻车，才值得单独写一个 Skill，尤其是出错代价不低的任务。里面只留关键判断和验证动作，够解决问题就停，不顺手扩成一套大而全的工作流。
 
-想了解目前有哪些现成 Skill，以及它们分别适合什么任务，可以继续看 [AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)。关于 Codex 里的 `AGENTS.md`、权限、MCP、Skills 和 Scheduled Tasks 分工，则可以参考 [OpenAI Codex 最佳实践指南](https://javaguide.cn/ai-coding/practices/codex-best-practices.html)。
+想了解目前有哪些现成 Skill，以及它们分别适合什么任务，可以继续看 [AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html)。关于 Codex 里的 `AGENTS.md`、权限、MCP、Skills 和 Scheduled Tasks 分工，则可以参考 [OpenAI Codex 最佳实践指南](/ai-coding/practices/codex-best-practices.html)。
 
 这篇文章题目里虽然写了“还有必要吗”，但我没准备把 Skill 全删掉。我只是不会再看到一个就装一个。
 

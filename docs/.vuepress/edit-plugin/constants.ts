@@ -52,3 +52,36 @@ export const MAX_SLUG_LENGTH = 80;
 
 /** 目录树的最大遍历深度（防止超深层级拖垮请求） */
 export const DIRS_MAX_DEPTH = 8;
+
+/** 图片上传路由（POST：base64 上传，落盘后返回 Markdown 引用） */
+export const UPLOAD_ROUTE = "/upload";
+
+/** 单张图片大小上限：10MB */
+export const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
+
+/** 上传请求体上限：base64 膨胀约 4/3，再加 JSON 结构开销 */
+export const MAX_UPLOAD_BODY_BYTES = Math.ceil(MAX_IMAGE_BYTES * 1.4);
+
+/** 编辑器图片归档根目录：docs/.vuepress/public/assets/editor/YYYY/MM/ */
+export const EDITOR_ASSETS_DIR = path.join(
+  DOCS_ROOT,
+  ".vuepress",
+  "public",
+  "assets",
+  "editor",
+);
+
+/** 上传文件名规范化后的白名单：字母/数字开头，仅含字母、数字、下划线、连字符 */
+export const IMAGE_NAME_PATTERN = /^[a-z0-9][a-z0-9_-]*$/;
+
+/** 上传文件名（不含扩展名）最大长度 */
+export const MAX_IMAGE_NAME_LENGTH = 60;
+
+/** 允许上传的图片扩展名（与 magic bytes 嗅探结果对应） */
+export const ALLOWED_IMAGE_EXTS: readonly string[] = [
+  "png",
+  "jpg",
+  "jpeg",
+  "gif",
+  "webp",
+];

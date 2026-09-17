@@ -56,7 +56,7 @@ head:
 
 这几本书理解透彻了，我相信面试的时候可以面试官面试官聊的很深入了，面试官也会对你印象非常好。但是对于普通人来说，看一遍是肯定记不住的，遗忘是非常正常的现象，我很多也只看了一遍，很多细节也记不清了，最近准备二刷。
 
-更多书籍推荐建议大家看 [JavaGuide](https://javaguide.cn/books/) 这个网站上的书籍推荐，比较全面。
+更多书籍推荐建议大家看 [JavaGuide](/books/) 这个网站上的书籍推荐，比较全面。
 
 ![](/assets/images/oss.javaguide.cn/p3-juejin/62099c9b2fd24d3cb6511e49756f486b~tplv-k3u1fbpfcp-zoom-1.png)
 
@@ -69,8 +69,8 @@ head:
 - [清华大学邓俊辉数据结构与算法](https://www.bilibili.com/video/BV1jt4y117KR)：清华不解释了。
 - [MySQL 实战 45 讲](https://time.geekbang.org/column/intro/100020801)：前 27 讲多看几遍基本可以秒杀面试中遇到的 MySQL 问题了。
 - [Redis 核心技术与实战](https://time.geekbang.org/column/intro/100056701)：讲解了大量的 Redis 在生产上的使用场景，和《Redis 设计与实现》配合着看，也可以秒杀面试中遇到的 Redis 问题了。
-- [JavaGuide](https://javaguide.cn/books/)：「Java 学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。
-- [《Java 面试指北》](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247519384&idx=1&sn=bc7e71af75350b755f04ca4178395b1a&chksm=cea1c353f9d64a458f797696d4144b4d6e58639371a4612b8e4d106d83a66d2289e7b2cd7431&token=660789642&lang=zh_CN&scene=21#wechat_redirect)：这是一份教你如何更高效地准备面试的小册，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
+- [JavaGuide](/books/)：「Java 学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。
+- [《Java 面试指北》](../../zhuanlan/java-mian-shi-zhi-bei.html)：这是一份教你如何更高效地准备面试的小册，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
 
 ## 找工作
 

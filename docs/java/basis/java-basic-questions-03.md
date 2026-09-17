@@ -325,7 +325,7 @@ printArray( stringArray  );
 
 ## ⭐️ 反射
 
-关于反射的详细解读，请看这篇文章 [Java 反射机制详解](https://javaguide.cn/java/basis/reflection.html)。
+关于反射的详细解读，请看这篇文章 [Java 反射机制详解](/java/basis/reflection.html)。
 
 ### 什么是反射？
 
@@ -391,7 +391,7 @@ public class DebugInvocationHandler implements InvocationHandler {
 
 ## 代理
 
-关于 Java 代理的详细介绍，可以看看笔者写的 [Java 代理模式详解](https://javaguide.cn/java/basis/proxy.html) 这篇文章。
+关于 Java 代理的详细介绍，可以看看笔者写的 [Java 代理模式详解](/java/basis/proxy.html) 这篇文章。
 
 ### 如何实现动态代理？
 
@@ -470,7 +470,7 @@ JDK 提供了很多内置的注解（比如 `@Override`、`@Deprecated`），同
 
 ## ⭐️ SPI
 
-关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](https://javaguide.cn/java/basis/spi.html)。
+关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](/java/basis/spi.html)。
 
 ### 何谓 SPI?
 
@@ -506,7 +506,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 ## ⭐️ 序列化和反序列化
 
-关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](https://javaguide.cn/java/basis/serialization.html)，里面涉及到的知识点和面试题更全面。
+关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](/java/basis/serialization.html)，里面涉及到的知识点和面试题更全面。
 
 ### 什么是序列化？什么是反序列化？
 
@@ -581,9 +581,9 @@ JDK 自带的序列化方式一般不会用，因为序列化效率低并且存�
 
 关于 I/O 的详细解读，请看下面这几篇文章，里面涉及到的知识点和面试题更全面。
 
-- [Java IO 基础知识总结](https://javaguide.cn/java/io/io-basis.html)
-- [Java IO 设计模式总结](https://javaguide.cn/java/io/io-design-patterns.html)
-- [Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)
+- [Java IO 基础知识总结](/java/io/io-basis.html)
+- [Java IO 设计模式总结](/java/io/io-design-patterns.html)
+- [Java IO 模型详解](/java/io/io-model.html)
 
 ### Java IO 流了解吗？
 
@@ -605,11 +605,11 @@ Java IO 流的 40 多个类都是从如下 4 个抽象类基类中派生出来�
 
 ### Java IO 中的设计模式有哪些？
 
-参考答案：[Java IO 设计模式总结](https://javaguide.cn/java/io/io-design-patterns.html)
+参考答案：[Java IO 设计模式总结](/java/io/io-design-patterns.html)
 
 ### ⭐️ BIO、NIO 和 AIO 的区别？
 
-参考答案：[Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)
+参考答案：[Java IO 模型详解](/java/io/io-model.html)
 
 ## 语法糖
 

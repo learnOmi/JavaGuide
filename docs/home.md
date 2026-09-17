@@ -22,7 +22,7 @@ JavaGuide 是一份系统化的 **Java 面试指南** 和**后端通用面试复
 本站所有内容都已免费开源，欢迎一起[维护完善](http://localhost:8080/javaguide/contribution-guideline.html)，有帮助的话，欢迎 Star！
 
 - **项目地址**：<https://github.com/Snailclimb/JavaGuide>
-- **在线阅读**：<https://javaguide.cn/>
+- **在线阅读**：[https://javaguide.cn/](/)
 
 ## 延伸资料
 
@@ -332,8 +332,8 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 ### 分布式锁
 
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
 
 ### 分布式事务
 

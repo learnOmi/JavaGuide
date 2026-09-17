@@ -194,7 +194,7 @@ Bean Validation 主要解决的是**数据格式、语法层面**的校验。但
 
 ![RBAC 权限模型示意图](/assets/images/oss.javaguide.cn/github/javaguide/system-design/security/design-of-authority-system/rbac.png)
 
-关于权限系统设计的详细介绍，可以看这篇文章：[权限系统设计详解](https://javaguide.cn/system-design/security/design-of-authority-system.html)。
+关于权限系统设计的详细介绍，可以看这篇文章：[权限系统设计详解](/system-design/security/design-of-authority-system.html)。
 
 ## 总结
 
@@ -208,4 +208,4 @@ Bean Validation 主要解决的是**数据格式、语法层面**的校验。但
 
 - OWASP Authorization Cheat Sheet：<https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html>
 - 为什么前后端都需要进行数据校验？: <https://juejin.cn/post/7306045519099658240>
-- 权限系统设计详解：<https://javaguide.cn/system-design/security/design-of-authority-system.html>
+- 权限系统设计详解：[https://javaguide.cn/system-design/security/design-of-authority-system.html](/system-design/security/design-of-authority-system.html)

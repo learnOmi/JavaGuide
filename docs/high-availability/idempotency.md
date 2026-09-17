@@ -142,8 +142,8 @@ CREATE TABLE deduplication_table (
 
 关于分布式锁的详细介绍以及如何基于 Redis 和 ZooKeeper 实现分布式锁，我写过专门的文章介绍，推荐看看：
 
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
 
 需要注意的是，这里的分布式锁是根据唯一标识（比如订单号）生成的。获取到锁只说明当前可以进入临界区，不代表历史上没有处理过。进入临界区后仍必须查询业务状态或幂等记录。例如支付接口要检查订单是否已支付、交易流水号是否已处理，再决定执行业务逻辑还是直接返回历史结果。
 

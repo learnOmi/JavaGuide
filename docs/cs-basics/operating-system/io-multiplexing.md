@@ -310,7 +310,7 @@ ET 的好处是减少 `epoll_wait` 的唤醒次数，适合追求极致吞吐、
 
 补充一个常被误解的点：Redis 6.0 引入了多线程，但加的只是网络 I/O 读写和协议解析这部分，命令的实际执行仍然是单线程。多路复用这套事件循环的内核没变，多线程只是把“读 socket、解析请求”这种耗时的活儿分摊到几个线程上，避免它成为单线程的瓶颈。
 
-详细介绍推荐你看看这篇文章：[Redis常见面试题总结(上)](https://javaguide.cn/database/redis/redis-questions-01.html)。
+详细介绍推荐你看看这篇文章：[Redis常见面试题总结(上)](/database/redis/redis-questions-01.html)。
 
 **Nginx** 是多进程 + epoll，而且用的是 ET 模式，配合非阻塞 socket 把每次唤醒的处理压到最少，这是它能用很少的进程扛住海量连接的底子。
 
@@ -320,7 +320,7 @@ ET 的好处是减少 `epoll_wait` 的唤醒次数，适合追求极致吞吐、
 
 Netty 在标准 NIO 之外还额外提供了一套原生 epoll 传输（`EpollEventLoop`），直接对接 epoll、绕开 JDK 那层封装，在 Linux 上能榨出更高的性能。这里要留意版本差异：Netty 4.0 的原生 epoll transport 曾主打边缘触发；到了 Netty 4.2，`EpollMode` 已被标记废弃，并注明 transport 始终使用水平触发。中间 4.1 各小版本的行为以所用版本的源码和 API 为准。
 
-另外，关于 Java I/O 模型的针对性详细介绍，可以阅读这篇文章：[Java I/O 模型详解](https://javaguide.cn/java/io/io-model.html)。
+另外，关于 Java I/O 模型的针对性详细介绍，可以阅读这篇文章：[Java I/O 模型详解](/java/io/io-model.html)。
 
 ## 面试里怎么答？
 

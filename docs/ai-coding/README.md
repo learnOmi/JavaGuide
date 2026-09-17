@@ -33,7 +33,7 @@ AI 编程工具好不好用，真不全看模型。很多时候，差别反而�
 本专栏属于 AIGuide 项目，对标 JavaGuide 质量，免费开源，欢迎 Star 支持：
 
 - **项目地址**：[https://github.com/Snailclimb/AIGuide](https://github.com/Snailclimb/AIGuide)
-- **在线阅读**：[https://javaguide.cn/ai-coding/](https://javaguide.cn/ai-coding/)
+- **在线阅读**：[https://javaguide.cn/ai-coding/](/ai-coding/)
 
 ## 适合谁看
 

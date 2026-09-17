@@ -35,7 +35,7 @@ head:
 
 <img src="/assets/images/oss.javaguide.cn/github/javaguide/gongzhonghao-javaguide.png" alt="JavaGuide 公众号"  style="zoom: 43%; display: block; margin: 0 auto;" />
 
-由于 PDF 的时效性问题，如果想要更完美的体验，个人其实还是更建议大家去 [JavaGuide](https://javaguide.cn/) 网站上在线阅读，内容更新，一直在持续完善。
+由于 PDF 的时效性问题，如果想要更完美的体验，个人其实还是更建议大家去 [JavaGuide](/) 网站上在线阅读，内容更新，一直在持续完善。
 
 ## 部分内容概览
 

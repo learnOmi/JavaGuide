@@ -37,13 +37,13 @@ head:
 
 相关内容：
 
-- [CAP 理论和 BASE 理论解读](https://javaguide.cn/distributed-system/protocol/cap-and-base-theorem.html)
-- [分布式协调详解](https://javaguide.cn/distributed-system/protocol/centralized-and-decentralized.html)
-- [Paxos 算法解读](https://javaguide.cn/distributed-system/protocol/paxos-algorithm.html)
-- [Raft 算法解读](https://javaguide.cn/distributed-system/protocol/raft-algorithm.html)
-- [ZAB 协议详解](https://javaguide.cn/distributed-system/protocol/zab.html)
-- [Gossip 协议详解](https://javaguide.cn/distributed-system/protocol/gossip-protocol.html)
-- [一致性哈希算法详解](https://javaguide.cn/distributed-system/protocol/consistent-hashing.html)
+- [CAP 理论和 BASE 理论解读](/distributed-system/protocol/cap-and-base-theorem.html)
+- [分布式协调详解](/distributed-system/protocol/centralized-and-decentralized.html)
+- [Paxos 算法解读](/distributed-system/protocol/paxos-algorithm.html)
+- [Raft 算法解读](/distributed-system/protocol/raft-algorithm.html)
+- [ZAB 协议详解](/distributed-system/protocol/zab.html)
+- [Gossip 协议详解](/distributed-system/protocol/gossip-protocol.html)
+- [一致性哈希算法详解](/distributed-system/protocol/consistent-hashing.html)
 
 常见面试题：
 
@@ -70,12 +70,12 @@ RPC 示意图如下：
 
 相关内容：
 
-- [微服务面试题总结](https://javaguide.cn/distributed-system/microservices-interview-questions.html)
-- [RPC 基础常见面试题总结](https://javaguide.cn/distributed-system/rpc/rpc-intro.html)
-- [Dubbo 常见面试题总结](https://javaguide.cn/distributed-system/rpc/dubbo.html)
-- [HTTP 和 RPC 有什么区别？](https://javaguide.cn/distributed-system/rpc/http&rpc.html)
-- [API 网关基础知识总结](https://javaguide.cn/distributed-system/api-gateway.html)
-- [Spring Cloud Gateway 常见问题总结](https://javaguide.cn/distributed-system/spring-cloud-gateway-questions.html)
+- [微服务面试题总结](/distributed-system/microservices-interview-questions.html)
+- [RPC 基础常见面试题总结](/distributed-system/rpc/rpc-intro.html)
+- [Dubbo 常见面试题总结](/distributed-system/rpc/dubbo.html)
+- [HTTP 和 RPC 有什么区别？](/distributed-system/rpc/rpc-intro.html)
+- [API 网关基础知识总结](/distributed-system/api-gateway.html)
+- [Spring Cloud Gateway 常见问题总结](/distributed-system/spring-cloud-gateway-questions.html)
 
 常见面试题：
 
@@ -93,11 +93,11 @@ RPC 示意图如下：
 
 相关内容：
 
-- [分布式ID介绍&实现方案总结](https://javaguide.cn/distributed-system/distributed-id.html)
-- [分布式 ID 设计指南](https://javaguide.cn/distributed-system/distributed-id-design.html)
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
-- [分布式事务解决方案总结](https://javaguide.cn/distributed-system/distributed-transaction.html)
+- [分布式ID介绍&实现方案总结](/distributed-system/distributed-id.html)
+- [分布式 ID 设计指南](/distributed-system/distributed-id-design.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
+- [分布式事务解决方案总结](/distributed-system/distributed-transaction.html)
 
 常见面试题：
 
@@ -117,9 +117,9 @@ RPC 示意图如下：
 
 相关内容：
 
-- [分布式配置中心面试题总结](https://javaguide.cn/distributed-system/distributed-configuration-center.html)
-- [ZooKeeper相关概念总结(入门)](https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html)
-- [ZooKeeper相关概念总结(进阶)](https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-plus.html)
+- [分布式配置中心面试题总结](/distributed-system/distributed-configuration-center.html)
+- [ZooKeeper相关概念总结(入门)](/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html)
+- [ZooKeeper相关概念总结(进阶)](/distributed-system/distributed-process-coordination/zookeeper/zookeeper-plus.html)
 
 常见面试题：
 

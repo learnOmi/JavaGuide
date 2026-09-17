@@ -55,8 +55,8 @@ Git 相关的技能非常重要，建议在正式工作之前一定要熟练掌�
 
 我写过两篇相关的文章，推荐看看：
 
-- [Git 核心概念总结](https://javaguide.cn/tools/git/git-intro.html)
-- [Github 实用小技巧总结](https://javaguide.cn/tools/git/github-tips.html)
+- [Git 核心概念总结](/tools/git/git-intro.html)
+- [Github 实用小技巧总结](/tools/git/github-tips.html)
 
 ### 提交 Issue 开启讨论
 

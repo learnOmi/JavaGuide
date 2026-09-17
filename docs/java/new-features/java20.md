@@ -233,7 +233,7 @@ JDK 20 中是第二次预览，由 [JEP 434](https://openjdk.org/jeps/434) 提�
 
 Java 虚拟线程的详细解读和原理可以看下面这几篇文章：
 
-- [虚拟线程极简入门](https://javaguide.cn/java/concurrent/virtual-thread.html)
+- [虚拟线程极简入门](/java/concurrent/virtual-thread.html)
 - [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)
 - [虚拟线程 - VirtualThread 源码透视](https://www.cnblogs.com/throwable/p/16758997.html)
 

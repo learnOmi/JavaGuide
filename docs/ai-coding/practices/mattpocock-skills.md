@@ -15,7 +15,7 @@ head:
 
 你好，我是小 G。
 
-我在 [AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html) 和 [强模型时代，AI 编程 Skills 还有必要装吗？](https://javaguide.cn/ai-coding/practices/skill-selection-and-pruning.html) 这两篇文章中，都提到了 [mattpocock/skills](https://github.com/mattpocock/skills)，`grilling` 还专门拿了实际项目举例。
+我在 [AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html) 和 [强模型时代，AI 编程 Skills 还有必要装吗？](/ai-coding/practices/skill-selection-and-pruning.html) 这两篇文章中，都提到了 [mattpocock/skills](https://github.com/mattpocock/skills)，`grilling` 还专门拿了实际项目举例。
 
 有不少读者朋友对 `grilling` 感兴趣。不过，回头看，这两篇都写得太简略了。文章只留下“让 Agent 持续追问”这个印象，一次只问一个问题、哪些信息该让 Agent 自己查、什么时候才能开始执行，都没有展开。
 
@@ -66,7 +66,7 @@ grill-with-docs ───> grilling + domain-modeling
 
 ## 我用 grilling 确认了一次知识库面试需求
 
-这次真实使用来自我的开源项目 [SpringAI 智能面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)。
+这次真实使用来自我的开源项目 [SpringAI 智能面试平台](/zhuanlan/interview-guide.html)。
 
 当时我准备把模拟面试和知识库打通，直接选择了 `grilling`，给出的任务只有一句：帮我把这件事想清楚。
 

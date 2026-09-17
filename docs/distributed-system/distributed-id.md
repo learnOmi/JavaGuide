@@ -223,7 +223,7 @@ Codis 曾经是常见的开源 Redis 集群方案，但项目长期不活跃。�
 
 除了高可用和并发之外，我们知道 Redis 基于内存，我们需要持久化数据，避免重启机器或者机器故障后数据丢失。Redis 支持两种不同的持久化方式：**快照（snapshotting，RDB）**、**只追加文件（append-only file, AOF）**。并且，Redis 4.0 开始支持 **RDB 和 AOF 的混合持久化**，由配置项 `aof-use-rdb-preamble` 控制：Redis 4.0 示例配置默认关闭，Redis 5.0+ 示例配置默认开启。具体默认值要以目标 Redis 版本、配置文件以及云厂商托管版配置为准。
 
-关于 Redis 持久化，我这里就不过多介绍。不了解这部分内容的小伙伴，可以看看 [Redis 持久化机制详解](https://javaguide.cn/database/redis/redis-persistence.html)这篇文章。
+关于 Redis 持久化，我这里就不过多介绍。不了解这部分内容的小伙伴，可以看看 [Redis 持久化机制详解](/database/redis/redis-persistence.html)这篇文章。
 
 虽然 Redis `INCR` 性能优异，但 Redis 持久化只能降低进程重启后的数据丢失风险，不能完全消除 ID 回退。尤其是 `appendfsync everysec`、RDB 快照、主从异步复制和故障切换场景，都可能丢失最近一段 `INCR` 结果。下面这些失败路径需要特别注意：
 

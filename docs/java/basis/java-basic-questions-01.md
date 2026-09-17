@@ -75,7 +75,7 @@ JRE 是运行已编译 Java 程序所需的环境，主要包含以下两个部�
 
 不过，从 JDK 9 开始，就不需要区分 JDK 和 JRE 的关系了，取而代之的是模块系统（JDK 被重新组织成 94 个模块）+ [jlink](http://openjdk.java.net/jeps/282) 工具（随 Java 9 一起发布的新命令行工具，用于生成自定义 Java 运行时映像，该映像仅包含给定应用程序所需的模块）。并且，从 JDK 11 开始，Oracle 不再提供单独的 JRE 下载。
 
-在 [Java 9 新特性概览](https://javaguide.cn/java/new-features/java9.html)这篇文章中，我在介绍模块化系统的时候提到：
+在 [Java 9 新特性概览](/java/new-features/java9.html)这篇文章中，我在介绍模块化系统的时候提到：
 
 > 在引入了模块系统之后，JDK 被重新组织成 94 个模块。Java 应用可以通过新增的 jlink 工具，创建出只包含所依赖的 JDK 模块的自定义运行时镜像。这样可以极大的减少 Java 运行时环境的大小。
 
@@ -897,7 +897,7 @@ System.out.println(Objects.equals(x, y)); /* false */
 System.out.println(0 == x.compareTo(y)); /* true */
 ```
 
-关于 `BigDecimal` 的详细介绍，可以看看我写的这篇文章：[BigDecimal 详解](https://javaguide.cn/java/basis/bigdecimal.html)。
+关于 `BigDecimal` 的详细介绍，可以看看我写的这篇文章：[BigDecimal 详解](/java/basis/bigdecimal.html)。
 
 ### 超过 long 整型的数据应该如何表示？
 

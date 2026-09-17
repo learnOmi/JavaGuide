@@ -67,7 +67,7 @@ AI 是一个强大的知识库和辅助工具，可以帮我们快速实现功�
 5. **验证优于信任**——给 Claude 验收标准，让它自己检查。
 6. **`/compact` 比反复纠正更有效**——上下文被污染后，压缩或清空重来更好。
 
-Claude Code 详细内容我单独分享过：[Claude Code 使用指南](https://javaguide.cn/ai-coding/claudecode-tips.html)。
+Claude Code 详细内容我单独分享过：[Claude Code 使用指南](/ai-coding/practices/claudecode-tips.html)。
 
 ## AI 编程对程序员的影响
 

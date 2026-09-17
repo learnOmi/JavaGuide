@@ -201,7 +201,7 @@ TCP Keepalive 是“被动回收”——它必须先发探测包去问“你还
 - 如果第二次挥手时服务器的 ACK 没有送达客户端，会怎样？
 - 为什么第四次挥手客户端需要等待 2\*MSL（报文段最长寿命）时间后才进入 CLOSED 状态？
 
-**参考答案**：[TCP 三次握手和四次挥手（传输层）](https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html)。
+**参考答案**：[TCP 三次握手和四次挥手（传输层）](/cs-basics/network/tcp-connection-and-disconnection.html)。
 
 ### TCP TIME_WAIT 到底在等什么？为什么要等？
 
@@ -216,7 +216,7 @@ TCP Keepalive 是“被动回收”——它必须先发探测包去问“你还
 
 ### ⭐️ TCP 如何保证传输的可靠性？（重要）
 
-[TCP 传输可靠性保障（传输层）](https://javaguide.cn/cs-basics/network/tcp-reliability-guarantee.html)
+[TCP 传输可靠性保障（传输层）](/cs-basics/network/tcp-reliability-guarantee.html)
 
 ### TCP 和 UDP 可以使用同一个端口吗？
 
@@ -323,7 +323,7 @@ NAT 不光可以缓解 IPv4 地址资源短缺的问题，还会隐藏内部地�
 
 ![NAT 实现 IP地址转换](/assets/images/oss.javaguide.cn/github/javaguide/cs-basics/network/network-address-translation.png)
 
-相关阅读：[NAT 协议详解（网络层）](https://javaguide.cn/cs-basics/network/nat.html)。
+相关阅读：[NAT 协议详解（网络层）](/cs-basics/network/nat.html)。
 
 ## ARP
 
@@ -347,7 +347,7 @@ ARP 协议，全称 **地址解析协议（Address Resolution Protocol）**，�
 
 ### ARP 协议的工作原理？
 
-[ARP 协议详解(网络层)](https://javaguide.cn/cs-basics/network/arp.html)
+[ARP 协议详解(网络层)](/cs-basics/network/arp.html)
 
 ## 复习建议
 

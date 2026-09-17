@@ -154,7 +154,7 @@ Just-in-Time 会先保留文件路径、数据库查询或 Web 链接等轻量�
 
 元数据本身也能参与判断。`tests/test_utils.py` 与 `src/core_logic/test_utils.py` 的路径语义不同，足以提示 Agent 它们服务于不同位置的测试逻辑。
 
-Anthropic 将这类分层获取信息的方式称为 **Progressive Disclosure**，即渐进式披露。Agent 通过多轮探索补充上下文：文件大小提示复杂度，时间戳提示相关性，目录结构提供位置语义。Skills 也利用了这一思路，具体可见：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。
+Anthropic 将这类分层获取信息的方式称为 **Progressive Disclosure**，即渐进式披露。Agent 通过多轮探索补充上下文：文件大小提示复杂度，时间戳提示相关性，目录结构提供位置语义。Skills 也利用了这一思路，具体可见：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html)。
 
 按需加载增加了工具调用次数和延迟，并依赖 `glob`、`grep`、`tree` 等导航工具。导航能力不足或启发式规则失效时，Agent 可能沿着错误路径继续搜索，消耗更多上下文和调用次数。因此仍要预先设计索引、工具边界和导航策略。
 

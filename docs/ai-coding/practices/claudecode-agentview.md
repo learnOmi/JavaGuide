@@ -24,8 +24,8 @@ Anthropic 前段时间推出的 **Agent View**，正好接手了这件麻烦事�
 
 如果你还不熟悉 Claude Code，可以先看看下面两篇：
 
-- [《Claude Code 使用指南》](https://javaguide.cn/ai-coding/practices/claudecode-tips.html)：Sub-Agent 子代理、多实例协作（Multi-Claude）、CLAUDE.md 配置等
-- [《Claude Code 核心命令详解》](https://javaguide.cn/ai-coding/practices/claudecode-commands.html)：`/simplify`、`/loop`、`/batch` 等命令的实战用法
+- [《Claude Code 使用指南》](/ai-coding/practices/claudecode-tips.html)：Sub-Agent 子代理、多实例协作（Multi-Claude）、CLAUDE.md 配置等
+- [《Claude Code 核心命令详解》](/ai-coding/practices/claudecode-commands.html)：`/simplify`、`/loop`、`/batch` 等命令的实战用法
 
 ## 怎么打开 Agent View
 
@@ -202,7 +202,7 @@ Agent View 底部有一个输入框。输入任务并按 `Enter`，会新建一�
 
 [Nicholas Carlini 的 C 编译器实验](https://www.anthropic.com/engineering/building-c-compiler) 把并行规模拉到了另一个量级：16 个 Claude Opus 4.6 实例在两周内跑了近 2000 个 Claude Code Session，产出约 10 万行代码，花费接近 2 万美元。这个实验使用的是 Agent Teams 和自定义执行框架，并非 Agent View 的能力展示。
 
-落到日常开发，能借鉴的是任务拆分、角色分工和测试约束。没有这些准备，多开几个 Session 只会更快地产生冲突。`/simplify` 和 `/batch` 等并行工作流的具体用法，可以看 [《Claude Code 核心命令详解》](https://javaguide.cn/ai-coding/practices/claudecode-commands.html)。
+落到日常开发，能借鉴的是任务拆分、角色分工和测试约束。没有这些准备，多开几个 Session 只会更快地产生冲突。`/simplify` 和 `/batch` 等并行工作流的具体用法，可以看 [《Claude Code 核心命令详解》](/ai-coding/practices/claudecode-commands.html)。
 
 ### 需要等待的 CI、测试和 PR
 
@@ -236,7 +236,7 @@ CI、集成测试和 PR Review 经常要等外部结果。一直把 Session 留�
 
 关机或重启会停止正在运行的任务。下次打开 Agent View 时，这些 Session 会显示为失败，进入、预览或回复后可以接着原来的对话继续。需要机器离线后照常运行的任务，应放到云端环境。详见 [Agent View 官方文档](https://code.claude.com/docs/en/agent-view)。
 
-想进一步了解几种并行方式的区别，可以看 [Claude Code 并行 Agent 官方说明](https://code.claude.com/docs/en/agents)、[《上下文工程实战指南》](https://javaguide.cn/ai/agent/context-engineering.html) 和 [《Harness Engineering》](https://javaguide.cn/ai/agent/harness-engineering.html)。
+想进一步了解几种并行方式的区别，可以看 [Claude Code 并行 Agent 官方说明](https://code.claude.com/docs/en/agents)、[《上下文工程实战指南》](/ai/agent/context-engineering.html) 和 [《Harness Engineering》](/ai/agent/harness-engineering.html)。
 
 ## Research Preview 期间别写死流程
 

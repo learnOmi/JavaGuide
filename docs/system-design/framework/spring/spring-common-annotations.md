@@ -174,7 +174,7 @@ Spring 容器需要知道哪些类需要被管理为 Bean。除了使用 `@Bean`
 - `@Controller`：主要用于传统的 Spring MVC 应用，方法返回值通常是逻辑视图名，需要视图解析器配合渲染页面。如果需要返回数据（如 JSON），则需要在方法上额外添加 `@ResponseBody` 注解。
 - `@RestController`：专为构建返回数据的 RESTful API 设计。类上使用此注解后，所有方法的返回值都会默认被视为响应体内容（相当于每个方法都隐式添加了 `@ResponseBody`），通常用于返回 JSON 或 XML 数据。在现代前后端分离的应用中，`@RestController` 是更常用的选择。
 
-关于`@RestController` 和 `@Controller`的对比，请看这篇文章：[@RestController vs @Controller](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485544&idx=1&sn=3cc95b88979e28fe3bfe539eb421c6d8&chksm=cea247a3f9d5ceb5e324ff4b8697adc3e828ecf71a3468445e70221cce768d1e722085359907&token=1725092312&lang=zh_CN#rd)。
+关于`@RestController` 和 `@Controller`的对比，请看这篇文章：[@RestController vs @Controller](restcontroller-vs-controller.html)。
 
 ## 配置
 
@@ -289,7 +289,7 @@ class WebSite {
 
 **注意**：当使用 `@PropertySource` 时，确保外部文件路径正确，且文件在类路径（classpath）中。
 
-更多内容请查看我的这篇文章：[10 分钟搞定 SpringBoot 如何优雅读取配置文件？](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247486181&idx=2&sn=10db0ae64ef501f96a5b0dbc4bd78786&chksm=cea2452ef9d5cc384678e456427328600971180a77e40c13936b19369672ca3e342c26e92b50&token=816772476&lang=zh_CN#rd) 。
+更多内容请查看我的这篇文章：[10 分钟搞定 SpringBoot 如何优雅读取配置文件？](springboot-read-config.html) 。
 
 ## MVC
 
@@ -472,7 +472,7 @@ Bean Validation 本身只是一套**规范（接口和注解）**，我们需要
 
 ![](/assets/images/oss.javaguide.cn/2021/03/c7bacd12-1c1a-4e41-aaaf-4cad840fc073.png)
 
-非 SpringBoot 项目需要自行引入相关依赖包，这里不多做讲解，具体可以查看我的这篇文章：[如何在 Spring/Spring Boot 中做参数校验？你需要了解的都在这里！](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485783&idx=1&sn=a407f3b75efa17c643407daa7fb2acd6&chksm=cea2469cf9d5cf8afbcd0a8a1c9cc4294d6805b8e01bee6f76bb2884c5bc15478e91459def49&token=292197051&lang=zh_CN#rd)。
+非 SpringBoot 项目需要自行引入相关依赖包，这里不多做讲解，具体可以查看我的这篇文章：[如何在 Spring/Spring Boot 中做参数校验？你需要了解的都在这里！](../../security/data-validation.html)。
 
 👉 需要注意的是：优先使用 Bean Validation/Jakarta Validation 规范提供的约束注解，而不是 Hibernate Validator 私有约束。Spring Boot 2.x 通常使用 `javax.validation.constraints`，Spring Boot 3.x 及以上版本使用 `jakarta.validation.constraints`。
 
@@ -595,8 +595,8 @@ public class GlobalExceptionHandler {
 
 更多关于 Spring Boot 异常处理的内容，请看我的这两篇文章：
 
-1. [SpringBoot 处理异常的几种常见姿势](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485568&idx=2&sn=c5ba880fd0c5d82e39531fa42cb036ac&chksm=cea2474bf9d5ce5dcbc6a5f6580198fdce4bc92ef577579183a729cb5d1430e4994720d59b34&token=2133161636&lang=zh_CN#rd)
-2. [使用枚举简单封装一个优雅的 Spring Boot 全局异常处理！](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247486379&idx=2&sn=48c29ae65b3ed874749f0803f0e4d90e&chksm=cea24460f9d5cd769ed53ad7e17c97a7963a89f5350e370be633db0ae8d783c3a3dbd58c70f8&token=1054498516&lang=zh_CN#rd)
+1. [SpringBoot 处理异常的几种常见姿势](springboot-exception-handling.html)
+2. [使用枚举简单封装一个优雅的 Spring Boot 全局异常处理！](springboot-global-exception.html)
 
 ## 事务
 

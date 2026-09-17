@@ -11,7 +11,7 @@ head:
       content: Java NIO,Channel,Buffer,Selector,非阻塞IO,多路复用,零拷贝,NIO核心组件
 ---
 
-在学习 NIO 之前，需要先了解一下计算机 I/O 模型的基础理论知识。还不了解的话，可以参考我写的这篇文章：[Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)。
+在学习 NIO 之前，需要先了解一下计算机 I/O 模型的基础理论知识。还不了解的话，可以参考我写的这篇文章：[Java IO 模型详解](/java/io/io-model.html)。
 
 ## NIO 简介
 
@@ -19,7 +19,7 @@ head:
 
 为了解决这个问题，在 Java1.4 版本引入了一种新的 I/O 模型 — **NIO**（New IO，也称为 Non-blocking IO）。NIO 弥补了同步阻塞 I/O 的不足，它在标准 Java 代码中提供了非阻塞、面向缓冲、基于通道的 I/O，可以使用少量的线程来处理多个连接，大大提高了 I/O 效率和并发。
 
-下图是 BIO、NIO 和 AIO 处理客户端请求的简单对比图（关于 AIO 的介绍，可以看我写的这篇文章：[Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)，不是重点，了解即可）。
+下图是 BIO、NIO 和 AIO 处理客户端请求的简单对比图（关于 AIO 的介绍，可以看我写的这篇文章：[Java IO 模型详解](/java/io/io-model.html)，不是重点，了解即可）。
 
 ![BIO、NIO 和 AIO 对比](/assets/images/oss.javaguide.cn/github/javaguide/java/nio/bio-aio-nio.png)
 

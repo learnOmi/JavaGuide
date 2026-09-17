@@ -4,7 +4,7 @@
 
 ![](/assets/images/oss.javaguide.cn/xingqiu/java-interview-guide-statistics-2025.png)
 
-[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)（点击链接即可查看详细介绍）的部分内容展示如下，你可以将其看作是 [JavaGuide](https://javaguide.cn/#/) 的补充完善，两者可以配合使用。
+[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)（点击链接即可查看详细介绍）的部分内容展示如下，你可以将其看作是 [JavaGuide](/#/) 的补充完善，两者可以配合使用。
 
 ![《Java 面试指北》内容概览](/assets/images/oss.javaguide.cn/javamianshizhibei/javamianshizhibei-content-overview.png)
 

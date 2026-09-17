@@ -10,7 +10,7 @@ head:
       content: PriorityQueue源码,优先队列,二叉堆,小顶堆,堆排序,Comparator,优先级队列实现
 ---
 
-**PriorityQueue 源码分析** 为我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)（点击链接即可查看详细介绍以及加入方法）专属内容，已经整理到了[《Java 必读源码系列》](https://javaguide.cn/zhuanlan/source-code-reading.html)中。
+**PriorityQueue 源码分析** 为我的[知识星球](/about-the-author/zhishixingqiu-two-years.html)（点击链接即可查看详细介绍以及加入方法）专属内容，已经整理到了[《Java 必读源码系列》](/zhuanlan/source-code-reading.html)中。
 
 ![PriorityQueue 源码分析](/assets/images/oss.javaguide.cn/xingqiu/image-20230727084055593.png)
 

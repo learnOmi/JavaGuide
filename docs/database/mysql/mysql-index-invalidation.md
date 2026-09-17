@@ -154,7 +154,7 @@ SELECT * FROM students WHERE s_code NOT IN (1, 2, 3);     -- 常量列表，全�
 - 当字符串与数字进行比较时，MySQL 默认将字符串转换为**浮点数（DOUBLE）**进行比较（详见 [MySQL 官方文档规则 7](https://dev.mysql.com/doc/refman/8.0/en/type-conversion.html)）。对索引列发生隐式类型转换等同于在索引列上应用了不可逆的转换函数，破坏了 B+ 树的有序性，导致只能走全表扫描。
 - `int_col = '123'` 会被转换为 `int_col = CAST('123' AS DOUBLE)`，转换发生在常量侧，不影响索引使用。
 
-**详细介绍**：[MySQL隐式转换造成索引失效](https://javaguide.cn/database/mysql/index-invalidation-caused-by-implicit-conversion.html)
+**详细介绍**：[MySQL隐式转换造成索引失效](/database/mysql/index-invalidation-caused-by-implicit-conversion.html)
 
 ### ORDER BY 排序优化陷阱
 
@@ -212,6 +212,6 @@ SELECT * FROM students WHERE s_code NOT IN (1, 2, 3);     -- 常量列表，全�
 
 **延伸阅读**：
 
-- [MySQL 索引详解](https://javaguide.cn/database/mysql/mysql-index.html)
-- [MySQL 执行计划分析](https://javaguide.cn/database/mysql/mysql-query-execution-plan.html)
-- [MySQL 隐式转换造成索引失效](https://javaguide.cn/database/mysql/index-invalidation-caused-by-implicit-conversion.html)
+- [MySQL 索引详解](/database/mysql/mysql-index.html)
+- [MySQL 执行计划分析](/database/mysql/mysql-query-execution-plan.html)
+- [MySQL 隐式转换造成索引失效](/database/mysql/index-invalidation-caused-by-implicit-conversion.html)

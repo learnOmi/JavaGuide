@@ -180,7 +180,7 @@ head:
 
 > 网络分区时别纠结理论，想清楚这几件事就行：各服务在分区期间读本地缓存还是拒绝请求、跨区写入要不要停、核心链路怎么保、要不要切成只读模式。
 >
-> **详细介绍：** [CAP & BASE理论详解](https://javaguide.cn/distributed-system/protocol/cap-and-base-theorem.html)。
+> **详细介绍：** [CAP & BASE理论详解](/distributed-system/protocol/cap-and-base-theorem.html)。
 
 ## 什么是 Fallback？
 

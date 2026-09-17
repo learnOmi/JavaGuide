@@ -119,7 +119,7 @@ SSE 通常通过 HTTP 响应承载，媒体类型是 `text/event-stream`，消�
 
 **空行才是事件分隔符**。单个换行只是结束当前字段行，不会直接结束事件。服务端手写 `data:` 时如果没有给正文每一行加字段前缀，客户端可能丢掉后续行；额外写入空行还会提前结束事件。Markdown 列表和代码块很容易触发这些情况。
 
-小 G 在[《SpringAI 智能面试平台+RAG 知识库》](https://javaguide.cn/zhuanlan/interview-guide.html)的知识库问答里用的就是 SSE：模型一边生成，浏览器一边打字机展示；链路不长，但协议细节一个不落下。
+小 G 在[《SpringAI 智能面试平台+RAG 知识库》](/zhuanlan/interview-guide.html)的知识库问答里用的就是 SSE：模型一边生成，浏览器一边打字机展示；链路不长，但协议细节一个不落下。
 
 ### Spring Boot + Spring AI 的 SSE 写法
 
@@ -406,7 +406,7 @@ Gemini 官方限流文档把限流维度拆成 RPM、输入 TPM、RPD，并说�
 - 供应商级：全局令牌桶 + 熔断器
 - 流式请求：并发信号量 + 总时长限制
 
-关于限流算法的详细介绍，可以参考这篇文章：[服务限流详解](https://javaguide.cn/high-availability/limit-request.html)。
+关于限流算法的详细介绍，可以参考这篇文章：[服务限流详解](/high-availability/limit-request.html)。
 
 ### 收到 429 应该怎么处理
 

@@ -101,7 +101,7 @@ DNS（Domain Name System，域名系统）要解决的是**域名和 IP 地址�
 
 实际场景中，本地 DNS 服务器通常已经缓存了大量 TLD 服务器地址，多数查询不需要从根服务器开始，跳过根服务器直接查 TLD 的情况非常普遍。
 
-> 关于 DNS 的更多细节（DNS 服务器层级、递归/迭代查询的区别、DNS 记录类型、为什么通常用 UDP 等），可以参考 [DNS 域名系统详解（应用层）](https://javaguide.cn/cs-basics/network/dns.html) 这篇文章。
+> 关于 DNS 的更多细节（DNS 服务器层级、递归/迭代查询的区别、DNS 记录类型、为什么通常用 UDP 等），可以参考 [DNS 域名系统详解（应用层）](/cs-basics/network/dns.html) 这篇文章。
 
 ## 第三步：建立传输连接
 
@@ -119,7 +119,7 @@ TCP 三次握手的目的是**同步双方的初始序列号**，并**确认双�
 
 三次握手的设计不是为了「多走一次」，而是让双方都能确认：对方能收到自己的数据，自己也能收到对方的数据。两次握手做不到这一点——服务端在第二次握手后，还不知道客户端是否收到了自己的 SYN+ACK。
 
-> 关于三次握手的详细分析、半连接队列/全连接队列、SYN Flood 防护等内容，可以参考 [TCP 三次握手和四次挥手（传输层）](https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html)。
+> 关于三次握手的详细分析、半连接队列/全连接队列、SYN Flood 防护等内容，可以参考 [TCP 三次握手和四次挥手（传输层）](/cs-basics/network/tcp-connection-and-disconnection.html)。
 
 ### 如果是 HTTPS：TLS 握手
 
@@ -136,7 +136,7 @@ TLS 握手大致流程（以 TLS 1.2 RSA 密钥交换为例）：
 
 TLS 握手完成后，后续的 HTTP 请求和响应都会使用协商好的对称密钥进行加密传输。HTTPS 的安全性来自 TLS 层，而不是 HTTP 协议本身的改变。
 
-> 关于 TLS 的加密原理（非对称加密、对称加密、数字签名、CA 证书）的详细分析，可以参考 [HTTP vs HTTPS（应用层）](https://javaguide.cn/cs-basics/network/http-vs-https.html)。关于 RSA 和 ECDHE 两种密钥交换方式的区别，可以参考 [HTTPS RSA vs ECDHE 握手过程](https://javaguide.cn/cs-basics/network/https-rsa-vs-ecdhe.html)。
+> 关于 TLS 的加密原理（非对称加密、对称加密、数字签名、CA 证书）的详细分析，可以参考 [HTTP vs HTTPS（应用层）](/cs-basics/network/http-vs-https.html)。关于 RSA 和 ECDHE 两种密钥交换方式的区别，可以参考 [HTTPS RSA vs ECDHE 握手过程](/cs-basics/network/https-rsa-vs-ecdhe.html)。
 
 ## 第四步：发送 HTTP 请求
 
@@ -203,7 +203,7 @@ Set-Cookie: session_id=xyz789; Path=/
 | 4xx    | 客户端错误 | 400 Bad Request、403 Forbidden、404 Not Found |
 | 5xx    | 服务端错误 | 500 Internal Server Error、502 Bad Gateway    |
 
-> 关于 HTTP 常见状态码的详细总结，可以参考 [HTTP 常见状态码总结（应用层）](https://javaguide.cn/cs-basics/network/http-status-codes.html)。
+> 关于 HTTP 常见状态码的详细总结，可以参考 [HTTP 常见状态码总结（应用层）](/cs-basics/network/http-status-codes.html)。
 
 ## 第五步：数据包的封装与转发
 
@@ -243,7 +243,7 @@ ARP 的工作方式是**广播问询、单播响应**：
 
 如果目标主机不在同一子网，主机不需要知道最终目标的 MAC 地址，只需要知道**本地网关（路由器）的 MAC 地址**即可。数据包先发给网关，网关再逐跳转发到目标网络。
 
-> 关于 ARP 的详细工作原理（同子网/跨子网寻址、ARP 表、常见攻击），可以参考 [ARP 协议详解（网络层）](https://javaguide.cn/cs-basics/network/arp.html)。
+> 关于 ARP 的详细工作原理（同子网/跨子网寻址、ARP 表、常见攻击），可以参考 [ARP 协议详解（网络层）](/cs-basics/network/arp.html)。
 
 ### 网络地址转换（NAT）
 
@@ -316,7 +316,7 @@ HTTP/2 在长连接的基础上引入了多路复用。同一个 TCP 连接上�
 
 `TIME_WAIT` 状态的存在是为了确保最后的 ACK 能到达对端，同时让网络中残留的旧报文消散，避免干扰后续新连接。
 
-> 关于 TCP 四次挥手、TIME_WAIT 的影响、CLOSE_WAIT 堆积排查等内容，可以参考 [TCP 三次握手和四次挥手（传输层）](https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html)。
+> 关于 TCP 四次挥手、TIME_WAIT 的影响、CLOSE_WAIT 堆积排查等内容，可以参考 [TCP 三次握手和四次挥手（传输层）](/cs-basics/network/tcp-connection-and-disconnection.html)。
 
 ## 完整流程总结
 

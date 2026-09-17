@@ -214,7 +214,7 @@ MCP Server 要克制。工具越多，Claude 越容易选错，也越难审计�
 
 Skill 放任务步骤，比如代码审查、写测试、改前端页面、网页调研、写技术文章。这些任务每次走法都差不多，不必在聊天里反复提醒。
 
-小 G 之前写过两篇相关的文章：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html) 和 [AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)。
+小 G 之前写过两篇相关的文章：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html) 和 [AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html)。
 
 Skill 就是一份按需加载的任务说明。某类任务怎么做、有哪些约束、要检查哪些点、踩过哪些坑，都写进 `SKILL.md`。
 
@@ -230,7 +230,7 @@ Skill 就是一份按需加载的任务说明。某类任务怎么做、有哪�
 
 现成 Skill 也可以用，比如 Superpowers 把 TDD、Code Review、Spec-Driven、Git Worktree、子 Agent 协作这些步骤封装好了。
 
-我在 [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html) 这篇文章中有详细推荐。
+我在 [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](/ai-coding/practices/programmer-essential-skills.html) 这篇文章中有详细推荐。
 
 第三方 Skill 不要拿来就跑。`SKILL.md` 本身就是指令，里面如果带了危险命令、奇怪脚本、过宽权限，Agent 可能会照着做。装之前至少看一眼正文、`scripts/` 和 `references/`，确认它没有越权操作。
 
@@ -365,7 +365,7 @@ AI 写代码最麻烦的地方在于，它很会写“看起来合理”的代�
 
 如果测试没有先失败过，就很难确认后面的实现到底修到了哪个问题。否则它可能直接改一堆代码，然后告诉你“已修复”。
 
-[AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)中推荐的 Superpowers 就把 TDD 给封装好了。
+[AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html)中推荐的 Superpowers 就把 TDD 给封装好了。
 
 ### 让 Claude 自己验证
 
@@ -489,7 +489,7 @@ Claude 写 commit message 和 PR 描述很快，但最后别只看它的总结�
 
 `/compact` 还有一个容易忽略的点：压缩之后，有些规则不会立刻回到上下文里。根目录的 `CLAUDE.md` 会重新注入，但子目录里的嵌套规则不一定马上回来。长任务压缩后，最好让 Claude 先复述一遍当前目标、已改文件、剩余风险和下一步验证命令，再继续往下跑。
 
-命令细节我在 [Claude Code 核心命令详解：code-review、loop、goal、batch、run、verify](https://javaguide.cn/ai-coding/practices/claudecode-commands.html) 这篇里展开写过，这里就不重复铺太长了。
+命令细节我在 [Claude Code 核心命令详解：code-review、loop、goal、batch、run、verify](/ai-coding/practices/claudecode-commands.html) 这篇里展开写过，这里就不重复铺太长了。
 
 ## 提示词怎么写
 
@@ -544,7 +544,7 @@ Claude 写 commit message 和 PR 描述很快，但最后别只看它的总结�
 
 设计规范也可以做成 Skill，让 Claude 每次写前端前先读项目视觉约束。先把不该出现的套路挡住。后台工具就按后台工具来，信息密度、可扫描性、操作反馈，比“氛围感”重要得多。
 
-[AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)中也有推荐前端相关的开源 Skills。
+[AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html)中也有推荐前端相关的开源 Skills。
 
 ## 常见失败模式
 

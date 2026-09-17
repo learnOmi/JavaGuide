@@ -44,11 +44,11 @@ AI 框架部分以 Java 为主，Go 侧的对应方案会在关键位置补充�
 
 **文章推荐：**
 
-- [万字拆解 LLM 运行机制](https://javaguide.cn/ai/llm-basis/llm-operation-mechanism.html)：先看 Token、上下文窗口、Temperature，读完至少知道模型为什么会“飘”。
-- [大模型结构化输出详解](https://javaguide.cn/ai/llm-basis/structured-output-function-calling.html)：JSON Schema、Function Calling、Tool Calling、MCP 的边界放在一起看，不容易混。
-- [大模型提示词工程实践指南](https://javaguide.cn/ai/agent/prompt-engineering.html)：适合先扫一遍 Prompt 的基本写法，阶段二再回来细读。
-- [上下文工程实战指南](https://javaguide.cn/ai/agent/context-engineering.html)：重点看 Token 预算、信息挂载和降级策略，Agent 做复杂后会经常用到。
-- [万字详解 RAG 基础概念](https://javaguide.cn/ai/rag/rag-basis.html)：先建立 RAG 的整体印象，别急着上向量库。
+- [万字拆解 LLM 运行机制](/ai/llm-basis/llm-operation-mechanism.html)：先看 Token、上下文窗口、Temperature，读完至少知道模型为什么会“飘”。
+- [大模型结构化输出详解](/ai/llm-basis/structured-output-function-calling.html)：JSON Schema、Function Calling、Tool Calling、MCP 的边界放在一起看，不容易混。
+- [大模型提示词工程实践指南](/ai/agent/prompt-engineering.html)：适合先扫一遍 Prompt 的基本写法，阶段二再回来细读。
+- [上下文工程实战指南](/ai/agent/context-engineering.html)：重点看 Token 预算、信息挂载和降级策略，Agent 做复杂后会经常用到。
+- [万字详解 RAG 基础概念](/ai/rag/rag-basis.html)：先建立 RAG 的整体印象，别急着上向量库。
 
 ### 思维校准：从“确定性”到“概率性”
 
@@ -146,10 +146,10 @@ RAG（检索增强生成）先不用想复杂。它解决一个很现实的问�
 
 **文章推荐：**
 
-- [大模型 API 调用工程实践](https://javaguide.cn/ai/llm-basis/llm-api-engineering.html)：流式输出、重试、限流与结构化返回的 Java 后端落地。
-- [大模型结构化输出详解](https://javaguide.cn/ai/llm-basis/structured-output-function-calling.html)：把 JSON Schema、Function Calling、Tool Calling 的边界一次理清。
-- [大模型网关详解](https://javaguide.cn/ai/system-design/llm-gateway.html)：多模型路由、fallback、限流配额、成本归因和观测审计。
-- [Java AI 框架的详细选型建议和项目推荐](https://javaguide.cn/open-source-project/machine-learning.html)
+- [大模型 API 调用工程实践](/ai/llm-basis/llm-api-engineering.html)：流式输出、重试、限流与结构化返回的 Java 后端落地。
+- [大模型结构化输出详解](/ai/llm-basis/structured-output-function-calling.html)：把 JSON Schema、Function Calling、Tool Calling 的边界一次理清。
+- [大模型网关详解](/ai/system-design/llm-gateway.html)：多模型路由、fallback、限流配额、成本归因和观测审计。
+- [Java AI 框架的详细选型建议和项目推荐](/open-source-project/machine-learning.html)
 
 ### LLM API 调用：从跑通到可用
 
@@ -201,9 +201,9 @@ Go 开发者可以关注 [LangChainGo](https://github.com/tmc/langchaingo) 和 [
 
 **文章推荐：**
 
-- [大模型提示词工程实践指南](https://javaguide.cn/ai/agent/prompt-engineering.html)
-- [大模型结构化输出详解](https://javaguide.cn/ai/llm-basis/structured-output-function-calling.html)
-- [AI 应用评测体系](https://javaguide.cn/ai/llm-basis/llm-evaluation.html)：Prompt 变更、结构化输出和 Agent 工具调用都需要评测闭环。
+- [大模型提示词工程实践指南](/ai/agent/prompt-engineering.html)
+- [大模型结构化输出详解](/ai/llm-basis/structured-output-function-calling.html)
+- [AI 应用评测体系](/ai/llm-basis/llm-evaluation.html)：Prompt 变更、结构化输出和 Agent 工具调用都需要评测闭环。
 
 ### Prompt 结构设计：差 Prompt 长什么样？
 
@@ -281,13 +281,13 @@ RAG 看起来像“检索一下，再让模型回答”，实际是一条数据�
 
 **文章推荐：**
 
-- [万字详解 RAG 基础概念](https://javaguide.cn/ai/rag/rag-basis.html)
-- [RAG 文档处理与切分策略](https://javaguide.cn/ai/rag/rag-document-processing.html)
-- [万字详解 RAG 向量索引算法和向量数据库](https://javaguide.cn/ai/rag/rag-vector-store.html)
-- [RAG 知识库文档如何更新](https://javaguide.cn/ai/rag/rag-knowledge-update.html)
-- [万字详解 GraphRAG](https://javaguide.cn/ai/rag/graphrag.html)
-- [万字详解 RAG 检索优化](https://javaguide.cn/ai/rag/rag-optimization.html)
-- [AI 应用评测体系](https://javaguide.cn/ai/llm-basis/llm-evaluation.html)：重点看 RAG 检索评估、生成评估和 Trace 回放。
+- [万字详解 RAG 基础概念](/ai/rag/rag-basis.html)
+- [RAG 文档处理与切分策略](/ai/rag/rag-document-processing.html)
+- [万字详解 RAG 向量索引算法和向量数据库](/ai/rag/rag-vector-store.html)
+- [RAG 知识库文档如何更新](/ai/rag/rag-knowledge-update.html)
+- [万字详解 GraphRAG](/ai/rag/graphrag.html)
+- [万字详解 RAG 检索优化](/ai/rag/rag-optimization.html)
+- [AI 应用评测体系](/ai/llm-basis/llm-evaluation.html)：重点看 RAG 检索评估、生成评估和 Trace 回放。
 
 ### 离线数据管道：垃圾进，垃圾出
 
@@ -379,14 +379,14 @@ Agentic RAG 再往前走一步，把检索决策交给 Agent。什么时候检�
 
 **文章推荐：**
 
-- [一文搞懂 AI Agent 核心概念](https://javaguide.cn/ai/agent/agent-basis.html)
-- [AI Agent 记忆系统详解](https://javaguide.cn/ai/agent/agent-memory.html)
-- [上下文工程实战指南](https://javaguide.cn/ai/agent/context-engineering.html)
-- [万字详解 Agent Skills](https://javaguide.cn/ai/agent/skills.html)
-- [万字拆解 MCP 协议](https://javaguide.cn/ai/agent/mcp.html)
-- [一文搞懂 Harness Engineering](https://javaguide.cn/ai/agent/harness-engineering.html)
-- [AI 工作流中的 Workflow、Graph 与 Loop](https://javaguide.cn/ai/agent/workflow-graph-loop.html)
-- [AI Agent 面试题总结](https://javaguide.cn/ai/interview-questions/agent-interview-questions.html)：学完一轮后用来查漏补缺。
+- [一文搞懂 AI Agent 核心概念](/ai/agent/agent-basis.html)
+- [AI Agent 记忆系统详解](/ai/agent/agent-memory.html)
+- [上下文工程实战指南](/ai/agent/context-engineering.html)
+- [万字详解 Agent Skills](/ai/agent/skills.html)
+- [万字拆解 MCP 协议](/ai/agent/mcp.html)
+- [一文搞懂 Harness Engineering](/ai/agent/harness-engineering.html)
+- [AI 工作流中的 Workflow、Graph 与 Loop](/ai/agent/workflow-graph-loop.html)
+- [AI Agent 面试题总结](/ai/interview-questions/agent-interview-questions.html)：学完一轮后用来查漏补缺。
 
 ### 4.1 驱动机制：Tool Calling 与协议标准化
 
@@ -448,10 +448,10 @@ Agent 要“记得住事”，实现起来挺折磨人。
 
 **文章推荐：**
 
-- [AI 应用系统设计](https://javaguide.cn/ai/system-design/ai-application-architecture.html)：从 Prompt Demo 到生产级架构，补齐网关、RAG、Memory、Tool、评测、可观测和安全合规。
-- [大模型网关详解](https://javaguide.cn/ai/system-design/llm-gateway.html)：重点看多模型路由、fallback、限流配额、Token 预算和成本归因。
-- [AI 应用评测体系](https://javaguide.cn/ai/llm-basis/llm-evaluation.html)：Golden Set、LLM-as-Judge、Trace 回放、线上灰度和 CI 回归。
-- [AI 系统设计面试题总结](https://javaguide.cn/ai/interview-questions/ai-system-design-interview-questions.html)：适合阶段五学完后复盘系统设计表达。
+- [AI 应用系统设计](/ai/system-design/ai-application-architecture.html)：从 Prompt Demo 到生产级架构，补齐网关、RAG、Memory、Tool、评测、可观测和安全合规。
+- [大模型网关详解](/ai/system-design/llm-gateway.html)：重点看多模型路由、fallback、限流配额、Token 预算和成本归因。
+- [AI 应用评测体系](/ai/llm-basis/llm-evaluation.html)：Golden Set、LLM-as-Judge、Trace 回放、线上灰度和 CI 回归。
+- [AI 系统设计面试题总结](/ai/interview-questions/ai-system-design-interview-questions.html)：适合阶段五学完后复盘系统设计表达。
 
 ### 5.1 高并发与流式响应
 
@@ -558,9 +558,9 @@ PII 脱敏是第一步。用户输入发给 LLM 之前，检测并脱敏身份�
 
 **文章推荐：**
 
-- [AI 语音技术详解](https://javaguide.cn/ai/system-design/ai-voice.html)：要做语音 Agent、实时 ASR/TTS、打断处理时再看。
-- [AI 应用开发面试指南](https://javaguide.cn/ai/interview-questions/ai-interview-guide.html)：适合把 LLM、RAG、Agent、系统设计串起来复盘。
-- [大模型基础面试题总结](https://javaguide.cn/ai/interview-questions/llm-interview-questions.html)、[RAG 面试题总结](https://javaguide.cn/ai/interview-questions/rag-interview-questions.html)：学完对应阶段后用来查漏。
+- [AI 语音技术详解](/ai/system-design/ai-voice.html)：要做语音 Agent、实时 ASR/TTS、打断处理时再看。
+- [AI 应用开发面试指南](/ai/interview-questions/ai-interview-guide.html)：适合把 LLM、RAG、Agent、系统设计串起来复盘。
+- [大模型基础面试题总结](/ai/interview-questions/llm-interview-questions.html)、[RAG 面试题总结](/ai/interview-questions/rag-interview-questions.html)：学完对应阶段后用来查漏。
 
 | 方向                  | 什么时候该学                                  | 值不值得花时间                                                      |
 | --------------------- | --------------------------------------------- | ------------------------------------------------------------------- |

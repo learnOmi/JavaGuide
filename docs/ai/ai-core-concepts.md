@@ -307,7 +307,7 @@ Context Engineering 负责在有限的 Token 窗口中选择、组织和更新�
 
 ![Context Engineering 和 Prompt Engineering 差别](/assets/images/oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
-进一步的设计方法见[《提示词工程（Prompt Engineering）》](https://javaguide.cn/ai/agent/prompt-engineering.html)和[《上下文工程（Context Engineering）》](https://javaguide.cn/ai/agent/context-engineering.html)。
+进一步的设计方法见[《提示词工程（Prompt Engineering）》](/ai/agent/prompt-engineering.html)和[《上下文工程（Context Engineering）》](/ai/agent/context-engineering.html)。
 
 ### Memory
 

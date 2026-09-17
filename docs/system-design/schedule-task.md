@@ -127,13 +127,13 @@ executor.shutdown();
 
 ### DelayQueue
 
-`DelayQueue` 是 JUC 包(`java.util.concurrent)`为我们提供的延迟队列，用于实现延时任务比如订单下单 15 分钟未支付直接取消。它是 `BlockingQueue` 的一种，底层是一个基于 `PriorityQueue` 实现的一个无界队列，是线程安全的。关于`PriorityQueue`可以参考笔者编写的这篇文章：[PriorityQueue 源码分析](https://javaguide.cn/java/collection/priorityqueue-source-code.html) 。
+`DelayQueue` 是 JUC 包(`java.util.concurrent)`为我们提供的延迟队列，用于实现延时任务比如订单下单 15 分钟未支付直接取消。它是 `BlockingQueue` 的一种，底层是一个基于 `PriorityQueue` 实现的一个无界队列，是线程安全的。关于`PriorityQueue`可以参考笔者编写的这篇文章：[PriorityQueue 源码分析](/java/collection/priorityqueue-source-code.html) 。
 
 ![BlockingQueue 的实现类](/assets/images/oss.javaguide.cn/github/javaguide/java/collection/blocking-queue-hierarchy.png)
 
 `DelayQueue` 和 `Timer/TimerTask` 都可以作为延时调度的基础。`DelayQueue` 使用优先级队列管理实现了 `Delayed` 接口的元素，只有延迟到期的元素才能被取出，但它本身不负责创建线程执行任务；通常还需要编写消费循环并选择合适的执行器。`Timer` 则自带一个执行线程。两者都可以在创建后继续添加任务，也都支持取消或移除任务，“`Timer` 只能在创建时指定任务”并不成立。
 
-关于 `DelayQueue` 的详细介绍，请参考我写的这篇文章：[`DelayQueue` 源码分析](https://javaguide.cn/java/collection/delayqueue-source-code.html)。
+关于 `DelayQueue` 的详细介绍，请参考我写的这篇文章：[`DelayQueue` 源码分析](/java/collection/delayqueue-source-code.html)。
 
 ### Spring Task
 
@@ -202,7 +202,7 @@ Redis 是可以用来做延时任务的，基于 Redis 实现延时任务的功�
 1. Redis 过期事件监听
 2. Redisson 内置的延时队列
 
-这部分内容的详细介绍我放在了[《后端面试高频系统设计&场景题》](https://javaguide.cn/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中，有需要的同学可以进入星球后阅读学习。篇幅太多，这里就不重复分享了。
+这部分内容的详细介绍我放在了[《后端面试高频系统设计&场景题》](/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中，有需要的同学可以进入星球后阅读学习。篇幅太多，这里就不重复分享了。
 
 ![《后端面试高频系统设计&场景题》](/assets/images/oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
 

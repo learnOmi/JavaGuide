@@ -7,13 +7,17 @@ import {
   EDIT_TRASH_DIR,
   EDIT_PLUGIN_VERSION,
   DIRS_ROUTE,
+  EDITOR_ASSETS_DIR,
   FILE_ROUTE,
   HEALTH_ROUTE,
   MAX_BODY_BYTES,
+  MAX_IMAGE_BYTES,
   MAX_MD_BYTES,
   MAX_SLUG_LENGTH,
+  MAX_UPLOAD_BODY_BYTES,
   PAGE_ROUTE,
   SLUG_PATTERN,
+  UPLOAD_ROUTE,
 } from "./constants.js";
 import {
   PathValidationError,
@@ -22,6 +26,12 @@ import {
 } from "./guard.js";
 import { listDocsDirs } from "./dirs.js";
 import { isTemplateKey, renderPageTemplate } from "./templates.js";
+import {
+  extractImageExt,
+  isImageNameValid,
+  normalizeImageStem,
+  sniffImageType,
+} from "./images.js";
 
 /** 允许访问编辑 API 的回环地址集合（仅本机使用，server 可能绑定在 0.0.0.0） */
 const LOOPBACK_ADDRESSES = new Set(["127.0.0.1", "::1", "::ffff:127.0.0.1"]);
@@ -49,6 +59,12 @@ interface PostPageBody {
   template?: unknown;
 }
 
+/** POST /upload 请求体结构（图片以 base64 传输） */
+interface PostUploadBody {
+  filename?: unknown;
+  base64?: unknown;
+}
+
 /** 输出 JSON 响应的统一出口（禁用缓存，避免代理/浏览器缓存探测结果） */
 function sendJson(
   res: ServerResponse,
@@ -68,10 +84,12 @@ function toErrorMessage(err: unknown): string {
 
 /**
  * 读取请求体并解析为 JSON。
+ * @param maxBytes 请求体字节上限（默认普通接口的 MAX_BODY_BYTES；上传接口传更大的上限）
  * @returns 解析成功返回对象；超过体积上限返回 null（由调用方响应 413）
  */
 function readJsonBody(
   req: IncomingMessage,
+  maxBytes: number = MAX_BODY_BYTES,
 ): Promise<Record<string, unknown> | null> {
   return new Promise((resolve) => {
     const chunks: Buffer[] = [];
@@ -89,7 +107,7 @@ function readJsonBody(
 
     req.on("data", (chunk: Buffer) => {
       received += chunk.length;
-      if (received > MAX_BODY_BYTES) {
+      if (received > maxBytes) {
         finish(null);
         return;
       }
@@ -294,6 +312,106 @@ async function handleGetDirs({ res }: RouteContext): Promise<void> {
   sendJson(res, 200, { ok: true, dirs: tree });
 }
 
+/**
+ * POST /upload：上传一张图片（base64），按 YYYY/MM 归档到
+ * docs/.vuepress/public/assets/editor/<年>/<月>/，返回 Markdown 引用片段。
+ *
+ * 校验链（P3 验收项②"伪造扩展名被拦截"由此保证）：
+ * 1. 解码 base64 后按 magic bytes 嗅探真实类型，无法识别 → 400；
+ * 2. 文件名白名单（规范化后仅字母/数字/_/-）+ 扩展名 ∈ {png,jpg,jpeg,gif,webp}；
+ * 3. 声称扩展名与嗅探结果不一致（如 .exe 改名 .png）→ 400；
+ * 4. 解码体积超过 10MB → 413。
+ */
+async function handlePostUpload({ res, req }: RouteContext): Promise<void> {
+  const body = (await readJsonBody(
+    req,
+    MAX_UPLOAD_BODY_BYTES,
+  )) as PostUploadBody | null;
+  if (body === null) {
+    sendJson(res, 413, { ok: false, message: "请求体超过大小限制" });
+    return;
+  }
+
+  // 文件名：必须先通过白名单校验（含扩展名白名单与规范化形态）
+  const filename = body.filename;
+  if (typeof filename !== "string" || !isImageNameValid(filename)) {
+    sendJson(res, 400, {
+      ok: false,
+      message:
+        "文件名非法：仅允许字母/数字/下划线/连字符，且扩展名为 png/jpg/jpeg/gif/webp",
+    });
+    return;
+  }
+
+  // base64：容错剥离 data URL 前缀（客户端传纯 base64，此处兼容两种形态）
+  const base64 = body.base64;
+  if (typeof base64 !== "string" || base64.length === 0) {
+    sendJson(res, 400, { ok: false, message: "base64 数据不能为空" });
+    return;
+  }
+  const commaIndex = base64.indexOf(",");
+  const rawBase64 = base64.includes(";base64,")
+    ? base64.slice(commaIndex + 1)
+    : base64;
+  const buffer = Buffer.from(rawBase64, "base64");
+  if (buffer.length === 0) {
+    sendJson(res, 400, { ok: false, message: "base64 数据无效" });
+    return;
+  }
+  if (buffer.length > MAX_IMAGE_BYTES) {
+    sendJson(res, 413, { ok: false, message: "图片超过 10MB 上限" });
+    return;
+  }
+
+  // magic bytes 嗅探：无法识别 → 拒绝
+  const sniffedExt = sniffImageType(buffer);
+  if (sniffedExt === null) {
+    sendJson(res, 400, {
+      ok: false,
+      message: "无法识别的图片格式（仅支持 png/jpg/gif/webp）",
+    });
+    return;
+  }
+
+  // 声称扩展名 vs 真实类型：不一致视为伪造扩展名
+  const claimedExt = extractImageExt(filename);
+  if (
+    claimedExt !== sniffedExt &&
+    !(claimedExt === "jpeg" && sniffedExt === "jpg")
+  ) {
+    sendJson(res, 400, {
+      ok: false,
+      message: `文件扩展名与内容不符（检测到 ${sniffedExt}）`,
+    });
+    return;
+  }
+
+  // 文件名主干规范化（中文/空格等 → 连字符），并计算目标归档路径
+  const stem = normalizeImageStem(
+    filename.slice(0, filename.length - claimedExt!.length - 1),
+  );
+  const now = new Date();
+  const archiveDir = path.join(
+    EDITOR_ASSETS_DIR,
+    String(now.getFullYear()),
+    String(now.getMonth() + 1).padStart(2, "0"),
+  );
+  await fs.mkdir(archiveDir, { recursive: true });
+
+  // 同名冲突避让：<stem>.ext → <stem>-2.ext → <stem>-3.ext ...
+  const writtenExt = sniffedExt;
+  let targetName = `${stem}.${writtenExt}`;
+  let suffix = 2;
+  while (existsSync(path.join(archiveDir, targetName))) {
+    targetName = `${stem}-${suffix}.${writtenExt}`;
+    suffix += 1;
+  }
+  await fs.writeFile(path.join(archiveDir, targetName), buffer);
+
+  const url = `/assets/editor/${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, "0")}/${targetName}`;
+  sendJson(res, 200, { ok: true, url, md: `![${stem}](${url})` });
+}
+
 /** 路由表：`${method} ${pathname}` → 处理器 */
 const ROUTES: Record<string, (ctx: RouteContext) => Promise<void>> = {
   [`GET ${HEALTH_ROUTE}`]: handleHealth,
@@ -302,6 +420,7 @@ const ROUTES: Record<string, (ctx: RouteContext) => Promise<void>> = {
   [`DELETE ${FILE_ROUTE}`]: handleDeleteFile,
   [`POST ${PAGE_ROUTE}`]: handlePostPage,
   [`GET ${DIRS_ROUTE}`]: handleGetDirs,
+  [`POST ${UPLOAD_ROUTE}`]: handlePostUpload,
 };
 
 /**

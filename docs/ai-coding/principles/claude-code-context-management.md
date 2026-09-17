@@ -17,7 +17,7 @@ head:
 
 ![Claude Code、Skills 与上下文工程面试题记录](/assets/images/oss.javaguide.cn/github/javaguide/ai/claude-code/claude-code-context-management-interview-questions.png)
 
-我在之前的文章中已经分享过一篇： [上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？](https://javaguide.cn/ai/agent/context-engineering.html)，介绍了上下文管理的核心内容。
+我在之前的文章中已经分享过一篇： [上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？](/ai/agent/context-engineering.html)，介绍了上下文管理的核心内容。
 
 所以，这篇想结合最顶级的 Coding Agent——Claude Code，进一步挖掘一下底层思想。
 
@@ -207,7 +207,7 @@ Read、Glob、Grep、Bash 和子代理沿着任务逐步取材，开始时不需
 | 迭代深入       | 先粗后细：目录 → 文件名 → 关键行 → 完整内容              | 减少无效探索的上下文消耗                           |
 | 直接探索工作区 | 使用 Glob、Grep、Read、Git 和测试工具逐步定位            | 无需提前维护独立索引，读取结果通常与当前工作区一致 |
 
-我们之前聊过很多的 Skill，也是类似的顺序：启动时只加载元数据，模型决定调用后才取具体文档。详细机制可以看我写的这篇：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html "Agent Skills 是什么？和 Prompt、MCP 到底差在哪？")。
+我们之前聊过很多的 Skill，也是类似的顺序：启动时只加载元数据，模型决定调用后才取具体文档。详细机制可以看我写的这篇：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html "Agent Skills 是什么？和 Prompt、MCP 到底差在哪？")。
 
 文档、知识库和历史记录适合先经 RAG 召回。路径、配置、依赖和测试结果持续变化的代码仓库，则需要边搜索、边读取、边验证；搜索词选错时会多走几轮，跨仓库检索、概念检索或大型单体项目也可能更适合语义索引。
 
@@ -509,7 +509,7 @@ Carlini 后来在 [Building a C compiler with a team of parallel Claudes](https:
 | 大：跨模块重构、新子系统   | 主 Agent + Sub-agent                                 | 搜索、审查、日志分析交给子代理                  |
 | 超大：长期迭代或独立系统   | 多 Agent + handoff / Reset，或连续会话 + AutoCompact | 阶段切换写 handoff，是否 Reset 取决于模型和任务 |
 
-`/compact`、Sub-agent、`/context` 的命令细节，可以看之前的 [Claude Code 使用指南](https://javaguide.cn/ai-coding/claudecode-tips.html "Claude Code 使用指南") 和 [Claude Code 核心命令详解](https://javaguide.cn/ai-coding/claudecode-commands.html "Claude Code 核心命令详解")。
+`/compact`、Sub-agent、`/context` 的命令细节，可以看之前的 [Claude Code 使用指南](/ai-coding/practices/claudecode-tips.html "Claude Code 使用指南") 和 [Claude Code 核心命令详解](/ai-coding/practices/claudecode-commands.html "Claude Code 核心命令详解")。
 
 我一般不会等 AutoCompact 贴线才动。`/context` 到七成左右，或者已经出现重复搜索、忘约束的苗头时，手动 `/compact` 并告诉它要保留什么，摘要器手里会有更清楚的重点。等系统被动触发，窗口里往往已经混进旧日志、旧判断和一堆临时探索结果。
 

@@ -422,7 +422,7 @@ Agent Teams 再重一层。只有任务真的需要多个 teammate 认领任务�
 
 我的使用顺序是：小任务单 Agent；干净的支线用普通 Subagent；需要复用上下文时在 `/subtask` 和 `/fork` 之间选择；真正跨模块协作时再开 Agent Teams。它的主要价值是隔离过程和明确责任，并行只是任务可独立拆分后的结果。
 
-延伸阅读可以看 [AIGuide：AI 应用开发、AI 编程实战与面试指南](https://mp.weixin.qq.com/s/le3RzJsaAH22auUoB05y1Q) 的 [上下文工程实战指南](https://javaguide.cn/ai/agent/context-engineering.html) 和 [Spec Coding 规范驱动编程](https://javaguide.cn/ai-coding/practices/spec-coding.html)，前者更偏上下文隔离，后者更偏多代理协作流水线。
+延伸阅读可以看 [AIGuide：AI 应用开发、AI 编程实战与面试指南](https://mp.weixin.qq.com/s/le3RzJsaAH22auUoB05y1Q) 的 [上下文工程实战指南](/ai/agent/context-engineering.html) 和 [Spec Coding 规范驱动编程](/ai-coding/practices/spec-coding.html)，前者更偏上下文隔离，后者更偏多代理协作流水线。
 
 ## 参考资料
 

@@ -149,7 +149,7 @@ MySQL 内存临时表不支持 TEXT、BLOB 这样的大数据类型，如果查�
 | TIMESTAMP    | 4~7 字节 | YYYY-MM-DD hh:mm:ss[.fraction] | 1970-01-01 00:00:01[.000000] ～ 2038-01-19 03:14:07[.999999] | 是             |
 | 数值型时间戳 | 4 字节   | 全数字如 1578707612            | 1970-01-01 00:00:01 之后的时间                               | 否             |
 
-MySQL 时间类型选择的详细介绍请看这篇：[MySQL 时间类型数据存储建议](https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html)。
+MySQL 时间类型选择的详细介绍请看这篇：[MySQL 时间类型数据存储建议](/database/mysql/some-thoughts-on-database-storage-time.html)。
 
 ### 同财务相关的金额类数据必须使用 decimal 类型
 

@@ -67,7 +67,7 @@ MySQL 8.0.20 之后，Block Nested-Loop Join 已被 Hash Join 替代。分析 Jo
 
 不管用哪种方案，都要看实际执行计划。`EXPLAIN` 里没有按预期走索引，方案写得再漂亮也没用。
 
-详细介绍可以阅读这篇文章：[深度分页介绍及优化建议](https://javaguide.cn/high-performance/deep-pagination-optimization.html)。
+详细介绍可以阅读这篇文章：[深度分页介绍及优化建议](/high-performance/deep-pagination-optimization.html)。
 
 ## 建议不要使用外键与级联
 
@@ -123,7 +123,7 @@ UNSIGNED INT 0~4294967295
 
 `TIMESTAMP` 不保存时区名称，而是按当前 session 的 `time_zone` 做存取转换；`DATETIME` 表示字面日期时间，不做时区转换。秒级 Unix 时间戳可以用 `INT UNSIGNED`，但会受可表示范围限制；毫秒级时间戳通常需要 `BIGINT`。
 
-MySQL 时间类型选择的详细介绍请看这篇：[MySQL 时间类型数据存储建议](https://javaguide.cn/database/mysql/some-thoughts-on-database-storage-time.html)。
+MySQL 时间类型选择的详细介绍请看这篇：[MySQL 时间类型数据存储建议](/database/mysql/some-thoughts-on-database-storage-time.html)。
 
 **e.金额字段用 decimal，避免精度丢失。**
 
@@ -131,7 +131,7 @@ decimal 用于存储有精度要求的小数比如与金钱相关的数据，可
 
 在 Java 中，MySQL 的 decimal 类型对应的是 Java 类 `java.math.BigDecimal` 。
 
-`BigDecimal`的详细介绍请参考这篇：[BigDecimal 详解](https://javaguide.cn/java/basis/bigdecimal.html)。
+`BigDecimal`的详细介绍请参考这篇：[BigDecimal 详解](/java/basis/bigdecimal.html)。
 
 **f.尽量使用自增 id 作为主键。**
 
@@ -298,7 +298,7 @@ mysql> EXPLAIN SELECT `score`,`name` FROM `cus_order` ORDER BY `score` DESC;
 - `rows` : SQL 要查找到结果集需要扫描读取的数据行数，原则上 rows 越少越好。
 - ……
 
-> **推荐阅读**：[MySQL 执行计划分析](https://javaguide.cn/database/mysql/mysql-query-execution-plan.html) 详细介绍了 EXPLAIN 各列的含义（id、select_type、type、key、rows、Extra 等），包括 MySQL 8.0.18+ 新增的 `EXPLAIN ANALYZE` 实际执行分析功能。另外，阿里的 [慢 SQL 治理经验总结](https://mp.weixin.qq.com/s/LZRSQJufGRpRw6u4h_Uyww) 也总结得不错。
+> **推荐阅读**：[MySQL 执行计划分析](/database/mysql/mysql-query-execution-plan.html) 详细介绍了 EXPLAIN 各列的含义（id、select_type、type、key、rows、Extra 等），包括 MySQL 8.0.18+ 新增的 `EXPLAIN ANALYZE` 实际执行分析功能。另外，阿里的 [慢 SQL 治理经验总结](https://mp.weixin.qq.com/s/LZRSQJufGRpRw6u4h_Uyww) 也总结得不错。
 
 ## 正确使用索引
 
@@ -334,7 +334,7 @@ mysql> EXPLAIN SELECT `score`,`name` FROM `cus_order` ORDER BY `score` DESC;
 - **`OR` 条件导致全表扫描**：只要 `OR` 连接的任意一侧条件没有对应索引，就会触发全表扫描。即使两侧都有索引，若 Index Merge（索引合并）的预期成本过高，依然会被放弃。
 - **`IN` 列表过长引发估算失真**：`IN` 列表很长时，优化器估算成本可能不准确。MySQL 通过 `eq_range_index_dive_limit` 控制 equality range 数量达到某个阈值后是否从 index dive 切换到统计估算。不同版本和配置可能不同，不建议只背“200”这个数字，应结合 `EXPLAIN`、统计信息和 `ANALYZE TABLE` 判断。
 
-详细介绍：[MySQL索引失效场景总结](https://javaguide.cn/database/mysql/mysql-index-invalidation.html)。
+详细介绍：[MySQL索引失效场景总结](/database/mysql/mysql-index-invalidation.html)。
 
 ### 被频繁更新的字段应该慎重建立索引
 

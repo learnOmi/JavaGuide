@@ -14,7 +14,7 @@ head:
 
 JWT 不是银弹，也有很多缺陷，很多时候并不是最优的选择。这篇文章，我们一起探讨一下 JWT 身份认证的优缺点以及常见问题的解决办法，来看看为什么很多人不再推荐使用 JWT 了。
 
-关于 JWT 的基本概念介绍请看我写的这篇文章： [JWT 基本概念详解](https://javaguide.cn/system-design/security/jwt-intro.html)。
+关于 JWT 的基本概念介绍请看我写的这篇文章： [JWT 基本概念详解](/system-design/security/jwt-intro.html)。
 
 ## JWT 的优势
 

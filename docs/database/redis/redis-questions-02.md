@@ -189,7 +189,7 @@ Redis 从 2.6 版本开始支持执行 Lua 脚本，它的功能和事务非常�
 除了下面介绍的内容之外，再推荐两篇不错的文章：
 
 - [你的 Redis 真的变慢了吗？性能优化如何做 - 阿里开发者](https://mp.weixin.qq.com/s/nNEuYw0NlYGhuKKKKoWfcQ)。
-- [Redis 常见阻塞原因总结 - JavaGuide](https://javaguide.cn/database/redis/redis-common-blocking-problems-summary.html)。
+- [Redis 常见阻塞原因总结 - JavaGuide](/database/redis/redis-common-blocking-problems-summary.html)。
 
 ### 使用批量操作减少网络传输
 
@@ -227,7 +227,7 @@ Redis 中有一些原生支持批量操作的命令，比如：
 
 > Redis Cluster 并没有使用一致性哈希，采用的是 **哈希槽分区**，每一个键值对都属于一个 **hash slot（哈希槽）**。当客户端发送命令请求的时候，需要先根据 key 通过上面的计算公式找到的对应的哈希槽，然后再查询哈希槽和节点的映射关系，即可找到目标 Redis 节点。
 >
-> 我在 [Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
+> 我在 [Redis 集群详解（付费）](/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
 
 #### pipeline
 
@@ -596,7 +596,7 @@ OK
 1. 什么是内存碎片？为什么会有 Redis 内存碎片？
 2. 如何清理 Redis 内存碎片？
 
-**参考答案**：[Redis 内存碎片详解](https://javaguide.cn/database/redis/redis-memory-fragmentation.html)。
+**参考答案**：[Redis 内存碎片详解](/database/redis/redis-memory-fragmentation.html)。
 
 ## ⭐️Redis 生产问题（重要）
 
@@ -659,7 +659,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 ![加入布隆过滤器之后的缓存处理流程图](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration-bloom-filter.png)
 
-更多关于布隆过滤器的详细介绍可以看看我的这篇原创：[不了解布隆过滤器？一文给你整的明明白白！](https://javaguide.cn/cs-basics/data-structure/bloom-filter.html)，强烈推荐。
+更多关于布隆过滤器的详细介绍可以看看我的这篇原创：[不了解布隆过滤器？一文给你整的明明白白！](/cs-basics/data-structure/bloom-filter.html)，强烈推荐。
 
 **3）接口限流**
 
@@ -667,7 +667,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 后面提到的缓存击穿和雪崩都可以配合接口限流来解决，毕竟这些问题的关键都是有很多请求落到了数据库上造成数据库压力过大。
 
-限流的具体方案可以参考这篇文章：[服务限流详解](https://javaguide.cn/high-availability/limit-request.html)。
+限流的具体方案可以参考这篇文章：[服务限流详解](/high-availability/limit-request.html)。
 
 ### 缓存击穿
 
@@ -709,7 +709,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 **针对 Redis 服务不可用的情况**：
 
-1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解(付费)](https://javaguide.cn/database/redis/redis-cluster.html)。
+1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解(付费)](/database/redis/redis-cluster.html)。
 2. **多级缓存**：设置多级缓存，例如本地缓存+Redis 缓存的二级缓存组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据。
 
 **针对大量缓存同时失效的情况**：
@@ -772,7 +772,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 - 其他进程过度占用 CPU 导致 Redis 吞吐量下降。
 - 网络问题如连接拒绝、延迟高、网卡软中断等导致 Redis 阻塞。
 
-详细介绍可以阅读这篇文章：[Redis 常见阻塞原因总结](https://javaguide.cn/database/redis/redis-common-blocking-problems-summary.html)。
+详细介绍可以阅读这篇文章：[Redis 常见阻塞原因总结](/database/redis/redis-common-blocking-problems-summary.html)。
 
 ## Redis 集群
 
@@ -796,7 +796,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 6. Redis Cluster 扩容缩容期间可以提供服务吗？
 7. Redis Cluster 中的节点是怎么进行通信的？
 
-**参考答案**：[Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html)。
+**参考答案**：[Redis 集群详解（付费）](/database/redis/redis-cluster.html)。
 
 ## Redis 使用规范
 

@@ -108,7 +108,7 @@ head:
 
 ## 加入学习
 
-**本项目为 [JavaGuide 知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html) 内部专属实战项目，通过语雀文档在线阅读学习，不单独对外开放。**
+**本项目为 [JavaGuide 知识星球](/about-the-author/zhishixingqiu-two-years.html) 内部专属实战项目，通过语雀文档在线阅读学习，不单独对外开放。**
 
 之所以选择在星球内部发布，是为了确保每一位学习者都能获得**深度的技术答疑**和**完整的求职配套服务**。
 
@@ -116,7 +116,7 @@ head:
 
 这只是开始。后续星球还会持续推出更多贴合企业真实业务场景的 **Java 实战项目**，带你始终站在技术前沿（预告一下，下一个项目是**企业级智能客服系统**，会带大家实践更多AI能力）。
 
-并且，我的星球还有很多其他服务，比如**一对一提问、简历修改、后端系统面试资料（包含高频系统设计&场景题）、学习打卡**等，其中任何一项服务单独拎出来的价值都已远超星球门票。欢迎详细了解我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)！
+并且，我的星球还有很多其他服务，比如**一对一提问、简历修改、后端系统面试资料（包含高频系统设计&场景题）、学习打卡**等，其中任何一项服务单独拎出来的价值都已远超星球门票。欢迎详细了解我的[知识星球](/about-the-author/zhishixingqiu-two-years.html)！
 
 已经坚持维护**六年**，内容持续更新，虽白菜价（**0.4 元/天**）但质量很高，主打一个良心！
 
@@ -208,8 +208,8 @@ head:
 1. 数据存储为什么选择 PostgreSQL + pgvector？PG 的向量数据存储功能够用了，精简架构，不想引入太多组件。
 2. 为什么引入 Redis？
    - Redis 替代 `ConcurrentHashMap` 实现面试会话的缓存。
-   - 基于 Redis Stream 实现简历分析、知识库向量化等场景的异步（还能解耦，分析和向量化可以使用其他编程语言来做）。不使用 [Kafka](https://javaguide.cn/high-performance/message-queue/kafka-questions-01.html) 这类成熟的消息队列，也是不想引入太多组件。
-3. 构建工具为什么选择 Gradle？个人更喜欢用 Gradle，也写过相关的文章：[Gradle核心概念总结](https://javaguide.cn/tools/gradle/gradle-core-concepts.html)。
+   - 基于 Redis Stream 实现简历分析、知识库向量化等场景的异步（还能解耦，分析和向量化可以使用其他编程语言来做）。不使用 [Kafka](/high-performance/message-queue/kafka-questions-01.html) 这类成熟的消息队列，也是不想引入太多组件。
+3. 构建工具为什么选择 Gradle？个人更喜欢用 Gradle，也写过相关的文章：[Gradle核心概念总结](/tools/gradle/gradle-core-concepts.html)。
 
 ### 前端技术
 
@@ -324,7 +324,7 @@ PostgreSQL 最大的优势，也是它在 AI 时代甩开对手的“王牌”�
 
 Spring Boot 官方现在用的就是 Gradle，加上国内现在都是 Maven 更多，换个 Gradle 还更新颖一些。
 
-个人也更喜欢用 Gradle，也写过相关的文章：[Gradle 核心概念总结](https://javaguide.cn/tools/gradle/gradle-core-concepts.html)。
+个人也更喜欢用 Gradle，也写过相关的文章：[Gradle 核心概念总结](/tools/gradle/gradle-core-concepts.html)。
 
 ### 为什么使用 MapStruct？
 
@@ -553,13 +553,13 @@ Skill 出题 + JD 解析：
 - 如何让大模型输出格式固定的数据？（**结构化 Prompt + MapStruct**）
 - 如何让大模型基于私有文档回答？（**RAG + pgvector**）
 
-**本项目为 [JavaGuide 知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html) 内部专属实战项目，通过语雀文档在线阅读学习，不单独对外开放。**
+**本项目为 [JavaGuide 知识星球](/about-the-author/zhishixingqiu-two-years.html) 内部专属实战项目，通过语雀文档在线阅读学习，不单独对外开放。**
 
 之所以选择在星球内部发布，是为了确保每一位学习者都能获得**深度的技术答疑**和**完整的求职配套服务**。
 
 这只是开始。后续星球还会持续推出更多贴合企业真实业务场景的 **Java 实战项目**，带你始终站在技术前沿（预告一下，下一个项目是**企业级智能客服系统**，会带大家实践更多AI能力）。
 
-并且，我的星球还有很多其他服务，比如**一对一提问、简历修改、后端系统面试资料（包含高频系统设计&场景题）、学习打卡**等，其中任何一项服务单独拎出来的价值都已远超星球门票。欢迎详细了解我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)！
+并且，我的星球还有很多其他服务，比如**一对一提问、简历修改、后端系统面试资料（包含高频系统设计&场景题）、学习打卡**等，其中任何一项服务单独拎出来的价值都已远超星球门票。欢迎详细了解我的[知识星球](/about-the-author/zhishixingqiu-two-years.html)！
 
 已经坚持维护**六年**，内容持续更新，虽白菜价（**0.4 元/天**）但质量很高，主打一个良心！
 

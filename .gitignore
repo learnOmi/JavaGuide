@@ -27,3 +27,7 @@ dist.zip
 /TODO
 docs/ai/MATERIALS.md
 /.agents
+# P2 浏览器自动化测试遗留页面（临时验证用，不入库）
+docs/p2-browser-test.md
+# 图片本地化中间产物（远程图片清单/下载报告/改写报告/临时脚本）
+scripts/tmp/

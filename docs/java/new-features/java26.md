@@ -40,7 +40,7 @@ JDK 26 为 `java.net.http.HttpClient` API 正式添加了 **HTTP/3** 支持，�
 - **更快的连接建立**：HTTP/2 需要经过经典的 TCP 三次握手过程（由于安全的 HTTPS 连接建立还需要 TLS 握手，共需要大约 3 个 RTT）。由于 QUIC 协议的特性（TLS 1.3，TLS 1.3 除了支持 1 个 RTT 的握手，还支持 0 个 RTT 的握手）连接建立仅需 0-RTT 或者 1-RTT。这意味着 QUIC 在最佳情况下不需要任何的额外往返时间就可以建立新连接。
 - **更好的移动端体验**：HTTP/3 支持基于 QUIC 连接迁移。QUIC 使用由端点选择的可变长连接 ID 来标识和路由连接，连接 ID 还可以在连接期间更换；经过路径验证等处理后，网络地址变化（如从 Wi-Fi 切换到移动数据）不必像传统 TCP 四元组变化那样重新建立整条连接。
 
-详细介绍可以阅读这篇文章：[计算机网络常见面试题总结（上）](https://javaguide.cn/cs-basics/network/other-network-questions.html)（网络分层模型、常见网路协议总结、HTTP、WebSocket、DNS 等）
+详细介绍可以阅读这篇文章：[计算机网络常见面试题总结（上）](/cs-basics/network/other-network-questions.html)（网络分层模型、常见网路协议总结、HTTP、WebSocket、DNS 等）
 
 **使用方式**：
 

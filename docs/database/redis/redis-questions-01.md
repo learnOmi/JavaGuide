@@ -124,7 +124,7 @@ Redis 除了可以用作缓存之外，还可以用于分布式锁、限流、�
 
 ### 常见的缓存读写策略有哪些？
 
-关于常见的缓存读写策略的详细介绍，可以看我写的这篇文章：[3 种常用的缓存读写策略详解](https://javaguide.cn/database/redis/3-commonly-used-cache-read-and-write-strategies.html)。
+关于常见的缓存读写策略的详细介绍，可以看我写的这篇文章：[3 种常用的缓存读写策略详解](/database/redis/3-commonly-used-cache-read-and-write-strategies.html)。
 
 ### 什么是 Redis Module？有什么用？
 
@@ -149,7 +149,7 @@ Redis 从 4.0 版本开始，支持通过 Module 来扩展其功能以满足特�
 
 ### Redis 除了做缓存，还能做什么？
 
-- **分布式锁**：通过 Redis 来做分布式锁是一种比较常见的方式。通常情况下，我们都是基于 Redisson 来实现分布式锁。关于 Redis 实现分布式锁的详细介绍，可以看我写的这篇文章：[分布式锁详解](https://javaguide.cn/distributed-system/distributed-lock.html)。
+- **分布式锁**：通过 Redis 来做分布式锁是一种比较常见的方式。通常情况下，我们都是基于 Redisson 来实现分布式锁。关于 Redis 实现分布式锁的详细介绍，可以看我写的这篇文章：[分布式锁详解](/distributed-system/distributed-lock.html)。
 - **限流**：一般是通过 Redis + Lua 脚本的方式来实现限流。如果不想自己写 Lua 脚本的话，也可以直接利用 Redisson 中的 `RRateLimiter` 来实现分布式限流，其底层实现就是基于 Lua 代码+令牌桶算法。
 - **消息队列**：Redis 自带的 List 数据结构可以作为一个简单的队列使用。Redis 5.0 中增加的 Stream 类型的数据结构更加适合用来做消息队列。它比较类似于 Kafka，有主题和消费组的概念，支持消息持久化以及 ACK 机制。
 - **延时队列**：Redisson 内置了延时队列（基于 Sorted Set 实现的）。
@@ -159,7 +159,7 @@ Redis 从 4.0 版本开始，支持通过 Module 来扩展其功能以满足特�
 
 ### 如何基于 Redis 实现分布式锁？
 
-关于 Redis 实现分布式锁的详细介绍，可以看我写的这篇文章：[分布式锁详解](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)。
+关于 Redis 实现分布式锁的详细介绍，可以看我写的这篇文章：[分布式锁详解](/distributed-system/distributed-lock-implementations.html)。
 
 ### Redis 可以做消息队列么？怎么实现？
 
@@ -168,7 +168,7 @@ Redis 从 4.0 版本开始，支持通过 Module 来扩展其功能以满足特�
 - **如果业务简单、量小、追求极致性能**，且能容忍极小概率的数据丢失，使用 **Redis Stream** 是最优解，因为它省去了部署维护 MQ 的成本，可以复用现有的 Redis 组件（大部分需要用到 MQ 的项目，通常都会需要 Redis）。
 - **如果是金融级业务、海量数据、需要严格保证不丢消息**，必须选择 **Kafka、RabbitMQ** 等更成熟的 MQ。
 
-这个问题还是挺重要，技术选型也能用上，我专门写了一篇文章详细介绍和分析，推荐时间充足的同学抽空认真看几遍，收藏一下：[Redis 能做消息队列吗？怎么实现？](https://javaguide.cn/database/redis/redis-stream-mq.html)。
+这个问题还是挺重要，技术选型也能用上，我专门写了一篇文章详细介绍和分析，推荐时间充足的同学抽空认真看几遍，收藏一下：[Redis 能做消息队列吗？怎么实现？](/database/redis/redis-stream-mq.html)。
 
 ### 如何基于 Redis 实现延时任务？
 
@@ -195,8 +195,8 @@ Redisson 内置的延时队列具备下面这些优势：
 
 关于 Redis 5 种基础数据类型和 3 种特殊数据类型的详细介绍请看下面这两篇文章以及 [Redis 官方文档](https://redis.io/docs/data-types/)：
 
-- [Redis 5 种基本数据类型详解](https://javaguide.cn/database/redis/redis-data-structures-01.html)
-- [Redis 3 种特殊数据类型详解](https://javaguide.cn/database/redis/redis-data-structures-02.html)
+- [Redis 5 种基本数据类型详解](/database/redis/redis-data-structures-01.html)
+- [Redis 3 种特殊数据类型详解](/database/redis/redis-data-structures-02.html)
 
 ### Redis 常用的数据类型有哪些？
 
@@ -205,7 +205,7 @@ Redis 中比较常见的数据类型有下面这些：
 - **5 种基础数据类型**：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合）。
 - **3 种特殊数据类型**：HyperLogLog（基数统计）、Bitmap （位图）、Geospatial (地理位置)。
 
-除了上面提到的之外，还有一些其他的比如 [Bloom filter（布隆过滤器）](https://javaguide.cn/cs-basics/data-structure/bloom-filter.html)、Bitfield（位域）。
+除了上面提到的之外，还有一些其他的比如 [Bloom filter（布隆过滤器）](/cs-basics/data-structure/bloom-filter.html)、Bitfield（位域）。
 
 ### String 的应用场景有哪些？
 
@@ -218,7 +218,7 @@ String 的常见应用场景如下：
 - 分布式锁（利用 `SETNX key value` 命令可以实现一个最简易的分布式锁）；
 - ……
 
-关于 String 的详细介绍请看这篇文章：[Redis 5 种基本数据类型详解](https://javaguide.cn/database/redis/redis-data-structures-01.html)。
+关于 String 的详细介绍请看这篇文章：[Redis 5 种基本数据类型详解](/database/redis/redis-data-structures-01.html)。
 
 ### String 还是 Hash 存储对象数据更好呢？
 
@@ -338,7 +338,7 @@ Redis 中有一个叫做 `Sorted Set`（有序集合）的数据类型经常被�
 
 ![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/2021060714195385.png)
 
-[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的「技术面试题篇」就有一篇文章详细介绍如何使用 Sorted Set 来设计制作一个排行榜，感兴趣的小伙伴可以看看。
+[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的「技术面试题篇」就有一篇文章详细介绍如何使用 Sorted Set 来设计制作一个排行榜，感兴趣的小伙伴可以看看。
 
 ![](/assets/images/oss.javaguide.cn/github/javaguide/database/redis/image-20220719071115140.png)
 
@@ -350,7 +350,7 @@ Redis 中有一个叫做 `Sorted Set`（有序集合）的数据类型经常被�
 - 红黑树 vs 跳表：相比较于红黑树来说，跳表的实现也更简单一些，不需要通过旋转和染色（红黑变换）来保证黑平衡。并且，按照区间来查找数据这个操作，红黑树的效率没有跳表高。
 - B+ 树 vs 跳表：B+ 树更适合作为数据库和文件系统中常用的索引结构之一，它的核心思想是通过可能少的 IO 定位到尽可能多的索引来获得查询数据。对于 Redis 这种内存数据库来说，它对这些并不感冒，因为 Redis 作为内存数据库它不可能存储大量的数据，所以对于索引不需要通过 B+ 树这种方式进行维护，只需按照概率进行随机维护即可，节约内存。而且使用跳表实现 zset 时相较前者来说更简单一些，在进行插入时只需通过索引将数据插入到链表中合适的位置再随机维护一定高度的索引即可，也不需要像 B+ 树那样插入时发现失衡时还需要对节点分裂与合并。
 
-另外，我还单独写了一篇文章从有序集合的基本使用到跳表的源码分析和实现，让你会对 Redis 的有序集合底层实现的跳表有着更深刻的理解和掌握：[Redis 为什么用跳表实现有序集合](https://javaguide.cn/database/redis/redis-skiplist.html)。如果只想先过一遍跳表的基础结构、复杂度和范围查询，可以看 [跳表面试题总结](https://javaguide.cn/cs-basics/data-structure/skip-list.html)。
+另外，我还单独写了一篇文章从有序集合的基本使用到跳表的源码分析和实现，让你会对 Redis 的有序集合底层实现的跳表有着更深刻的理解和掌握：[Redis 为什么用跳表实现有序集合](/database/redis/redis-skiplist.html)。如果只想先过一遍跳表的基础结构、复杂度和范围查询，可以看 [跳表面试题总结](/cs-basics/data-structure/skip-list.html)。
 
 ### Set 的应用场景是什么？
 
@@ -461,11 +461,11 @@ Bloom Filter 的简单原理图如下：
 
 如果我们需要判断某个字符串是否在布隆过滤器中时，只需要对给定字符串再次进行相同的哈希计算，得到值之后判断位数组中的每个元素是否都为 1，如果值都为 1，那么说明这个值在布隆过滤器中，如果存在一个值不为 1，说明该元素不在布隆过滤器中。
 
-关于布隆过滤器的误判、删除困难、Guava 和 RedisBloom 使用，可以继续看 [布隆过滤器详解](https://javaguide.cn/cs-basics/data-structure/bloom-filter.html)。
+关于布隆过滤器的误判、删除困难、Guava 和 RedisBloom 使用，可以继续看 [布隆过滤器详解](/cs-basics/data-structure/bloom-filter.html)。
 
 ## ⭐️Redis 持久化机制（重要）
 
-Redis 持久化机制（RDB 持久化、AOF 持久化、RDB 和 AOF 的混合持久化）相关的问题比较多，也比较重要，于是我单独抽了一篇文章来总结 Redis 持久化机制相关的知识点和问题：[Redis 持久化机制详解](https://javaguide.cn/database/redis/redis-persistence.html)。
+Redis 持久化机制（RDB 持久化、AOF 持久化、RDB 和 AOF 的混合持久化）相关的问题比较多，也比较重要，于是我单独抽了一篇文章来总结 Redis 持久化机制相关的知识点和问题：[Redis 持久化机制详解](/database/redis/redis-persistence.html)。
 
 ## ⭐️Redis 线程模型（重要）
 

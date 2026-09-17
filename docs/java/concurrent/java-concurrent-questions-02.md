@@ -14,7 +14,7 @@ head:
 
 ## ⭐️ JMM（Java 内存模型）
 
-JMM（Java 内存模型）相关的问题比较多，也比较重要，于是我单独抽了一篇文章来总结 JMM 相关的知识点和问题：[JMM（Java 内存模型）详解](https://javaguide.cn/java/concurrent/jmm.html)。
+JMM（Java 内存模型）相关的问题比较多，也比较重要，于是我单独抽了一篇文章来总结 JMM 相关的知识点和问题：[JMM（Java 内存模型）详解](/java/concurrent/jmm.html)。
 
 ## ⭐️ volatile 关键字
 
@@ -139,7 +139,7 @@ public class Singleton {
 
 JMM 中的 happens-before 原则是判断数据是否存在竞争、线程是否安全的重要依据。`volatile` 变量的读写操作与 happens-before 原则有着密切的关系。
 
-> 关于 happens-before 原则的详细介绍，可以参考 [JMM（Java 内存模型）详解](https://javaguide.cn/java/concurrent/jmm.html) 这篇文章。
+> 关于 happens-before 原则的详细介绍，可以参考 [JMM（Java 内存模型）详解](/java/concurrent/jmm.html) 这篇文章。
 
 happens-before 原则中与 `volatile` 直接相关的是 **volatile 变量规则**：
 
@@ -385,13 +385,13 @@ public final native boolean compareAndSwapInt(Object o, long offset, int expecte
 public final native boolean compareAndSwapLong(Object o, long offset, long expected, long update);
 ```
 
-关于 `Unsafe` 类的详细介绍可以看这篇文章：[Java 魔法类 Unsafe 详解 - JavaGuide - 2022](https://javaguide.cn/java/basis/unsafe.html)。
+关于 `Unsafe` 类的详细介绍可以看这篇文章：[Java 魔法类 Unsafe 详解 - JavaGuide - 2022](/java/basis/unsafe.html)。
 
 ### Java 中 CAS 是如何实现的？
 
 在 Java 中，实现 CAS（Compare-And-Swap, 比较并交换）操作的一个关键类是 `Unsafe`。
 
-`Unsafe` 类位于 `sun.misc` 包下，是一个提供低级别、不安全操作的类。由于其强大的功能和潜在的危险性，它通常用于 JVM 内部或一些需要极高性能和底层访问的库中，而不推荐普通开发者在应用程序中使用。关于 `Unsafe` 类的详细介绍，可以阅读这篇文章：📌[Java 魔法类 Unsafe 详解](https://javaguide.cn/java/basis/unsafe.html)。
+`Unsafe` 类位于 `sun.misc` 包下，是一个提供低级别、不安全操作的类。由于其强大的功能和潜在的危险性，它通常用于 JVM 内部或一些需要极高性能和底层访问的库中，而不推荐普通开发者在应用程序中使用。关于 `Unsafe` 类的详细介绍，可以阅读这篇文章：📌[Java 魔法类 Unsafe 详解](/java/basis/unsafe.html)。
 
 `sun.misc` 包下的 `Unsafe` 类提供了 `compareAndSwapObject`、`compareAndSwapInt`、`compareAndSwapLong` 方法来实现的对 `Object`、`int`、`long` 类型的 CAS 操作：
 
@@ -424,7 +424,7 @@ JDK 8 中 `Unsafe` 的这些 CAS 方法是 `native` 方法。Java 代码通过�
 
 ![JUC原子类概览](/assets/images/oss.javaguide.cn/github/javaguide/java/JUC原子类概览.png)
 
-关于这些 Atomic 原子类的介绍和使用，可以阅读这篇文章：[Atomic 原子类总结](https://javaguide.cn/java/concurrent/atomic-classes.html)。
+关于这些 Atomic 原子类的介绍和使用，可以阅读这篇文章：[Atomic 原子类总结](/java/concurrent/atomic-classes.html)。
 
 `AtomicInteger` 是 Java 的原子类之一，主要用于对 `int` 类型的变量进行原子操作，它利用 `Unsafe` 类提供的低级别原子操作方法实现无锁的线程安全性。
 
@@ -766,7 +766,7 @@ public ReentrantLock(boolean fair) {
 }
 ```
 
-从上面的内容可以看出， `ReentrantLock` 的底层就是由 AQS 来实现的。关于 AQS 的相关内容推荐阅读 [AQS 详解](https://javaguide.cn/java/concurrent/aqs.html) 这篇文章。
+从上面的内容可以看出， `ReentrantLock` 的底层就是由 AQS 来实现的。关于 AQS 的相关内容推荐阅读 [AQS 详解](/java/concurrent/aqs.html) 这篇文章。
 
 ### 公平锁和非公平锁有什么区别？
 
@@ -1070,7 +1070,7 @@ public long tryOptimisticRead() {
 
 `StampedLock` 的原理和 AQS 原理比较类似，这里就不详细介绍了，感兴趣的可以看看下面这两篇文章：
 
-- [AQS 详解](https://javaguide.cn/java/concurrent/aqs.html)
+- [AQS 详解](/java/concurrent/aqs.html)
 - [StampedLock 底层原理分析](https://segmentfault.com/a/1190000015808032)
 
 如果你只是准备面试的话，建议多花点精力搞懂 AQS 原理即可，`StampedLock` 底层原理在面试中遇到的概率非常小。
