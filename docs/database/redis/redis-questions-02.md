@@ -227,7 +227,7 @@ Redis 中有一些原生支持批量操作的命令，比如：
 
 > Redis Cluster 并没有使用一致性哈希，采用的是 **哈希槽分区**，每一个键值对都属于一个 **hash slot（哈希槽）**。当客户端发送命令请求的时候，需要先根据 key 通过上面的计算公式找到的对应的哈希槽，然后再查询哈希槽和节点的映射关系，即可找到目标 Redis 节点。
 >
-> 我在 [Redis 集群详解（付费）](/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
+> 我在 [Redis 集群详解](/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
 
 #### pipeline
 
@@ -709,7 +709,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 **针对 Redis 服务不可用的情况**：
 
-1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解(付费)](/database/redis/redis-cluster.html)。
+1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解](/database/redis/redis-cluster.html)。
 2. **多级缓存**：设置多级缓存，例如本地缓存+Redis 缓存的二级缓存组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据。
 
 **针对大量缓存同时失效的情况**：
@@ -796,7 +796,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 6. Redis Cluster 扩容缩容期间可以提供服务吗？
 7. Redis Cluster 中的节点是怎么进行通信的？
 
-**参考答案**：[Redis 集群详解（付费）](/database/redis/redis-cluster.html)。
+**参考答案**：[Redis 集群详解](/database/redis/redis-cluster.html)。
 
 ## Redis 使用规范
 

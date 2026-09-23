@@ -62,7 +62,7 @@ Java 集合是业务开发中使用频率最高的基础库之一，也是 Java 
 - [ConcurrentHashMap 源码分析](./concurrent-hash-map-source-code.md)：理解分段锁到 CAS + synchronized 的演进。
 - [CopyOnWriteArrayList 源码分析](./copyonwritearraylist-source-code.md)：理解写时复制和读多写少场景。
 - [ArrayBlockingQueue 源码分析](./arrayblockingqueue-source-code.md)：理解有界阻塞队列、锁和条件队列。
-- [PriorityQueue 源码分析（付费）](./priorityqueue-source-code.md)：理解堆结构和优先级队列。
+- [PriorityQueue 源码分析](./priorityqueue-source-code.md)：理解堆结构和优先级队列。
 - [DelayQueue 源码分析](./delayqueue-source-code.md)：理解延迟队列、优先级队列和定时任务场景。
 
 ## 高频问题

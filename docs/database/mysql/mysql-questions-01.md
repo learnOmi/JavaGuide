@@ -595,7 +595,7 @@ MySQL 5.6 开始，查询缓存已默认禁用。MySQL 8.0 开始，已经不再
 
 ## ⭐️MySQL 日志
 
-上诉问题的答案可以在[《Java 面试指北》(付费，点击链接领取优惠卷)](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 中找到。
+上诉问题的答案可以在[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 中找到。
 
 ![《Java 面试指北》技术面试题篇](/assets/images/oss.javaguide.cn/javamianshizhibei/technical-interview-questions.png)
 
@@ -964,7 +964,7 @@ MySQL 提供了两个方法来处理 ip 地址
 
 ### 有哪些常见的 SQL 优化手段？
 
-[《Java 面试指北》(付费)](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 有一篇文章详细介绍了常见的 SQL 优化手段，非常全面，清晰易懂！
+[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的 **「技术面试题篇」** 有一篇文章详细介绍了常见的 SQL 优化手段，非常全面，清晰易懂！
 
 ![常见的 SQL 优化手段](/assets/images/oss.javaguide.cn/javamianshizhibei/javamianshizhibei-sql-optimization.png)
 

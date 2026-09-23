@@ -11,7 +11,7 @@ head:
       content: JavaGuide知识星球,Java面试指北,后端系统设计,手写RPC框架,Java源码阅读,Java实战项目,Java面试资料,知识星球专栏
 ---
 
-这份 **星球专属优质专栏** 汇总 JavaGuide 知识星球里的系统学习资料，覆盖 Java 面试、系统设计与场景题、手写 RPC、源码阅读和实战项目。
+这份 **优质学习专栏导航** 汇总 JavaGuide 中的系统学习资料，覆盖 Java 面试、系统设计与场景题、手写 RPC、源码阅读和实战项目。
 
 如果你正在准备 Java 后端面试，建议先看 [《Java 面试指北》](./java-mian-shi-zhi-bei.md) 和 [《后端面试高频系统设计&场景题》](./back-end-interview-high-frequency-system-design-and-scenario-questions.md)；如果你想补项目和源码能力，可以继续看 [AI 智能面试辅助平台 + RAG 知识库](./interview-guide.md)、[《手写 RPC 框架》](./handwritten-rpc-framework.md) 和 [《Java 必读源码系列》](./source-code-reading.md)。
 
@@ -68,5 +68,3 @@ head:
 - [分布式系统知识体系](../distributed-system/)
 - [Java 开源项目精选](../open-source-project/)
 - [高质量技术文章](../high-quality-technical-articles/)
-
-<!-- @include: @planet2.snippet.md -->
