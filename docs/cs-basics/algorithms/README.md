@@ -64,6 +64,12 @@ head:
 | 贪心     | 每一步选择当前最合适的对象，常和排序搭配   | [贪心算法面试题总结](./greedy.md)                                  |
 | Top K    | 第 K 大、前 K 高频、数据流、优先级         | [Top K 问题面试题总结](./top-k.md)                                 |
 
+## 集合与 API 速查
+
+算法题卡住，很多时候不是思路问题，而是集合 API 不熟：`Arrays.asList` 不能 `add`、`remove(1)` 删的是下标、`int[]` 不能传比较器、比较器写 `a - b` 溢出。刷题前建议先过一遍下面这篇速查：
+
+- [算法题常用集合操作总结](./collection-api-for-algorithms.md)：按"需求 → 容器 → 方法 → 复杂度 → 避坑"整理数组与 `Arrays`、`String`/`StringBuilder`、`List`、`Set`、`Map`、`ArrayDeque`、`PriorityQueue`、比较器与 `BitSet` 的常用写法，并汇总 15 个高频坑与经典套路（前缀和 + `HashMap`、单调栈/单调队列、拓扑排序、并查集）。
+
 ## 7 天速刷路线
 
 时间很紧时，不建议从难题开始。7 天路线的目标是恢复模板和手写稳定性：
@@ -108,6 +114,7 @@ head:
 - [数据结构专题](../data-structure/)
 - [常见数据结构经典 LeetCode 题目推荐](./common-data-structures-leetcode-recommendations.md)
 - [经典算法思想总结](./classical-algorithm-problems-recommendations.md)
+- [算法题常用集合操作总结](./collection-api-for-algorithms.md)
 - [Java 集合](../../java/collection/java-collection-questions-01.md)
 - [面试准备](../../interview-preparation/)
 - [计算机基础书籍推荐](../../books/cs-basics.md)

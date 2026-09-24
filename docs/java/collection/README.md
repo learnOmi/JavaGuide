@@ -84,6 +84,7 @@ Java 集合是业务开发中使用频率最高的基础库之一，也是 Java 
 - [Java 并发编程专题](../concurrent/)
 - [JVM 专题](../jvm/)
 - [数据结构](../../cs-basics/data-structure/)
+- [算法题常用集合操作总结](../../cs-basics/algorithms/collection-api-for-algorithms.md)：刷算法题时集合 API 的速查与避坑
 - [哈希表面试题总结](../../cs-basics/data-structure/hash-table.md)
 - [LRU 缓存面试题总结](../../cs-basics/data-structure/lru-cache.md)
 

@@ -231,6 +231,7 @@ export const csBasics = [
     collapsible: true,
     children: [
       { text: "复杂度分析", link: "complexity-analysis" },
+      { text: "⭐集合操作速查", link: "collection-api-for-algorithms" },
       { text: "二分查找", link: "binary-search" },
       { text: "双指针与滑动窗口", link: "two-pointers-and-sliding-window" },
       { text: "DFS 与 BFS", link: "dfs-bfs" },
