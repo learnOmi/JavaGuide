@@ -27,6 +27,17 @@ export const EDITOR_FULL_WIDTH = "100vw";
 /** 自动保存防抖间隔（ms）：写盘触发 HMR，防抖避免高频重编译 */
 export const AUTOSAVE_DEBOUNCE_MS = 800;
 
+/**
+ * 保存后滚动位置守护时长（ms）。
+ * 写盘触发 HMR 重渲染时，主题的目录滚动监听会改写路由哈希，
+ * 进而由 vue-router 的 scrollBehavior 把阅读位置滚回锚点（通常是页首）。
+ * 该时长需覆盖"文件写盘 → HMR 重渲染 → 哈希跳转（smooth 动画）"的完整窗口。
+ */
+export const SCROLL_GUARD_DURATION_MS = 4000;
+
+/** 判定为程序性滚动的偏移阈值（px）：小于该值视为像素抖动，不介入 */
+export const SCROLL_GUARD_TOLERANCE_PX = 4;
+
 /** health 探测失败后的重试间隔（ms）：prod 静态托管必然 404，重试开销可忽略 */
 export const HEALTH_RETRY_MS = 30_000;
 

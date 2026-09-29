@@ -168,6 +168,8 @@ import {
   AUTOSAVE_DEBOUNCE_MS,
   EDITOR_DRAWER_WIDTH,
   EDITOR_FULL_WIDTH,
+  SCROLL_GUARD_DURATION_MS,
+  SCROLL_GUARD_TOLERANCE_PX,
   ApiError,
   clearDraft,
   editorState as state,
@@ -196,6 +198,69 @@ let autosaveTimer: ReturnType<typeof setTimeout> | null = null;
 
 /** 保存请求串行化标记：保存期间又有新保存请求时，结束后补一次 */
 let pendingSave = false;
+
+/* ---------------------------------------------------------------- */
+/* 滚动位置守护：自动保存写盘触发 HMR 重渲染时，避免左侧阅读位置被     */
+/* 主题的目录滚动监听改写路由哈希、再由 scrollBehavior 滚回页首。      */
+/* ---------------------------------------------------------------- */
+
+/** 视为"用户主动滚动"的输入事件：命中即解除守护，避免与用户意图冲突 */
+const USER_SCROLL_EVENTS: readonly string[] = [
+  "wheel",
+  "touchmove",
+  "keydown",
+  "pointerdown",
+  "mousedown",
+];
+
+/** 单次守护内允许的回滚次数上限：超出即视为未识别的用户滚动，主动放行 */
+const MAX_SCROLL_REVERTS_PER_GUARD = 3;
+
+/** 守护期间要保持的窗口滚动位置（px） */
+let guardScrollY = 0;
+
+/** 守护截止时间戳（ms），过期后不再介入滚动 */
+let guardDeadline = 0;
+
+/** 守护是否已解除（用户主动滚动、超出回滚上限、或尚未开启守护） */
+let guardReleased = true;
+
+/** 本次守护已执行的回滚次数 */
+let guardReverts = 0;
+
+/**
+ * 开启一次滚动位置守护：记录当前阅读位置，
+ * 覆盖随后"写盘 → HMR 重渲染 → 哈希跳转"的完整窗口。
+ * 仅在编辑抽屉打开时生效。
+ */
+function armScrollGuard(): void {
+  if (!state.open) return;
+  guardScrollY = window.scrollY;
+  guardReleased = false;
+  guardReverts = 0;
+  guardDeadline = Date.now() + SCROLL_GUARD_DURATION_MS;
+}
+
+/**
+ * 滚动事件处理：守护期内、且非用户主动滚动时，
+ * 把偏离原阅读位置的程序性滚动原地回滚。
+ */
+function onGuardedScroll(): void {
+  if (guardReleased || !state.open) return;
+  if (Date.now() > guardDeadline) return;
+  if (Math.abs(window.scrollY - guardScrollY) <= SCROLL_GUARD_TOLERANCE_PX)
+    return;
+  // behavior: "instant" 显式覆盖全局 html{scroll-behavior:smooth}，
+  // 否则回滚会被动画化，与被回滚的平滑滚动相互竞争
+  window.scrollTo({ top: guardScrollY, left: 0, behavior: "instant" });
+  guardReverts += 1;
+  if (guardReverts >= MAX_SCROLL_REVERTS_PER_GUARD) guardReleased = true;
+}
+
+/** 用户主动滚动：立即解除本次守护，后续滚动不再干预 */
+function releaseScrollGuard(): void {
+  guardReleased = true;
+}
 
 const pageData = usePageData();
 
@@ -265,6 +330,8 @@ async function performSave(force: boolean): Promise<void> {
   const fp = state.activeFp;
   // 快照保存时刻内容：保存期间继续输入则保持 dirty 并续排自动保存
   const snapshot = state.rawContent;
+  // 写盘会触发 HMR 重渲染：先钉住阅读位置，保存后不打断阅读
+  armScrollGuard();
   try {
     const { mtime } = await saveFile({
       fp,
@@ -377,12 +444,21 @@ watch(
 onMounted(() => {
   document.addEventListener("keydown", onGlobalKeydown);
   window.addEventListener("beforeunload", onBeforeUnload);
+  // 滚动位置守护：监听滚动本身 + 各类用户主动滚动输入
+  window.addEventListener("scroll", onGuardedScroll, { passive: true });
+  for (const eventName of USER_SCROLL_EVENTS) {
+    window.addEventListener(eventName, releaseScrollGuard, { passive: true });
+  }
 });
 
 onBeforeUnmount(() => {
   clearAutosaveTimer();
   document.removeEventListener("keydown", onGlobalKeydown);
   window.removeEventListener("beforeunload", onBeforeUnload);
+  window.removeEventListener("scroll", onGuardedScroll);
+  for (const eventName of USER_SCROLL_EVENTS) {
+    window.removeEventListener(eventName, releaseScrollGuard);
+  }
 });
 
 /** 暴露打开方法：EditEntry 通过 ref 调用 */

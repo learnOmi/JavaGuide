@@ -43,6 +43,13 @@ const containerRef = ref<HTMLDivElement | null>(null);
 /** CodeMirror 视图实例（挂载后创建，卸载前销毁） */
 let editorView: EditorView | null = null;
 
+/**
+ * 外部内容同步标记：由 props 驱动的程序性 dispatch 不回调
+ * `update:modelValue`，否则会被父组件误判为用户编辑——
+ * 既形成回环，又会在打开抽屉时触发一次多余的自动保存（写盘 + HMR）。
+ */
+let syncingFromProp = false;
+
 /** 图片 MIME → 扩展名映射（服务端白名单子集；未知 MIME 回退文件名扩展名） */
 const MIME_TO_EXT: Record<string, string> = {
   "image/png": "png",
@@ -137,6 +144,8 @@ onMounted(() => {
         ]),
         EditorView.updateListener.of((update) => {
           if (!update.docChanged) return;
+          // 外部同步引起的变更不算用户编辑，不外抛
+          if (syncingFromProp) return;
           emit("update:modelValue", update.state.doc.toString());
         }),
       ],
@@ -157,9 +166,11 @@ watch(
     if (!editorView) return;
     const current = editorView.state.doc.toString();
     if (current === value) return;
+    syncingFromProp = true;
     editorView.dispatch({
       changes: { from: 0, to: current.length, insert: value },
     });
+    syncingFromProp = false;
   },
 );
 </script>
