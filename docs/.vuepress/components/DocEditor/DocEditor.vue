@@ -44,6 +44,19 @@
         <button
           class="icon-btn"
           type="button"
+          :class="{ active: state.scrollSyncOn }"
+          :title="
+            state.scrollSyncOn
+              ? '滚动联动已开启：编辑区与页面按标题双向对齐（点击关闭）'
+              : '滚动联动已关闭（点击开启）'
+          "
+          @click="onToggleScrollSync"
+        >
+          ⇅
+        </button>
+        <button
+          class="icon-btn"
+          type="button"
           :title="isFull ? '退出全屏' : '全屏编辑'"
           @click="isFull = !isFull"
         >
@@ -122,9 +135,11 @@
       />
       <MarkdownEditor
         v-else
+        ref="mdRef"
         :model-value="state.rawContent"
         @update:model-value="onContentChange"
         @save="manualSave"
+        @scroll="onEditorScroll"
       />
     </main>
 
@@ -170,6 +185,8 @@ import {
   EDITOR_FULL_WIDTH,
   SCROLL_GUARD_DURATION_MS,
   SCROLL_GUARD_TOLERANCE_PX,
+  SCROLL_SYNC_PAGE_OFFSET_PX,
+  SCROLL_SYNC_PAGE_TOLERANCE_PX,
   ApiError,
   clearDraft,
   editorState as state,
@@ -177,9 +194,18 @@ import {
   readDraft,
   saveFile,
   setAutosavePreference,
+  setScrollSyncPreference,
   toastMessage,
   writeDraft,
 } from "../docEditorState";
+import {
+  collectPageAnchors,
+  findPairByLine,
+  findPairByPageTop,
+  pairHeadings,
+  parseMarkdownHeadings,
+  type HeadingPair,
+} from "./scrollSync";
 
 /** 是否全屏编辑（默认 45% 宽，左页右编辑） */
 const isFull = ref(false);
@@ -260,6 +286,108 @@ function onGuardedScroll(): void {
 /** 用户主动滚动：立即解除本次守护，后续滚动不再干预 */
 function releaseScrollGuard(): void {
   guardReleased = true;
+}
+
+/* ---------------------------------------------------------------- */
+/* 滚动联动：编辑区与左侧页面预览按"标题锚点"双向对齐。               */
+/* 两侧互为驱动源，若各自独立判断会产生"我滚你、你又滚我"的互拉：      */
+/* 故用**同一条"当前已对齐锚点"记忆**作为收敛条件——任一方向对齐完成后   */
+/* 写入该锚点，对侧由程序性滚动产生的回声会解析出同一锚点而被忽略。     */
+/* 该判据不依赖时序，因此不受浏览器 scroll 事件投递延迟的影响。        */
+/* ---------------------------------------------------------------- */
+
+/** MarkdownEditor 暴露的联动 API（读取顶部行号 / 滚动到指定行） */
+const mdRef = ref<InstanceType<typeof MarkdownEditor> | null>(null);
+
+/** 编辑区侧同步的 rAF 句柄（一帧内最多同步一次） */
+let editorSyncFrame = 0;
+
+/** 页面侧同步的 rAF 句柄（一帧内最多同步一次） */
+let pageSyncFrame = 0;
+
+/**
+ * 当前已对齐的页面锚点 id（两侧共用的收敛记忆，null 表示尚未对齐）。
+ * 任一方向完成对齐后写入；对侧回声解析出的锚点与之相同即视为已对齐，
+ * 直接跳过，从而避免把刚滚过去的另一侧再拽回来。
+ */
+let syncedAnchorId: string | null = null;
+
+/** 重建"源码标题 ↔ 页面锚点"配对（两侧均由当前页内容派生，故按需即时计算） */
+function buildHeadingPairs(): HeadingPair[] {
+  return pairHeadings(
+    parseMarkdownHeadings(state.rawContent),
+    collectPageAnchors(),
+  );
+}
+
+/** 复位联动记忆：内容或页面变化后，允许重新对齐到同一小节 */
+function resetScrollSyncMemory(): void {
+  syncedAnchorId = null;
+}
+
+/**
+ * 把页面滚动到指定锚点（标题停在导航栏下方）。
+ * 联动滚动属于用户意图，需先解除保存后的滚动守护，否则会被其回滚。
+ * @returns 锚点已存在于页面并完成滚动时为 true
+ */
+function scrollPageToAnchor(anchorId: string): boolean {
+  const target = document.getElementById(anchorId);
+  if (target === null) return false;
+  releaseScrollGuard();
+  const top =
+    target.getBoundingClientRect().top +
+    window.scrollY -
+    SCROLL_SYNC_PAGE_OFFSET_PX;
+  // behavior 必须显式指定 instant：全局 html{scroll-behavior:smooth} 会把
+  // 连续联动滚动变成排队动画，导致两侧位置持续落后
+  window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: "instant" });
+  return true;
+}
+
+/** 编辑区 → 页面：按编辑区顶部所在小节对齐页面 */
+function applyEditorDrivenSync(topLine: number): void {
+  const pair = findPairByLine(buildHeadingPairs(), topLine);
+  if (pair === null || pair.anchor.id === syncedAnchorId) return;
+  // 只有确实滚动了页面才记录记忆，否则后续永远无法重新对齐
+  if (scrollPageToAnchor(pair.anchor.id)) syncedAnchorId = pair.anchor.id;
+}
+
+/** 页面 → 编辑区：按页面顶部所在小节对齐编辑区 */
+function applyPageDrivenSync(): void {
+  const pair = findPairByPageTop(
+    buildHeadingPairs(),
+    window.scrollY + SCROLL_SYNC_PAGE_OFFSET_PX + SCROLL_SYNC_PAGE_TOLERANCE_PX,
+  );
+  if (pair === null || pair.anchor.id === syncedAnchorId) return;
+  syncedAnchorId = pair.anchor.id;
+  mdRef.value?.scrollToLine(pair.heading.line);
+}
+
+/** 编辑区滚动入口（rAF 节流） */
+function onEditorScroll(topLine: number): void {
+  if (!state.open || !state.scrollSyncOn) return;
+  cancelAnimationFrame(editorSyncFrame);
+  editorSyncFrame = requestAnimationFrame(() => {
+    editorSyncFrame = 0;
+    applyEditorDrivenSync(topLine);
+  });
+}
+
+/** 页面滚动入口（rAF 节流） */
+function onPageScroll(): void {
+  if (!state.open || !state.scrollSyncOn) return;
+  cancelAnimationFrame(pageSyncFrame);
+  pageSyncFrame = requestAnimationFrame(() => {
+    pageSyncFrame = 0;
+    applyPageDrivenSync();
+  });
+}
+
+/** 滚动联动开关切换 */
+function onToggleScrollSync(): void {
+  setScrollSyncPreference(!state.scrollSyncOn);
+  // 开关状态变化后两侧基准可能已错位，清空记忆以便下次滚动重新对齐
+  resetScrollSyncMemory();
 }
 
 const pageData = usePageData();
@@ -437,6 +565,8 @@ watch(
     if (state.dirty) await performSave(false);
     if (state.conflict) return; // 保存冲突时不切换内容，保留决策现场
     state.activeFp = fp;
+    // 换页后源码与页面锚点均已变化，清空联动记忆以便重新对齐
+    resetScrollSyncMemory();
     await loadActiveFile();
   },
 );
@@ -446,6 +576,8 @@ onMounted(() => {
   window.addEventListener("beforeunload", onBeforeUnload);
   // 滚动位置守护：监听滚动本身 + 各类用户主动滚动输入
   window.addEventListener("scroll", onGuardedScroll, { passive: true });
+  // 滚动联动：页面滚动驱动编辑区（编辑区滚动由 MarkdownEditor 抛出）
+  window.addEventListener("scroll", onPageScroll, { passive: true });
   for (const eventName of USER_SCROLL_EVENTS) {
     window.addEventListener(eventName, releaseScrollGuard, { passive: true });
   }
@@ -453,9 +585,12 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   clearAutosaveTimer();
+  cancelAnimationFrame(editorSyncFrame);
+  cancelAnimationFrame(pageSyncFrame);
   document.removeEventListener("keydown", onGlobalKeydown);
   window.removeEventListener("beforeunload", onBeforeUnload);
   window.removeEventListener("scroll", onGuardedScroll);
+  window.removeEventListener("scroll", onPageScroll);
   for (const eventName of USER_SCROLL_EVENTS) {
     window.removeEventListener(eventName, releaseScrollGuard);
   }
@@ -594,6 +729,13 @@ defineExpose({
   &:hover:not(:disabled) {
     border-color: var(--vp-c-danger, #a33);
   }
+}
+
+// 滚动联动开启态：以强调色标识，便于一眼判断联动是否生效
+.icon-btn.active {
+  border-color: var(--vp-c-accent, var(--vp-c-brand));
+  background: var(--vp-c-accent-soft, rgba(0, 0, 0, 0.06));
+  color: var(--vp-c-accent, var(--vp-c-brand));
 }
 
 .editor-toast {

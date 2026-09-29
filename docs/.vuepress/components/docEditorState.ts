@@ -38,6 +38,28 @@ export const SCROLL_GUARD_DURATION_MS = 4000;
 /** 判定为程序性滚动的偏移阈值（px）：小于该值视为像素抖动，不介入 */
 export const SCROLL_GUARD_TOLERANCE_PX = 4;
 
+/**
+ * 编辑区与页面预览滚动联动的对齐偏移（px）。
+ * 用于让目标标题停在 sticky 导航栏下方，而非被导航栏遮住。
+ */
+export const SCROLL_SYNC_PAGE_OFFSET_PX = 80;
+
+/**
+ * 联动时由编辑器顶部行向上回溯查找标题的最大行数：超出即放弃本次对齐
+ */
+export const SCROLL_SYNC_MAX_LOOKBACK_LINES = 150;
+
+/**
+ * 页面侧"当前小节"判定的容差（px）。
+ * 程序性滚动把页面停在"锚点上方 OFFSET"处后，window.scrollY 与锚点位置存在
+ * 亚像素/取整差异；若按精确边界比较，目标锚点会被判成"尚未到达"而回退到
+ * 上一小节，对侧便把编辑区拽走。留出数像素容差即可消除该边界抖动。
+ */
+export const SCROLL_SYNC_PAGE_TOLERANCE_PX = 2;
+
+/** 滚动联动开关的 localStorage 持久化键 */
+export const SCROLL_SYNC_STORAGE_KEY = "doc-editor-scroll-sync";
+
 /** health 探测失败后的重试间隔（ms）：prod 静态托管必然 404，重试开销可忽略 */
 export const HEALTH_RETRY_MS = 30_000;
 
@@ -77,6 +99,8 @@ export interface DocEditorState {
   serverMtime: number | null;
   /** 自动保存开关（默认开启，用户确认的决策） */
   autosaveOn: boolean;
+  /** 滚动联动开关（编辑区与页面预览按标题锚点双向对齐，默认开启） */
+  scrollSyncOn: boolean;
   /** 加载失败信息 */
   loadError: string | null;
   /** 保存失败信息（非冲突类） */
@@ -87,12 +111,23 @@ export interface DocEditorState {
   uploading: boolean;
 }
 
-const AUTOSAVE_DEFAULT = "on";
+/** 布尔偏好项在 localStorage 中的取值（on/off），供自动保存与滚动联动共用 */
+const PREFERENCE_ON = "on";
+const PREFERENCE_OFF = "off";
 
 /** 从 localStorage 读取自动保存开关（默认开启） */
 function loadAutosavePreference(): boolean {
   try {
-    return localStorage.getItem(AUTOSAVE_STORAGE_KEY) !== "off";
+    return localStorage.getItem(AUTOSAVE_STORAGE_KEY) !== PREFERENCE_OFF;
+  } catch {
+    return true;
+  }
+}
+
+/** 从 localStorage 读取滚动联动开关（默认开启） */
+function loadScrollSyncPreference(): boolean {
+  try {
+    return localStorage.getItem(SCROLL_SYNC_STORAGE_KEY) !== PREFERENCE_OFF;
   } catch {
     return true;
   }
@@ -111,6 +146,7 @@ export const editorState: DocEditorState = reactive({
   conflict: false,
   serverMtime: null,
   autosaveOn: loadAutosavePreference(),
+  scrollSyncOn: loadScrollSyncPreference(),
   loadError: null,
   saveError: null,
   draftRestored: false,
@@ -128,7 +164,20 @@ export function setAutosavePreference(enabled: boolean): void {
   try {
     localStorage.setItem(
       AUTOSAVE_STORAGE_KEY,
-      enabled ? AUTOSAVE_DEFAULT : "off",
+      enabled ? PREFERENCE_ON : PREFERENCE_OFF,
+    );
+  } catch {
+    // 存储不可用时仅影响下次会话的默认值，不中断编辑流程
+  }
+}
+
+/** 持久化滚动联动开关 */
+export function setScrollSyncPreference(enabled: boolean): void {
+  editorState.scrollSyncOn = enabled;
+  try {
+    localStorage.setItem(
+      SCROLL_SYNC_STORAGE_KEY,
+      enabled ? PREFERENCE_ON : PREFERENCE_OFF,
     );
   } catch {
     // 存储不可用时仅影响下次会话的默认值，不中断编辑流程

@@ -36,6 +36,8 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
   /** 用户按下 Ctrl/Cmd+S */
   (e: "save"): void;
+  /** 编辑器滚动：抛出当前视口顶部所在的源码行号（1 基），供页面联动对齐 */
+  (e: "scroll", topLine: number): void;
 }>();
 
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -119,6 +121,56 @@ async function handlePaste(event: ClipboardEvent): Promise<void> {
   }
 }
 
+/**
+ * 探测"视口顶部行"时，从基准点向内缩进的像素。
+ * 避免正好落在边界或左侧行号栏上导致取不到位置。
+ */
+const TOP_LINE_PROBE_INSET_PX = 4;
+
+/**
+ * 读取编辑器视口顶部对应的源码行号（1 基）。
+ * 用于"编辑区 → 页面"的联动对齐基准；取不到坐标时退回第 1 行。
+ *
+ * 探测点必须锚在**滚动容器可视区**的上沿：内容元素（.cm-content）会随滚动
+ * 整体移出视口，若用它自身的 top 作为 y，posAtCoords 内部的相对偏移恒为 0，
+ * 会永远返回文档首行，联动因此完全失效。
+ */
+function getTopLine(): number {
+  const view = editorView;
+  if (!view) return 1;
+  const scrollerRect = view.scrollDOM.getBoundingClientRect();
+  const contentRect = view.contentDOM.getBoundingClientRect();
+  // 纵向取两者中更靠下的上沿：未滚动时以内容上沿为准，滚动后以容器上沿为准
+  const y =
+    Math.max(contentRect.top, scrollerRect.top) + TOP_LINE_PROBE_INSET_PX;
+  // 横向取内容左沿：避开左侧行号栏，确保探测点落在正文上
+  const x = contentRect.left + TOP_LINE_PROBE_INSET_PX;
+  const pos = view.posAtCoords({ x, y });
+  if (pos === null) return 1;
+  return view.state.doc.lineAt(pos).number;
+}
+
+/**
+ * 把编辑器滚动到指定源码行并贴顶对齐。
+ * 用于"页面 → 编辑区"的联动；行号会先夹取到文档合法范围内。
+ */
+function scrollToLine(line: number): void {
+  const view = editorView;
+  if (!view) return;
+  const clamped = Math.min(Math.max(line, 1), view.state.doc.lines);
+  view.dispatch({
+    effects: EditorView.scrollIntoView(view.state.doc.line(clamped).from, {
+      y: "start",
+      yMargin: 0,
+    }),
+  });
+}
+
+/** 编辑器滚动事件：向外抛出视口顶部行号（行号由父组件转成页面锚点） */
+function onEditorScroll(): void {
+  emit("scroll", getTopLine());
+}
+
 onMounted(() => {
   if (!containerRef.value) return;
 
@@ -151,12 +203,26 @@ onMounted(() => {
       ],
     }),
   });
+
+  // 编辑区滚动：驱动"编辑区 → 页面"方向的联动
+  editorView.scrollDOM.addEventListener("scroll", onEditorScroll, {
+    passive: true,
+  });
 });
 
 onBeforeUnmount(() => {
   containerRef.value?.removeEventListener("paste", handlePaste, true);
+  editorView?.scrollDOM.removeEventListener("scroll", onEditorScroll);
   editorView?.destroy();
   editorView = null;
+});
+
+/** 供父组件（DocEditor）驱动滚动联动 */
+defineExpose({
+  /** 读取视口顶部所在源码行号（1 基） */
+  getTopLine,
+  /** 滚动到指定源码行 */
+  scrollToLine,
 });
 
 // 外部内容变更（冲突后重载、草稿恢复）同步进编辑器；内容一致时跳过防回环
