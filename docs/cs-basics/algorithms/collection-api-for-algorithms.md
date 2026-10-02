@@ -46,16 +46,16 @@ head:
 
 对应的复杂度速查：
 
-| 容器                              | 随机访问      | 查找        | 插入                         | 删除            | 备注               |
-| --------------------------------- | ------------- | ----------- | ---------------------------- | --------------- | ------------------ |
-| `int[]`                           | `O(1)`        | `O(n)`      | —                            | —               | 定长，最快，无装箱 |
-| `ArrayList`                       | `O(1)`        | `O(n)`      | 尾部均摊 `O(1)`，中间 `O(n)` | 中间 `O(n)`     | 扩容 1.5 倍        |
-| `LinkedList`                      | `O(n)`        | `O(n)`      | 已知节点 `O(1)`              | 已知节点 `O(1)` | 实际很少用         |
-| `HashSet` / `HashMap`             | —             | 平均 `O(1)` | 平均 `O(1)`                  | 平均 `O(1)`     | 最坏 `O(n)`        |
-| `LinkedHashSet` / `LinkedHashMap` | —             | 平均 `O(1)` | 平均 `O(1)`                  | 平均 `O(1)`     | 额外维护链表       |
-| `TreeSet` / `TreeMap`             | —             | `O(log n)`  | `O(log n)`                   | `O(log n)`      | 红黑树，有序       |
-| `PriorityQueue`                   | 仅堆顶 `O(1)` | `O(n)`      | `O(log n)`                   | 堆顶 `O(log n)` | 不支持随机删除     |
-| `ArrayDeque`                      | —             | `O(n)`      | 两端 `O(1)`                  | 两端 `O(1)`     | 不可存 null        |
+| 容器                              | 随机访问      | 查找        | 插入                         | 删除            | 备注                                   |
+| --------------------------------- | ------------- | ----------- | ---------------------------- | --------------- | -------------------------------------- |
+| `int[]`                           | `O(1)`        | `O(n)`      | —                            | —               | 定长，最快，无装箱                     |
+| `ArrayList`                       | `O(1)`        | `O(n)`      | 尾部均摊 `O(1)`，中间 `O(n)` | 中间 `O(n)`     | 扩容 1.5 倍                            |
+| `LinkedList`                      | `O(n)`        | `O(n)`      | 已知节点 `O(1)`              | 已知节点 `O(1)` | 实际很少用                             |
+| `HashSet` / `HashMap`             | —             | 平均 `O(1)` | 平均 `O(1)`                  | 平均 `O(1)`     | 最坏 `O(n)`                            |
+| `LinkedHashSet` / `LinkedHashMap` | —             | 平均 `O(1)` | 平均 `O(1)`                  | 平均 `O(1)`     | 额外维护链表                           |
+| `TreeSet` / `TreeMap`             | —             | `O(log n)`  | `O(log n)`                   | `O(log n)`      | 红黑树，有序                           |
+| `PriorityQueue`                   | 仅堆顶 `O(1)` | `O(n)`      | `O(log n)`                   | 堆顶 `O(log n)` | 无按序删除，`remove(Object)` 为 `O(n)` |
+| `ArrayDeque`                      | —             | `O(n)`      | 两端 `O(1)`                  | 两端 `O(1)`     | 不可存 null                            |
 
 ## 数组与 Arrays 工具类
 
@@ -77,6 +77,8 @@ String m = Arrays.deepToString(new int[][]{{1, 2}}); // 二维数组输出
 ```
 
 > **`Arrays.sort` 会原地修改数组**，如果需要保留原数组，先 `Arrays.copyOf` 再排序。
+
+> `Arrays.binarySearch` 返回的是下标；**没找到时返回 `-(插入点) - 1`**（必为负数），不是简单的 `-1`。想拿到"该插在哪"要算 `-ret - 1`。前提是数组**已经升序排好**，否则结果是未定义的。
 
 ### 原始类型数组不能直接传比较器（高频坑）
 
@@ -114,6 +116,17 @@ List<Integer> mutable2 = new ArrayList<>(List.of(1, 2, 3));
 Integer[] arr = mutable.toArray(new Integer[0]);
 ```
 
+> **`Arrays.asList` 传原始类型数组是个隐蔽的坑**：`Arrays.asList(new int[]{1, 2, 3})` 得到的不是 `List<Integer>`，而是长度为 1 的 `List<int[]>`——因为泛型不支持基本类型，整个 `int[]` 被当成**一个**元素。原始类型转 `List` 必须先装箱：`Arrays.stream(nums).boxed().collect(Collectors.toList())`。
+
+`int[]` 与 `Integer[]` 的互转（装箱 / 拆箱）：
+
+```java
+int[] nums = {1, 2, 3};
+
+Integer[] boxed = Arrays.stream(nums).boxed().toArray(Integer[]::new);       // int[] → Integer[]
+int[] unboxed = Arrays.stream(boxed).mapToInt(Integer::intValue).toArray();  // Integer[] → int[]
+```
+
 多维数组与 `List` 的转换：
 
 ```java
@@ -123,6 +136,10 @@ int[][] ans = new int[res.size()][];
 for (int i = 0; i < res.size(); i++) {
     ans[i] = res.get(i).stream().mapToInt(Integer::intValue).toArray();
 }
+
+// List<int[]> → int[][]（区间、图论题常用；注意是 new int[0][]，不是 new int[0]）
+List<int[]> list = new ArrayList<>();
+int[][] arr2d = list.toArray(new int[0][]);
 ```
 
 ### 二维数组排序
@@ -158,10 +175,17 @@ int li = s.lastIndexOf('l');                 // 最后一次出现位置
 boolean has = s.contains("Hello");
 String[] parts = s.split(" ");               // 按分隔符切分
 String[] parts2 = s.split(",", 2);           // 限制切分为 2 段
-String rep = s.replace("l", "L");            // 字面量替换
+String rep = s.replace("l", "L");            // 字面量替换（全部替换）
+String clean = s.replaceAll("\\s+", "");     // 正则替换
 String j = String.join("-", "a", "b", "c");  // "a-b-c"
 boolean eq = s.equals("Hello World");        // 内容比较，不要用 ==
 int cmp = s.compareTo("Hello");              // 字典序比较
+
+boolean pre = s.startsWith("He");            // 前缀判断，另有 endsWith
+int i2 = s.indexOf('l', 4);                  // 从下标 4 起找（也有 indexOf(String, fromIndex)）
+String up = s.toUpperCase();                 // 转大写（toLowerCase 转小写）
+String trim = "  a  ".trim();                // 去首尾空白（strip 支持 Unicode 空白，JDK 11+）
+boolean empty = s.isEmpty();                 // 是否为空串
 ```
 
 ### 字符与数字互转
@@ -175,7 +199,25 @@ char back = (char) ('0' + digit);    // 数字转字符
 boolean isDigit = Character.isDigit(c);
 boolean isLetter = Character.isLetter(c);
 boolean isAlnum = Character.isLetterOrDigit(c);
+boolean isUpper = Character.isUpperCase('A');
+boolean isSpace = Character.isWhitespace(' ');
 char lower = Character.toLowerCase('A');
+char upper = Character.toUpperCase('a');
+```
+
+> `Character.getNumericValue` 对 `'0'~'9'` 返回 0~9，但对 `'a'~'z'` 返回 **10~35**（十六进制语义），日常判数字请优先用 `c - '0'`。
+
+字符串与整数之间的整体转换：
+
+```java
+int num = Integer.parseInt("123");     // 字符串 → int，非法输入抛 NumberFormatException
+long big = Long.parseLong("123456789012");
+String str = String.valueOf(123);      // int → 字符串（推荐，能处理 null）
+String str2 = Integer.toString(123);   // 等价写法
+
+// char[] → String：切忌用 arr.toString() 或 Arrays.toString()（得到地址或 "[a, b, c]"）
+char[] arrCh = {'a', 'b', 'c'};
+String fromChars = new String(arrCh);  // "abc"
 ```
 
 ### 大小写字母计数（`int[26]` 套路）
@@ -198,11 +240,14 @@ Arrays.equals(countA, countB);
 字符串在循环里拼接会创建大量临时对象，必须用 `StringBuilder`：
 
 ```java
-StringBuilder sb = new StringBuilder();
-sb.append("a").append(1).append(true);   // 链式追加
+StringBuilder sb = new StringBuilder(64); // 预设容量可减少扩容（默认容量 16）
+sb.append("a").append(1).append(true);   // 链式追加，返回 this
 sb.insert(0, "head");                    // 指定位置插入
 sb.deleteCharAt(0);                      // 删除某个字符（O(n)）
+sb.delete(0, 2);                         // 删除区间 [0, 2)，左闭右开
 sb.setCharAt(0, 'H');                    // 修改某个字符
+sb.charAt(0);                            // 读取某个字符
+sb.indexOf("a");                         // 查找子串首次出现位置，没有返回 -1
 sb.reverse();                            // 反转
 int n = sb.length();
 String result = sb.toString();
@@ -227,13 +272,14 @@ if (sb.length() > 0) {
 
 ### 初始化方式对比（重要）
 
-| 写法                             | 可变性     | 能否 `add`/`remove`                              | 能否存 `null` | 说明                      |
-| -------------------------------- | ---------- | ------------------------------------------------ | ------------- | ------------------------- |
-| `new ArrayList<>()`              | 可变       | 可以                                             | 可以          | 最常用                    |
-| `Arrays.asList(a, b)`            | 长度固定   | **不可以**（抛 `UnsupportedOperationException`） | 可以          | 支持 `set`                |
-| `List.of(a, b)`                  | 完全不可变 | 不可以                                           | **不可以**    | JDK 9+，只读              |
-| `new ArrayList<>(List.of(a, b))` | 可变       | 可以                                             | 可以          | 需要可变时的标准写法      |
-| `Collections.emptyList()`        | 完全不可变 | 不可以                                           | —             | 返回空列表，避免返回 null |
+| 写法                             | 可变性     | 能否 `add`/`remove`                              | 能否存 `null` | 说明                             |
+| -------------------------------- | ---------- | ------------------------------------------------ | ------------- | -------------------------------- |
+| `new ArrayList<>()`              | 可变       | 可以                                             | 可以          | 最常用                           |
+| `Arrays.asList(a, b)`            | 长度固定   | **不可以**（抛 `UnsupportedOperationException`） | 可以          | 支持 `set`                       |
+| `List.of(a, b)`                  | 完全不可变 | 不可以                                           | **不可以**    | JDK 9+，只读                     |
+| `new ArrayList<>(List.of(a, b))` | 可变       | 可以                                             | 可以          | 需要可变时的标准写法             |
+| `new ArrayList<>(n)`             | 可变       | 可以                                             | 可以          | 预设容量，已知规模时避免反复扩容 |
+| `Collections.emptyList()`        | 完全不可变 | 不可以                                           | —             | 返回空列表，避免返回 null        |
 
 ### 常用方法与坑
 
@@ -251,6 +297,13 @@ list.isEmpty();
 
 list.remove(0);              // 删除下标 0 的元素（调用 remove(int)）
 list.remove(Integer.valueOf(1)); // 删除值为 1 的元素（调用 remove(Object)）
+
+list.addAll(other);          // 批量追加到尾部
+list.clear();                // 清空
+list.equals(other);          // 按内容逐个比较，顺序也要一致
+list.retainAll(other);       // 原地保留交集
+list.removeAll(other);       // 原地删除所有出现在 other 中的元素
+list.subList(1, 3);          // 返回 [1, 3) 的视图（不是拷贝，改它会改原 list）
 ```
 
 > **`remove` 重载是最高频的坑**：`list.remove(1)` 删除的是**下标 1**，不是值为 1 的元素。想按值删除必须显式装箱：`list.remove(Integer.valueOf(1))`。
@@ -282,15 +335,17 @@ list.removeIf(x -> x % 2 == 0);
 ```java
 List<Integer> list = new ArrayList<>(List.of(3, 1, 2));
 
-Collections.sort(list);                       // 升序（底层归并，稳定）
+Collections.sort(list);                       // 升序（底层 TimSort，稳定）；等价 list.sort(null)
 Collections.sort(list, Comparator.reverseOrder()); // 降序
 Collections.reverse(list);                    // 反转
 Collections.swap(list, 0, 2);                 // 交换两个位置
-Collections.max(list);                        // 最大值
+Collections.max(list);                        // 最大值（可传 Comparator）
 Collections.min(list);                        // 最小值
-Collections.frequency(list, 2);               // 出现次数
+Collections.frequency(list, 2);               // 出现次数，O(n)
 Collections.fill(list, 0);                    // 全部填充
-Collections.nCopies(5, 0);                    // 生成 5 个 0 的列表
+Collections.nCopies(5, 0);                    // 生成 5 个 0 的列表（不可变）
+Collections.addAll(list, 4, 5, 6);            // 批量追加变长参数
+Collections.binarySearch(list, 2);            // 二分查找，要求 list 已升序；未命中返回 -(插入点)-1
 Collections.unmodifiableList(list);           // 只读包装
 ```
 
@@ -313,9 +368,13 @@ visited.contains(1);            // 平均 O(1)
 visited.remove(1);
 visited.size();
 visited.isEmpty();
+visited.clear();                // 清空
 
-// 遍历
+// 遍历（HashSet 的迭代顺序不确定，别依赖它）
 for (int x : visited) { }
+
+// Set.of(...) 是不可变集合，不能 add/remove，也不能存 null（JDK 9+）
+Set<Integer> fixed = Set.of(1, 2, 3);
 
 // 集合运算
 Set<Integer> a = new HashSet<>(Set.of(1, 2, 3));
@@ -344,6 +403,8 @@ set.tailSet(5);     // [5, 7]，大于等于 5 的部分
 
 典型题：区间插入/覆盖、找最近的时间点、日程安排冲突。
 
+> 注意 `first()`/`last()` 在**空集合**上抛 `NoSuchElementException`，而 `floor`/`ceiling`/`lower`/`higher` 找不到时返回 `null`——又是一组"抛异常 vs 返回特殊值"。另外 `HashSet` 允许存一个 `null`，但 `TreeSet` 存 `null` 会抛 `NullPointerException`（要对元素排序）。
+
 ### 自定义对象放进 Set/Map 的前提
 
 如果 `TreeSet` 里存自定义对象，必须实现 `Comparable` 或在构造时传入 `Comparator`；如果放进 `HashSet`/`HashMap` 作为 **key**，必须正确重写 `equals` 和 `hashCode`。算法题里更省事的做法是**把对象转成可比较的表示**（如 `String`、`List<Integer>`、编码后的 `long`）。
@@ -357,6 +418,26 @@ set.tailSet(5);     // [5, 7]，大于等于 5 的部分
 | `HashMap`       | 无序          | 平均 `O(1)` | 计数、分组、映射（最常用）     |
 | `LinkedHashMap` | 插入/访问顺序 | 平均 `O(1)` | 需要顺序（LRU 缓存、按序输出） |
 | `TreeMap`       | key 升序      | `O(log n)`  | key 需要有序或区间查询         |
+
+### 基础方法
+
+```java
+Map<String, Integer> map = new HashMap<>();
+
+map.put("a", 1);                 // 放入/覆盖，返回被覆盖的旧值（原本没有则返回 null）
+map.get("a");                    // 取 value，key 不存在返回 null
+map.getOrDefault("b", 0);        // key 不存在时返回默认值，省去自己判空
+map.remove("a");                 // 按键删除，返回被删的 value（不存在返回 null）
+map.remove("a", 1);              // 仅当 key 映射到 1 时才删除（JDK 8+）
+map.containsKey("a");            // 判断 key 是否存在，平均 O(1)
+map.containsValue(1);            // 判断 value 是否存在，O(n)
+map.size();
+map.isEmpty();
+map.clear();
+map.putAll(other);               // 批量合并，同名 key 由 other 覆盖
+```
+
+> 用 `get` 判断"有没有"是不对的：`get` 返回 `null` 既可能是 key 不存在，也可能是 value 本身是 `null`。判断存在性一律用 `containsKey`。
 
 ### 高频方法（计数、分组、合并）
 
@@ -420,9 +501,17 @@ map.lowerKey(3);     // 1，严格小于 3 的最大 key
 map.higherKey(3);    // 5，严格大于 3 的最小 key
 map.headMap(3);      // key < 3 的部分
 map.tailMap(3);      // key >= 3 的部分
+map.subMap(1, 5);    // [1, 5)，左闭右开
+
+// 端点 Entry 操作：空 map 时 xxxEntry() 返回 null，而 xxxKey() 会抛 NoSuchElementException
+map.firstEntry();        // 最小 key 的 Entry
+map.lastEntry();         // 最大 key 的 Entry
+map.pollFirstEntry();    // 弹出并返回最小 key 的 Entry（调度、区间类题目常用）
+map.pollLastEntry();     // 弹出并返回最大 key 的 Entry
+map.descendingMap();     // 降序视图（不改变原 map）
 ```
 
-### Map 的两个常见坑
+### Map 的三个常见坑
 
 ```java
 Map<String, Integer> map = new HashMap<>();
@@ -435,6 +524,14 @@ boolean exists = map.containsKey("b");  // false，需要用 containsKey 判断�
 // 坑二：value 是 Integer 时，直接用 == 比较可能因缓存问题出错
 Integer x = map.get("a");
 // 应使用 Objects.equals(x, 0) 或 x != null && x == 0（与常量比较会触发拆箱）
+
+// 坑三：不同 Map 对 null 的容忍度不一样
+HashMap<String, Integer> hashMap = new HashMap<>();
+hashMap.put(null, 1);              // 允许：最多一个 null key、任意多个 null value
+hashMap.put("k", null);            // 允许
+
+TreeMap<String, Integer> treeMap = new TreeMap<>();
+// treeMap.put(null, 1);           // 抛 NullPointerException，因为要拿 key 排序比较
 ```
 
 ## 栈与队列：ArrayDeque
@@ -449,22 +546,24 @@ Integer x = map.get("a");
 
 ### 三种角色
 
+同一个 `Deque` 接口既能当栈、又能当队列、还能当双端队列，区别只在于你调用哪一组方法：
+
 ```java
-// 作为栈（后进先出）
+// 作为栈（后进先出）：只在同一端（头部）进出
 Deque<Integer> stack = new ArrayDeque<>();
-stack.push(1);        // 等价 offerFirst
+stack.push(1);        // 等价 addFirst，压栈
 stack.push(2);
 stack.peek();         // 2，看栈顶不删除
 stack.pop();          // 2，弹出栈顶
 
-// 作为队列（先进先出）
+// 作为队列（先进先出）：尾部进、头部出
 Deque<Integer> queue = new ArrayDeque<>();
 queue.offer(1);       // 等价 offerLast，入队
 queue.offer(2);
 queue.peek();         // 1，看队头不删除
 queue.poll();         // 1，出队
 
-// 作为双端队列
+// 作为双端队列：两端都能进出
 Deque<Integer> deque = new ArrayDeque<>();
 deque.offerFirst(1);  // 头部插入
 deque.offerLast(2);   // 尾部插入
@@ -472,9 +571,51 @@ deque.peekFirst();    // 看头部
 deque.peekLast();     // 看尾部
 deque.pollFirst();    // 头部弹出
 deque.pollLast();     // 尾部弹出
+
+// 构造时预设容量，避免反复扩容
+Deque<Integer> big = new ArrayDeque<>(1000);
 ```
 
-**记忆要点**：`push`/`pop`/`peek` 是栈语义（操作头部）；`offer`/`poll`/`peek` 是队列语义（尾部进、头部出）。
+### Deque 完整方法表（按"操作位置 × 失败行为"组织）
+
+`Deque` 的方法看着多，其实只要抓住两个维度就能全部串起来：**动的是哪一端**，以及**失败时是抛异常还是返回特殊值**。这张表比死背方法名有用得多：
+
+| 操作位置 | 典型用途 | 失败时抛异常                           | 失败时返回特殊值            |
+| -------- | -------- | -------------------------------------- | --------------------------- |
+| 头部插入 | 栈       | `addFirst(e)` / `push(e)`              | `offerFirst(e)`             |
+| 尾部插入 | 队列     | `addLast(e)` / `add(e)`                | `offerLast(e)` / `offer(e)` |
+| 头部取出 | 栈       | `removeFirst()` / `pop()` / `remove()` | `pollFirst()` / `poll()`    |
+| 尾部取出 |          | `removeLast()`                         | `pollLast()`                |
+| 头部查看 | 栈       | `getFirst()` / `element()`             | `peekFirst()` / `peek()`    |
+| 尾部查看 |          | `getLast()`                            | `peekLast()`                |
+
+- **抛异常**那一列：deque 为空时取元素抛 `NoSuchElementException`；插入 `null` 抛 `NullPointerException`。
+- **返回特殊值**那一列：取不到返回 `null`，插不进去返回 `false`（`ArrayDeque` 几乎不会满，所以插入时基本不会返回 `false`）。
+- `add`/`remove`/`element` 是从 `Queue` 接口继承来的别名，分别等价于 `addLast`/`removeFirst`/`getFirst`；`push`/`pop` 是 `Deque` 提供的栈别名，分别等价于 `addFirst`/`removeFirst`。所以前面栈和队列的写法，本质上都是这张表里方法的"马甲"。
+
+> **为什么设计成两套？** 因为队列存在"容量受限"的场景（如各种阻塞队列），`offer`/`poll` 用返回值表达失败，不会打断正常流程；而 `add`/`remove` 用异常表达失败，适合"这里必须成功，失败就是 bug"的场景。落到 `ArrayDeque` 上，两套方法在**插入**时的差别几乎为零，但**空 deque 取出**时的差别是实打实的：写单调队列时用 `pollFirst()` 可以省掉一次 `isEmpty()` 判断，换成 `removeFirst()` 就必须先判空，否则直接抛异常。
+
+### 其余常用操作
+
+```java
+Deque<Integer> deque = new ArrayDeque<>(List.of(1, 2, 3)); // 顺序：head=1 → tail=3
+
+deque.size();                    // 元素个数
+deque.isEmpty();                 // 是否为空
+deque.contains(2);               // O(n)，线性查找
+deque.clear();                   // 清空
+
+deque.removeFirstOccurrence(2);  // 从头往尾删第一个等于 2 的元素，返回 boolean
+deque.removeLastOccurrence(2);   // 从尾往头删第一个等于 2 的元素，返回 boolean
+
+// 两个方向的迭代器：iterator 从 head 到 tail，descendingIterator 反过来
+for (int x : deque) { }                              // head → tail
+Iterator<Integer> it = deque.descendingIterator();   // tail → head
+```
+
+> `Deque` **不支持按索引访问**（没有 `get(i)`），想随机访问得换 `ArrayList`；`ArrayDeque` 的遍历顺序固定是 head → tail，这点和无序的 `HashSet` 不同。
+
+**记忆要点**：`push`/`pop`/`peek` 是栈语义（操作头部）；`offer`/`poll`/`peek` 是队列语义（尾部进、头部出）。但真正要记牢的是"抛异常 vs 返回特殊值"这两列——它决定了你要不要做空判断。
 
 ### 单调栈模板
 
@@ -537,7 +678,7 @@ PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 // 大顶堆
 PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
 
-// 自定义对象：按字段升序
+// int[] 或自定义对象：按第一个字段升序（int[] 没有自然顺序，必须显式给比较器）
 PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
 
 // 完整写法（等价，可读性更强，适合复杂比较）
@@ -554,12 +695,20 @@ PriorityQueue<int[]> pq2 = new PriorityQueue<>((a, b) -> {
 ```java
 PriorityQueue<Integer> heap = new PriorityQueue<>();
 
-heap.offer(3);          // 入堆，O(log n)（add 等价）
-heap.peek();            // 看堆顶，O(1)
-heap.poll();            // 弹出堆顶，O(log n)
+heap.offer(3);          // 入堆，O(log n)（add 与 offer 完全等价）
+heap.peek();            // 看堆顶，O(1)，空堆返回 null
+heap.poll();            // 弹出堆顶，O(log n)，空堆返回 null
 heap.size();
 heap.isEmpty();
 heap.contains(3);       // O(n)，堆内查找是线性的
+heap.remove(3);         // remove(Object)：按值删任意元素，O(n)，要尽量避免
+heap.remove();          // remove()：弹出堆顶，空堆抛 NoSuchElementException
+heap.element();         // 等价 peek，但空堆抛 NoSuchElementException
+heap.clear();           // 清空
+Integer[] arr = heap.toArray(new Integer[0]);  // 注意：是堆的内部顺序，不是有序结果
+
+// 一次性建堆：从集合构造是 O(n)，比逐个 offer 的 O(n log n) 更快
+PriorityQueue<Integer> fromList = new PriorityQueue<>(list);
 
 // 注意：直接遍历堆不是有序的！要有序输出必须反复 poll
 while (!heap.isEmpty()) {
@@ -567,7 +716,9 @@ while (!heap.isEmpty()) {
 }
 ```
 
-> **堆只能用 `poll` 弹出堆顶**。想删除堆中任意元素只能 `remove(Object)`，它是 `O(n)`，算法题里要避免。
+> **堆没有"按位置删除"**：想删除堆中任意元素只能用 `remove(Object)`，它是 `O(n)`，算法题里要尽量避免。空堆上 `poll()` 返回 `null`，而 `remove()` 抛 `NoSuchElementException`——和 `Deque` 是同一套设计哲学。
+>
+> `PriorityQueue` **不允许 `null` 元素**（`offer(null)` 抛 `NPE`），`iterator()` 也不保证顺序，所以别用 for-each 去"看堆里的最小值"。
 
 ### 三个典型用法
 
@@ -686,8 +837,9 @@ students.sort(Comparator.comparingInt((Student s) -> s.score).reversed());
 students.sort(Comparator.comparingInt((Student s) -> s.score).reversed()
         .thenComparingInt(s -> s.age));
 
-// null 值放到最后
-students.sort(Comparator.comparing(Student::getName, Comparator.nullsLast(String::compareTo)));
+// null 值放到最后（用字段访问时也要显式写出参数类型）
+students.sort(Comparator.comparing((Student s) -> s.name,
+        Comparator.nullsLast(String::compareTo)));
 ```
 
 > 当 lambda 的类型推断失败时（如 `comparingInt` 用在链式写法中），显式写出参数类型 `(Student s) -> s.score` 即可解决。
@@ -728,19 +880,28 @@ Integer.toBinaryString(x);  // 转二进制字符串
 用位存储布尔状态，比 `boolean[]` 省内存，且支持批量集合运算：
 
 ```java
-BitSet bs = new BitSet(128);
+BitSet bs = new BitSet(128);   // 预设容量（按 64 位对齐，不够会自动扩容）
 bs.set(3);                  // 置位
 bs.get(3);                  // 取值，boolean
-bs.clear(3);                // 清除
-bs.cardinality();           // 1 的个数
-bs.nextSetBit(0);           // 下一个被置位的下标，没有返回 -1
+bs.clear(3);                // 清除某一位
+bs.flip(3);                 // 翻转某一位（0 ↔ 1）
+bs.set(10, 20);             // 区间置位 [10, 20)，左闭右开
+bs.clear(10, 20);           // 区间清除
+bs.isEmpty();               // 是否所有位都是 0
+bs.cardinality();           // 值为 1 的位数
+bs.length();                // 最高置位下标 + 1（不是容量）
+bs.size();                  // 实际分配的位数（按 64 向上取整）
+bs.nextSetBit(0);           // 从 0 往后第一个为 1 的下标，没有返回 -1
+bs.nextClearBit(0);         // 从 0 往后第一个为 0 的下标
+bs.previousSetBit(bs.length() - 1); // 往前第一个为 1 的下标
 
-// 集合运算（原地修改）
+// 集合运算（原地修改，所以先 clone 再算）
 BitSet a = new BitSet(); a.set(1);
 BitSet b = new BitSet(); b.set(2);
-BitSet tmp = (BitSet) a.clone(); tmp.and(b);   // 交集
-tmp = (BitSet) a.clone();       tmp.or(b);     // 并集
-tmp = (BitSet) a.clone();       tmp.xor(b);    // 异或
+BitSet tmp = (BitSet) a.clone(); tmp.and(b);      // 交集 a & b
+tmp = (BitSet) a.clone();        tmp.or(b);       // 并集 a | b
+tmp = (BitSet) a.clone();        tmp.xor(b);      // 异或 a ^ b
+tmp = (BitSet) a.clone();        tmp.andNot(b);   // 差集 a & ~b
 ```
 
 典型场景：海量整数去重/排序、字符串字符集标记（如"单词中的字母"）、状态压缩 DP 的辅助结构。
@@ -884,7 +1045,7 @@ class UnionFind {
         count = n;
     }
 
-    int find(int x) {                       // 路径压缩，均摊接近 O(1)
+    int find(int x) {                       // 路径压缩，均摊 O(log n)；再加按秩合并才是 O(α(n))
         if (parent[x] != x) {
             parent[x] = find(parent[x]);
         }
@@ -921,16 +1082,21 @@ class UnionFind {
 10. **`Arrays.sort` 原地修改**：需要保留原数组时先 `copyOf`。
 11. **`TreeMap`/`TreeSet` 用自定义对象必须可比**：否则抛 `ClassCastException`。
 12. **`String.split` 的分隔符是正则**：`split(".")`、`split("|")` 等需要转义，如 `split("\\.")`；末尾空串默认被丢弃，需要保留时传 `-1` 作为 limit。
-13. **`substring`/`subList` 是视图或新对象**：`subList` 修改会影响原列表，别当成拷贝用。
+13. **别把 `subList` 当拷贝**：`subList(from, to)` 返回的是**原列表的视图**，改它会改原列表；要独立副本请用 `new ArrayList<>(list.subList(from, to))`。注意 `substring` 不同，它返回的是新字符串（JDK 7+ 起就是拷贝，不是视图）。
 14. **字符串拼接用 `StringBuilder`**：循环里用 `+` 会不断创建新对象，复杂度从 `O(n)` 退化为 `O(n²)`。
 15. **自动装箱的性能损耗**：大数据量的 `Map<Integer, Integer>` 比 `int[]` 计数数组慢很多，能用数组就用数组。
+16. **`Arrays.asList(原始类型数组)` 陷阱**：`Arrays.asList(new int[]{1,2,3})` 得到的是长度为 1 的 `List<int[]>`，不是 `List<Integer>`，想要 `List<Integer>` 得先 `boxed()`。
+17. **`List.of`/`Set.of`/`Map.of` 不可变且拒绝 null**：对它们 `add`/`remove` 抛 `UnsupportedOperationException`，元素为 `null` 抛 `NPE`；`Map.of` 最多支持 10 对键值。
+18. **`TreeMap` 的 key 不能为 null**：`put(null, v)` 抛 `NPE`（要对 key 排序比较），而 `HashMap` 允许一个 `null` key。
+19. **无序容器的遍历顺序不可依赖**：`HashSet`、`HashMap`、`PriorityQueue` 的迭代顺序都不保证，需要顺序请换 `LinkedHashSet`/`LinkedHashMap`/`TreeSet`/`TreeMap`。
+20. **空容器上的"取元素"方法行为不同**：`peek`/`poll` 返回 `null`，`element`/`remove`/`first`/`last` 等则抛 `NoSuchElementException`，用之前先想清楚要不要判空。
 
 ## 高频问题自测
 
 - 去重、计数、映射、有序查询分别该选什么容器？
 - `HashMap` 的 `getOrDefault`、`computeIfAbsent`、`merge` 分别适合什么场景？
 - 为什么算法题里建议用 `ArrayDeque` 而不是 `Stack` 和 `LinkedList`？
-- `ArrayDeque` 作为栈和作为队列时，方法名分别是什么？
+- `ArrayDeque` 作为栈和作为队列时，方法名分别是什么？`add`/`offer`、`remove`/`poll`、`get`/`peek` 两组方法在失败时的行为有什么本质区别？
 - 单调栈和单调队列分别解决什么问题？为什么存下标而不是存值？
 - `PriorityQueue` 的默认顺序是什么？怎么改成大顶堆？
 - `Arrays.sort(int[])` 和 `Arrays.sort(Integer[])` 在稳定性和比较器支持上有什么区别？
