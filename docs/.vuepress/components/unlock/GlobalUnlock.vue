@@ -272,20 +272,8 @@ watch(
 .read-more-mask {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    var(--bg-color, #fff) 72%
-  );
+  background: linear-gradient(to bottom, transparent, var(--vp-c-bg) 72%);
   pointer-events: none;
-}
-
-[data-theme="dark"] .read-more-mask {
-  background: linear-gradient(
-    to bottom,
-    rgba(29, 30, 32, 0),
-    var(--bg-color, #1d1e20) 72%
-  );
 }
 
 .read-more-btn {
@@ -295,19 +283,19 @@ watch(
   pointer-events: auto;
   min-width: 132px;
   padding: 0.56rem 1.35rem;
-  border: 1px solid rgba(62, 175, 124, 0.45);
+  border: 1px solid var(--jg-c-brand-border);
   border-radius: var(--jg-radius-pill);
-  background: var(--bg-color, #fff);
-  color: #3eaf7c;
+  background: var(--vp-c-bg-elv);
+  color: var(--jg-c-brand);
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(62, 175, 124, 0.16);
+  box-shadow: var(--jg-shadow-brand);
   transition: all var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 .read-more-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(62, 175, 124, 0.2);
+  box-shadow: var(--jg-shadow-brand-hover);
 }
 
 .unlock-modal-mask {
@@ -326,8 +314,8 @@ watch(
   width: min(92vw, 500px);
   padding: 1.2rem;
   border-radius: var(--jg-radius-xl);
-  border: 1px solid var(--border-color, #e5e7eb);
-  background: var(--bg-color, #fff);
+  border: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-elv);
   box-shadow: var(--jg-shadow-lg);
   text-align: center;
 }
@@ -345,8 +333,8 @@ watch(
   height: 28px;
   border: 0;
   border-radius: var(--jg-radius-pill);
-  background: #f1f5f9;
-  color: #334155;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text);
   font-size: 18px;
   line-height: 28px;
   cursor: pointer;
@@ -360,7 +348,7 @@ watch(
 
 .lock-reason {
   margin: 0 0 1rem;
-  color: #64748b;
+  color: var(--vp-c-text-mute);
   line-height: 1.6;
   font-size: 0.9rem;
 }
@@ -369,9 +357,9 @@ watch(
   margin: 0 auto 1rem;
   padding: 0.8rem;
   max-width: 300px;
-  border: 1px dashed #3eaf7c;
+  border: 1px dashed var(--jg-c-brand);
   border-radius: var(--jg-radius-lg);
-  background: #f8fafc;
+  background: var(--vp-c-bg-alt);
 }
 
 .qr-image {
@@ -385,7 +373,7 @@ watch(
 }
 
 .highlight {
-  color: #3eaf7c;
+  color: var(--jg-c-brand);
   font-weight: 700;
 }
 
@@ -399,21 +387,21 @@ watch(
   width: 125px;
   padding: 0.5rem 0.75rem;
   border-radius: var(--jg-radius-md);
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--vp-c-border);
   font-size: 1rem;
   text-align: center;
   outline: none;
 }
 
 .unlock-input:focus {
-  border-color: #3eaf7c;
+  border-color: var(--jg-c-brand);
 }
 
 .unlock-btn {
   padding: 0.5rem 1rem;
   border: 0;
   border-radius: var(--jg-radius-md);
-  background: #3eaf7c;
+  background: var(--jg-c-brand);
   color: var(--jg-c-on-accent);
   font-weight: 700;
   cursor: pointer;
@@ -421,7 +409,7 @@ watch(
 
 .error-msg {
   margin: 0.45rem 0 0;
-  color: #dc2626;
+  color: var(--vp-c-red-text);
   font-size: 0.85rem;
 }
 

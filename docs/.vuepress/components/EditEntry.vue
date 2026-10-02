@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--vp-c-border);
   border-radius: 50%;
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
-  color: var(--vp-c-accent, var(--vp-c-brand));
+  color: var(--vp-c-accent);
   box-shadow: var(--jg-shadow-md);
   cursor: pointer;
   transition:
@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
     border-color var(--jg-dur-sm) var(--jg-ease-standard);
 
   &:hover {
-    border-color: var(--vp-c-accent, var(--vp-c-brand));
+    border-color: var(--vp-c-accent);
     box-shadow: var(--jg-shadow-md-hover);
     transform: translateY(-2px);
   }

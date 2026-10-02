@@ -157,17 +157,17 @@ async function submit(): Promise<void> {
   h3 {
     margin: 0;
     font-size: 0.95rem;
-    color: var(--vp-c-danger-content, #a33);
+    color: var(--vp-c-red-text);
   }
 
   .del-close {
     border: none;
     background: transparent;
-    color: var(--vp-c-text-3);
+    color: var(--vp-c-text-subtle);
     cursor: pointer;
 
     &:hover {
-      color: var(--vp-c-text-1);
+      color: var(--vp-c-text);
     }
   }
 }
@@ -195,23 +195,23 @@ async function submit(): Promise<void> {
 
 .del-warn {
   margin: 0;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-size: 0.78rem;
 
   code {
     padding: 0.05rem 0.3rem;
     border-radius: var(--jg-radius-sm);
-    background: var(--vp-c-bg-soft, rgba(0, 0, 0, 0.06));
+    background: var(--vp-c-bg-soft);
     font-size: 0.75rem;
   }
 }
 
 .del-confirm {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-size: 0.8rem;
 
   code {
-    color: var(--vp-c-danger-content, #a33);
+    color: var(--vp-c-red-text);
     font-weight: 600;
   }
 }
@@ -222,11 +222,11 @@ async function submit(): Promise<void> {
   border: 1px solid var(--vp-c-border);
   border-radius: var(--jg-radius-sm);
   background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-size: 0.82rem;
 
   &:focus {
-    border-color: var(--vp-c-danger, #a33);
+    border-color: var(--vp-c-red-bg);
     outline: none;
   }
 }
@@ -234,7 +234,7 @@ async function submit(): Promise<void> {
 .del-error {
   margin: 0;
   padding: 0 1rem;
-  color: var(--vp-c-danger-content, #a33);
+  color: var(--vp-c-red-text);
   font-size: 0.78rem;
 }
 
@@ -250,14 +250,14 @@ async function submit(): Promise<void> {
     border: 1px solid var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
     font-size: 0.8rem;
     cursor: pointer;
 
     &.del-danger {
       border-color: transparent;
-      background: var(--vp-c-danger, #a33);
-      color: #fff;
+      background: var(--vp-c-red-bg);
+      color: var(--jg-c-on-accent);
 
       &:hover:not(:disabled) {
         filter: brightness(1.1);

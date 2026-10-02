@@ -58,13 +58,42 @@ $jg-c-lightbox: (
   light: rgb(0 0 0 / 82%),
   dark: rgb(0 0 0 / 90%),
 );
-// 灯箱关闭按钮底色（hover 时组件内另有更亮的一档，未纳入令牌）
+// 灯箱关闭按钮底色
 $jg-c-overlay-hover: (
   light: rgb(255 255 255 / 16%),
   dark: rgb(255 255 255 / 12%),
 );
+// 灯箱关闭按钮 hover 时的加亮底色（L1 从白名单收编）
+$jg-c-overlay-hover-strong: (
+  light: rgb(255 255 255 / 24%),
+  dark: rgb(255 255 255 / 30%),
+);
 // 强调色（accent）上的文字颜色：纯色，不会生成 dark 一套
 $jg-c-on-accent: #fff;
+
+// ---- 品牌色（解锁组件的品牌绿；不属于主题的通用语义色板）----
+//
+// ⚠ 语义色（成功/警告/危险/信息）一律直接消费主题自带的
+// --vp-c-green / -yellow / -red / -blue 的 -text | -bg | -soft 三档
+// （由 @vuepress/helper/colors.css 提供明暗双套），本文件不重复定义，
+// 以免维护两份真相、且主题调色时不会跟随。
+
+// 品牌绿：解锁按钮底色、高亮文字、虚线框、聚焦边框。
+// 暗色略提亮，补偿深色底上的视觉重量。
+$jg-c-brand: (
+  light: #3eaf7c,
+  dark: #4ab98a,
+);
+// "阅读全文"按钮描边
+$jg-c-brand-border: (
+  light: rgb(62 175 124 / 45%),
+  dark: rgb(74 185 138 / 50%),
+);
+// 品牌绿光晕阴影的颜色令牌（结构字面量引用它，暗色下强度自动跟随）
+$jg-c-brand-glow: (
+  light: rgb(62 175 124 / 16%),
+  dark: rgb(74 185 138 / 22%),
+);
 
 // ---- 圆角与尺寸 ----
 
@@ -90,6 +119,9 @@ $jg-shadow-xl: "0 18px 48px var(--jg-c-shadow-strong)";
 $jg-shadow-md-hover: "0 6px 20px var(--jg-c-shadow-strong)";
 // 右侧抽屉的定向阴影：向左投射，避免通用阴影在满高抽屉上看不出方向
 $jg-shadow-drawer: "-8px 0 32px var(--jg-c-shadow)";
+// 品牌绿光晕阴影（"阅读全文"按钮）。颜色走 --jg-c-brand-glow 以支持暗色自动增强
+$jg-shadow-brand: "0 8px 20px var(--jg-c-brand-glow)";
+$jg-shadow-brand-hover: "0 10px 24px var(--jg-c-brand-glow)";
 
 // ---- 动效 ----
 

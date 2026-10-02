@@ -144,7 +144,7 @@ onUnmounted(() => {
   height: 40px;
   border: 0;
   border-radius: 50%;
-  color: #fff;
+  color: var(--jg-c-on-accent);
   background: var(--jg-c-overlay-hover);
   font-size: 30px;
   line-height: 38px;
@@ -152,7 +152,7 @@ onUnmounted(() => {
 }
 
 .image-preview-close:hover {
-  background: rgb(255 255 255 / 24%);
+  background: var(--jg-c-overlay-hover-strong);
 }
 
 .image-preview-fade-enter-active,

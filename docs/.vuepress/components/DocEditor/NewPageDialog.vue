@@ -394,12 +394,12 @@ async function openCreatedPage(): Promise<void> {
   .np-close {
     border: none;
     background: transparent;
-    color: var(--vp-c-text-3);
+    color: var(--vp-c-text-subtle);
     font-size: 0.9rem;
     cursor: pointer;
 
     &:hover {
-      color: var(--vp-c-text-1);
+      color: var(--vp-c-text);
     }
   }
 }
@@ -421,7 +421,7 @@ async function openCreatedPage(): Promise<void> {
   gap: 0.5rem;
 
   label {
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.8rem;
     text-align: right;
   }
@@ -433,11 +433,11 @@ async function openCreatedPage(): Promise<void> {
     border: 1px solid var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
     font-size: 0.82rem;
 
     &:focus {
-      border-color: var(--vp-c-accent, var(--vp-c-brand));
+      border-color: var(--vp-c-accent);
       outline: none;
     }
   }
@@ -454,7 +454,7 @@ async function openCreatedPage(): Promise<void> {
 
   legend {
     padding: 0 0.3rem;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.78rem;
   }
 
@@ -473,13 +473,13 @@ async function openCreatedPage(): Promise<void> {
     }
 
     &.selected {
-      border-color: var(--vp-c-accent, var(--vp-c-brand));
+      border-color: var(--vp-c-accent);
       background: var(--vp-c-bg-soft, transparent);
     }
 
     input {
       margin: 0;
-      accent-color: var(--vp-c-accent, var(--vp-c-brand));
+      accent-color: var(--vp-c-accent);
     }
 
     .tpl-label {
@@ -488,7 +488,7 @@ async function openCreatedPage(): Promise<void> {
     }
 
     .tpl-desc {
-      color: var(--vp-c-text-3);
+      color: var(--vp-c-text-subtle);
       font-size: 0.75rem;
     }
   }
@@ -516,20 +516,20 @@ async function openCreatedPage(): Promise<void> {
 
   .np-guide-title {
     margin: 0;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.8rem;
   }
 
   .np-guide-steps {
     margin: 0;
     padding-left: 1.2rem;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.78rem;
 
     code {
       padding: 0.05rem 0.3rem;
       border-radius: var(--jg-radius-sm);
-      background: var(--vp-c-bg-soft, rgba(0, 0, 0, 0.06));
+      background: var(--vp-c-bg-soft);
       font-size: 0.75rem;
     }
   }
@@ -539,7 +539,7 @@ async function openCreatedPage(): Promise<void> {
     padding: 0.55rem 0.7rem;
     border: 1px solid var(--vp-c-border);
     border-radius: var(--jg-radius-md);
-    background: var(--vp-c-bg-soft, rgba(0, 0, 0, 0.04));
+    background: var(--vp-c-bg-soft);
     font-family: ui-monospace, Consolas, monospace;
     font-size: 0.75rem;
     line-height: 1.6;
@@ -552,13 +552,13 @@ async function openCreatedPage(): Promise<void> {
     border: 1px dashed var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: transparent;
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
     font-size: 0.78rem;
     cursor: pointer;
     transition: border-color var(--jg-dur-sm);
 
     &:hover {
-      border-color: var(--vp-c-accent, var(--vp-c-brand));
+      border-color: var(--vp-c-accent);
     }
   }
 }
@@ -566,7 +566,7 @@ async function openCreatedPage(): Promise<void> {
 .np-error {
   margin: 0;
   padding: 0.4rem 1rem;
-  color: var(--vp-c-danger-content, #a33);
+  color: var(--vp-c-red-text);
   font-size: 0.78rem;
 
   &.np-error-body {
@@ -586,13 +586,13 @@ async function openCreatedPage(): Promise<void> {
     border: 1px solid var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
     font-size: 0.8rem;
     cursor: pointer;
 
     &.np-primary {
       border-color: transparent;
-      background: var(--vp-c-accent, var(--vp-c-brand));
+      background: var(--vp-c-accent);
       color: var(--jg-c-on-accent);
 
       &:hover:not(:disabled) {

@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
 }
 
 .mermaid-lazy-placeholder.is-error {
-  color: var(--vp-c-danger);
+  color: var(--vp-c-red-text);
 }
 
 .mermaid-lazy-spinner {

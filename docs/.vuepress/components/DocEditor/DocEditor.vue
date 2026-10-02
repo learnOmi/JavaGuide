@@ -663,12 +663,12 @@ defineExpose({
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.82rem;
   }
 
   .dirty-dot {
-    color: var(--vp-c-warning, #e2a600);
+    color: var(--vp-c-yellow-bg);
     font-size: 0.7rem;
   }
 }
@@ -684,7 +684,7 @@ defineExpose({
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-size: 0.78rem;
   cursor: pointer;
   user-select: none;
@@ -696,7 +696,7 @@ defineExpose({
   border: 1px solid var(--vp-c-border);
   border-radius: var(--jg-radius-sm);
   background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-size: 0.8rem;
   cursor: pointer;
   transition:
@@ -704,7 +704,7 @@ defineExpose({
     background-color var(--jg-dur-sm);
 
   &:hover:not(:disabled) {
-    border-color: var(--vp-c-accent, var(--vp-c-brand));
+    border-color: var(--vp-c-accent);
   }
 
   &:disabled {
@@ -714,7 +714,7 @@ defineExpose({
 }
 
 .save-btn {
-  background: var(--vp-c-accent, var(--vp-c-brand));
+  background: var(--vp-c-accent);
   border-color: transparent;
   color: var(--jg-c-on-accent);
 
@@ -724,18 +724,18 @@ defineExpose({
 }
 
 .icon-btn.danger {
-  color: var(--vp-c-danger-content, #a33);
+  color: var(--vp-c-red-text);
 
   &:hover:not(:disabled) {
-    border-color: var(--vp-c-danger, #a33);
+    border-color: var(--vp-c-red-bg);
   }
 }
 
 // 滚动联动开启态：以强调色标识，便于一眼判断联动是否生效
 .icon-btn.active {
-  border-color: var(--vp-c-accent, var(--vp-c-brand));
-  background: var(--vp-c-accent-soft, rgba(0, 0, 0, 0.06));
-  color: var(--vp-c-accent, var(--vp-c-brand));
+  border-color: var(--vp-c-accent);
+  background: var(--vp-c-accent-soft);
+  color: var(--vp-c-accent);
 }
 
 .editor-toast {
@@ -750,7 +750,7 @@ defineExpose({
   border-radius: var(--jg-radius-md);
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   box-shadow: var(--jg-shadow-lg);
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-size: 0.82rem;
   word-break: break-all;
   animation: toast-rise 0.25s var(--jg-ease-standard);
@@ -786,18 +786,18 @@ defineExpose({
   }
 
   &.banner-conflict {
-    background: var(--vp-c-warning-bg, #fff7e6);
-    color: var(--vp-c-warning-content, #8a6100);
+    background: var(--vp-c-yellow-soft);
+    color: var(--vp-c-yellow-text);
   }
 
   &.banner-error {
-    background: var(--vp-c-danger-bg, #fdecec);
-    color: var(--vp-c-danger-content, #a33);
+    background: var(--vp-c-red-soft);
+    color: var(--vp-c-red-text);
   }
 
   &.banner-info {
-    background: var(--vp-c-info-bg, #eaf3ff);
-    color: var(--vp-c-info-content, #246);
+    background: var(--vp-c-blue-soft);
+    color: var(--vp-c-blue-text);
   }
 }
 
@@ -819,7 +819,7 @@ defineExpose({
     border: none;
     border-bottom: 2px solid transparent;
     background: transparent;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.8rem;
     cursor: pointer;
     transition:
@@ -827,12 +827,12 @@ defineExpose({
       border-color var(--jg-dur-sm);
 
     &:hover {
-      color: var(--vp-c-text-1);
+      color: var(--vp-c-text);
     }
 
     &.active {
-      border-bottom-color: var(--vp-c-accent, var(--vp-c-brand));
-      color: var(--vp-c-accent, var(--vp-c-brand));
+      border-bottom-color: var(--vp-c-accent);
+      color: var(--vp-c-accent);
       font-weight: 600;
     }
   }
@@ -847,7 +847,7 @@ defineExpose({
 .editor-status {
   padding: 0.35rem 0.9rem;
   border-top: 1px solid var(--vp-c-border);
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
   font-size: 0.75rem;
 }
 </style>

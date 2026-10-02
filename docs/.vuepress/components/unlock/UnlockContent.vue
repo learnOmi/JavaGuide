@@ -113,11 +113,11 @@ const handleUnlock = () => {
   right: 0;
   bottom: 0;
   height: 160px;
-  background: linear-gradient(to bottom, transparent, var(--bg-color, #fff));
+  background: linear-gradient(to bottom, transparent, var(--vp-c-bg));
 }
 
 .is-locked {
-  border: 1px solid var(--border-color, #e5e7eb);
+  border: 1px solid var(--vp-c-border);
   border-radius: var(--jg-radius-xl);
   padding: 1rem;
 }
@@ -133,7 +133,7 @@ const handleUnlock = () => {
 
 .lock-reason {
   margin: 0.75rem auto 1rem;
-  color: #64748b;
+  color: var(--vp-c-text-mute);
   line-height: 1.6;
   max-width: 560px;
 }
@@ -142,9 +142,9 @@ const handleUnlock = () => {
   margin: 0 auto 1rem;
   padding: 0.85rem;
   max-width: 300px;
-  border: 1px dashed #3eaf7c;
+  border: 1px dashed var(--jg-c-brand);
   border-radius: var(--jg-radius-lg);
-  background: #f8fafc;
+  background: var(--vp-c-bg-alt);
 }
 
 .qr-image {
@@ -162,7 +162,7 @@ const handleUnlock = () => {
   width: 125px;
   padding: 0.5rem 0.75rem;
   border-radius: var(--jg-radius-md);
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--vp-c-border);
   font-size: 1rem;
   text-align: center;
 }
@@ -171,32 +171,34 @@ const handleUnlock = () => {
   padding: 0.5rem 1rem;
   border: 0;
   border-radius: var(--jg-radius-md);
-  background: #3eaf7c;
+  background: var(--jg-c-brand);
   color: var(--jg-c-on-accent);
   font-weight: 700;
   cursor: pointer;
 }
 
 .highlight {
-  color: #3eaf7c;
+  color: var(--jg-c-brand);
   font-weight: 700;
 }
 
 .error-msg {
   margin: 0.45rem 0 0;
-  color: #dc2626;
+  color: var(--vp-c-red-text);
   font-size: 0.85rem;
 }
 
 .lock-footer {
   margin: 0.7rem 0 0;
-  color: #94a3b8;
+  color: var(--vp-c-text-subtle);
   font-size: 0.8rem;
 }
 
 .slide-up-enter-active,
 .slide-up-leave-active {
-  transition: all 0.35s var(--jg-ease-standard);
+  transition:
+    transform var(--jg-dur-lg) var(--jg-ease-standard),
+    opacity var(--jg-dur-lg) var(--jg-ease-standard);
 }
 
 .slide-up-enter-from,

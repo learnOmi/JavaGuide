@@ -207,13 +207,13 @@ function onFieldInput(field: FieldDef, event: Event): void {
 }
 
 .fm-hint {
-  background: var(--vp-c-info-bg, #eaf3ff);
-  color: var(--vp-c-info-content, #246);
+  background: var(--vp-c-blue-soft);
+  color: var(--vp-c-blue-text);
 }
 
 .fm-invalid {
-  background: var(--vp-c-danger-bg, #fdecec);
-  color: var(--vp-c-danger-content, #a33);
+  background: var(--vp-c-red-soft);
+  color: var(--vp-c-red-text);
 }
 
 .fm-row {
@@ -223,7 +223,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
   gap: 0.5rem;
 
   label {
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
     font-size: 0.8rem;
     text-align: right;
   }
@@ -234,11 +234,11 @@ function onFieldInput(field: FieldDef, event: Event): void {
     border: 1px solid var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
     font-size: 0.82rem;
 
     &:focus {
-      border-color: var(--vp-c-accent, var(--vp-c-brand));
+      border-color: var(--vp-c-accent);
       outline: none;
     }
 
@@ -249,7 +249,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
   }
 
   .fm-complex-mark {
-    color: var(--vp-c-warning, #e2a600);
+    color: var(--vp-c-yellow-bg);
     font-size: 0.72rem;
     white-space: nowrap;
   }
