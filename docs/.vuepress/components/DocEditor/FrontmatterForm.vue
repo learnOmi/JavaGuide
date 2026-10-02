@@ -202,7 +202,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
 .fm-invalid {
   margin: 0;
   padding: 0.45rem 0.6rem;
-  border-radius: 6px;
+  border-radius: var(--jg-radius-sm);
   font-size: 0.78rem;
 }
 
@@ -232,7 +232,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
     width: 100%;
     padding: 0.3rem 0.55rem;
     border: 1px solid var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
     color: var(--vp-c-text-1);
     font-size: 0.82rem;

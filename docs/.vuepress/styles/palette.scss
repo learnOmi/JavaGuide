@@ -1,16 +1,123 @@
+// ============================================
+// 布局尺寸
+// ============================================
+
 $sidebar-width: 20rem;
 $sidebar-mobile-width: 16rem;
+
+// ============================================
+// 字体
+// ============================================
+
 // 默认清爽黑体栈；历史衬线栈保留为字体切换器中的"主题衬线"预设
 // （见 components/fontOptions.ts，切换器通过内联 CSS 变量覆盖这里的默认值）
-$vp-font:
-  system-ui,
-  -apple-system,
-  "Segoe UI",
-  Roboto,
-  "PingFang SC",
-  "Hiragino Sans GB",
-  "Microsoft YaHei",
-  "Noto Sans SC",
-  "WenQuanYi Micro Hei",
-  sans-serif;
+//
+// ⚠ 必须写成「带引号的字符串」：不带引号时这里是空格分隔的 list，
+// Sass 的 meta.type-of() 会返回 list，不满足 number/string 两种可注入类型，
+// 会被 @vuepress/plugin-sass-palette 的 helper.inject() 静默丢弃
+// （只打印一条 @warn，构建不报错，极难发现）。
+// 主题自身的 templates/palette/font.scss 也是带引号写法，此处与之对齐。
+$vp-font: 'system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "WenQuanYi Micro Hei", sans-serif';
 $vp-font-heading: $vp-font;
+
+// ============================================
+// 设计令牌（--jg-*）
+// ============================================
+//
+// 本文件是设计令牌的唯一权威声明处。这里声明的变量会被
+// @vuepress/plugin-sass-palette 自动注入为 :root 下的 CSS 自定义属性；
+// 颜色或 (light:, dark:) map 还会额外生成 [data-theme='dark'] 一套。
+//
+// 两条硬约束（违反会「静默失效」，只有 @warn，构建不报错）：
+//   1. 复合值（阴影、cubic-bezier 等）必须写成「带引号的字符串」，
+//      否则会被解析为 list 类型而被 helper.inject() 丢弃；
+//   2. 只支持 number / string / color / (light:, dark:) map 四类值。
+//
+// 组件里一律用 var(--jg-*) 消费，禁止再写裸值。
+// 令牌增删请同步维护 doc/dev-report/03-UI风格升级-设计与实施记录.md。
+
+// ---- 颜色（map 形式 → 自动生成明暗两套）----
+
+// 常规浮层阴影色
+$jg-c-shadow: (
+  light: rgb(0 0 0 / 10%),
+  dark: rgb(0 0 0 / 42%),
+);
+// 强阴影 / 弹窗阴影色
+$jg-c-shadow-strong: (
+  light: rgb(0 0 0 / 22%),
+  dark: rgb(0 0 0 / 55%),
+);
+// 对话框遮罩底色
+$jg-c-scrim: (
+  light: rgb(0 0 0 / 35%),
+  dark: rgb(0 0 0 / 55%),
+);
+// 图片灯箱底色
+$jg-c-lightbox: (
+  light: rgb(0 0 0 / 82%),
+  dark: rgb(0 0 0 / 90%),
+);
+// 灯箱关闭按钮底色（hover 时组件内另有更亮的一档，未纳入令牌）
+$jg-c-overlay-hover: (
+  light: rgb(255 255 255 / 16%),
+  dark: rgb(255 255 255 / 12%),
+);
+// 强调色（accent）上的文字颜色：纯色，不会生成 dark 一套
+$jg-c-on-accent: #fff;
+
+// ---- 圆角与尺寸 ----
+
+$jg-radius-sm: 6px;
+$jg-radius-md: 8px;
+$jg-radius-lg: 10px;
+$jg-radius-xl: 12px;
+$jg-radius-pill: 999px;
+// 沉浸态正文列宽：比常规阅读列宽（--content-width，主题默认 780px）明显放宽，
+// 但仍限宽，避免超宽屏上行长失控影响可读性
+$jg-immersive-content-width: 1200px;
+// 沉浸态正文左右内边距（仅 ≥960px 生效；更窄时由正文自身的 padding 兜住）
+$jg-immersive-pad-x: 3rem;
+
+// ---- 阴影（带引号字符串，引用颜色令牌 → 暗色下随颜色自动增强）----
+
+$jg-shadow-sm: "0 2px 12px var(--jg-c-shadow)";
+$jg-shadow-md: "0 4px 16px var(--jg-c-shadow)";
+$jg-shadow-lg: "0 12px 48px var(--jg-c-shadow-strong)";
+$jg-shadow-xl: "0 18px 48px var(--jg-c-shadow-strong)";
+// 交互抬升态（hover）：与 shadow-md 同源，但用 shadow-strong 加浓以拉开层次，
+// 单靠位移反馈在纯色背景上不易察觉
+$jg-shadow-md-hover: "0 6px 20px var(--jg-c-shadow-strong)";
+// 右侧抽屉的定向阴影：向左投射，避免通用阴影在满高抽屉上看不出方向
+$jg-shadow-drawer: "-8px 0 32px var(--jg-c-shadow)";
+
+// ---- 动效 ----
+
+$jg-dur-sm: 0.15s;
+$jg-dur-md: 0.2s;
+$jg-dur-lg: 0.3s;
+$jg-ease-standard: ease;
+// 同处时长下观感更利落的强调缓动
+$jg-ease-emphasized: "cubic-bezier(0.2, 0, 0, 1)";
+
+// ---- z-index（沿用现值，本期只登记命名不改数值，避免引入新层级冲突）----
+//
+// 主题基线：page-footer 50 / toc 99 / main-layout 100 / sidebar-mask 100 /
+//          sidebar-mobile 125 / nav-screen 150 / navbar 175 /
+//          skip-link 999 / color-mode-switch 99999
+
+// FontSwitch 面板（需高于主题 navbar 175）
+$jg-z-float: 200;
+// EditEntry 编辑入口按钮
+$jg-z-entry: 300;
+// DocEditor 编辑抽屉
+$jg-z-editor: 350;
+// 新建页 / 删除确认对话框
+$jg-z-dialog: 400;
+// DocEditor 内部层级（如编辑器内浮层）
+$jg-z-editor-inner: 500;
+// LayoutToggle 沉浸模式开关；与主题 skip-link 同值，后者仅聚焦时可
+// 见，实测不冲突，本期记录不改
+$jg-z-immersive: 999;
+// 图片预览 / GlobalUnlock 遮罩
+$jg-z-lightbox: 9999;

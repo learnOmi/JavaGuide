@@ -339,12 +339,12 @@ async function openCreatedPage(): Promise<void> {
 .np-overlay {
   position: fixed;
   inset: 0;
-  z-index: 400;
+  z-index: var(--jg-z-dialog);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
-  animation: np-fade-in 0.18s ease;
+  background: var(--jg-c-scrim);
+  animation: np-fade-in var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 @keyframes np-fade-in {
@@ -362,10 +362,10 @@ async function openCreatedPage(): Promise<void> {
   width: min(30rem, calc(100vw - 2rem));
   max-height: calc(100vh - 4rem);
   border: 1px solid var(--vp-c-border);
-  border-radius: 10px;
+  border-radius: var(--jg-radius-lg);
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.22);
-  animation: np-pop-in 0.2s ease;
+  box-shadow: var(--jg-shadow-lg);
+  animation: np-pop-in var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 @keyframes np-pop-in {
@@ -431,7 +431,7 @@ async function openCreatedPage(): Promise<void> {
     width: 100%;
     padding: 0.3rem 0.55rem;
     border: 1px solid var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
     color: var(--vp-c-text-1);
     font-size: 0.82rem;
@@ -450,7 +450,7 @@ async function openCreatedPage(): Promise<void> {
   margin: 0;
   padding: 0.5rem 0.6rem;
   border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
 
   legend {
     padding: 0 0.3rem;
@@ -465,7 +465,7 @@ async function openCreatedPage(): Promise<void> {
     gap: 0.45rem;
     padding: 0.35rem 0.5rem;
     border: 1px solid transparent;
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     cursor: pointer;
 
     &:hover {
@@ -502,7 +502,7 @@ async function openCreatedPage(): Promise<void> {
     display: inline-block;
     padding: 0.25rem 0.55rem;
     border: 1px dashed var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg-soft, transparent);
     font-family: ui-monospace, Consolas, monospace;
     font-size: 0.8rem;
@@ -528,7 +528,7 @@ async function openCreatedPage(): Promise<void> {
 
     code {
       padding: 0.05rem 0.3rem;
-      border-radius: 4px;
+      border-radius: var(--jg-radius-sm);
       background: var(--vp-c-bg-soft, rgba(0, 0, 0, 0.06));
       font-size: 0.75rem;
     }
@@ -538,7 +538,7 @@ async function openCreatedPage(): Promise<void> {
     margin: 0;
     padding: 0.55rem 0.7rem;
     border: 1px solid var(--vp-c-border);
-    border-radius: 8px;
+    border-radius: var(--jg-radius-md);
     background: var(--vp-c-bg-soft, rgba(0, 0, 0, 0.04));
     font-family: ui-monospace, Consolas, monospace;
     font-size: 0.75rem;
@@ -550,12 +550,12 @@ async function openCreatedPage(): Promise<void> {
     align-self: flex-start;
     padding: 0.25rem 0.7rem;
     border: 1px dashed var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: transparent;
     color: var(--vp-c-text-1);
     font-size: 0.78rem;
     cursor: pointer;
-    transition: border-color 0.15s;
+    transition: border-color var(--jg-dur-sm);
 
     &:hover {
       border-color: var(--vp-c-accent, var(--vp-c-brand));
@@ -584,7 +584,7 @@ async function openCreatedPage(): Promise<void> {
   button {
     padding: 0.3rem 0.8rem;
     border: 1px solid var(--vp-c-border);
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
     color: var(--vp-c-text-1);
     font-size: 0.8rem;
@@ -593,7 +593,7 @@ async function openCreatedPage(): Promise<void> {
     &.np-primary {
       border-color: transparent;
       background: var(--vp-c-accent, var(--vp-c-brand));
-      color: var(--vp-c-white, #fff);
+      color: var(--jg-c-on-accent);
 
       &:hover:not(:disabled) {
         filter: brightness(1.08);

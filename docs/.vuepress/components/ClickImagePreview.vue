@@ -117,12 +117,12 @@ onUnmounted(() => {
 .image-preview-mask {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--jg-z-lightbox);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 32px;
-  background: rgb(0 0 0 / 82%);
+  background: var(--jg-c-lightbox);
   cursor: zoom-out;
 }
 
@@ -131,8 +131,8 @@ onUnmounted(() => {
   max-width: min(100%, 1280px);
   max-height: 100%;
   object-fit: contain;
-  border-radius: 6px;
-  box-shadow: 0 18px 48px rgb(0 0 0 / 35%);
+  border-radius: var(--jg-radius-sm);
+  box-shadow: var(--jg-shadow-xl);
   cursor: default;
 }
 
@@ -145,7 +145,7 @@ onUnmounted(() => {
   border: 0;
   border-radius: 50%;
   color: #fff;
-  background: rgb(255 255 255 / 16%);
+  background: var(--jg-c-overlay-hover);
   font-size: 30px;
   line-height: 38px;
   cursor: pointer;
@@ -157,7 +157,7 @@ onUnmounted(() => {
 
 .image-preview-fade-enter-active,
 .image-preview-fade-leave-active {
-  transition: opacity 0.16s ease;
+  transition: opacity var(--jg-dur-sm) var(--jg-ease-standard);
 }
 
 .image-preview-fade-enter-from,

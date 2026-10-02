@@ -1,1 +1,3 @@
+// 编译期 Sass 变量：本文件进入主题的 hope-config 模块，供主题在 @include 中消费，
+// 不会生成 CSS var()。需要浏览器可读的设计令牌请放 palette.scss（那边会自动注入 :root）。
 $theme-color: #2980b9;

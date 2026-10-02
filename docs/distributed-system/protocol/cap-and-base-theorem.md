@@ -388,7 +388,7 @@ flowchart LR
 
 ### BASE 理论三要素
 
-![BASE理论三要素](/assets/images/imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAxOC81LzI0LzE2MzkxNDgwNmQ5ZTE1YzY)
+![BASE理论三要素](/assets/images/imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAxOC81LzI0LzE2MzkxNDgwNmQ5ZTE1YzY.png)
 
 #### 基本可用
 

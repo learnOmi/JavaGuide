@@ -93,7 +93,7 @@ onMounted(() => {
   position: fixed;
   right: 20px;
   bottom: 150px;
-  z-index: 999;
+  z-index: var(--jg-z-immersive);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,10 +104,10 @@ onMounted(() => {
   color: var(--vp-c-text);
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-border);
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--jg-radius-pill);
+  box-shadow: var(--jg-shadow-sm);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--jg-dur-lg) var(--jg-ease-standard);
   white-space: nowrap;
 
   &:hover {
@@ -118,7 +118,7 @@ onMounted(() => {
 
   &.is-hidden {
     background: var(--vp-c-accent);
-    color: #fff;
+    color: var(--jg-c-on-accent);
     border-color: var(--vp-c-accent);
   }
 

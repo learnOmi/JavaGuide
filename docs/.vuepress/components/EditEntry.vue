@@ -125,7 +125,7 @@ onBeforeUnmount(() => {
   position: fixed;
   right: 1.4rem;
   bottom: 4.2rem;
-  z-index: 300;
+  z-index: var(--jg-z-entry);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,16 +136,16 @@ onBeforeUnmount(() => {
   border-radius: 50%;
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   color: var(--vp-c-accent, var(--vp-c-brand));
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--jg-shadow-md);
   cursor: pointer;
   transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
+    transform var(--jg-dur-sm) var(--jg-ease-standard),
+    box-shadow var(--jg-dur-sm) var(--jg-ease-standard),
+    border-color var(--jg-dur-sm) var(--jg-ease-standard);
 
   &:hover {
     border-color: var(--vp-c-accent, var(--vp-c-brand));
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--jg-shadow-md-hover);
     transform: translateY(-2px);
   }
 

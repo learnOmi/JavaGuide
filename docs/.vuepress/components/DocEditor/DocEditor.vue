@@ -617,15 +617,15 @@ defineExpose({
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 350;
+  z-index: var(--jg-z-editor);
   display: flex;
   flex-direction: column;
   max-width: 100vw;
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   border-left: 1px solid var(--vp-c-border);
-  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.14);
+  box-shadow: var(--jg-shadow-drawer);
   // 入场动画：CSS animation 实现，rAF 节流环境下也能保证可见
-  animation: drawer-slide-in 0.22s ease;
+  animation: drawer-slide-in 0.22s var(--jg-ease-standard);
 
   @media (max-width: 719px) {
     // 小屏直接全屏，避免挤压阅读区
@@ -694,14 +694,14 @@ defineExpose({
 .save-btn {
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--vp-c-border);
-  border-radius: 6px;
+  border-radius: var(--jg-radius-sm);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   font-size: 0.8rem;
   cursor: pointer;
   transition:
-    border-color 0.15s,
-    background-color 0.15s;
+    border-color var(--jg-dur-sm),
+    background-color var(--jg-dur-sm);
 
   &:hover:not(:disabled) {
     border-color: var(--vp-c-accent, var(--vp-c-brand));
@@ -716,7 +716,7 @@ defineExpose({
 .save-btn {
   background: var(--vp-c-accent, var(--vp-c-brand));
   border-color: transparent;
-  color: var(--vp-c-white, #fff);
+  color: var(--jg-c-on-accent);
 
   &:hover:not(:disabled) {
     filter: brightness(1.08);
@@ -742,18 +742,18 @@ defineExpose({
   position: fixed;
   left: 50%;
   bottom: 3rem;
-  z-index: 500;
+  z-index: var(--jg-z-editor-inner);
   transform: translateX(-50%);
   max-width: min(80vw, 36rem);
   padding: 0.5rem 1rem;
   border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--jg-shadow-lg);
   color: var(--vp-c-text-1);
   font-size: 0.82rem;
   word-break: break-all;
-  animation: toast-rise 0.25s ease;
+  animation: toast-rise 0.25s var(--jg-ease-standard);
 }
 
 @keyframes toast-rise {
@@ -778,7 +778,7 @@ defineExpose({
   button {
     padding: 0.15rem 0.55rem;
     border: 1px solid currentColor;
-    border-radius: 6px;
+    border-radius: var(--jg-radius-sm);
     background: transparent;
     color: inherit;
     font-size: 0.78rem;
@@ -823,8 +823,8 @@ defineExpose({
     font-size: 0.8rem;
     cursor: pointer;
     transition:
-      color 0.15s,
-      border-color 0.15s;
+      color var(--jg-dur-sm),
+      border-color var(--jg-dur-sm);
 
     &:hover {
       color: var(--vp-c-text-1);

@@ -470,11 +470,11 @@ Docker 常见概念解读，可以看 JavaGuide 的这篇[Docker 基本概念解
 
 想要看书学习设计模式的话，首推 《重学 Java 设计模式》 。有趣的例子，配合形象的图片，通过实战案例讲解设计模式的方式妙极了！文中的每一个细节无不透露着作者的用心！每一种设计模式实际都不难理解，大部分读者最需要的还是设计模式的实战经验。如果你能细心思考实践《重学 Java 设计模式》 中的每一个案例，我相信，你对设计模式的理解一定会更上一层楼！
 
-![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4da6f8cc0cf4a8e8238d3d8671e0462~tplv-k3u1fbpfcp-watermark.image)
+![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4da6f8cc0cf4a8e8238d3d8671e0462~tplv-k3u1fbpfcp-watermark.png)
 
 想要看视频学习的话，首推 [《尚硅谷 Java 设计模式（图解+框架源码剖析）》](https://www.bilibili.com/video/BV1G4411c7N4) 这个视频。
 
-![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/029687d24c7b4882ba81b5b629c323a1~tplv-k3u1fbpfcp-watermark.image)
+![](/assets/images/p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/029687d24c7b4882ba81b5b629c323a1~tplv-k3u1fbpfcp-watermark.png)
 
 这个视频通过图解+框架源码分析的方式全面地讲解了设计模式相关的内容，包括设计模式七大原则、UML 类图-类的六大关系、23 种设计模式及其分类等知识点。
 

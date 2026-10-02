@@ -264,6 +264,7 @@ watch(
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 24px;
+  /* z-index: 10 —— 组件内部相对层级（遮罩相对按钮的层叠关系），非全局尺度，有意保留裸值 */
   z-index: 10;
   pointer-events: none;
 }
@@ -289,18 +290,19 @@ watch(
 
 .read-more-btn {
   position: relative;
+  /* z-index: 11 —— 组件内部相对层级（按钮高于同组遮罩），非全局尺度，有意保留裸值 */
   z-index: 11;
   pointer-events: auto;
   min-width: 132px;
   padding: 0.56rem 1.35rem;
   border: 1px solid rgba(62, 175, 124, 0.45);
-  border-radius: 999px;
+  border-radius: var(--jg-radius-pill);
   background: var(--bg-color, #fff);
   color: #3eaf7c;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(62, 175, 124, 0.16);
-  transition: all 0.2s ease;
+  transition: all var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 .read-more-btn:hover {
@@ -311,8 +313,8 @@ watch(
 .unlock-modal-mask {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: rgba(15, 23, 42, 0.45);
+  z-index: var(--jg-z-lightbox);
+  background: var(--jg-c-scrim);
   backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
@@ -323,10 +325,10 @@ watch(
 .unlock-modal {
   width: min(92vw, 500px);
   padding: 1.2rem;
-  border-radius: 14px;
+  border-radius: var(--jg-radius-xl);
   border: 1px solid var(--border-color, #e5e7eb);
   background: var(--bg-color, #fff);
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--jg-shadow-lg);
   text-align: center;
 }
 
@@ -342,7 +344,7 @@ watch(
   width: 28px;
   height: 28px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--jg-radius-pill);
   background: #f1f5f9;
   color: #334155;
   font-size: 18px;
@@ -368,7 +370,7 @@ watch(
   padding: 0.8rem;
   max-width: 300px;
   border: 1px dashed #3eaf7c;
-  border-radius: 10px;
+  border-radius: var(--jg-radius-lg);
   background: #f8fafc;
 }
 
@@ -396,7 +398,7 @@ watch(
 .unlock-input {
   width: 125px;
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
   border: 1px solid #d1d5db;
   font-size: 1rem;
   text-align: center;
@@ -410,9 +412,9 @@ watch(
 .unlock-btn {
   padding: 0.5rem 1rem;
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
   background: #3eaf7c;
-  color: #fff;
+  color: var(--jg-c-on-accent);
   font-weight: 700;
   cursor: pointer;
 }
@@ -425,7 +427,7 @@ watch(
 
 .unlock-fade-enter-active,
 .unlock-fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 .unlock-fade-enter-from,

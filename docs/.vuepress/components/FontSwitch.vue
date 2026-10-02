@@ -185,7 +185,7 @@ onBeforeUnmount(() => {
   border: none;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color var(--jg-dur-md) var(--jg-ease-standard);
 
   &:hover {
     color: var(--vp-c-accent);
@@ -207,7 +207,7 @@ onBeforeUnmount(() => {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  z-index: 200;
+  z-index: var(--jg-z-float);
   min-width: 210px;
   // 选项较多时限高滚动，避免小屏幕下面板溢出视口
   max-height: min(60vh, 26rem);
@@ -215,10 +215,10 @@ onBeforeUnmount(() => {
   padding: 0.5rem;
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   border: 1px solid var(--vp-c-border);
-  border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  border-radius: var(--jg-radius-lg);
+  box-shadow: var(--jg-shadow-md);
   // 轻量淡入上浮动画；rAF 被节流时动画不播放，面板保持自然可见
-  animation: font-pop-in 0.18s ease;
+  animation: font-pop-in var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 @keyframes font-pop-in {
@@ -250,13 +250,13 @@ onBeforeUnmount(() => {
   color: var(--vp-c-text);
   background: transparent;
   border: none;
-  border-radius: 7px;
+  border-radius: var(--jg-radius-sm);
   text-align: left;
   line-height: 1.3;
   cursor: pointer;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    background-color var(--jg-dur-sm) var(--jg-ease-standard),
+    color var(--jg-dur-sm) var(--jg-ease-standard);
 
   &:hover {
     background: var(--vp-c-bg-soft);

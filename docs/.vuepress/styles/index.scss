@@ -1,12 +1,17 @@
+// ============================================
+// 基础层
+// ============================================
+
 body {
   @media (min-width: 1440px) {
     font-size: 16px;
   }
 }
 
-#markdown-content img,
-.vp-content img,
-.theme-hope-content img {
+// 正文图片自适应。正文包裹元素是 <div vp-content>（属性，不是 class），
+// 原先并列写的 .vp-content / .theme-hope-content 两个 class 选择器都不存在，
+// 只有 #markdown-content 生效；[vp-content] 是它们的共同祖先，覆盖等价且更稳。
+[vp-content] img {
   max-width: 100%;
   height: auto;
 }
@@ -31,44 +36,43 @@ body {
 }
 
 // ============================================
-// 沉浸式阅读模式 - 隐藏导航栏、侧边栏和目录
+// 共享过渡层
 // ============================================
-
-// 过渡动画
-.vp-navbar,
-.vp-sidebar,
-.vp-page,
-.theme-container .vp-page {
+//
+// 只过渡合成友好属性（transform / opacity）。原先还过渡 margin / padding / width，
+// 这三者每帧都会触发 Recalculate Style + Layout，是沉浸模式切换掉帧的主因，已移除。
+//
+// 加 html 前缀是为了提升特异性、压过主题自带的同名 transition 声明，从而免掉 !important。
+// 这段必须留在「基础态」而不能写进 html.layout-hidden：退出沉浸模式时
+// layout-hidden 被移除，若过渡只在隐藏态声明，退场动画会当场失效。
+html .vp-navbar,
+html .vp-sidebar,
+html .vp-page {
   transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    margin 0.3s ease,
-    padding 0.3s ease,
-    width 0.3s ease;
+    transform var(--jg-dur-lg) var(--jg-ease-standard),
+    opacity var(--jg-dur-lg) var(--jg-ease-standard);
 }
 
-// 隐藏布局模式
+// ============================================
+// 沉浸式阅读模式 - 隐藏导航栏、侧边栏和目录
+// ============================================
 html.layout-hidden {
-  // 隐藏顶部导航栏
+  // 隐藏顶部导航栏。
+  // 主题没有给 .vp-navbar 声明 opacity / pointer-events，这两项无需 !important。
   .vp-navbar {
     transform: translateY(-100%) !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+    opacity: 0;
+    pointer-events: none;
   }
 
-  // 隐藏左侧边栏
+  // 隐藏左侧边栏。
+  // 位移写成 calc(-1 * var(--sidebar-width)) 而不是 -100%：百分比位移基于元素自身宽度，
+  // 而侧栏宽度在沉浸态被瞬时归零，-100% 会退化成 0 距离、只剩淡出。
   .vp-sidebar {
-    transform: translateX(-100%) !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+    transform: translateX(calc(-1 * var(--sidebar-width))) !important;
+    opacity: 0;
+    pointer-events: none;
     width: 0 !important;
-  }
-
-  // 隐藏侧边栏切换按钮（小屏幕下的展开按钮）
-  .toggle-sidebar-wrapper {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
 
   // 隐藏侧边栏遮罩层
@@ -76,93 +80,65 @@ html.layout-hidden {
     display: none !important;
   }
 
-  // 侧边栏包装器
-  .vp-sidebar-wrapper,
-  .sidebar-wrapper {
-    width: 0 !important;
-    min-width: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+  // 归零侧栏占位。主题在 #app 上用 --sidebar-space 推导 .vp-page 与 .page-footer
+  // 的左侧留白；归零后二者才能左右对称。
+  // 必须写成 html.layout-hidden #app：--sidebar-space 声明在 #app（id 选择器）上，
+  // 只在 html 上改会被直接声明的 #app 压过（继承永远输给同级声明）。
+  #app {
+    --sidebar-space: 0px;
   }
 
-  // 隐藏右侧目录 (TOC)
-  .vp-toc-placeholder,
-  .toc-wrapper,
-  .vp-toc,
-  aside.vp-toc,
-  .toc {
+  // 正文列宽。真正约束阅读宽度的是 [vp-content]（属性选择器，主题在
+  // _content.scss 里给它 max-width: var(--content-width)，默认 780px）；
+  // 旧代码写的 .vp-content 是 class 选择器，从来匹配不到，所以沉浸模式
+  // 一直只是隐藏了导航与侧栏，正文列宽从未真正变宽。
+  // margin: 0 auto 由主题提供，此处无需重复声明。
+  [vp-content]:not(.custom) {
+    max-width: var(--jg-immersive-content-width);
+  }
+
+  // 页面留白改为两端对称。主题给 .vp-page 的计算值是「左 = 侧栏占位 + 2rem、
+  // 右 = 100vw - 列宽 - 侧栏占位 - 6rem」，这是「有侧栏」语义下的非对称值，
+  // 会破坏 [vp-content] 的居中，必须整体替换掉。
+  // 同时撤掉为导航栏预留的高度（沉浸态导航栏已隐藏）。
+  .theme-container .vp-page {
+    padding-top: 1rem;
+  }
+
+  // 隐藏右侧目录（PC 下 #toc 为 absolute 定位，脱离文档流）
+  .vp-toc-placeholder {
     display: none !important;
-    width: 0 !important;
   }
 
-  // 主容器调整 - 移除左侧 padding/margin
-  .theme-container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    .vp-page {
-      padding-left: 2rem !important;
-      padding-right: 2rem !important;
-      padding-top: 1rem !important;
-      margin-left: 0 !important;
-      max-width: 100% !important;
-      width: 100% !important;
-    }
+  // 隐藏侧栏折叠按钮（仅在窄屏与 PC 之间的那一档出现）
+  .toggle-sidebar-wrapper {
+    display: none !important;
   }
 
-  // 主题内容区域调整 - 让内容更宽
-  .theme-hope-content,
-  .vp-page-content,
-  .vp-content {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 1rem 2rem !important;
-  }
-
-  // 页面容器调整
-  .vp-page-container {
-    padding-top: 1rem !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    max-width: 100% !important;
-  }
-
-  // 确保内容区域居中且宽度适中
-  .theme-container > main {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-    max-width: 100% !important;
-  }
-
-  // 响应式调整
+  // 窄屏及以上才加左右留白：更窄时正文自身已有 padding，再加会挤压内容
   @media (min-width: 960px) {
     .theme-container .vp-page {
-      margin-left: 0 !important;
-      padding-left: 3rem !important;
-      padding-right: 3rem !important;
-    }
-
-    .theme-hope-content,
-    .vp-page-content,
-    .vp-content {
-      max-width: 100% !important;
-      padding: 1rem 2rem !important;
+      padding-inline: var(--jg-immersive-pad-x);
     }
   }
+}
 
-  @media (min-width: 1440px) {
-    .theme-container .vp-page {
-      margin-left: 0 !important;
-      padding-left: 4rem !important;
-      padding-right: 4rem !important;
-    }
+// ============================================
+// 无障碍：尊重系统「减弱动态效果」偏好
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    .theme-hope-content,
-    .vp-page-content,
-    .vp-content {
-      max-width: 100% !important;
-      padding: 1rem 3rem !important;
-    }
+  // 用 *::before / *::after 一并覆盖伪元素动画；!important 是此类
+  // 全覆盖兜底的标准做法，否则压不过组件内联或高特异性声明。
+  html *,
+  html *::before,
+  html *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

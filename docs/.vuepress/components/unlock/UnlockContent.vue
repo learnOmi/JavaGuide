@@ -118,7 +118,7 @@ const handleUnlock = () => {
 
 .is-locked {
   border: 1px solid var(--border-color, #e5e7eb);
-  border-radius: 12px;
+  border-radius: var(--jg-radius-xl);
   padding: 1rem;
 }
 
@@ -143,7 +143,7 @@ const handleUnlock = () => {
   padding: 0.85rem;
   max-width: 300px;
   border: 1px dashed #3eaf7c;
-  border-radius: 10px;
+  border-radius: var(--jg-radius-lg);
   background: #f8fafc;
 }
 
@@ -161,7 +161,7 @@ const handleUnlock = () => {
 .unlock-input {
   width: 125px;
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
   border: 1px solid #d1d5db;
   font-size: 1rem;
   text-align: center;
@@ -170,9 +170,9 @@ const handleUnlock = () => {
 .unlock-btn {
   padding: 0.5rem 1rem;
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--jg-radius-md);
   background: #3eaf7c;
-  color: #fff;
+  color: var(--jg-c-on-accent);
   font-weight: 700;
   cursor: pointer;
 }
@@ -196,7 +196,7 @@ const handleUnlock = () => {
 
 .slide-up-enter-active,
 .slide-up-leave-active {
-  transition: all 0.35s ease;
+  transition: all 0.35s var(--jg-ease-standard);
 }
 
 .slide-up-enter-from,
