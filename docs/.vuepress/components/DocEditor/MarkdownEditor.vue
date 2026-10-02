@@ -254,9 +254,8 @@ watch(
   :deep(.cm-scroller) {
     overflow: auto;
     // 中文正文混排：等宽字体优先，中文回退系统黑体
-    font-family: ui-monospace, Consolas, "Courier New", "Microsoft YaHei",
-      monospace;
-    line-height: 1.7;
+    font-family: var(--vp-font-mono);
+    line-height: var(--jg-lh-relaxed);
   }
 }
 </style>

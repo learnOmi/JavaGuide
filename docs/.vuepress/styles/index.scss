@@ -4,7 +4,8 @@
 
 body {
   @media (min-width: 1440px) {
-    font-size: 16px;
+    // L3：正文基准接入字号刻度，消除裸 px（值仍为 16px，视觉不变）
+    font-size: var(--jg-fs-base);
   }
 }
 

@@ -665,12 +665,12 @@ defineExpose({
     text-overflow: ellipsis;
     white-space: nowrap;
     color: var(--vp-c-text-mute);
-    font-size: 0.82rem;
+    font-size: var(--jg-fs-sm);
   }
 
   .dirty-dot {
     color: var(--vp-c-yellow-bg);
-    font-size: 0.7rem;
+    font-size: var(--jg-fs-xs);
   }
 }
 
@@ -686,7 +686,7 @@ defineExpose({
   align-items: center;
   gap: 0.25rem;
   color: var(--vp-c-text-mute);
-  font-size: 0.78rem;
+  font-size: var(--jg-fs-sm);
   cursor: pointer;
   user-select: none;
 }
@@ -698,7 +698,7 @@ defineExpose({
   border-radius: var(--jg-radius-sm);
   background: var(--vp-c-bg);
   color: var(--vp-c-text);
-  font-size: 0.8rem;
+  font-size: var(--jg-fs-sm);
   cursor: pointer;
   transition:
     border-color var(--jg-dur-sm),
@@ -752,7 +752,7 @@ defineExpose({
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   box-shadow: var(--jg-shadow-lg);
   color: var(--vp-c-text);
-  font-size: 0.82rem;
+  font-size: var(--jg-fs-sm);
   word-break: break-all;
   // 时长归一化到过渡档 -md（原 0.25s，差 0.05s 不可辨）
   animation: toast-rise var(--jg-dur-md) var(--jg-ease-standard);
@@ -775,7 +775,7 @@ defineExpose({
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.45rem 0.9rem;
-  font-size: 0.8rem;
+  font-size: var(--jg-fs-sm);
 
   button {
     padding: 0.15rem 0.55rem;
@@ -783,7 +783,7 @@ defineExpose({
     border-radius: var(--jg-radius-sm);
     background: transparent;
     color: inherit;
-    font-size: 0.78rem;
+    font-size: var(--jg-fs-sm);
     cursor: pointer;
   }
 
@@ -822,7 +822,7 @@ defineExpose({
     border-bottom: 2px solid transparent;
     background: transparent;
     color: var(--vp-c-text-mute);
-    font-size: 0.8rem;
+    font-size: var(--jg-fs-sm);
     cursor: pointer;
     transition:
       color var(--jg-dur-sm),
@@ -850,6 +850,6 @@ defineExpose({
   padding: 0.35rem 0.9rem;
   border-top: 1px solid var(--vp-c-border);
   color: var(--vp-c-text-subtle);
-  font-size: 0.75rem;
+  font-size: var(--jg-fs-xs);
 }
 </style>

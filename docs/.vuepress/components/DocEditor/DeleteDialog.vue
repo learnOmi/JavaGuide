@@ -156,7 +156,7 @@ async function submit(): Promise<void> {
 
   h3 {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: var(--jg-fs-base);
     color: var(--vp-c-red-text);
   }
 
@@ -188,27 +188,27 @@ async function submit(): Promise<void> {
     border: 1px dashed var(--vp-c-border);
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg-soft, transparent);
-    font-family: ui-monospace, Consolas, monospace;
-    font-size: 0.8rem;
+    font-family: var(--vp-font-mono);
+    font-size: var(--jg-fs-xs);
   }
 }
 
 .del-warn {
   margin: 0;
   color: var(--vp-c-text-mute);
-  font-size: 0.78rem;
+  font-size: var(--jg-fs-sm);
 
   code {
     padding: 0.05rem 0.3rem;
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg-soft);
-    font-size: 0.75rem;
+    font-size: var(--jg-fs-xs);
   }
 }
 
 .del-confirm {
   color: var(--vp-c-text-mute);
-  font-size: 0.8rem;
+  font-size: var(--jg-fs-sm);
 
   code {
     color: var(--vp-c-red-text);
@@ -223,7 +223,7 @@ async function submit(): Promise<void> {
   border-radius: var(--jg-radius-sm);
   background: var(--vp-c-bg);
   color: var(--vp-c-text);
-  font-size: 0.82rem;
+  font-size: var(--jg-fs-sm);
 
   &:focus {
     border-color: var(--vp-c-red-bg);
@@ -235,7 +235,7 @@ async function submit(): Promise<void> {
   margin: 0;
   padding: 0 1rem;
   color: var(--vp-c-red-text);
-  font-size: 0.78rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .del-footer {
@@ -251,7 +251,7 @@ async function submit(): Promise<void> {
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
     color: var(--vp-c-text);
-    font-size: 0.8rem;
+    font-size: var(--jg-fs-sm);
     cursor: pointer;
 
     &.del-danger {

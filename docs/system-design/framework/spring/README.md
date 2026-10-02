@@ -44,7 +44,7 @@ Spring Boot 则进一步把配置、依赖管理、自动装配和生产可观�
 3. [Spring&SpringMVC&SpringBoot常用注解总结](./spring-common-annotations.md)：把常用注解和容器能力对应起来。
 4. [Spring 事务详解](./spring-transaction.md)：重点掌握事务传播、隔离级别、回滚规则和失效场景。
 5. [SpringBoot 自动装配原理详解](./spring-boot-auto-assembly-principles.md)：理解 Spring Boot 为什么能做到开箱即用。
-6. 再根据需要阅读 [Spring 中的设计模式详解](./spring-design-patterns-summary.md)、[Async 注解原理分析](./async.md) 和 [Spring Boot核心源码解读](./springboot-source-code.md)。
+6. 再根据需要阅读 [Spring 中的设计模式详解](./spring-design-patterns-summary.md)、[Async 注解原理分析](./Async.md) 和 [Spring Boot核心源码解读](./springboot-source-code.md)。
 
 ## 核心文章
 
@@ -55,7 +55,7 @@ Spring Boot 则进一步把配置、依赖管理、自动装配和生产可观�
 - [Spring 事务详解](./spring-transaction.md)：覆盖 `@Transactional`、事务传播行为、隔离级别、事务失效场景及回滚规则。
 - [SpringBoot 自动装配原理详解](./spring-boot-auto-assembly-principles.md)：解析 `@EnableAutoConfiguration`、SpringFactories 加载机制和条件注解。
 - [Spring 中的设计模式详解](./spring-design-patterns-summary.md)：理解工厂模式、代理模式、单例模式、模板方法等在 Spring 中的应用。
-- [Async 注解原理分析](./async.md)：理解异步任务配置、线程池设置和 `@EnableAsync` 机制。
+- [Async 注解原理分析](./Async.md)：理解异步任务配置、线程池设置和 `@EnableAsync` 机制。
 - [Spring Boot核心源码解读](./springboot-source-code.md)：从源码角度理解启动流程、自动配置机制和 SpringApplication。
 
 ## 高频问题

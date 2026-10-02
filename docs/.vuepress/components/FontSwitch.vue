@@ -41,7 +41,7 @@
         type="button"
         role="option"
         :aria-selected="option.key === currentKey"
-        :style="{ fontFamily: option.base }"
+        :style="{ fontFamily: fontStackVar(option.key) }"
         @click="select(option)"
       >
         <span class="font-option-text">
@@ -75,6 +75,7 @@ import {
   DEFAULT_FONT_KEY,
   FONT_OPTIONS,
   FONT_STORAGE_KEY,
+  fontStackVar,
   getFontOption,
   type FontOption,
   type FontStylesheet,
@@ -121,8 +122,11 @@ const loadSheet = ({ primary, fallback }: FontStylesheet): void => {
  */
 const applyFont = (option: FontOption): void => {
   const root = document.documentElement;
-  root.style.setProperty("--vp-font", option.base);
-  root.style.setProperty("--vp-font-heading", option.heading);
+  // 字体栈文本取自 palette.scss 的 --jg-font-<key> 令牌。
+  // L3 起字体栈只有那一个权威声明处，TS 侧不再内联栈文本。
+  const stack = fontStackVar(option.key);
+  root.style.setProperty("--vp-font", stack);
+  root.style.setProperty("--vp-font-heading", stack);
   root.dataset.fontPreset = option.key;
   option.cssSheets?.forEach(loadSheet);
 };
@@ -183,7 +187,7 @@ onBeforeUnmount(() => {
   color: var(--vp-c-text);
   background: transparent;
   border: none;
-  font-size: 0.8rem;
+  font-size: var(--jg-fs-sm);
   cursor: pointer;
   transition: color var(--jg-dur-md) var(--jg-ease-standard);
 
@@ -235,7 +239,7 @@ onBeforeUnmount(() => {
 
 .font-switch-title {
   padding: 0.25rem 0.6rem 0.45rem;
-  font-size: 0.75rem;
+  font-size: var(--jg-fs-xs);
   color: var(--vp-c-text-mute);
   letter-spacing: 0.05em;
 }
@@ -252,7 +256,7 @@ onBeforeUnmount(() => {
   border: none;
   border-radius: var(--jg-radius-sm);
   text-align: left;
-  line-height: 1.3;
+  line-height: var(--jg-lh-tight);
   cursor: pointer;
   transition:
     background-color var(--jg-dur-sm) var(--jg-ease-standard),
@@ -276,12 +280,12 @@ onBeforeUnmount(() => {
 }
 
 .font-option-name {
-  font-size: 0.85rem;
+  font-size: var(--jg-fs-sm);
   font-weight: 600;
 }
 
 .font-option-preview {
-  font-size: 0.75rem;
+  font-size: var(--jg-fs-xs);
   font-weight: 400;
   color: var(--vp-c-text-mute);
   white-space: nowrap;

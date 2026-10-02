@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
   justify-content: center;
   gap: 0.6rem;
   color: var(--vp-c-text-mute);
-  font-size: 0.9rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .mermaid-lazy-container :deep(.mermaid-wrapper) {

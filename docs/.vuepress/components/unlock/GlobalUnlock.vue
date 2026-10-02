@@ -347,14 +347,14 @@ watch(
 
 .lock-title {
   margin: 0;
-  font-size: 1.16rem;
+  font-size: var(--jg-fs-lg);
 }
 
 .lock-reason {
   margin: 0 0 1rem;
   color: var(--vp-c-text-mute);
-  line-height: 1.6;
-  font-size: 0.9rem;
+  line-height: var(--jg-lh-normal);
+  font-size: var(--jg-fs-sm);
 }
 
 .qr-container {
@@ -373,7 +373,7 @@ watch(
 
 .qr-tip {
   margin: 0.45rem 0 0;
-  font-size: 0.96rem;
+  font-size: var(--jg-fs-base);
 }
 
 .highlight {
@@ -392,7 +392,7 @@ watch(
   padding: 0.5rem 0.75rem;
   border-radius: var(--jg-radius-md);
   border: 1px solid var(--vp-c-border);
-  font-size: 1rem;
+  font-size: var(--jg-fs-base);
   text-align: center;
   outline: none;
 }
@@ -414,7 +414,7 @@ watch(
 .error-msg {
   margin: 0.45rem 0 0;
   color: var(--vp-c-red-text);
-  font-size: 0.85rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .unlock-fade-enter-active,

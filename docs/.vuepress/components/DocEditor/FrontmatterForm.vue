@@ -203,7 +203,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
   margin: 0;
   padding: 0.45rem 0.6rem;
   border-radius: var(--jg-radius-sm);
-  font-size: 0.78rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .fm-hint {
@@ -224,7 +224,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
 
   label {
     color: var(--vp-c-text-mute);
-    font-size: 0.8rem;
+    font-size: var(--jg-fs-sm);
     text-align: right;
   }
 
@@ -235,7 +235,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
     border-radius: var(--jg-radius-sm);
     background: var(--vp-c-bg);
     color: var(--vp-c-text);
-    font-size: 0.82rem;
+    font-size: var(--jg-fs-sm);
 
     &:focus {
       border-color: var(--vp-c-accent);
@@ -250,7 +250,7 @@ function onFieldInput(field: FieldDef, event: Event): void {
 
   .fm-complex-mark {
     color: var(--vp-c-yellow-bg);
-    font-size: 0.72rem;
+    font-size: var(--jg-fs-xs);
     white-space: nowrap;
   }
 }

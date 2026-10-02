@@ -100,7 +100,7 @@ onMounted(() => {
   gap: 6px;
   height: 36px;
   padding: 0 14px;
-  font-size: 13px;
+  font-size: var(--jg-fs-sm);
   color: var(--vp-c-text);
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-border);

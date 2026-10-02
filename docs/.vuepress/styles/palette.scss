@@ -20,6 +20,26 @@ $sidebar-mobile-width: 16rem;
 $vp-font: 'system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "WenQuanYi Micro Hei", sans-serif';
 $vp-font-heading: $vp-font;
 
+// 代码块字体（L3 补登记）。此前未声明，静默继承主题默认栈
+// （templates/palette/font.scss 的 ui-monospace, "Menlo", ...），
+// 意味着代码字体不在我们的控制面上、主题升级即漂移。
+// 这里显式声明（带引号字符串），覆盖主题的 `!default`，把代码字体纳入控制面。
+// 取值 = 主题默认栈 + 显式中文回退（代码里常有中文注释，此前靠浏览器兜底、
+// 结果因平台而异；显式写出后跨平台一致）。未引入任何编程字体，避免对
+// 本机已装字体的用户产生非预期的字体代换。
+$vp-font-mono: 'ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", "PingFang SC", "Microsoft YaHei", monospace';
+
+// 预设字体栈令牌（L3）。FontSwitch 的 7 套预设改为消费这些令牌，
+// 字体栈文本自此只有本文件一处真相（原先 TS 的 SANS_STACK 与 $vp-font 逐字节重复）。
+// system 直接复用 $vp-font；其余 6 套用 #{$vp-font} 插值复用其兜底段，避免重复书写。
+$jg-font-system: $vp-font;
+$jg-font-web-sans: '"Noto Sans SC", #{$vp-font}';
+$jg-font-misans: '"MiSans", #{$vp-font}';
+$jg-font-theme: 'Georgia, -apple-system, "Nimbus Roman No9 L", "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif';
+$jg-font-noto-serif: '"Noto Serif SC", Georgia, "Songti SC", SimSun, "Microsoft Yahei", serif';
+$jg-font-wenkai: '"LXGW WenKai Screen", "Kaiti SC", STKaiti, KaiTi, "PingFang SC", serif';
+$jg-font-kuaile: '"ZCOOL KuaiLe", "Yuanti SC", YouYuan, "Microsoft YaHei", sans-serif';
+
 // ============================================
 // 设计令牌（--jg-*）
 // ============================================
@@ -34,7 +54,28 @@ $vp-font-heading: $vp-font;
 //   2. 只支持 number / string / color / (light:, dark:) map 四类值。
 //
 // 组件里一律用 var(--jg-*) 消费，禁止再写裸值。
-// 令牌增删请同步维护 doc/dev-report/ 下对应档位的实施记录（L0→03、L1→04、L2→05）。
+// 令牌增删请同步维护 doc/dev-report/ 下对应档位的实施记录（L0→03、L1→04、L2→05、L3→06）。
+
+// ---- 排版刻度：字号（L3）----
+//
+// 按「语义角色」分档（与 L2 动效按过渡/强调/循环分档同一思路），
+// 取值对齐 Tailwind 的 text-* 比例，便于心算与判断归属。
+//
+// ⚠ 边界：图标字形尺寸（装进固定尺寸按钮的 × 号等，如 GlobalUnlock 的
+// .close-btn 18px、ClickImagePreview 的 .image-preview-close 30px）
+// 不属于文本层级，锁定 px 保留，不走本刻度。
+$jg-fs-xs: 0.75rem; // 12px 徽标、极小标签、角标
+$jg-fs-sm: 0.875rem; // 14px 密集 UI 小字：表单提示、meta、表格头、控件标签
+$jg-fs-base: 1rem; // 16px UI 正文 / 控件基准
+$jg-fs-lg: 1.125rem; // 18px 次级标题
+$jg-fs-xl: 1.25rem; // 20px 面板 / 对话框标题
+
+// ---- 排版刻度：行高（L3）----
+//
+// 一律「无单位数字」：继承时不锁死父级字号，是 CSS 最佳实践。
+$jg-lh-tight: 1.3; // 密集单行 / 选项行
+$jg-lh-normal: 1.6; // 常规 UI 文本、说明段落
+$jg-lh-relaxed: 1.7; // 长文阅读 / 编辑器
 
 // ---- 颜色（map 形式 → 自动生成明暗两套）----
 

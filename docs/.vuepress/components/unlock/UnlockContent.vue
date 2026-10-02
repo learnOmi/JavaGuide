@@ -134,7 +134,7 @@ const handleUnlock = () => {
 .lock-reason {
   margin: 0.75rem auto 1rem;
   color: var(--vp-c-text-mute);
-  line-height: 1.6;
+  line-height: var(--jg-lh-normal);
   max-width: 560px;
 }
 
@@ -163,7 +163,7 @@ const handleUnlock = () => {
   padding: 0.5rem 0.75rem;
   border-radius: var(--jg-radius-md);
   border: 1px solid var(--vp-c-border);
-  font-size: 1rem;
+  font-size: var(--jg-fs-base);
   text-align: center;
 }
 
@@ -185,13 +185,13 @@ const handleUnlock = () => {
 .error-msg {
   margin: 0.45rem 0 0;
   color: var(--vp-c-red-text);
-  font-size: 0.85rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .lock-footer {
   margin: 0.7rem 0 0;
   color: var(--vp-c-text-subtle);
-  font-size: 0.8rem;
+  font-size: var(--jg-fs-sm);
 }
 
 .slide-up-enter-active,
