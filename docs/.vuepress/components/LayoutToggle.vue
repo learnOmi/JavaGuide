@@ -107,7 +107,14 @@ onMounted(() => {
   border-radius: var(--jg-radius-pill);
   box-shadow: var(--jg-shadow-sm);
   cursor: pointer;
-  transition: all var(--jg-dur-lg) var(--jg-ease-standard);
+  // 只过渡真实变化的属性：hover 改 color / border-color / transform，
+  // .is-hidden 改 background。写 all 会让浏览器监听全部属性（含触发布局的），
+  // 与 L0「只过渡合成友好属性」的收敛方向相悖。
+  transition:
+    color var(--jg-dur-lg) var(--jg-ease-standard),
+    background-color var(--jg-dur-lg) var(--jg-ease-standard),
+    border-color var(--jg-dur-lg) var(--jg-ease-standard),
+    transform var(--jg-dur-lg) var(--jg-ease-standard);
   white-space: nowrap;
 
   &:hover {

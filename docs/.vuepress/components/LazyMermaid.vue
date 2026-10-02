@@ -109,7 +109,8 @@ onBeforeUnmount(() => {
   border: 2px solid var(--vp-c-divider);
   border-top-color: var(--vp-c-accent-bg);
   border-radius: 50%;
-  animation: mermaid-lazy-spin 0.8s linear infinite;
+  /* 转速走「循环档」令牌，不是「过渡」。时长与 linear 搭配表达匀速旋转 */
+  animation: mermaid-lazy-spin var(--jg-dur-loop) linear infinite;
 }
 
 @keyframes mermaid-lazy-spin {

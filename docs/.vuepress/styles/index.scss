@@ -124,6 +124,58 @@ html.layout-hidden {
 }
 
 // ============================================
+// 动效编排层（L2）
+// ============================================
+
+// 密码错误抖动。原为两份组件副本（GlobalUnlock 0.45s/-3px、UnlockContent 0.5s/-4px），
+// 缓动曲线逐字符相同，属同一视觉语言的两个实现，此处收敛为一份。
+//
+// 放在全局层而非各 SFC 的原因：scoped 样式里的 @keyframes 会被 Vue 重命名加 scope 后缀
+// （如 shake-a1b2c3），无法跨组件共享；要共享必须落在非 scoped 的 index.scss。
+// 消费方只需在自己的 `<Transition name="shake">` 生成的 .shake-enter-active 里
+// 写 `animation: jg-shake var(--jg-dur-emphasis) var(--jg-ease-decelerate) both;`
+// ——scoped 块只重命名「块内声明」的关键帧，引用未在块内声明的 jg-shake 不会被改写，
+// 因此能正确解析到这里的全局定义。
+//
+// 时长/曲线走「强调档」令牌——抖动是需要被看见的一次性反馈，不压进过渡刻度。
+@keyframes jg-shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+// 正文块的进场编排（L2 Step 8）：仅图片与表格参与。
+// 排除代码块（高度大、观感位移明显）、文字段落（干扰扫读）、标题（与 TOC 高亮语义重叠）。
+// 只动 transform / opacity 两个合成层属性，不碰 height/margin/padding，以规避布局位移（CLS）。
+// 未加 .is-revealed 时保持初始态；JS 侧由 RevealOnScroll.vue 负责加类。
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--jg-dur-lg) var(--jg-ease-standard),
+    transform var(--jg-dur-lg) var(--jg-ease-standard);
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+// ============================================
 // 无障碍：尊重系统「减弱动态效果」偏好
 // ============================================
 @media (prefers-reduced-motion: reduce) {

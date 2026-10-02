@@ -208,27 +208,10 @@ const handleUnlock = () => {
 }
 
 .shake-enter-active {
-  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-  40%,
-  60% {
-    transform: translate3d(4px, 0, 0);
-  }
+  /* 关键帧收敛到全局 jg-shake（styles/index.scss），时长/曲线走「强调档」令牌。
+     原为组件内自维护的 @keyframes shake（与 GlobalUnlock 的那份重复），已移至全局层共用；
+     统一取 0.45s（原 0.5s），位移统一为 ±3px（原 ±4px）。 */
+  animation: jg-shake var(--jg-dur-emphasis) var(--jg-ease-decelerate) both;
 }
 
 @media (max-width: 576px) {

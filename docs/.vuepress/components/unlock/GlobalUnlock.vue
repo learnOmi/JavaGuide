@@ -290,7 +290,11 @@ watch(
   font-weight: 700;
   cursor: pointer;
   box-shadow: var(--jg-shadow-brand);
-  transition: all var(--jg-dur-md) var(--jg-ease-standard);
+  /* 只过渡真实变化的属性：hover 改 transform / box-shadow。
+     写 all 会让浏览器监听全部属性（含触发布局的），与 L0 收敛方向相悖。 */
+  transition:
+    transform var(--jg-dur-md) var(--jg-ease-standard),
+    box-shadow var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 .read-more-btn:hover {
@@ -424,27 +428,9 @@ watch(
 }
 
 .shake-enter-active {
-  animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-3px, 0, 0);
-  }
-  40%,
-  60% {
-    transform: translate3d(3px, 0, 0);
-  }
+  /* 关键帧收敛到全局 jg-shake（styles/index.scss），时长/曲线走「强调档」令牌。
+     原为组件内自维护的 @keyframes shake（与 UnlockContent 的那份重复），已移至全局层共用。 */
+  animation: jg-shake var(--jg-dur-emphasis) var(--jg-ease-decelerate) both;
 }
 
 @media (max-width: 576px) {

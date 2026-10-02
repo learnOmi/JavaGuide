@@ -5,6 +5,7 @@ import ClickImagePreview from "./components/ClickImagePreview.vue";
 import LazyMermaid from "./components/LazyMermaid.vue";
 import FontSwitch from "./components/FontSwitch.vue";
 import EditEntry from "./components/EditEntry.vue";
+import RevealOnScroll from "./components/RevealOnScroll.vue";
 
 const UnlockContent = defineAsyncComponent(
   () => import("./components/unlock/UnlockContent.vue"),
@@ -48,5 +49,7 @@ export default defineClientConfig({
     () => h(ClickImagePreview),
     // 本地知识编辑入口（dev 环境探活通过才渲染；内部懒加载编辑抽屉）
     () => h(EditEntry),
+    // 正文图片/表格的进场编排（renderless，仅操作 DOM 类名）
+    () => h(RevealOnScroll),
   ],
 });

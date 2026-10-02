@@ -624,8 +624,9 @@ defineExpose({
   background: var(--vp-c-bg-elv, var(--vp-c-bg));
   border-left: 1px solid var(--vp-c-border);
   box-shadow: var(--jg-shadow-drawer);
-  // 入场动画：CSS animation 实现，rAF 节流环境下也能保证可见
-  animation: drawer-slide-in 0.22s var(--jg-ease-standard);
+  // 入场动画：CSS animation 实现，rAF 节流环境下也能保证可见。
+  // 时长归一化到过渡档 -md（原 0.22s，差 0.02s 不可辨）
+  animation: drawer-slide-in var(--jg-dur-md) var(--jg-ease-standard);
 
   @media (max-width: 719px) {
     // 小屏直接全屏，避免挤压阅读区
@@ -753,7 +754,8 @@ defineExpose({
   color: var(--vp-c-text);
   font-size: 0.82rem;
   word-break: break-all;
-  animation: toast-rise 0.25s var(--jg-ease-standard);
+  // 时长归一化到过渡档 -md（原 0.25s，差 0.05s 不可辨）
+  animation: toast-rise var(--jg-dur-md) var(--jg-ease-standard);
 }
 
 @keyframes toast-rise {

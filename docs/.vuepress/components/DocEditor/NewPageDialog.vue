@@ -555,7 +555,8 @@ async function openCreatedPage(): Promise<void> {
     color: var(--vp-c-text);
     font-size: 0.78rem;
     cursor: pointer;
-    transition: border-color var(--jg-dur-sm);
+    // 补上缓动档位：此前遗漏，靠浏览器兜底（默认 ease，值恰好相同）
+    transition: border-color var(--jg-dur-sm) var(--jg-ease-standard);
 
     &:hover {
       border-color: var(--vp-c-accent);

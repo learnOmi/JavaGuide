@@ -34,7 +34,7 @@ $vp-font-heading: $vp-font;
 //   2. 只支持 number / string / color / (light:, dark:) map 四类值。
 //
 // 组件里一律用 var(--jg-*) 消费，禁止再写裸值。
-// 令牌增删请同步维护 doc/dev-report/03-UI风格升级-设计与实施记录.md。
+// 令牌增删请同步维护 doc/dev-report/ 下对应档位的实施记录（L0→03、L1→04、L2→05）。
 
 // ---- 颜色（map 形式 → 自动生成明暗两套）----
 
@@ -124,13 +124,24 @@ $jg-shadow-brand: "0 8px 20px var(--jg-c-brand-glow)";
 $jg-shadow-brand-hover: "0 10px 24px var(--jg-c-brand-glow)";
 
 // ---- 动效 ----
+//
+// L2 起按「语义角色」分档，而不是把所有时长塞进一条过渡刻度：
+//   过渡档（-sm/-md/-lg）：状态切换，双向可逆、可被打断（hover / 展开 / 抽屉）
+//   强调档（-emphasis）  ：一次性反馈，需要被「看见」（错误抖动）
+//   循环档（-loop）      ：持续动画周期（spinner 转速），与真实时间挂钩
 
 $jg-dur-sm: 0.15s;
 $jg-dur-md: 0.2s;
 $jg-dur-lg: 0.3s;
+// 强调档：抖动幅度需走完才可辨，压进过渡档会削弱语义
+$jg-dur-emphasis: 0.45s;
+// 循环档：spinner 转速，不是「过渡」
+$jg-dur-loop: 0.8s;
 $jg-ease-standard: ease;
 // 同处时长下观感更利落的强调缓动
 $jg-ease-emphasized: "cubic-bezier(0.2, 0, 0, 1)";
+// 减速曲线：抖动反馈（原在两处解锁组件里逐字符重复裸写）
+$jg-ease-decelerate: "cubic-bezier(0.36, 0.07, 0.19, 0.97)";
 
 // ---- z-index（沿用现值，本期只登记命名不改数值，避免引入新层级冲突）----
 //
