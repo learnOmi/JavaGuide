@@ -1,6 +1,7 @@
 import { defineClientConfig } from "vuepress/client";
 import { defineAsyncComponent, h } from "vue";
 import DeferredLayoutToggle from "./components/DeferredLayoutToggle.vue";
+import DeferredResumeReading from "./components/DeferredResumeReading.vue";
 import ClickImagePreview from "./components/ClickImagePreview.vue";
 import LazyMermaid from "./components/LazyMermaid.vue";
 import FontSwitch from "./components/FontSwitch.vue";
@@ -46,6 +47,8 @@ export default defineClientConfig({
   },
   rootComponents: [
     () => h(DeferredLayoutToggle),
+    // 上次阅读位置续读入口（纯本地存储，点击才恢复，不自动跳转）
+    () => h(DeferredResumeReading),
     () => h(ClickImagePreview),
     // 本地知识编辑入口（dev 环境探活通过才渲染；内部懒加载编辑抽屉）
     () => h(EditEntry),
